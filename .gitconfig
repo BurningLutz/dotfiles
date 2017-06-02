@@ -1,8 +1,12 @@
+[github]
+  user = BurningLutz
+
 [user]
-	name = BurningLutz
-	email = zioseed@gmail.com
+  name = Lutz
+  email = lutz.l.burning@gmail.com
 
 [alias]
   st = status
+
 [pager]
-	status = true
+  status = true
