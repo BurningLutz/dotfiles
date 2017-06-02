@@ -1,0 +1,8 @@
+[user]
+	name = BurningLutz
+	email = zioseed@gmail.com
+
+[alias]
+  st = status
+[pager]
+	status = true

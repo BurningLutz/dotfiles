@@ -1,0 +1,2 @@
+BASH_PROFILE_PATH=$HOME/.bash_profile
+test -e $BASH_PROFILE_PATH && source $BASH_PROFILE_PATH
