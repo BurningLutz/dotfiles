@@ -1164,7 +1164,7 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>357 304 599 388 0 0 1920 1177 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>367 518 796 473 0 0 1920 1200 </string>
+	<string>388 350 796 473 0 0 1920 1200 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>155 473 592 584 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
@@ -1919,7 +1919,7 @@
 			<key>Triggers</key>
 			<array/>
 			<key>Unlimited Scrollback</key>
-			<false/>
+			<true/>
 			<key>Use Bold Font</key>
 			<false/>
 			<key>Use Bright Bold</key>
@@ -2049,7 +2049,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-05-31T02:15:03Z</date>
+	<date>2017-06-05T08:25:13Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
