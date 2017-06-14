@@ -140,7 +140,7 @@ let g:startify_session_persistence = 1
 " Sort sessions by modification time
 let g:startify_session_sort = 1
 
-let g:vim_jsx_pretty_colorful_config = 1
+let g:jsx_ext_required = 0
 
 " Disable meta key binding of rsi
 let g:rsi_no_meta = 1
