@@ -1,5 +1,12 @@
 #!/bin/bash
 
+SCRIPT_DIR=$( cd ${0%/*} && pwd -P )
+
+if [[ $PWD != $SCRIPT_DIR ]]; then
+  echo "Run install.sh at its own directory." 1>&2
+  exit 1
+fi
+
 ./scripts/install_homebrew.sh
 ./scripts/link.sh
 ./scripts/init_fish.sh
