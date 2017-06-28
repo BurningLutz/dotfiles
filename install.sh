@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo su $USER
+
 SCRIPT_DIR=$( cd ${0%/*} && pwd -P )
 
 if [[ $PWD != $SCRIPT_DIR ]]; then

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-pip install python2-neovim
+pip install neovim
 
