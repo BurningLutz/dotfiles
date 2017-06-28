@@ -121,7 +121,7 @@ let g:ctrlp_prompt_mappings = { 'PrtCurLeft()': ['<c-h>'] }
 " Use git listing command to speed up, add grep to filter results
 let g:ctrlp_user_command = {
       \  'types': {
-      \    1: ['.git', 'cd %s && git ls-files -coX .gitignore']
+      \    1: ['.git', 'cd %s ; git ls-files -coX .gitignore']
       \  },
       \  'ignore': 1
       \}
