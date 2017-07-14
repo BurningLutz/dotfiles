@@ -16,3 +16,4 @@ git clone git://github.com/tpope/rbenv-ctags.git \
           $(rbenv root)/plugins/rbenv-ctags
 
 rbenv install 2.4.1
+rbenv global 2.4.1

@@ -11,4 +11,5 @@ brew install nginx \
            python3 \
              rbenv \
         ruby-build \
-             ctags
+             ctags \
+               git
