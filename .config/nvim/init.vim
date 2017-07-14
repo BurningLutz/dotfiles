@@ -19,7 +19,7 @@ Plug 'airblade/vim-gitgutter'
 " Syntax highlighter for js
 Plug 'pangloss/vim-javascript'
 " Extend js highlighter with jsx
-Plug 'BurningLutz/vim-jsx'
+Plug 'mxw/vim-jsx'
 
 " Async program runner, I use it as syntax checker
 Plug 'neomake/neomake'
@@ -75,6 +75,12 @@ Plug 'tpope/vim-commentary'
 Plug 'kana/vim-textobj-function'
 Plug 'thinca/vim-textobj-function-javascript'
 
+Plug 'posva/vim-vue'
+
+Plug 'vim-ruby/vim-ruby'
+" text object for ruby block
+Plug 'nelstrom/vim-textobj-rubyblock'
+
 " Initialize plugin system
 call plug#end()
 
@@ -101,9 +107,15 @@ let g:airline_theme = 'hybrid'
 let NERDTreeChDirMode = 2
 let NERDTreeIgnore=['\~$', 'node_modules', 'dist']
 
+let g:neomake_error_sign = { 'text': 'x' }
 " Make eslint be the default linter, this need eslint to be installed
 let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_error_sign = { 'text': 'x' }
+" Make ruby -wc be the default linter for ruby
+let g:neomake_ruby_rubywc_maker = {
+\  'exe': 'ruby',
+\  'args': ['-wc']
+\}
+let g:neomake_ruby_enabled_makers = ['rubywc']
 
 " Disable some settings and keymaps of AutoPairs
 let g:AutoPairsShortcutToggle = ''
@@ -199,10 +211,10 @@ set noswapfile
 language en_US.UTF-8
 
 " Auto-run Neomake when save
-autocmd! BufWritePost *.js,*.jsx Neomake
+autocmd! BufWritePost *.js,*.jsx,*.rb Neomake
 " Or tipically when reload a file. This could happen when reverting changes
 " from git
-autocmd! BufReadPost *.js,*.jsx Neomake
+autocmd! BufReadPost *.js,*.jsx,*.rb Neomake
 
 " Map switch of NERDTree to A-n
 map <silent> <A-n> :NERDTreeToggle<CR>
