@@ -7,7 +7,8 @@ brew install nginx \
               node \
             neovim \
               yarn \
-              ruby \
             python \
+           python3 \
              rbenv \
-        ruby-build
+        ruby-build \
+             ctags
