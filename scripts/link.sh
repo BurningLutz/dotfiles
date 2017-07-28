@@ -10,3 +10,4 @@ ln -s $PWD/.config/nvim/init.vim $_
 
 ln -s $PWD/.gemrc ~
 ln -s $PWD/.gitconfig ~
+ln -s $PWD/.rubocop.yml ~
