@@ -110,12 +110,7 @@ let NERDTreeIgnore=['\~$', 'node_modules', 'dist']
 let g:neomake_error_sign = { 'text': 'x' }
 " Make eslint be the default linter, this need eslint to be installed
 let g:neomake_javascript_enabled_makers = ['eslint']
-" Make ruby -wc be the default linter for ruby
-let g:neomake_ruby_rubywc_maker = {
-\  'exe': 'ruby',
-\  'args': ['-wc']
-\}
-let g:neomake_ruby_enabled_makers = ['rubywc']
+let g:neomake_ruby_enabled_makers = ['rubocop']
 
 " Disable some settings and keymaps of AutoPairs
 let g:AutoPairsShortcutToggle = ''

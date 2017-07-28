@@ -10,6 +10,7 @@ echo """
 bundler
 gem-ctags
 neovim
+rubocop
 """ > $(rbenv root)/default-gems
 
 git clone git://github.com/tpope/rbenv-ctags.git \
