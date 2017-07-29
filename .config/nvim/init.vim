@@ -80,6 +80,7 @@ Plug 'posva/vim-vue'
 Plug 'vim-ruby/vim-ruby'
 " text object for ruby block
 Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'tpope/vim-bundler'
 
 " Initialize plugin system
 call plug#end()
