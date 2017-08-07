@@ -63,7 +63,6 @@ Plug 'honza/vim-snippets'
 
 " auto-complete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'carlitux/deoplete-ternjs'
 
 " repeat plugin map
 Plug 'tpope/vim-repeat'
@@ -78,9 +77,9 @@ Plug 'thinca/vim-textobj-function-javascript'
 Plug 'posva/vim-vue'
 
 Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-bundler'
 " text object for ruby block
 Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'tpope/vim-bundler'
 
 " Initialize plugin system
 call plug#end()
@@ -174,6 +173,8 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#auto_complete_delay = 10
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
 
 let g:UltiSnipsExpandTrigger = '<C-h>'
 
