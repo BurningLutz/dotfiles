@@ -1,13 +1,17 @@
-# enhance ls
-alias ll="ls -laFG"
+if status --is-login
+  # my default editor is neovim
+  set -x EDITOR nvim
 
-alias vim=nvim
+  # add yarn global bin path
+  set -x PATH (yarn global bin) $PATH
 
-# my default editor is neovim
-set -x EDITOR nvim
+  # autoload rbenv
+  source (rbenv init -|psub)
+end
 
-# add yarn global bin path
-set -x PATH (yarn global bin) $PATH
+if status --is-interactive
+  # enhance ls
+  alias ll="ls -laFG"
 
-# autoload rbenv
-status --is-interactive; and source (rbenv init -|psub)
+  alias vim=nvim
+end
