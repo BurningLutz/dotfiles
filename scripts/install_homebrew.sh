@@ -12,4 +12,5 @@ brew install nginx \
              rbenv \
         ruby-build \
              ctags \
-               git
+               git \
+         leiningen
