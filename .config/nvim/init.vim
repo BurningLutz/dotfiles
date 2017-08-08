@@ -1,91 +1,86 @@
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.local/share/nvim/plugged')
 
+" basis >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Useful toolbar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
+" theme
 Plug 'w0ng/vim-hybrid'
-
-" Zen!
-Plug 'mattn/emmet-vim'
-
 " Dir tree, bookmarks and more
 Plug 'scrooloose/nerdtree'
-
 " Show file change inline
 Plug 'airblade/vim-gitgutter'
+" Async program runner, I use it as syntax checker
+Plug 'neomake/neomake'
+" Readline style key bindings
+Plug 'tpope/vim-rsi'
+" Sub-word movements
+Plug 'bkad/CamelCaseMotion'
+" Surround.vim is all about "surroundings": parentheses, brackets, quotes,
+" XML tags, and more. The plugin provides mappings to easily delete,
+" change and add such surroundings in pairs.
+Plug 'tpope/vim-surround'
+" 🔗 The fancy start screen for Vim.
+Plug 'mhinz/vim-startify'
+" Automatically insert paired quotes, brackets etc
+Plug 'jiangmiao/auto-pairs'
+" Fuzzy finder
+Plug 'ctrlpvim/ctrlp.vim'
+" Align something
+Plug 'vim-scripts/Align'
+" Search and replace through the whole project
+Plug 'dyng/ctrlsf.vim'
+" snippet engine
+Plug 'SirVer/ultisnips'
+" useful snippets
+Plug 'honza/vim-snippets'
+" auto-complete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" repeat plugin map
+Plug 'tpope/vim-repeat'
+" comment stuffs easily
+Plug 'tpope/vim-commentary'
+" basis <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" Syntax highlighter for js
+" web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" Zen!
+Plug 'mattn/emmet-vim'
+" js syntax highlight
 Plug 'pangloss/vim-javascript'
 " Extend js highlighter with jsx
 Plug 'mxw/vim-jsx'
-
-" Async program runner, I use it as syntax checker
-Plug 'neomake/neomake'
-
-" Readline style key bindings
-Plug 'tpope/vim-rsi'
-
-" Sub-word movements
-Plug 'bkad/CamelCaseMotion'
-
-" Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML tags, and more. The plugin provides mappings to easily delete, change and add such surroundings in pairs.
-Plug 'tpope/vim-surround'
-
-" 🔗 The fancy start screen for Vim.
-Plug 'mhinz/vim-startify'
-
-" Automatically insert paired quotes, brackets etc
-Plug 'jiangmiao/auto-pairs'
-
-" Fuzzy finder
-Plug 'ctrlpvim/ctrlp.vim'
-
 " Generate jsdoc
 Plug 'heavenshell/vim-jsdoc'
-
-" Align something
-Plug 'vim-scripts/Align'
-
-" Search and replace through the whole project
-Plug 'dyng/ctrlsf.vim'
-
-" GFM syntax
+" GFM syntax highlight
 Plug 'rhysd/vim-gfm-syntax'
-
 " User defined textobj support and text object for xml/html attrs
 Plug 'kana/vim-textobj-user'
 Plug 'inside/vim-textobj-jsxattr'
-
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-" auto-complete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" repeat plugin map
-Plug 'tpope/vim-repeat'
-
-" comment stuffs easily
-Plug 'tpope/vim-commentary'
-
 " text object for functions
 Plug 'kana/vim-textobj-function'
 Plug 'thinca/vim-textobj-function-javascript'
-
+" vue syntax highlight
 Plug 'posva/vim-vue'
+" web related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+" ruby related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" ruby syntax and completion
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-bundler'
 " text object for ruby block
 Plug 'nelstrom/vim-textobj-rubyblock'
+" ruby related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" clojure related stuffs
+" clojure related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" clojure utilities
 Plug 'tpope/vim-fireplace'
+" clojure syntax highlight
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
+" better parentheses colors
 Plug 'kien/rainbow_parentheses.vim'
+" clojure related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " Initialize plugin system
 call plug#end()
