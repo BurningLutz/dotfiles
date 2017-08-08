@@ -81,8 +81,43 @@ Plug 'tpope/vim-bundler'
 " text object for ruby block
 Plug 'nelstrom/vim-textobj-rubyblock'
 
+" clojure related stuffs
+Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-clojure-highlight'
+Plug 'kien/rainbow_parentheses.vim'
+
 " Initialize plugin system
 call plug#end()
+
+" rainbow_parentheses.vim
+let g:rbpt_colorpairs = [
+    \ ['brown'       , 'RoyalBlue3'  ],
+    \ ['Darkblue'    , 'SeaGreen3'   ],
+    \ ['darkgray'    , 'DarkOrchid3' ],
+    \ ['darkgreen'   , 'firebrick3'  ],
+    \ ['darkcyan'    , 'RoyalBlue3'  ],
+    \ ['darkred'     , 'SeaGreen3'   ],
+    \ ['darkmagenta' , 'DarkOrchid3' ],
+    \ ['brown'       , 'firebrick3'  ],
+    \ ['gray'        , 'RoyalBlue3'  ],
+    \ ['darkmagenta' , 'DarkOrchid3' ],
+    \ ['Darkblue'    , 'firebrick3'  ],
+    \ ['darkgreen'   , 'RoyalBlue3'  ],
+    \ ['darkcyan'    , 'SeaGreen3'   ],
+    \ ['darkred'     , 'DarkOrchid3' ],
+    \ ['red'         , 'firebrick3'  ],
+    \ ]
+let g:rbpt_max = 15
+let g:rbpt_loadcmd_toggle = 0
+autocmd VimEnter *       RainbowParenthesesToggle
+autocmd Syntax   clojure RainbowParenthesesLoadRound
+autocmd Syntax   clojure RainbowParenthesesLoadSquare
+autocmd Syntax   clojure RainbowParenthesesLoadBraces
+
+" vim-clojure-static
+" Align subsequent lines in multiline strings to the column after the opening quote, instead of the same column.
+let g:clojure_align_multiline_strings = 0
 
 " set options for hybrid color scheme, the order here makes sense
 let g:hybrid_custom_term_colors = 1
@@ -172,9 +207,10 @@ let g:tern#filetypes = ['javascript.jsx']
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_smart_case = 1
-let g:deoplete#auto_complete_delay = 10
+let g:deoplete#auto_complete_delay = 50
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
+let g:deoplete#omni#input_patterns.clojure = '[a-zA-Z*]{2,}'
 
 let g:UltiSnipsExpandTrigger = '<C-h>'
 
@@ -285,3 +321,12 @@ if has('nvim')
     \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
     \,sm:block-blinkwait175-blinkoff150-blinkon175
 endif
+
+function! OpenLeinRepl()
+  :tabnew
+  :terminal lein repl
+  :stopinsert
+  :tabrewind
+endfunction
+
+:command! LeinRepl call OpenLeinRepl()
