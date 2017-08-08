@@ -208,7 +208,6 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#auto_complete_delay = 50
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
-let g:deoplete#omni#input_patterns.clojure = '[a-zA-Z*]{2,}'
 " deoplete <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
