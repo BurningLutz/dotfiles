@@ -85,6 +85,10 @@ Plug 'guns/vim-clojure-highlight'
 Plug 'kien/rainbow_parentheses.vim'
 " clojure related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+" fish related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Plug 'dag/vim-fish'
+" fish related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 " Initialize plugin system
 call plug#end()
 
