@@ -232,6 +232,8 @@ let g:markdown_fenced_languages = ['json', 'js=javascript', 'jsx=javascript',
 " Show signature in completion list
 let g:tern_show_signature_in_pum = 1
 let g:tern#filetypes = ['javascript.jsx']
+" highlight jsObjectKey for vim-javascript
+hi link jsObjectKey Label
 " web related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " ultisnips >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
