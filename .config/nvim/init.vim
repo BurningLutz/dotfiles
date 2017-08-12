@@ -78,6 +78,8 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 " clojure related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " clojure utilities
 Plug 'tpope/vim-fireplace'
+" speedup fireplace's awful omni completion
+Plug 'clojure-vim/async-clj-omni'
 " clojure syntax highlight
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
@@ -212,7 +214,8 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#auto_complete_delay = 50
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
-let g:deoplete#omni#input_patterns.clojure = '[a-zA-Z*+!''?_-][\w*+!''?-]{1,}'
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 " deoplete <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
