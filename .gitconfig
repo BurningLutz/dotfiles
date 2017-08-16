@@ -11,3 +11,5 @@
 [pager]
   status = true
 
+[core]
+  quotepath = false
