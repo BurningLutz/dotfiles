@@ -7,11 +7,14 @@ if [[ $PWD != $SCRIPT_DIR ]]; then
   exit 1
 fi
 
-./scripts/install_homebrew.sh
-./scripts/link.sh
-./scripts/init_fish.sh
-./scripts/init_yarn.sh
-./scripts/init_python.sh
-./scripts/init_ruby.sh
-./scripts/init_neovim.sh
+# install brew if not exists
+if [[ ! -x $( command -v brew ) ]]; then
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
 
+# install fish if not exists, and eagerly use it
+if [[ ! -x $( command -v fish ) ]]; then
+  ./scripts/install_fish.sh
+fi
+
+./scripts/link_files.fish
