@@ -2,7 +2,6 @@
 
 set -l bins nginx \
              node \
-            ctags \
               git \
         leiningen
 

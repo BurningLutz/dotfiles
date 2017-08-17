@@ -1,7 +1,7 @@
 #!/usr/local/bin/fish
 
 if not brew ls --versions rbenv > /dev/null
-  brew install rbenv ruby-build
+  brew install rbenv ctags
 
   rbenv init
 
