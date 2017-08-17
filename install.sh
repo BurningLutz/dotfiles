@@ -18,3 +18,4 @@ if [[ ! -x $( command -v fish ) ]]; then
 fi
 
 ./scripts/link_files.fish
+./scripts/install_bins.fish
