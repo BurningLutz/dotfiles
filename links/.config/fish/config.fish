@@ -11,7 +11,7 @@ end
 
 if status --is-interactive
   # enhance ls
-  alias ll="ls -laFG"
+  alias ll="ls -lhAFG"
 
   alias vim=nvim
 end

@@ -357,7 +357,7 @@ endfunction
 
 function! OpenLeinRepl()
   :tabnew
-  :terminal env LEIN_FAST_TRAMPOLINE=y lein trampoline repl :headless
+  :terminal lein repl :headless
   :stopinsert
   :tabrewind
 endfunction
