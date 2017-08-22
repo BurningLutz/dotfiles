@@ -158,7 +158,10 @@ let NERDTreeIgnore=['\~$', 'node_modules', 'dist', '.git']
 " NERDTree <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " neomake >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let g:neomake_error_sign = { 'text': 'x' }
+let g:neomake_error_sign = { 'text': 'x>', 'texthl': 'NeomakeErrorSign' }
+let g:neomake_warning_sign = { 'text': '!>' }
+hi link NeomakeError Error
+hi link NeomakeErrorSign Error
 " Make eslint be the default linter, this need eslint to be installed
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_ruby_enabled_makers = ['rubocop']
