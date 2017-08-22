@@ -302,6 +302,9 @@ map <silent> <A-n> :NERDTreeToggle<CR>
 map <silent> <A-w> <Plug>CamelCaseMotion_w
 map <silent> <A-b> <Plug>CamelCaseMotion_b
 map <silent> <A-e> <Plug>CamelCaseMotion_e
+" Map [[ and ]] to move in err list
+map <silent> [[ :lprevious<CR>
+map <silent> ]] :lnext<CR>
 " Efficient tab management
 map <silent> <S-A-h> :tabprevious<CR>
 map <silent> <S-A-l> :tabnext<CR>
