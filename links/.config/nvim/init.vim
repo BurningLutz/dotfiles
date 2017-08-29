@@ -26,8 +26,6 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'tpope/vim-surround'
 " 🔗 The fancy start screen for Vim.
 Plug 'mhinz/vim-startify'
-" Automatically insert paired quotes, brackets etc
-Plug 'jiangmiao/auto-pairs'
 " Fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
 " Align something
@@ -166,17 +164,6 @@ hi link NeomakeErrorSign Error
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_ruby_enabled_makers = ['rubocop']
 " neomake <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-" AutoPairs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-" Disable some settings and keymaps of AutoPairs
-let g:AutoPairsShortcutToggle = ''
-let g:AutoPairsShortcutFastWrap = ''
-let g:AutoPairsShortcutJump = ''
-let g:AutoPairsShortcutBackInsert = ''
-let g:AutoPairsMapCh = 0
-let g:AutoPairsCenterLine = 0
-let g:AutoPairsMultilineClose = 0
-" AutoPairs <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " ctrlp >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Customize CtrlP window
