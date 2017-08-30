@@ -42,6 +42,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-repeat'
 " comment stuffs easily
 Plug 'tpope/vim-commentary'
+" auto close pairs
+Plug 'somini/vim-autoclose'
 " basis <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -124,7 +126,11 @@ autocmd Syntax   clojure RainbowParenthesesLoadBraces
 " vim-clojure-static >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Align subsequent lines in multiline strings to the column after the opening
 " quote, instead of the same column.
-let g:clojure_align_multiline_strings = 0
+let g:clojure_align_multiline_strings = 1
+let g:AutoClosePreserveDotReg = 0
+autocmd FileType clojure let b:AutoClosePairs = "() [] {} \""
+map <silent> ( [(
+map <silent> ) ])
 " vim-clojure-static <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " set color theme >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
