@@ -128,7 +128,7 @@ autocmd Syntax   clojure RainbowParenthesesLoadBraces
 " quote, instead of the same column.
 let g:clojure_align_multiline_strings = 1
 let g:AutoClosePreserveDotReg = 0
-autocmd FileType clojure let b:AutoClosePairs = "() [] {} \""
+autocmd FileType clojure let b:AutoClosePairs = AutoClose#ParsePairs("() [] {} \"")
 map <silent> ( [(
 map <silent> ) ])
 " vim-clojure-static <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
