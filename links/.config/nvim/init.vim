@@ -43,7 +43,7 @@ Plug 'tpope/vim-repeat'
 " comment stuffs easily
 Plug 'tpope/vim-commentary'
 " auto close pairs
-Plug 'somini/vim-autoclose'
+Plug 'BurningLutz/vim-autoclose'
 " basis <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
