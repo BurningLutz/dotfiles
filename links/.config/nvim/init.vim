@@ -209,8 +209,6 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#auto_complete_delay = 50
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.ruby = ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 " deoplete <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -282,10 +280,6 @@ au! BufWritePost *.js,*.jsx,*.rb Neomake
 " Or tipically when reload a file. This could happen when reverting changes
 " from git
 au! BufReadPost *.js,*.jsx,*.rb Neomake
-augroup AutoRestore
-  au!
-  au CompleteDone * call RestoreCwd()
-augroup END
 
 "*******************************************************************************
 " KEYMAPS                                                                      *
@@ -315,10 +309,6 @@ map <silent> <expr> <S-A-t> CreateItermTabWithCurrentPwd()
 imap <expr> <CR> pumvisible() ? '<C-y>' : '<CR>'
 imap <expr> <Tab> pumvisible() ? '<Down>' : '<Tab>'
 imap <expr> <S-Tab> pumvisible() ? '<Up>' : '<S-Tab>'
-inoremap <C-X><C-F> <C-\><C-O>:<C-U>if expand('%:h') != ''
-      \<BAR>let b:cwd = getcwd()
-      \<BAR>cd %:h
-      \<BAR>endif<CR><C-X><C-F>
 
 "*******************************************************************************
 " USER COMMANDS                                                                *
@@ -328,15 +318,6 @@ inoremap <C-X><C-F> <C-\><C-O>:<C-U>if expand('%:h') != ''
 "*******************************************************************************
 " FUNCTIONS                                                                    *
 "*******************************************************************************
-function! SaveCwd()
-endfunction
-
-function! RestoreCwd()
-  if exists('b:cwd')
-    exec 'cd' b:cwd
-    unlet b:cwd
-  endif
-endfunction
 
 " A function to create new iTerm tab and set pwd to the vim one, macOS and
 " iTerm only
