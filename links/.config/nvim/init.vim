@@ -221,12 +221,14 @@ let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.javascript = '[^. *\t]\.\w*'
+
 call deoplete#custom#source('_', 'converters', [
 \ 'converter_remove_paren',
 \ 'converter_remove_overlap',
 \ 'converter_truncate_abbr',
 \ 'converter_truncate_menu',
 \ ])
+call deoplete#custom#source('_', 'sorters', ['sorter_word'])
 " deoplete <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
