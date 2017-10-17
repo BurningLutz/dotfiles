@@ -211,8 +211,8 @@ let g:startify_session_sort = 1
 " deoplete >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Enable deoplete by default
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_ignore_case = 0
+let g:deoplete#enable_camel_case = 1
 let g:deoplete#file#enable_buffer_path = 1
 let g:deoplete#auto_complete_delay = 50
 
