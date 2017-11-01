@@ -219,9 +219,6 @@ let g:deoplete#auto_complete_delay = 50
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.javascript = '[^. *\t]\.\w*'
-
 call deoplete#custom#source('_', 'converters', [
 \ 'converter_remove_paren',
 \ 'converter_remove_overlap',
