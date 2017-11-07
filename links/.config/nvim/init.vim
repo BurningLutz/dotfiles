@@ -24,6 +24,8 @@ Plug 'bkad/CamelCaseMotion'
 " XML tags, and more. The plugin provides mappings to easily delete,
 " change and add such surroundings in pairs.
 Plug 'tpope/vim-surround'
+" git wrapper
+Plug 'tpope/vim-fugitive'
 " 🔗 The fancy start screen for Vim.
 Plug 'mhinz/vim-startify'
 " Fuzzy finder
