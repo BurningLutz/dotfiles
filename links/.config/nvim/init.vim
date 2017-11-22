@@ -299,6 +299,9 @@ au! BufWritePost *.js,*.jsx,*.rb Neomake
 " from git
 au! BufReadPost *.js,*.jsx,*.rb Neomake
 
+" Start insert when entering Terminal Mode
+au! TermOpen * startinsert
+
 "*******************************************************************************
 " KEYMAPS                                                                      *
 "*******************************************************************************
