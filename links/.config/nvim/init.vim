@@ -28,8 +28,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 " 🔗 The fancy start screen for Vim.
 Plug 'mhinz/vim-startify'
-" Fuzzy finder
-Plug 'ctrlpvim/ctrlp.vim'
 " Align something
 Plug 'vim-scripts/Align'
 " Search and replace through the whole project
@@ -40,6 +38,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " auto-complete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" universal interface
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 " repeat plugin map
 Plug 'tpope/vim-repeat'
 " comment stuffs easily
@@ -179,22 +179,9 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_ruby_enabled_makers = ['rubocop']
 " neomake <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" ctrlp >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-" Customize CtrlP window
-let g:ctrlp_match_window = 'order:ttb,max:15,results:50'
-" Bind c-h to move cursor left
-let g:ctrlp_prompt_mappings = { 'PrtCurLeft()': ['<c-h>'] }
-" Use git listing command to speed up, add grep to filter results
-let g:ctrlp_user_command = {
-\  'types': {
-\    1: ['.git', 'cd %s ; git ls-files -coX .gitignore']
-\  },
-\  'ignore': 1
-\}
-" Because I use git to speed up listing, I could disable caching for a
-let g:ctrlp_custom_ignore = '\v(node_modules|dist)'
-let g:ctrlp_use_caching = 0
-" ctrlp <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+" denite >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+" denite <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " startify >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Change session dir to nvim style
@@ -330,7 +317,8 @@ map <silent> <expr> <S-A-t> CreateItermTabWithCurrentPwd()
 imap <expr> <CR> pumvisible() ? '<C-y>' : '<CR>'
 imap <expr> <Tab> pumvisible() ? '<Down>' : '<Tab>'
 imap <expr> <S-Tab> pumvisible() ? '<Up>' : '<S-Tab>'
-
+" Map <C-p> to do :Denite file_rec
+nmap <silent> <C-p> :Denite file_rec<CR>
 "*******************************************************************************
 " USER COMMANDS                                                                *
 "*******************************************************************************
