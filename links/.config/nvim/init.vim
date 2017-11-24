@@ -182,7 +182,33 @@ let g:neomake_ruby_enabled_makers = ['rubocop']
 " denite >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " use ag to list dir
 call denite#custom#var('file_rec', 'command',
-\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+      \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+
+" map keys
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-j>',
+      \ '<denite:move_to_next_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-k>',
+      \ '<denite:move_to_previous_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-t>',
+      \ '<denite:input_command_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-g>',
+      \ '<denite:insert_digraph>',
+      \ 'noremap'
+      \)
 " denite <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " startify >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -320,7 +346,7 @@ imap <expr> <CR> pumvisible() ? '<C-y>' : '<CR>'
 imap <expr> <Tab> pumvisible() ? '<Down>' : '<Tab>'
 imap <expr> <S-Tab> pumvisible() ? '<Up>' : '<S-Tab>'
 " Map <C-p> to do :Denite file_rec
-nmap <silent> <C-p> :Denite file_rec<CR>
+nmap <silent> <C-p> :Denite file_rec -highlight-mode-insert=Search<CR>
 "*******************************************************************************
 " USER COMMANDS                                                                *
 "*******************************************************************************
