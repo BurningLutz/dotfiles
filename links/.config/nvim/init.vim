@@ -182,7 +182,13 @@ let g:neomake_ruby_enabled_makers = ['rubocop']
 " denite >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " use ag to list dir
 call denite#custom#var('file_rec', 'command',
-      \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+\ ['ag',
+\  '--follow',
+\  '--nocolor',
+\  '--nogroup',
+\  '-g', '',
+\  '--hidden',
+\  '--ignore', '.git'])
 
 " map keys
 call denite#custom#map(
