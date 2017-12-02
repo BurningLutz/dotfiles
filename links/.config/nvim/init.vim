@@ -40,6 +40,8 @@ Plug 'honza/vim-snippets'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " universal interface
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+" lang client
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 " repeat plugin map
 Plug 'tpope/vim-repeat'
 " comment stuffs easily
@@ -266,9 +268,15 @@ let g:javascript_plugin_jsdoc = 1
 " Highlight code block in markdown
 let g:markdown_fenced_languages = ['json', 'js=javascript', 'jsx=javascript',
                                   \'html', 'css', 'scss']
-" Show signature in completion list
-let g:tern_show_signature_in_pum = 1
-let g:tern#filetypes = ['javascript.jsx']
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+let g:LanguageClient_serverCommands = {
+\ 'javascript.jsx': ['javascript-typescript-stdio'],
+\ }
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
 " highlight jsObjectKey for vim-javascript
 hi link jsObjectKey Label
 " web related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
