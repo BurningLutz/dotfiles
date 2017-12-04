@@ -276,6 +276,8 @@ let g:LanguageClient_serverCommands = {
 \ }
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
+" Disable diagnostics
+let g:LanguageClient_diagnosticsEnable = 0
 
 " highlight jsObjectKey for vim-javascript
 hi link jsObjectKey Label
