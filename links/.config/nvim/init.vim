@@ -244,13 +244,6 @@ let g:deoplete#auto_complete_delay = 50
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
-call deoplete#custom#source('_', 'converters', [
-\ 'converter_remove_paren',
-\ 'converter_remove_overlap',
-\ 'converter_truncate_abbr',
-\ 'converter_truncate_menu',
-\ ])
-call deoplete#custom#source('_', 'sorters', ['sorter_word'])
 call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 " deoplete <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
