@@ -4,7 +4,8 @@ set -l bins nginx \
              node \
               git \
         leiningen \
-               ag
+               ag \
+             tmux
 
 for bin in $bins
   if not brew ls --versions $bin > /dev/null
