@@ -393,6 +393,15 @@ key_bindings:
   - { key: Key8,     mods: Alt,       chars: "\x1b8"                       }
   - { key: Key9,     mods: Alt,       chars: "\x1b9"                       }
   - { key: Key0,     mods: Alt,       chars: "\x1b0"                       }
+  - { key: Key1,     mods: Command,   chars: "\x1bB1"                      } # bind for tmux window switching
+  - { key: Key2,     mods: Command,   chars: "\x1bB2"                      } # bind for tmux window switching
+  - { key: Key3,     mods: Command,   chars: "\x1bB3"                      } # bind for tmux window switching
+  - { key: Key4,     mods: Command,   chars: "\x1bB4"                      } # bind for tmux window switching
+  - { key: Key5,     mods: Command,   chars: "\x1bB5"                      } # bind for tmux window switching
+  - { key: Key6,     mods: Command,   chars: "\x1bB6"                      } # bind for tmux window switching
+  - { key: Key7,     mods: Command,   chars: "\x1bB7"                      } # bind for tmux window switching
+  - { key: Key8,     mods: Command,   chars: "\x1bB8"                      } # bind for tmux window switching
+  - { key: Key9,     mods: Command,   chars: "\x1bB9"                      } # bind for tmux window switching
   - { key: Grave,    mods: Alt,       chars: "\x1b`"                       } # Alt + `
   - { key: Grave,    mods: Alt|Shift, chars: "\x1b~"                       } # Alt + ~
   - { key: Period,   mods: Alt,       chars: "\x1b."                       } # Alt + .
