@@ -164,6 +164,11 @@ let g:user_emmet_settings = {
 \}
 " emmet <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+" GitGutter >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" realtime update
+let g:gitgutter_terminal_reports_focus = 0
+" GitGutter <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 " NERDTree >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Change CWD whenever the root of NERDTree is changed. This is used for
 " auto-ch againest bookmark
@@ -306,7 +311,8 @@ set splitright
 set noswapfile
 " Set language to en
 language en_US.UTF-8
-
+" reduce updatetime
+set updatetime=100
 "*******************************************************************************
 " HOOKS                                                                        *
 "*******************************************************************************
