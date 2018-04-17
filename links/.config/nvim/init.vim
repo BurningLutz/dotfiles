@@ -41,14 +41,14 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " universal interface
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 " lang client
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 " repeat plugin map
 Plug 'tpope/vim-repeat'
 " comment stuffs easily
 Plug 'tpope/vim-commentary'
 " auto close pairs
 Plug 'BurningLutz/vim-autoclose'
-Plug 'nixprime/cpsm', { 'do': 'set -x PY3 ON; ./install.sh' }
+Plug 'nixprime/cpsm', { 'do': 'bash -c ''PY3=ON ./install.sh''' }
 " basis <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -200,29 +200,29 @@ call denite#custom#var('file_rec', 'command',
 
 " map keys
 call denite#custom#map(
-      \ 'insert',
-      \ '<C-j>',
-      \ '<denite:move_to_next_line>',
-      \ 'noremap'
-      \)
+\ 'insert',
+\ '<C-j>',
+\ '<denite:move_to_next_line>',
+\ 'noremap'
+\)
 call denite#custom#map(
-      \ 'insert',
-      \ '<C-k>',
-      \ '<denite:move_to_previous_line>',
-      \ 'noremap'
-      \)
+\ 'insert',
+\ '<C-k>',
+\ '<denite:move_to_previous_line>',
+\ 'noremap'
+\)
 call denite#custom#map(
-      \ 'insert',
-      \ '<C-t>',
-      \ '<denite:input_command_line>',
-      \ 'noremap'
-      \)
+\ 'insert',
+\ '<C-t>',
+\ '<denite:input_command_line>',
+\ 'noremap'
+\)
 call denite#custom#map(
-      \ 'insert',
-      \ '<C-g>',
-      \ '<denite:insert_digraph>',
-      \ 'noremap'
-      \)
+\ 'insert',
+\ '<C-g>',
+\ '<denite:insert_digraph>',
+\ 'noremap'
+\)
 " denite <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " startify >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -242,10 +242,14 @@ let g:startify_session_sort = 1
 " deoplete >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Enable deoplete by default
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#file#enable_buffer_path = 1
 
 call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
 call deoplete#custom#source('_', 'sorters', [])
+call deoplete#custom#var('file', 'enable_buffer_path', v:true)
+call deoplete#custom#option('sources', {
+\ '_': [],
+\ 'javascript.jsx': ['buffer', 'file', 'ultisnips', 'LanguageClient']
+\ })
 " deoplete <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -343,7 +347,6 @@ map <silent> <C-h> <C-w>h
 map <silent> <C-l> <C-w>l
 " Map <S-A-t> to open new iTerm tab
 map <silent> <expr> <S-A-t> CreateItermTabWithCurrentPwd()
-imap <expr> <CR> pumvisible() ? '<C-y>' : '<CR>'
 imap <expr> <Tab> pumvisible() ? '<Down>' : '<Tab>'
 imap <expr> <S-Tab> pumvisible() ? '<Up>' : '<S-Tab>'
 " Map <C-p> to do :Denite file_rec
