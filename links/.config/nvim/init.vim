@@ -72,14 +72,6 @@ Plug 'thinca/vim-textobj-function-javascript'
 Plug 'posva/vim-vue'
 " web related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" ruby related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-" ruby syntax and completion
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-bundler'
-" text object for ruby block
-Plug 'nelstrom/vim-textobj-rubyblock'
-" ruby related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
 " clojure related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " clojure utilities
 Plug 'tpope/vim-fireplace'
@@ -184,7 +176,7 @@ hi link NeomakeError Error
 hi link NeomakeErrorSign Error
 " Make eslint be the default linter, this need eslint to be installed
 let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_ruby_enabled_makers = ['rubocop']
+let g:neomake_python_enabled_makers = ['flake8']
 " neomake <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " denite >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -317,10 +309,10 @@ set updatetime=100
 " HOOKS                                                                        *
 "*******************************************************************************
 " Auto-run Neomake when save
-au! BufWritePost *.js,*.jsx,*.rb Neomake
+au! BufWritePost *.js,*.jsx,*.rb,*.py Neomake
 " Or tipically when reload a file. This could happen when reverting changes
 " from git
-au! BufReadPost *.js,*.jsx,*.rb Neomake
+au! BufReadPost *.js,*.jsx,*.rb,*.py Neomake
 
 "*******************************************************************************
 " KEYMAPS                                                                      *
