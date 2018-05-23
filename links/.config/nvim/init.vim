@@ -88,6 +88,10 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'dag/vim-fish'
 " fish related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+" python related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Plug 'bps/vim-textobj-python'
+" python related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 " Initialize plugin system
 call plug#end()
 
