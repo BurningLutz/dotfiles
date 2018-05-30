@@ -92,6 +92,8 @@ Plug 'dag/vim-fish'
 Plug 'bps/vim-textobj-python'
 " python related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+Plug 'tomlion/vim-solidity'
+
 " Initialize plugin system
 call plug#end()
 
