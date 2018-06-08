@@ -242,10 +242,6 @@ let g:deoplete#enable_at_startup = 1
 call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
 call deoplete#custom#source('_', 'sorters', [])
 call deoplete#custom#var('file', 'enable_buffer_path', v:true)
-call deoplete#custom#option('sources', {
-\ '_': [],
-\ 'javascript.jsx': ['buffer', 'file', 'ultisnips']
-\ })
 " deoplete <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
