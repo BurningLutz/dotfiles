@@ -40,8 +40,6 @@ Plug 'honza/vim-snippets'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " universal interface
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-" lang client
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 " repeat plugin map
 Plug 'tpope/vim-repeat'
 " comment stuffs easily
@@ -246,7 +244,7 @@ call deoplete#custom#source('_', 'sorters', [])
 call deoplete#custom#var('file', 'enable_buffer_path', v:true)
 call deoplete#custom#option('sources', {
 \ '_': [],
-\ 'javascript.jsx': ['buffer', 'file', 'ultisnips', 'LanguageClient']
+\ 'javascript.jsx': ['buffer', 'file', 'ultisnips']
 \ })
 " deoplete <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -267,13 +265,6 @@ let g:markdown_fenced_languages = ['json', 'js=javascript', 'jsx=javascript',
 
 " Required for operations modifying multiple buffers like rename.
 set hidden
-let g:LanguageClient_serverCommands = {
-\ 'javascript.jsx': ['javascript-typescript-stdio'],
-\ }
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-" Disable diagnostics
-let g:LanguageClient_diagnosticsEnable = 0
 
 " highlight jsObjectKey for vim-javascript
 hi link jsObjectKey Label
