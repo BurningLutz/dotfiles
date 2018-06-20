@@ -170,7 +170,8 @@ let g:gitgutter_terminal_reports_focus = 0
 " Change CWD whenever the root of NERDTree is changed. This is used for
 " auto-ch againest bookmark
 let NERDTreeChDirMode = 2
-let NERDTreeIgnore=['\~$', 'node_modules', 'dist', '.git']
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\~$', '^node_modules$', '^dist$', '^.git$', '^__pycache__$']
 " NERDTree <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " neomake >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
