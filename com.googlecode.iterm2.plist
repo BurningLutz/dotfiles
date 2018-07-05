@@ -267,15 +267,17 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>1054 214 228 280 0 0 1920 1057 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>812 80 445 308 0 0 1920 1057 </string>
+	<string>503 251 608 77 0 0 1920 1057 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>1709 -41 606 456 1440 -180 1920 1057 </string>
+	<string>400 295 924 485 0 0 1920 1057 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>760 713 400 129 0 0 1920 1080 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>650 516 620 392 0 0 1920 1080 </string>
+	<string>239 298 620 392 0 0 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>410 332 796 473 0 0 1920 1080 </string>
+	<string>476 533 796 473 0 0 1920 1080 </string>
+	<key>NSWindow Frame com.apple.typography_panel_Osaka-Mono</key>
+	<string>346 594 260 36 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1920 1080 0 0 1920 1057 </string>
 	<key>NeverWarnAboutShortLivedSessions_136D11DB-F3C9-4CCB-AC3C-298D600E4CE2</key>
@@ -288,7 +290,7 @@
 			<key>Allow Title Reporting</key>
 			<false/>
 			<key>Ambiguous Double Width</key>
-			<false/>
+			<true/>
 			<key>Ansi 0 Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -1104,6 +1106,10 @@
 	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>522495604.08243299</real>
+	<key>NoSyncTimeOfLastPromo</key>
+	<real>552468573.89537096</real>
+	<key>NoSyncTimeOfLastPromoDownload</key>
+	<real>552468573.89851296</real>
 	<key>NoSyncTurnOffBracketedPasteOnHostChange</key>
 	<true/>
 	<key>OnlyWhenMoreTabs</key>
@@ -1174,7 +1180,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-05-29T09:43:34Z</date>
+	<date>2018-07-05T05:43:17Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -1226,7 +1232,7 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>3.1.6</string>
+	<string>3.1.7</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

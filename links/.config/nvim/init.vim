@@ -274,6 +274,9 @@ let g:UltiSnipsExpandTrigger = '<C-h>'
 "*******************************************************************************
 " OPTIONS                                                                      *
 "*******************************************************************************
+" Agree with iTerm's treament of ambiguous-width chars, which is, treated as
+" double-width
+set ambiwidth=double
 " Make completion for command line mode acts like readline
 set wildmode=longest,full
 " Remove preview
