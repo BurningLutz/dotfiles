@@ -1,12 +1,14 @@
 #!/usr/local/bin/fish
 
-set -l bins nginx \
-             node \
-              git \
-        leiningen \
-               ag \
-             tmux \
-             tldr
+brew tap z80oolong/tmux
+
+set -l bins   nginx \
+               node \
+                git \
+          leiningen \
+                 ag \
+z80oolong/tmux/tmux \
+               tldr
 
 for bin in $bins
   if not brew ls --versions $bin > /dev/null
