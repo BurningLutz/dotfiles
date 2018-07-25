@@ -52,10 +52,13 @@ Plug 'nixprime/cpsm', { 'do': 'bash -c ''PY3=ON ./install.sh''' }
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Zen!
 Plug 'mattn/emmet-vim'
-" js syntax highlight
-Plug 'pangloss/vim-javascript'
+
+" The order here of vim-jsx and vim-javascript is important
 " Extend js highlighter with jsx
 Plug 'mxw/vim-jsx'
+" js syntax highlight
+Plug 'pangloss/vim-javascript'
+
 " Generate jsdoc
 Plug 'heavenshell/vim-jsdoc'
 " GFM syntax highlight
