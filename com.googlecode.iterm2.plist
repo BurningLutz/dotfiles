@@ -267,15 +267,15 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>1054 214 228 280 0 0 1920 1057 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>503 251 608 77 0 0 1920 1057 </string>
+	<string>500 195 608 77 0 0 1920 1057 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>400 295 924 485 0 0 1920 1057 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>760 713 400 129 0 0 1920 1080 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>239 298 620 392 0 0 1920 1057 </string>
+	<string>650 516 620 392 0 0 1920 1080 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>476 533 796 473 0 0 1920 1080 </string>
+	<string>398 376 796 486 0 0 1920 1080 </string>
 	<key>NSWindow Frame com.apple.typography_panel_Osaka-Mono</key>
 	<string>346 594 260 36 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
@@ -563,7 +563,7 @@
 			<key>Columns</key>
 			<integer>80</integer>
 			<key>Command</key>
-			<string></string>
+			<string>/usr/local/bin/fish -c tmux</string>
 			<key>Cursor Boost</key>
 			<real>0.0</real>
 			<key>Cursor Color</key>
@@ -608,7 +608,7 @@
 			<key>Cursor Type</key>
 			<integer>2</integer>
 			<key>Custom Command</key>
-			<string>No</string>
+			<string>Yes</string>
 			<key>Custom Directory</key>
 			<string>Recycle</string>
 			<key>Default Bookmark</key>
@@ -1180,7 +1180,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-07-05T05:43:17Z</date>
+	<date>2018-08-08T07:25:27Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -1232,10 +1232,12 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>3.1.7</string>
+	<string>3.2.0</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
+	<false/>
+	<key>preferIntegratedGPU</key>
 	<false/>
 </dict>
 </plist>
