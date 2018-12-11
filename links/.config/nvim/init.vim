@@ -46,6 +46,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 " auto close pairs
 Plug 'BurningLutz/vim-autoclose'
+" inproved ctrl-p matcher
 Plug 'nixprime/cpsm', { 'do': 'bash -c ''PY3=ON ./install.sh''' }
 " basis <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -198,6 +199,9 @@ call denite#custom#var('file_rec', 'command',
 \  '-g', '',
 \  '--hidden',
 \  '--ignore', '.git'])
+
+call denite#custom#source(
+\ 'file_rec', 'matchers', ['matcher/cpsm'])
 
 " map keys
 call denite#custom#map(
