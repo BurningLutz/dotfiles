@@ -14,4 +14,8 @@ if status --is-interactive
   alias ll="ls -lhAFG"
 
   alias vim=nvim
+
+  # pyenv and pyenv virtualenv related
+  source (pyenv init -|psub)
+  source (pyenv virtualenv-init -|psub)
 end
