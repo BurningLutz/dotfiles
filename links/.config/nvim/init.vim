@@ -96,6 +96,8 @@ Plug 'bps/vim-textobj-python'
 
 Plug 'tomlion/vim-solidity'
 
+Plug 'udalov/kotlin-vim'
+
 " Initialize plugin system
 call plug#end()
 
