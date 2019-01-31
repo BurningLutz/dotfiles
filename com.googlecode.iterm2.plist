@@ -54,7 +54,7 @@
 	<real>1</real>
 	<key>GlobalKeyMap</key>
 	<dict>
-		<key>0x63-0x100000</key>
+		<key>0x63-0x140000</key>
 		<dict>
 			<key>Action</key>
 			<integer>12</integer>
@@ -239,9 +239,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>650 516 620 392 0 0 1920 1080 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>374 571 796 486 0 0 1920 1080 </string>
+	<string>476 272 796 486 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1920 1080 0 0 1920 1057 </string>
+	<string>0 0 1440 900 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_136D11DB-F3C9-4CCB-AC3C-298D600E4CE2</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -1134,7 +1134,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-01-28T01:52:49Z</date>
+	<date>2019-01-31T02:45:11Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
