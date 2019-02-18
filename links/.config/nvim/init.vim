@@ -98,6 +98,9 @@ Plug 'tomlion/vim-solidity'
 
 Plug 'udalov/kotlin-vim'
 
+" python completions and more
+Plug 'zchee/deoplete-jedi'
+
 " Initialize plugin system
 call plug#end()
 
@@ -276,6 +279,17 @@ set hidden
 " highlight jsObjectKey for vim-javascript
 hi link jsObjectKey Label
 " web related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+" jedi >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+function! SetJediPython()
+  call system('which pyenv')
+  if v:shell_error == 0
+    let g:deoplete#sources#jedi#python_path = trim(system('pyenv which python'))
+  endif
+endfunction
+
+autocmd DirChanged * :call SetJediPython()
+" jedi <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " ultisnips >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let g:UltiSnipsExpandTrigger = '<C-h>'
