@@ -101,6 +101,8 @@ Plug 'udalov/kotlin-vim'
 " python completions and more
 Plug 'zchee/deoplete-jedi'
 
+Plug 'BurningLutz/matcher-multihead'
+
 " Initialize plugin system
 call plug#end()
 
@@ -253,7 +255,8 @@ let g:startify_session_sort = 1
 " Enable deoplete by default
 let g:deoplete#enable_at_startup = 1
 
-call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
+" call deoplete#custom#option('num_processes', 1)
+call deoplete#custom#source('_', 'matchers', ['matcher_multihead'])
 call deoplete#custom#source('_', 'sorters', [])
 call deoplete#custom#var('file', 'enable_buffer_path', v:true)
 " deoplete <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
