@@ -198,7 +198,7 @@ let g:neomake_python_enabled_makers = ['flake8']
 
 " denite >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " use ag to list dir
-call denite#custom#var('file_rec', 'command',
+call denite#custom#var('file/rec', 'command',
 \ ['ag',
 \  '--follow',
 \  '--nocolor',
@@ -208,7 +208,7 @@ call denite#custom#var('file_rec', 'command',
 \  '--ignore', '.git'])
 
 call denite#custom#source(
-\ 'file_rec', 'matchers', ['matcher/cpsm'])
+\ 'file/rec', 'matchers', ['matcher/cpsm'])
 
 " map keys
 call denite#custom#map(
@@ -365,8 +365,8 @@ map <silent> <C-l> <C-w>l
 map <silent> <expr> <S-A-t> CreateItermTabWithCurrentPwd()
 imap <expr> <Tab> pumvisible() ? '<Down>' : '<Tab>'
 imap <expr> <S-Tab> pumvisible() ? '<Up>' : '<S-Tab>'
-" Map <C-p> to do :Denite file_rec
-nmap <silent> <C-p> :Denite file_rec -highlight-mode-insert=Search<CR>
+" Map <C-p> to do :Denite file/rec
+nmap <silent> <C-p> :Denite file/rec -highlight-mode-insert=Search<CR>
 "*******************************************************************************
 " USER COMMANDS                                                                *
 "*******************************************************************************
