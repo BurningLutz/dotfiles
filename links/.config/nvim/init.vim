@@ -103,6 +103,9 @@ Plug 'zchee/deoplete-jedi'
 
 Plug 'BurningLutz/matcher-multihead'
 
+Plug 'purescript-contrib/purescript-vim'
+Plug 'FrigoEU/psc-ide-vim'
+
 " Initialize plugin system
 call plug#end()
 
