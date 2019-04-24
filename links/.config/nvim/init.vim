@@ -179,6 +179,9 @@ let g:user_emmet_settings = {
 " GitGutter >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " realtime update
 let g:gitgutter_terminal_reports_focus = 0
+
+hi link GitGutterAdd diffAdded
+hi link GitGutterDelete diffRemoved
 " GitGutter <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " NERDTree >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -307,7 +310,6 @@ let purescript_indent_case = 2
 let purescript_indent_let = 2
 let purescript_indent_where = 2
 let purescript_indent_do = 2
-let purescript_indent_in = 2
 " purescript <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 "*******************************************************************************
