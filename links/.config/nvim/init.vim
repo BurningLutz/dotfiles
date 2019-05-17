@@ -37,7 +37,7 @@ Plug 'SirVer/ultisnips'
 " useful snippets
 Plug 'honza/vim-snippets'
 " auto-complete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 " universal interface
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 " repeat plugin map
@@ -98,13 +98,7 @@ Plug 'tomlion/vim-solidity'
 
 Plug 'udalov/kotlin-vim'
 
-" python completions and more
-Plug 'zchee/deoplete-jedi'
-
-Plug 'BurningLutz/matcher-multihead'
-
 Plug 'purescript-contrib/purescript-vim'
-Plug 'FrigoEU/psc-ide-vim'
 
 " Initialize plugin system
 call plug#end()
@@ -257,15 +251,8 @@ let g:startify_session_persistence = 1
 let g:startify_session_sort = 1
 " startify <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" deoplete >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-" Enable deoplete by default
-let g:deoplete#enable_at_startup = 1
-
-" call deoplete#custom#option('num_processes', 1)
-call deoplete#custom#source('_', 'matchers', ['matcher_multihead'])
-call deoplete#custom#source('_', 'sorters', [])
-call deoplete#custom#var('file', 'enable_buffer_path', v:true)
-" deoplete <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+" coc >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" coc <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let g:jsx_ext_required = 0
@@ -288,17 +275,6 @@ set hidden
 " highlight jsObjectKey for vim-javascript
 hi link jsObjectKey Label
 " web related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-" jedi >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-function! SetJediPython()
-  call system('which pyenv')
-  if v:shell_error == 0
-    let g:deoplete#sources#jedi#python_path = trim(system('pyenv which python'))
-  endif
-endfunction
-
-autocmd DirChanged * :call SetJediPython()
-" jedi <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " ultisnips >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let g:UltiSnipsExpandTrigger = '<C-h>'
