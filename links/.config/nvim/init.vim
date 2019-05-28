@@ -100,6 +100,8 @@ Plug 'udalov/kotlin-vim'
 
 Plug 'purescript-contrib/purescript-vim'
 
+Plug 'michaeljsmith/vim-indent-object'
+
 " Initialize plugin system
 call plug#end()
 
