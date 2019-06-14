@@ -321,6 +321,9 @@ set noswapfile
 language en_US.UTF-8
 " reduce updatetime
 set updatetime=100
+
+" always show signcolumns
+set signcolumn=yes
 "*******************************************************************************
 " HOOKS                                                                        *
 "*******************************************************************************
