@@ -189,6 +189,24 @@ let NERDTreeIgnore=['\~$', '^node_modules$', '^dist$', '^.git$', '^__pycache__$'
 " NERDTree <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " denite >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+autocmd FileType denite call s:denite_my_settings()
+
+" map keys
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
+
 " use ag to list dir
 call denite#custom#var('file/rec', 'command',
 \ ['ag',
@@ -201,32 +219,6 @@ call denite#custom#var('file/rec', 'command',
 
 call denite#custom#source(
 \ 'file/rec', 'matchers', ['matcher/cpsm'])
-
-" map keys
-call denite#custom#map(
-\ 'insert',
-\ '<C-j>',
-\ '<denite:move_to_next_line>',
-\ 'noremap'
-\)
-call denite#custom#map(
-\ 'insert',
-\ '<C-k>',
-\ '<denite:move_to_previous_line>',
-\ 'noremap'
-\)
-call denite#custom#map(
-\ 'insert',
-\ '<C-t>',
-\ '<denite:input_command_line>',
-\ 'noremap'
-\)
-call denite#custom#map(
-\ 'insert',
-\ '<C-g>',
-\ '<denite:insert_digraph>',
-\ 'noremap'
-\)
 " denite <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " startify >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -356,7 +348,7 @@ map <silent> <expr> <S-A-t> CreateItermTabWithCurrentPwd()
 imap <expr> <Tab> pumvisible() ? '<Down>' : '<Tab>'
 imap <expr> <S-Tab> pumvisible() ? '<Up>' : '<S-Tab>'
 " Map <C-p> to do :Denite file/rec
-nmap <silent> <C-p> :Denite file/rec -highlight-mode-insert=Search<CR>
+nmap <silent> <C-p> :Denite file/rec<CR>
 "*******************************************************************************
 " USER COMMANDS                                                                *
 "*******************************************************************************
