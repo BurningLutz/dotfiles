@@ -5,8 +5,8 @@ if status --is-login
   # add yarn global bin path
   set -x PATH (yarn global bin) $PATH
 
-  # set fish_ambiguous_width to 2
-  set -x fish_ambiguous_width 2
+  # set fish_ambiguous_width to 1
+  set -x fish_ambiguous_width 1
 
   # autoload rbenv
   source (rbenv init -|psub)

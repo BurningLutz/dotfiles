@@ -167,7 +167,7 @@
 			<key>Allow Title Reporting</key>
 			<false/>
 			<key>Ambiguous Double Width</key>
-			<true/>
+			<false/>
 			<key>Ansi 0 Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -985,7 +985,11 @@
 	<key>NoSyncInstallationId</key>
 	<string>C79E13C8-E7C2-4EEF-B064-CD22F2A3EFA4</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>592</integer>
+	<integer>606</integer>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>1</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
 	<real>575192937.94042897</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
@@ -1794,7 +1798,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-09-03T08:29:39Z</date>
+	<date>2019-09-03T09:16:22Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>

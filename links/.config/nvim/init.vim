@@ -299,7 +299,7 @@ let purescript_indent_do = 2
 "*******************************************************************************
 " Agree with iTerm's treament of ambiguous-width chars, which is, treated as
 " double-width
-set ambiwidth=double
+set ambiwidth=single
 " Make completion for command line mode acts like readline
 set wildmode=longest,full
 " Remove preview
