@@ -328,6 +328,10 @@ set updatetime=100
 
 " always show signcolumns
 set signcolumn=yes
+
+" highlight cursor
+set cursorline
+set cursorcolumn
 "*******************************************************************************
 " HOOKS                                                                        *
 "*******************************************************************************
