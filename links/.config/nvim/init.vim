@@ -37,7 +37,7 @@ Plug 'SirVer/ultisnips'
 " useful snippets
 Plug 'honza/vim-snippets'
 " auto-complete
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " universal interface
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 " repeat plugin map
@@ -48,6 +48,8 @@ Plug 'tpope/vim-commentary'
 Plug 'BurningLutz/vim-autoclose'
 " inproved ctrl-p matcher
 Plug 'nixprime/cpsm', { 'do': 'bash -c ''PY3=ON ./install.sh''' }
+" Jenkinsfile syntax
+Plug 'martinda/Jenkinsfile-vim-syntax'
 " basis <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
