@@ -38,16 +38,12 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " auto-complete
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-" universal interface
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 " repeat plugin map
 Plug 'tpope/vim-repeat'
 " comment stuffs easily
 Plug 'tpope/vim-commentary'
 " auto close pairs
 Plug 'BurningLutz/vim-autoclose'
-" inproved ctrl-p matcher
-Plug 'nixprime/cpsm', { 'do': 'bash -c ''PY3=ON ./install.sh''' }
 " Jenkinsfile syntax
 Plug 'martinda/Jenkinsfile-vim-syntax'
 " basis <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -201,39 +197,6 @@ hi link NeomakeVirtualtextError Error
 " Make eslint be the default linter, this need eslint to be installed
 let g:neomake_javascript_enabled_makers = ['eslint']
 " neomake <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-" denite >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-autocmd FileType denite call s:denite_my_settings()
-
-" map keys
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
-endfunction
-
-" use ag to list dir
-call denite#custom#var('file/rec', 'command',
-\ ['ag',
-\  '--follow',
-\  '--nocolor',
-\  '--nogroup',
-\  '-g', '',
-\  '--hidden',
-\  '--ignore', '.git'])
-
-call denite#custom#source(
-\ 'file/rec', 'matchers', ['matcher/cpsm'])
-" denite <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " startify >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Change session dir to nvim style
