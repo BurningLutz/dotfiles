@@ -213,6 +213,15 @@ let g:startify_session_sort = 1
 " startify <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " coc >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" install missing extensions
+call coc#add_extension(
+  \'coc-json',
+  \'coc-html',
+  \'coc-tsserver',
+  \'coc-python',
+  \'coc-lists',
+  \)
+
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -333,8 +342,8 @@ map <silent> <C-l> <C-w>l
 map <silent> <expr> <S-A-t> CreateItermTabWithCurrentPwd()
 imap <expr> <Tab> pumvisible() ? '<Down>' : '<Tab>'
 imap <expr> <S-Tab> pumvisible() ? '<Up>' : '<S-Tab>'
-" Map <C-p> to do :Denite file/rec
-nmap <silent> <C-p> :Denite file/rec<CR>
+" Map <C-p> to do :CocList files
+nmap <silent> <C-p> :CocList files<CR>
 "*******************************************************************************
 " USER COMMANDS                                                                *
 "*******************************************************************************

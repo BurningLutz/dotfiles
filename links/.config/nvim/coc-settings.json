@@ -1,0 +1,18 @@
+{
+  "languageserver": {
+    "purescript": {
+      "command": "purescript-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["purescript"],
+      "rootPatterns": ["bower.json", "psc-package.json", "spago.dhall"]
+    }
+  },
+  "diagnostic.maxWindowHeight": 50,
+  "coc.preferences.useQuickfixForLocations": true,
+
+  "javascript.preferences.noSemicolons": true,
+  "javascript.preferences.quoteStyle": "double",
+  "javascript.validate.enable": false,
+
+  "list.maxHeight": 15
+}
