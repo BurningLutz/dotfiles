@@ -220,6 +220,9 @@ call coc#add_extension(
   \'coc-tsserver',
   \'coc-python',
   \'coc-lists',
+  \'coc-css',
+  \'coc-emmet',
+  \'coc-yank',
   \)
 
 " Use K to show documentation in preview window
