@@ -7,6 +7,7 @@ set -l bins   nginx \
                 git \
           leiningen \
                  ag \
+                 rg \
 z80oolong/tmux/tmux \
                tldr
 

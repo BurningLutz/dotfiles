@@ -14,5 +14,6 @@
   "javascript.preferences.quoteStyle": "double",
   "javascript.validate.enable": false,
 
-  "list.maxHeight": 15
+  "list.maxHeight": 15,
+  "list.source.files.args": ["--hidden", "--files"]
 }
