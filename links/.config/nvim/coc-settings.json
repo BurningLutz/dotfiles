@@ -10,7 +10,6 @@
   "diagnostic.maxWindowHeight": 50,
   "coc.preferences.useQuickfixForLocations": true,
 
-  "javascript.preferences.noSemicolons": true,
   "javascript.preferences.quoteStyle": "double",
   "javascript.validate.enable": false,
 
