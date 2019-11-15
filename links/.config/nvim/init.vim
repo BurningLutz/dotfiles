@@ -14,8 +14,6 @@ Plug 'w0ng/vim-hybrid'
 Plug 'scrooloose/nerdtree'
 " Show file change inline
 Plug 'airblade/vim-gitgutter'
-" Async program runner, I use it as syntax checker
-Plug 'neomake/neomake'
 " Readline style key bindings
 Plug 'tpope/vim-rsi'
 " Sub-word movements
@@ -188,16 +186,6 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\~$', '^node_modules$', '^dist$', '^.git$', '^__pycache__$']
 " NERDTree <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" neomake >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let g:neomake_error_sign = { 'text': 'x>', 'texthl': 'NeomakeErrorSign' }
-let g:neomake_warning_sign = { 'text': '!>' }
-hi link NeomakeError Error
-hi link NeomakeErrorSign Error
-hi link NeomakeVirtualtextError Error
-" Make eslint be the default linter, this need eslint to be installed
-let g:neomake_javascript_enabled_makers = ['eslint']
-" neomake <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
 " startify >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Change session dir to nvim style
 let g:startify_session_dir = '~/.local/share/nvim/session'
@@ -312,11 +300,6 @@ set cursorcolumn
 "*******************************************************************************
 " HOOKS                                                                        *
 "*******************************************************************************
-" Auto-run Neomake when save
-au! BufWritePost *.js,*.jsx,*.rb,*.py Neomake
-" Or tipically when reload a file. This could happen when reverting changes
-" from git
-au! BufReadPost *.js,*.jsx,*.rb,*.py Neomake
 
 "*******************************************************************************
 " KEYMAPS                                                                      *
