@@ -7,9 +7,6 @@ if status --is-login
 
   # set fish_ambiguous_width to 1
   set -x fish_ambiguous_width 1
-
-  # autoload rbenv
-  source (rbenv init -|psub)
 end
 
 if status --is-interactive
