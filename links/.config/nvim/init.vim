@@ -211,6 +211,7 @@ call coc#add_extension(
   \'coc-css',
   \'coc-emmet',
   \'coc-yank',
+  \'coc-eslint',
   \)
 
 " Use K to show documentation in preview window
