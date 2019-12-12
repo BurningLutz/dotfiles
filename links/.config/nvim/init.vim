@@ -212,6 +212,7 @@ call coc#add_extension(
   \'coc-emmet',
   \'coc-yank',
   \'coc-eslint',
+  \'coc-java',
   \)
 
 " Use K to show documentation in preview window
