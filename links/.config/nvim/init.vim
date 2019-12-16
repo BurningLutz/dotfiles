@@ -227,6 +227,7 @@ endfunction
 " coc <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let g:vim_jsx_pretty_highlight_close_tag = 1
 " Disable meta key binding of rsi
 let g:rsi_no_meta = 1
 " Prompt for doc generating
