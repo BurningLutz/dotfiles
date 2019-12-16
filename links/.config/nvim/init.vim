@@ -50,11 +50,11 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 " Zen!
 Plug 'mattn/emmet-vim'
 
-" The order here of vim-jsx and vim-javascript is important
-" Extend js highlighter with jsx
-Plug 'mxw/vim-jsx'
+" the order here is IMPORTANT
 " js syntax highlight
 Plug 'pangloss/vim-javascript'
+" Extend js highlighter with jsx
+Plug 'MaxMEllon/vim-jsx-pretty'
 
 " Generate jsdoc
 Plug 'heavenshell/vim-jsdoc'
@@ -227,7 +227,6 @@ endfunction
 " coc <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let g:jsx_ext_required = 0
 " Disable meta key binding of rsi
 let g:rsi_no_meta = 1
 " Prompt for doc generating
