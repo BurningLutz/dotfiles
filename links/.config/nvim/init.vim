@@ -323,8 +323,8 @@ imap <expr> <Tab> pumvisible() ? '<Down>' : '<Tab>'
 imap <expr> <S-Tab> pumvisible() ? '<Up>' : '<S-Tab>'
 " Map <C-p> to do :CocList files
 nmap <silent> <C-p> :CocList files<CR>
-" Map <S-A-]>(it's similar to <C-]>, which jump to a tag) to jump to definition
-nmap <silent> <S-A-]> <Plug>(coc-definition)
+" Map <A-]>(it's similar to <C-]>, which jump to a tag) to jump to definition
+nmap <silent> <A-]> <Plug>(coc-definition)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
