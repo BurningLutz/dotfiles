@@ -60,6 +60,8 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'heavenshell/vim-jsdoc'
 " GFM syntax highlight
 Plug 'rhysd/vim-gfm-syntax'
+" markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 " User defined textobj support and text object for xml/html attrs
 Plug 'kana/vim-textobj-user'
 Plug 'inside/vim-textobj-jsxattr'
