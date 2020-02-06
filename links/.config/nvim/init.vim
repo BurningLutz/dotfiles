@@ -100,6 +100,8 @@ Plug 'purescript-contrib/purescript-vim'
 
 Plug 'michaeljsmith/vim-indent-object'
 
+Plug 'jparise/vim-graphql'
+
 " Initialize plugin system
 call plug#end()
 
