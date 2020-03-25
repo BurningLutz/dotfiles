@@ -15,6 +15,8 @@ if status --is-interactive
 
   alias vim=nvim
 
+  alias poe=poetry
+
   # pyenv and pyenv virtualenv related
   source (pyenv init -|psub)
   source (pyenv virtualenv-init -|psub)
