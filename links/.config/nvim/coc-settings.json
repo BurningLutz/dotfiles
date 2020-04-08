@@ -21,6 +21,6 @@
   "list.maxHeight": 15,
   "list.source.files.args": ["--hidden", "--files"],
   
-  "python.jediEnabled": true,
+  "python.jediEnabled": false,
   "python.linting.mypyEnabled": true
 }
