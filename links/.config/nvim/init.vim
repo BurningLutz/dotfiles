@@ -214,7 +214,6 @@ call coc#add_extension(
   \'coc-lists',
   \'coc-css',
   \'coc-emmet',
-  \'coc-yank',
   \'coc-eslint',
   \)
 " coc <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
