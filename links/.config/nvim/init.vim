@@ -178,8 +178,10 @@ let g:user_emmet_settings = {
 " realtime update
 let g:gitgutter_terminal_reports_focus = 0
 
+hi! link SignColumn LineNr
 hi link GitGutterAdd diffAdded
 hi link GitGutterDelete diffRemoved
+hi link Whitespace Error
 " GitGutter <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " NERDTree >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -271,6 +273,8 @@ set completeopt+=longest,noselect
 set tabstop=2
 set shiftwidth=2
 set expandtab
+" show unexpected whitespaces as error
+set list lcs=tab:\ \ \ ,trail:\ 
 " Show line number
 set number
 " Open new pane at right bottom
