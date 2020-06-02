@@ -30,8 +30,6 @@ Plug 'mhinz/vim-startify'
 Plug 'vim-scripts/Align'
 " Search and replace through the whole project
 Plug 'dyng/ctrlsf.vim'
-" snippet engine
-Plug 'SirVer/ultisnips'
 " useful snippets
 Plug 'honza/vim-snippets'
 " auto-complete
@@ -241,10 +239,6 @@ set hidden
 " highlight jsObjectKey for vim-javascript
 hi link jsObjectKey Label
 " web related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-" ultisnips >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let g:UltiSnipsExpandTrigger = '<C-h>'
-" ultisnips <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " purescript >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let purescript_indent_if = 2
