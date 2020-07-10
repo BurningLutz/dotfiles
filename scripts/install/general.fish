@@ -5,7 +5,9 @@ set -l bins   nginx \
                 git \
                  ag \
                  rg \
-               tldr
+               tldr \
+              pyenv \
+   pyenv-virtualenv
 
 for bin in $bins
   if not brew ls --versions $bin > /dev/null
