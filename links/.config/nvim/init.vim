@@ -143,7 +143,6 @@ autocmd Syntax   clojure RainbowParenthesesLoadBraces
 " quote, instead of the same column.
 let g:clojure_align_multiline_strings = 1
 let g:AutoClosePreserveDotReg = 0
-let g:AutoCloseExpandEnterOn = '{[('
 autocmd FileType clojure let b:AutoClosePairs = AutoClose#ParsePairs("() [] {} \"")
 map <silent> ( [(
 map <silent> ) ])
@@ -320,6 +319,7 @@ map <silent> <C-l> <C-w>l
 map <silent> <expr> <S-A-t> CreateItermTabWithCurrentPwd()
 imap <expr> <Tab> pumvisible() ? '<Down>' : '<Tab>'
 imap <expr> <S-Tab> pumvisible() ? '<Up>' : '<S-Tab>'
+imap <expr> <CR> complete_info(['selected']).selected == -1 ? '<CR>' : '<C-y>'
 " Map <C-p> to do :CocList files
 nmap <silent> <C-p> :CocList files<CR>
 " Map <A-]>(it's similar to <C-]>, which jump to a tag) to jump to definition
