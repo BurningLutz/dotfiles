@@ -319,7 +319,12 @@ map <silent> <C-l> <C-w>l
 map <silent> <expr> <S-A-t> CreateItermTabWithCurrentPwd()
 imap <expr> <Tab> pumvisible() ? '<Down>' : '<Tab>'
 imap <expr> <S-Tab> pumvisible() ? '<Up>' : '<S-Tab>'
-imap <expr> <CR> complete_info(['selected']).selected == -1 ? '<CR>' : '<C-y>'
+imap <expr> <CR>
+      \ complete_info(['selected']).selected == -1
+      \ ? <SID>prev_char_is_pair()
+      \    ? '<CR><Esc>O'
+      \    : '<CR>'
+      \ : '<C-y>'
 " Map <C-p> to do :CocList files
 nmap <silent> <C-p> :CocList files<CR>
 " Map <A-]>(it's similar to <C-]>, which jump to a tag) to jump to definition
@@ -333,6 +338,39 @@ function! s:show_documentation()
   else
     call CocAction('doHover')
   endif
+endfunction
+
+function! s:get_char_ahead(len)
+    if col('$') == col('.')
+        return "\0"
+    endif
+    return strpart(getline('.'), col('.')-2 + a:len, 1)
+endfunction
+
+function! s:get_char_behind(len)
+    if col('.') == 1
+        return "\0"
+    endif
+    return strpart(getline('.'), col('.') - (1 + a:len), 1)
+endfunction
+
+function! s:get_next_char()
+    return s:get_char_ahead(1)
+endfunction
+
+function! s:get_prev_char()
+    return s:get_char_behind(1)
+endfunction
+
+function! s:is_empty_pair()
+    let l:prev = s:get_prev_char()
+    let l:next = s:get_next_char()
+    let l:auto_close_pairs = { "{": "}", "(": ")", "[": "]" }
+    return (l:next != "\0") && (get(l:auto_close_pairs, l:prev, "\0") == l:next)
+endfunction
+
+function! s:prev_char_is_pair()
+  return s:is_empty_pair() && stridx("[{(", s:get_prev_char()) >= 0
 endfunction
 "*******************************************************************************
 " USER COMMANDS                                                                *
