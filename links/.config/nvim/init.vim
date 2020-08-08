@@ -315,8 +315,6 @@ map <silent> <A-l> :bnext<CR>
 " Efficient pane switching
 map <silent> <C-h> <C-w>h
 map <silent> <C-l> <C-w>l
-" Map <S-A-t> to open new iTerm tab
-map <silent> <expr> <S-A-t> CreateItermTabWithCurrentPwd()
 imap <expr> <Tab> pumvisible() ? '<Down>' : '<Tab>'
 imap <expr> <S-Tab> pumvisible() ? '<Up>' : '<S-Tab>'
 imap <expr> <CR>
@@ -331,6 +329,14 @@ nmap <silent> <C-p> :CocList files<CR>
 nmap <silent> <A-]> <Plug>(coc-definition)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+"*******************************************************************************
+" USER COMMANDS                                                                *
+"*******************************************************************************
+
+"*******************************************************************************
+" FUNCTIONS                                                                    *
+"*******************************************************************************
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -371,36 +377,4 @@ endfunction
 
 function! s:prev_char_is_pair()
   return s:is_empty_pair() && stridx("[{(", s:get_prev_char()) >= 0
-endfunction
-"*******************************************************************************
-" USER COMMANDS                                                                *
-"*******************************************************************************
-:command! LeinRepl call OpenLeinRepl()
-
-"*******************************************************************************
-" FUNCTIONS                                                                    *
-"*******************************************************************************
-
-" A function to create new iTerm tab and set pwd to the vim one, macOS and
-" iTerm only
-function! CreateItermTabWithCurrentPwd()
-  let pwd = getcwd()
-  echo system(''.
-        \'osascript'.
-        \' -e ''tell application "iTerm"'''.
-        \' -e ''  tell current window'''.
-        \' -e ''    create tab with default profile'''.
-        \' -e ''    tell current session'''.
-        \' -e ''      write text "cd '. pwd .'" '''.
-        \' -e ''    end tell'''.
-        \' -e ''  end tell'''.
-        \' -e ''end tell'''.
-        \'')
-endfunction
-
-function! OpenLeinRepl()
-  :tabnew
-  :terminal lein repl :headless
-  :stopinsert
-  :tabrewind
 endfunction
