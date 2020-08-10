@@ -22,5 +22,8 @@
   "list.source.files.args": ["--hidden", "--files"],
 
   "python.jediEnabled": false,
-  "python.linting.mypyEnabled": true
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": ["--disable=all", "--enable=W0611,E0601,E0602"],
+  "python.linting.mypyEnabled": true,
+  "python.analysis.diagnosticEnabled": false
 }
