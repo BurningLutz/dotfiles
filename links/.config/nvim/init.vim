@@ -320,7 +320,7 @@ imap <expr> <S-Tab> pumvisible() ? '<Up>' : '<S-Tab>'
 imap <expr> <CR>
       \ complete_info(['selected']).selected == -1
       \ ? <SID>prev_char_is_pair()
-      \    ? '<CR><Esc>O'
+      \    ? '<C-R>="<C-V><CR><C-V><Esc>O"<CR>'
       \    : '<CR>'
       \ : '<C-y>'
 " Map <C-p> to do :CocList files
