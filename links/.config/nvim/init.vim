@@ -88,17 +88,13 @@ Plug 'dag/vim-fish'
 
 " python related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'bps/vim-textobj-python'
+Plug 'michaeljsmith/vim-indent-object'
 " python related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-Plug 'tomlion/vim-solidity'
-
-Plug 'udalov/kotlin-vim'
-
+" purescript related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'purescript-contrib/purescript-vim'
-
-Plug 'michaeljsmith/vim-indent-object'
-
-Plug 'jparise/vim-graphql'
+Plug 'vmchale/dhall-vim'
+" purescript related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " Initialize plugin system
 call plug#end()
