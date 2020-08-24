@@ -214,7 +214,7 @@ call coc#add_extension(
   \'coc-css',
   \'coc-emmet',
   \'coc-eslint',
-  \)
+  \'coc-go')
 " coc <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -267,7 +267,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 " show unexpected whitespaces as error
-set list lcs=tab:\ \ \ ,trail:\ 
+set list lcs=tab:\ \ ,trail:\ 
 " Show line number
 set number
 " Open new pane at right bottom
@@ -291,6 +291,8 @@ set cursorcolumn
 " HOOKS                                                                        *
 "*******************************************************************************
 au BufRead *.jsx set ft=javascript.jsx
+au BufEnter *.go call s:enter_go()
+au BufLeave *.go call s:leave_go()
 
 "*******************************************************************************
 " KEYMAPS                                                                      *
@@ -377,4 +379,18 @@ endfunction
 
 function! s:prev_char_is_pair()
   return s:is_empty_pair() && stridx("[{(", s:get_prev_char()) >= 0
+endfunction
+
+function! s:leave_go()
+  setlocal expandtab
+  setlocal list lcs=tab:\ \ ,trail:\ 
+
+  hi link Whitespace Error
+endfunction
+
+function! s:enter_go()
+  setlocal noexpandtab
+  setlocal list lcs=tab:\ \ ,trail:-
+
+  hi link Whitespace None
 endfunction
