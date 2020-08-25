@@ -25,5 +25,10 @@
   "python.linting.pylintEnabled": true,
   "python.linting.pylintArgs": ["--disable=all", "--enable=W0601,W0611,E0001,E0102,E0601,E0602"],
   "python.linting.mypyEnabled": true,
-  "python.analysis.diagnosticEnabled": false
+  "python.analysis.diagnosticEnabled": false,
+
+  "purescript.addSpagoSources": true,
+  "purescript.fastRebuild": true,
+  "purescript.autocompleteGrouped": true,
+  "purescript.importsPreferredModules": ["Prelude"]
 }
