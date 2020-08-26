@@ -326,6 +326,8 @@ imap <expr> <CR>
 nmap <silent> <C-p> :CocList files<CR>
 " Map <A-f> to do :CocFix
 nmap <silent> <A-f> :CocFix<CR>
+" Map <A-a> to do :CocAction
+nmap <silent> <A-a> :CocAction<CR>
 " Map <A-]>(it's similar to <C-]>, which jump to a tag) to jump to definition
 nmap <silent> <A-]> <Plug>(coc-definition)
 " Use K to show documentation in preview window
