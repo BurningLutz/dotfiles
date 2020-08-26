@@ -286,6 +286,7 @@ set cursorcolumn
 "*******************************************************************************
 " HOOKS                                                                        *
 "*******************************************************************************
+au BufRead *.purs set fo+=rol fo-=t
 au BufRead *.jsx set ft=javascript.jsx
 au BufEnter *.go call s:enter_go()
 au BufLeave *.go call s:leave_go()
@@ -323,6 +324,8 @@ imap <expr> <CR>
       \ : '<C-y>'
 " Map <C-p> to do :CocList files
 nmap <silent> <C-p> :CocList files<CR>
+" Map <A-f> to do :CocFix
+nmap <silent> <A-f> :CocFix<CR>
 " Map <A-]>(it's similar to <C-]>, which jump to a tag) to jump to definition
 nmap <silent> <A-]> <Plug>(coc-definition)
 " Use K to show documentation in preview window
