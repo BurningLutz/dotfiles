@@ -316,6 +316,7 @@ map <silent> <C-h> <C-w>h
 map <silent> <C-l> <C-w>l
 imap <expr> <Tab> pumvisible() ? '<Down>' : '<Tab>'
 imap <expr> <S-Tab> pumvisible() ? '<Up>' : '<S-Tab>'
+imap <expr> <C-x><C-o> coc#refresh()
 imap <expr> <CR>
       \ complete_info(['selected']).selected == -1
       \ ? <SID>prev_char_is_pair()
