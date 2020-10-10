@@ -17,4 +17,8 @@ if status --is-interactive
   # pyenv and pyenv virtualenv related
   source (pyenv init -|psub)
   source (pyenv virtualenv-init -|psub)
+
+  # ghcup-env
+  set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
+  test -f /Users/lutz/.ghcup/env ; and set -gx PATH $HOME/.cabal/bin /Users/lutz/.ghcup/bin $PATH
 end

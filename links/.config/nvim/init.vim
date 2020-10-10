@@ -54,6 +54,8 @@ Plug 'pangloss/vim-javascript'
 " Extend js highlighter with jsx
 Plug 'MaxMEllon/vim-jsx-pretty'
 
+Plug 'peitalin/vim-jsx-typescript'
+
 " Generate jsdoc
 Plug 'heavenshell/vim-jsdoc'
 " GFM syntax highlight
