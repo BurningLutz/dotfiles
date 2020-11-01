@@ -61,7 +61,7 @@ Plug 'heavenshell/vim-jsdoc'
 " GFM syntax highlight
 Plug 'rhysd/vim-gfm-syntax'
 " markdown preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 " User defined textobj support and text object for xml/html attrs
 Plug 'kana/vim-textobj-user'
 Plug 'inside/vim-textobj-jsxattr'
@@ -97,6 +97,10 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'vmchale/dhall-vim'
 " purescript related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+" haskell related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Plug 'neovimhaskell/haskell-vim'
+" haskell related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " Initialize plugin system
 call plug#end()
@@ -244,6 +248,10 @@ let purescript_indent_let = 2
 let purescript_indent_where = 2
 let purescript_indent_do = 2
 " purescript <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+" haskell >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let g:haskell_indent_guard = 0
+" haskell <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 "*******************************************************************************
 " OPTIONS                                                                      *
