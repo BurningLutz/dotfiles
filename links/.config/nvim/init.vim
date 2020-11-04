@@ -30,8 +30,6 @@ Plug 'mhinz/vim-startify'
 Plug 'vim-scripts/Align'
 " Search and replace through the whole project
 Plug 'dyng/ctrlsf.vim'
-" useful snippets
-Plug 'honza/vim-snippets'
 " auto-complete
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " repeat plugin map
@@ -73,13 +71,6 @@ Plug 'posva/vim-vue'
 " web related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " clojure related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-" clojure utilities
-Plug 'tpope/vim-fireplace'
-" speedup fireplace's awful omni completion
-Plug 'clojure-vim/async-clj-omni'
-" clojure syntax highlight
-Plug 'guns/vim-clojure-static'
-Plug 'guns/vim-clojure-highlight'
 " better parentheses colors
 Plug 'kien/rainbow_parentheses.vim'
 " clojure related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -109,13 +100,8 @@ call plug#end()
 " SETTINGS                                                                     *
 "*******************************************************************************
 " global stuffs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let g:python_host_prog  = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python3'
-let g:loaded_python_provider = 0
-let g:loaded_python3_provider = 0
-
+let g:python3_host_prog = '/usr/local/bin/python3'
 let g:loaded_ruby_provider = 0
-
 let g:pyindent_open_paren = 0
 " global stuffs <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -146,11 +132,7 @@ autocmd Syntax   clojure RainbowParenthesesLoadBraces
 " rainbow_parentheses.vim <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " vim-clojure-static >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-" Align subsequent lines in multiline strings to the column after the opening
-" quote, instead of the same column.
-let g:clojure_align_multiline_strings = 1
 let g:AutoClosePreserveDotReg = 0
-autocmd FileType clojure let b:AutoClosePairs = AutoClose#ParsePairs("() [] {} \"")
 map <silent> ( [(
 map <silent> ) ])
 " vim-clojure-static <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
