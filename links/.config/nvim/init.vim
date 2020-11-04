@@ -109,9 +109,13 @@ call plug#end()
 " SETTINGS                                                                     *
 "*******************************************************************************
 " global stuffs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let g:python_host_prog  = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
 let g:loaded_python_provider = 0
 let g:loaded_python3_provider = 0
+
 let g:loaded_ruby_provider = 0
+
 let g:pyindent_open_paren = 0
 " global stuffs <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
