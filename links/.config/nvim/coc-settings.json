@@ -27,7 +27,7 @@
   "list.maxPreviewHeight": 15,
   "list.source.files.args": ["--hidden", "--files"],
 
-  "python.jediEnabled": false,
+  "python.jediEnabled": true,
   "python.linting.pylintEnabled": true,
   "python.linting.pylintArgs": ["--disable=all", "--enable=W0601,W0611,E0001,E0102,E0601,E0602,E0603"],
   "python.linting.mypyEnabled": true,
