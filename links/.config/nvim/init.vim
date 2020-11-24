@@ -93,6 +93,9 @@ Plug 'vmchale/dhall-vim'
 Plug 'neovimhaskell/haskell-vim'
 " haskell related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+Plug 'chr4/nginx.vim'
+
+Plug 'lifepillar/pgsql.vim'
 " Initialize plugin system
 call plug#end()
 
@@ -239,6 +242,10 @@ let purescript_indent_do = 2
 " haskell >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let g:haskell_indent_guard = 0
 " haskell <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+" postgres >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let g:sql_type_default = 'pgsql'
+" postgres <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 "*******************************************************************************
 " OPTIONS                                                                      *
