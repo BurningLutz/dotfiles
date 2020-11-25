@@ -206,6 +206,7 @@ call coc#add_extension(
   \'coc-css',
   \'coc-emmet',
   \'coc-eslint',
+  \'coc-sql',
   \'coc-go')
 " coc <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -337,6 +338,8 @@ nmap <silent> <A-a> :CocAction<CR>
 nmap <silent> <A-]> <Plug>(coc-definition)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+" auto align columns inside `create table`
+nmap <silent> <A-s> vib:Align! 0p0Pll: \>\s<CR>
 
 "*******************************************************************************
 " USER COMMANDS                                                                *

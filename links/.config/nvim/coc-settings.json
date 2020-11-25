@@ -36,5 +36,7 @@
   "purescript.addSpagoSources": true,
   "purescript.fastRebuild": true,
   "purescript.autocompleteGrouped": true,
-  "purescript.importsPreferredModules": ["Prelude"]
+  "purescript.importsPreferredModules": ["Prelude"],
+
+  "sql.database": "postgresql"
 }
