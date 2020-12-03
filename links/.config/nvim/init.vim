@@ -330,6 +330,8 @@ imap <expr> <CR>
       \ : '<C-y>'
 " Map <C-p> to do :CocList files
 nmap <silent> <C-p> :CocList files<CR>
+" Map <C-P> to do :CocList lines
+nmap <silent> <C-A-p> :CocList grep<CR>
 " Map <A-f> to do :CocFix
 nmap <silent> <A-f> :CocFix<CR>
 " Map <A-a> to do :CocAction
@@ -339,7 +341,7 @@ nmap <silent> <A-]> <Plug>(coc-definition)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 " auto align columns inside `create table`
-nmap <silent> <A-s> vib:Align! 0p0Pll: \>\s<CR>
+vmap <silent> <A-s> :Align! 0p0P-ll: \s\S<CR>
 
 "*******************************************************************************
 " USER COMMANDS                                                                *
