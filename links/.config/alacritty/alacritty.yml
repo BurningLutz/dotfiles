@@ -843,6 +843,14 @@ key_bindings:
   # shortcuts to interact with pbcopy and pbpaste
   - { key: C,           mods: Control|Command, chars: "\"+y"            }
   - { key: V,           mods: Control|Command, chars: "\"+p"            }
+
+  # this is a workaround to fix unexpected char deleting when ime popup is shown.
+  # see
+  # https://github.com/alacritty/alacritty/issues/1606
+  # and
+  # https://github.com/rust-windowing/winit/issues/1452
+  - { key: Back, action: ReceiveChar }
+
 #debug:
   # Display the time it takes to redraw each frame.
   #render_timer: false

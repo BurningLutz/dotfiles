@@ -6,8 +6,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " basis >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Useful toolbar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'liuchengxu/eleline.vim'
 " theme
 Plug 'w0ng/vim-hybrid'
 " Dir tree, bookmarks and more
@@ -147,10 +146,6 @@ let g:hybrid_reduced_contrast = 1
 " Try to set color scheme
 silent! colorscheme hybrid
 set background=dark
-" Set the color scheme of airline
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-let g:airline_theme = 'hybrid'
 " set color theme <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " emmet >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

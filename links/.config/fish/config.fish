@@ -22,4 +22,6 @@ if status --is-interactive
   # ghcup-env
   set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
   test -f /Users/lutz/.ghcup/env ; and set -gx PATH /Users/lutz/.ghcup/bin $PATH
+  # cabal bin
+  set -gx PATH /Users/lutz/.cabal/bin $PATH
 end
