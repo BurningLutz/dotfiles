@@ -24,6 +24,8 @@
 
   "javascript.preferences.quoteStyle": "double",
   "javascript.validate.enable": false,
+  "javascript.suggest.completeFunctionCalls": false,
+  "typescript.suggest.completeFunctionCalls": false,
 
   "list.maxPreviewHeight": 15,
   "list.source.files.args": ["--hidden", "--files"],
