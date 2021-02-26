@@ -335,6 +335,14 @@ nmap <silent> <A-a> :CocAction<CR>
 nmap <silent> <A-]> <Plug>(coc-definition)
 " Map <A-r> to jump to (r)eferences
 nmap <silent> <A-r> <Plug>(coc-references-used)
+" Map >d to coc-diagnostic-next
+nmap <silent> >d <Plug>(coc-diagnostic-next)
+" Map <d to coc-diagnostic-prev
+nmap <silent> <d <Plug>(coc-diagnostic-prev)
+" Map >e to coc-diagnostic-next-error
+nmap <silent> >e <Plug>(coc-diagnostic-next-error)
+" Map <e to coc-diagnostic-prev-error
+nmap <silent> <e <Plug>(coc-diagnostic-prev-error)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 " auto align columns inside `create table`
