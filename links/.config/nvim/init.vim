@@ -336,9 +336,9 @@ nmap <silent> <A-]> <Plug>(coc-definition)
 " Map <A-r> to jump to (r)eferences
 nmap <silent> <A-r> <Plug>(coc-references-used)
 " Map coc-diagnostic-next
-nmap <silent> <C-0> <Plug>(coc-diagnostic-next)
+nmap <silent> <A-)> <Plug>(coc-diagnostic-next)
 " Map coc-diagnostic-prev
-nmap <silent> <C-9> <Plug>(coc-diagnostic-prev)
+nmap <silent> <A-(> <Plug>(coc-diagnostic-prev)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 " auto align columns inside `create table`
 vmap <silent> <A-s> :Align! 0p0P-ll: \s\S<CR>
