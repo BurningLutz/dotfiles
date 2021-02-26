@@ -333,10 +333,14 @@ nmap <silent> <A-f> :CocFix<CR>
 nmap <silent> <A-a> :CocAction<CR>
 " Map <A-]>(it's similar to <C-]>, which jump to a tag) to jump to definition
 nmap <silent> <A-]> <Plug>(coc-definition)
+" Map <A-r> to jump to (r)eferences
+nmap <silent> <A-r> <Plug>(coc-references-used)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 " auto align columns inside `create table`
 vmap <silent> <A-s> :Align! 0p0P-ll: \s\S<CR>
+" auto align columns by word boundary
+vmap <silent> <A-S> :Align! 0p0P \s\S<CR>
 
 "*******************************************************************************
 " USER COMMANDS                                                                *
