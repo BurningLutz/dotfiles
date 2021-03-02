@@ -4,6 +4,9 @@ if status --is-login
 
   # set fish_ambiguous_width to 1
   set -x fish_ambiguous_width 1
+
+  # set lang
+  set -x LANG en_US.UTF-8
 end
 
 if status --is-interactive
@@ -24,4 +27,6 @@ if status --is-interactive
   test -f /Users/lutz/.ghcup/env ; and set -gx PATH /Users/lutz/.ghcup/bin $PATH
   # cabal bin
   set -gx PATH /Users/lutz/.cabal/bin $PATH
+
+  forgetmenot check
 end
