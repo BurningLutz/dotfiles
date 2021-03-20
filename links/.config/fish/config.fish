@@ -28,5 +28,5 @@ if status --is-interactive
   # cabal bin
   set -gx PATH /Users/lutz/.cabal/bin $PATH
 
-  forgetmenot check
+  forgetmenot tuicheck
 end
