@@ -173,7 +173,7 @@ hi link Whitespace Error
 " auto-ch againest bookmark
 let NERDTreeChDirMode = 2
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\~$', '^node_modules$', '^dist$', '^.git$', '^__pycache__$']
+let NERDTreeIgnore=['\~$', '^node_modules$', '^dist$', '^dist-newstyle$', '^.git$', '^__pycache__$']
 " NERDTree <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " startify >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
