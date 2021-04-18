@@ -325,8 +325,10 @@ imap <expr> <CR>
       \ : '<C-y>'
 " Map <C-p> to do :CocList files
 nmap <silent> <C-p> :CocList files<CR>
-" Map <C-P> to do :CocList lines
+" Map <C-A-p> to do :CocList lines
 nmap <silent> <C-A-p> :CocList grep<CR>
+" Map <C-A-d> to do :CocList diagnostics
+nmap <silent> <C-A-d> :CocList diagnostics<CR>
 " Map <A-f> to do :CocFix
 nmap <silent> <A-f> :CocFix<CR>
 " Map <A-a> to do :CocAction
