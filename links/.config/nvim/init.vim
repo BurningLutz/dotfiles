@@ -192,7 +192,7 @@ let g:startify_session_sort = 1
 
 " coc >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " install missing extensions
-if exists("coc#add_extension")
+if exists("*coc#add_extension")
   call coc#add_extension(
     \'coc-json',
     \'coc-html',

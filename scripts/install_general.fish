@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-set -l bins git ripgrep tldr
+set -l bins git ripgrep tldr unzip
 
 for bin in $bins
   switch (uname)
