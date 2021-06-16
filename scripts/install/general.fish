@@ -1,16 +1,12 @@
-#!/usr/local/bin/fish
+#!/usr/bin/env fish
 
-set -l bins   nginx \
-               node \
-                git \
-                 ag \
-                 rg \
-               tldr \
-              pyenv \
-   pyenv-virtualenv
+set -l bins git ripgrep tldr pyenv
 
 for bin in $bins
-  if not brew ls --versions $bin > /dev/null
-    brew install $bin
+  switch (uname)
+    case Darwin
+      brew install $bin
+    case Linux
+      sudo apt install $bin
   end
 end

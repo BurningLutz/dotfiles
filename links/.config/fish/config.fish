@@ -17,16 +17,25 @@ if status --is-interactive
 
   alias poe=poetry
 
-  # pyenv and pyenv virtualenv related
-  source (pyenv init -|psub)
-  source (pyenv virtualenv-init -|psub)
+  # python
+  # pyenv and pyenv virtualenv
+  pyenv init --path | source
+  pyenv init - | source
 
-  # haskell related
+  # haskell
   # ghcup-env
   set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
-  test -f /Users/lutz/.ghcup/env ; and set -gx PATH /Users/lutz/.ghcup/bin $PATH
+  test -f $HOME/.ghcup/env ; and set -gx PATH $HOME/.ghcup/bin $PATH
   # cabal bin
-  set -gx PATH /Users/lutz/.cabal/bin $PATH
+  set -gx PATH $HOME/.cabal/bin $PATH
 
-  forgetmenot tuicheck
+  # javascript/typescript
+  # deno
+  set -gx DENO_INSTALL $HOME/.deno
+  set -gx PATH $DENO_INSTALL/bin $PATH
+
+  # softwares
+  if type -q forgetmenot
+    forgetmenot check
+  end
 end

@@ -1,10 +1,15 @@
-#!/usr/local/bin/fish
+#!/usr/bin/env fish
 
-if not brew ls --versions neovim > /dev/null
-  brew install neovim
+if not type -q nvim
+  switch (uname)
+    case Darwin
+      brew install neovim
+    case Linux
+      sudo apt install neovim
+  end
 
   # add plug.vim to manage plugins
-  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+  curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 end
 
