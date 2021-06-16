@@ -19,8 +19,9 @@ if status --is-interactive
 
   # python
   # pyenv and pyenv virtualenv
+  set -gx PYENV_ROOT $HOME/.pyenv
+  set -gx PATH $PYENV_ROOT/bin $PATH
   pyenv init --path | source
-  pyenv init - | source
 
   # haskell
   # ghcup-env
