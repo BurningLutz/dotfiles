@@ -171,7 +171,7 @@ hi link Whitespace Error
 " NERDTree >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Change CWD whenever the root of NERDTree is changed. This is used for
 " auto-ch againest bookmark
-let NERDTreeChDirMode = 2
+let NERDTreeChDirMode=2
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\~$', '^node_modules$', '^dist$', '^dist-newstyle$', '^.git$', '^__pycache__$']
 " NERDTree <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -192,17 +192,19 @@ let g:startify_session_sort = 1
 
 " coc >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " install missing extensions
-call coc#add_extension(
-  \'coc-json',
-  \'coc-html',
-  \'coc-tsserver',
-  \'coc-python',
-  \'coc-lists',
-  \'coc-css',
-  \'coc-emmet',
-  \'coc-eslint',
-  \'coc-sql',
-  \'coc-go')
+if exists("coc#add_extension")
+  call coc#add_extension(
+    \'coc-json',
+    \'coc-html',
+    \'coc-tsserver',
+    \'coc-python',
+    \'coc-lists',
+    \'coc-css',
+    \'coc-emmet',
+    \'coc-eslint',
+    \'coc-sql',
+    \'coc-go')
+endif
 " coc <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

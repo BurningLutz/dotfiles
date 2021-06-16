@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-set -l bins git ripgrep tldr pyenv
+set -l bins git ripgrep tldr
 
 for bin in $bins
   switch (uname)
