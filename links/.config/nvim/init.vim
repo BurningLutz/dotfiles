@@ -192,19 +192,18 @@ let g:startify_session_sort = 1
 
 " coc >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " install missing extensions
-if exists("*coc#add_extension")
-  call coc#add_extension(
-    \'coc-json',
-    \'coc-html',
-    \'coc-tsserver',
-    \'coc-python',
-    \'coc-lists',
-    \'coc-css',
-    \'coc-emmet',
-    \'coc-eslint',
-    \'coc-sql',
-    \'coc-go')
-endif
+let g:coc_global_extensions =
+\ [ 'coc-json'
+\ , 'coc-html'
+\ , 'coc-tsserver'
+\ , 'coc-python'
+\ , 'coc-lists'
+\ , 'coc-css'
+\ , 'coc-emmet'
+\ , 'coc-eslint'
+\ , 'coc-sql'
+\ , 'coc-go'
+\ ]
 " coc <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
