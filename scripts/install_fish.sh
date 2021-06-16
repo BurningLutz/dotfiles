@@ -1,14 +1,15 @@
 #!/bin/bash
 
-switch (uname)
-  case Darwin
+case $(uname) in
+  Darwin)
     brew install fish
     echo /usr/local/bin/fish | sudo tee -a /etc/shells
-  case Linux
+    chsh -s /usr/local/bin/fish
+  ;;
+  Linux)
     sudo apt-add-repository ppa:fish-shell/release-3
     sudo apt update
-    sudo apt install fish
-end
-
-echo 'Changing shell to fish, please enter your password.'
-chsh -s /usr/local/bin/fish
+    sudo apt install -y fish
+    chsh -s /usr/bin/fish
+  ;;
+esac

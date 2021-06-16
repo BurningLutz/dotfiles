@@ -5,7 +5,7 @@ if not type -q nvim
     case Darwin
       brew install neovim
     case Linux
-      sudo apt install neovim
+      sudo apt install -y neovim
   end
 
   # add plug.vim to manage plugins

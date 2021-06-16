@@ -7,6 +7,6 @@ for bin in $bins
     case Darwin
       brew install $bin
     case Linux
-      sudo apt install $bin
+      sudo apt install -y $bin
   end
 end
