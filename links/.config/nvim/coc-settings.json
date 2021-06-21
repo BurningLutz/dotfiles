@@ -25,6 +25,8 @@
   "javascript.preferences.quoteStyle": "double",
   "javascript.validate.enable": false,
   "javascript.suggest.completeFunctionCalls": false,
+  "javascript.format.semicolons": "remove",
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.suggest.completeFunctionCalls": false,
 
   "list.maxPreviewHeight": 15,
