@@ -332,8 +332,8 @@ nmap <silent> <C-A-p> :CocList grep<CR>
 nmap <silent> <C-A-d> :CocList diagnostics<CR>
 " Map <A-f> to do :CocFix
 nmap <silent> <A-f> :CocFix<CR>
-" Map <A-a> to do :CocAction
-nmap <silent> <A-a> <Plug>(coc-codeaction-cursor)<CR>
+" Map <A-a> to do coc-codeaction-cursor
+nmap <silent> <A-a> <Plug>(coc-codeaction-cursor)
 " Map <A-]>(it's similar to <C-]>, which jump to a tag) to jump to definition
 nmap <silent> <A-]> <Plug>(coc-definition)
 " Map <A-r> to jump to (r)eferences
