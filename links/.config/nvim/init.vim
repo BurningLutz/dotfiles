@@ -51,6 +51,7 @@ Plug 'pangloss/vim-javascript'
 " Extend js highlighter with jsx
 Plug 'MaxMEllon/vim-jsx-pretty'
 
+Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
 " Generate jsdoc

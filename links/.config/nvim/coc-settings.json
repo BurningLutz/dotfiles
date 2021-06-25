@@ -27,7 +27,9 @@
   "javascript.suggest.completeFunctionCalls": false,
   "javascript.format.semicolons": "remove",
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.suggest.completeFunctionCalls": false,
+  "typescript.format.semicolons": "remove",
 
   "list.maxPreviewHeight": 15,
   "list.source.files.args": ["--hidden", "--files"],
