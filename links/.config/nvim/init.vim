@@ -205,6 +205,8 @@ let g:coc_global_extensions =
 \ , 'coc-sql'
 \ , 'coc-go'
 \ ]
+let g:coc_status_error_sign = "E"
+let g:coc_status_warning_sign = "W"
 " coc <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
