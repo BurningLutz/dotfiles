@@ -35,6 +35,9 @@ if status --is-interactive
   set -gx DENO_INSTALL $HOME/.deno
   set -gx PATH $DENO_INSTALL/bin $PATH
 
+  # golang
+  set -gx PATH /usr/local/go/bin $PATH
+
   # softwares
   if type -q forgetmenot
     forgetmenot check

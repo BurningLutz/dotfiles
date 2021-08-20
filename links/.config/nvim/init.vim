@@ -70,11 +70,6 @@ Plug 'thinca/vim-textobj-function-javascript'
 Plug 'posva/vim-vue'
 " web related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" clojure related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-" better parentheses colors
-Plug 'kien/rainbow_parentheses.vim'
-" clojure related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
 " fish related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'dag/vim-fish'
 " fish related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -97,6 +92,9 @@ Plug 'chr4/nginx.vim'
 
 Plug 'lifepillar/pgsql.vim'
 " Initialize plugin system
+
+" editorconfig
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 "*******************************************************************************
@@ -107,32 +105,6 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 let g:loaded_ruby_provider = 0
 let g:pyindent_open_paren = 0
 " global stuffs <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-" rainbow_parentheses.vim >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let g:rbpt_colorpairs = [
-\ ['brown'       , 'RoyalBlue3'  ],
-\ ['Darkblue'    , 'SeaGreen3'   ],
-\ ['darkgray'    , 'DarkOrchid3' ],
-\ ['darkgreen'   , 'firebrick3'  ],
-\ ['darkcyan'    , 'RoyalBlue3'  ],
-\ ['darkred'     , 'SeaGreen3'   ],
-\ ['darkmagenta' , 'DarkOrchid3' ],
-\ ['brown'       , 'firebrick3'  ],
-\ ['gray'        , 'RoyalBlue3'  ],
-\ ['darkmagenta' , 'DarkOrchid3' ],
-\ ['Darkblue'    , 'firebrick3'  ],
-\ ['darkgreen'   , 'RoyalBlue3'  ],
-\ ['darkcyan'    , 'SeaGreen3'   ],
-\ ['darkred'     , 'DarkOrchid3' ],
-\ ['red'         , 'firebrick3'  ],
-\ ]
-let g:rbpt_max = 15
-let g:rbpt_loadcmd_toggle = 0
-autocmd VimEnter *       RainbowParenthesesToggle
-autocmd Syntax   clojure RainbowParenthesesLoadRound
-autocmd Syntax   clojure RainbowParenthesesLoadSquare
-autocmd Syntax   clojure RainbowParenthesesLoadBraces
-" rainbow_parentheses.vim <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " vim-clojure-static >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let g:AutoClosePreserveDotReg = 0
@@ -166,7 +138,6 @@ let g:gitgutter_terminal_reports_focus = 0
 hi! link SignColumn LineNr
 hi link GitGutterAdd diffAdded
 hi link GitGutterDelete diffRemoved
-hi link Whitespace Error
 " GitGutter <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " NERDTree >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -248,6 +219,10 @@ let g:haskell_enable_resursivedo = 1
 let g:sql_type_default = 'pgsql'
 " postgres <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+" editorconfig >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+" editorconfig <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 "*******************************************************************************
 " OPTIONS                                                                      *
 "*******************************************************************************
@@ -261,14 +236,15 @@ set completeopt-=preview
 set completeopt+=longest,noselect
 
 " Enable 24-bits true color in neovim
-" set termguicolors
+set termguicolors
 
 " Make tab to insert 2 space characters
 set tabstop=2
 set shiftwidth=2
 set expandtab
-" show unexpected whitespaces as error
-set list lcs=tab:\ \ ,trail:\ 
+
+" enable listchars
+set list lcs=tab:>-,trail:-,nbsp:+
 " Show line number
 set number
 " Open new pane at right bottom
@@ -293,8 +269,6 @@ set cursorcolumn
 "*******************************************************************************
 au BufRead *.purs set fo+=rol fo-=t
 au BufRead *.jsx set ft=javascript.jsx
-au BufEnter *.go call s:enter_go()
-au BufLeave *.go call s:leave_go()
 
 "*******************************************************************************
 " KEYMAPS                                                                      *
@@ -399,18 +373,4 @@ endfunction
 
 function! s:prev_char_is_pair()
   return s:is_empty_pair() && stridx("[{(", s:get_prev_char()) >= 0
-endfunction
-
-function! s:leave_go()
-  setlocal expandtab
-  setlocal list lcs=tab:\ \ ,trail:\ 
-
-  hi link Whitespace Error
-endfunction
-
-function! s:enter_go()
-  setlocal noexpandtab
-  setlocal list lcs=tab:\ \ ,trail:-
-
-  hi link Whitespace None
 endfunction
