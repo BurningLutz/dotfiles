@@ -168,7 +168,7 @@ let g:coc_global_extensions =
 \ [ 'coc-json'
 \ , 'coc-html'
 \ , 'coc-tsserver'
-\ , 'coc-python'
+\ , 'coc-pyright'
 \ , 'coc-lists'
 \ , 'coc-css'
 \ , 'coc-emmet'
