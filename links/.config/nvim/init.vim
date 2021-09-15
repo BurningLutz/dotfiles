@@ -143,9 +143,17 @@ hi link GitGutterDelete diffRemoved
 " NERDTree >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Change CWD whenever the root of NERDTree is changed. This is used for
 " auto-ch againest bookmark
-let NERDTreeChDirMode=2
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\~$', '^node_modules$', '^dist$', '^dist-newstyle$', '^.git$', '^__pycache__$']
+let NERDTreeChDirMode  = 2
+let NERDTreeShowHidden = 1
+let NERDTreeIgnore =
+\ ['\~$'
+\ , '^node_modules$'
+\ , '^dist$'
+\ , '^dist-newstyle$'
+\ , '^bindist$'
+\ , '^.git$'
+\ , '^__pycache__$'
+\ ]
 " NERDTree <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " startify >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
