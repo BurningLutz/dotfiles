@@ -38,6 +38,9 @@ if status --is-interactive
   # golang
   set -gx PATH /usr/local/go/bin $PATH
 
+  # llvm
+  set -gx PATH /usr/local/opt/llvm/bin $PATH
+
   # softwares
   if type -q forgetmenot
     forgetmenot check
