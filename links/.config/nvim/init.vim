@@ -320,6 +320,8 @@ nmap <silent> <C-A-d> :CocList diagnostics<CR>
 nmap <silent> <A-f> :CocFix<CR>
 " Map <A-a> to do coc-codeaction-cursor
 nmap <silent> <A-a> <Plug>(coc-codeaction-cursor)
+" Map <A-c> to do coc-codelens-action
+nmap <silent> <A-c> <Plug>(coc-codelens-action)
 " Map <A-]>(it's similar to <C-]>, which jump to a tag) to jump to definition
 nmap <silent> <A-]> <Plug>(coc-definition)
 " Map <A-r> to jump to (r)eferences
@@ -337,6 +339,7 @@ vmap <silent> <A-S> :Align! 0p0P \s\S<CR>
 "*******************************************************************************
 " USER COMMANDS                                                                *
 "*******************************************************************************
+:command! CR CocRestart
 
 "*******************************************************************************
 " FUNCTIONS                                                                    *

@@ -18,9 +18,22 @@
       "disableSnippetCompletion": true
     }
   },
-  "diagnostic.maxWindowHeight": 80,
-  "diagnostic.maxWindowWidth": 120,
+
   "coc.preferences.useQuickfixForLocations": true,
+  "codeLens.enable": true,
+  "codeLens.separator": "⮞",
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.floatConfig": {
+    "maxWidth": 120,
+    "maxHeight": 80
+  },
+  "hover.floatConfig": {
+    "maxWidth": 120,
+    "maxHeight": 80
+  },
+  "list.maxPreviewHeight": 15,
+  "list.source.files.args": ["--hidden", "--files"],
 
   "javascript.preferences.quoteStyle": "double",
   "javascript.validate.enable": false,
@@ -30,9 +43,6 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.suggest.completeFunctionCalls": false,
   "typescript.format.semicolons": "remove",
-
-  "list.maxPreviewHeight": 15,
-  "list.source.files.args": ["--hidden", "--files"],
 
   "pyright.completion.snippetSupport": false,
   "python.linting.pylintEnabled": true,
