@@ -13,8 +13,6 @@ Plug 'w0ng/vim-hybrid'
 Plug 'scrooloose/nerdtree'
 " Show file change inline
 Plug 'airblade/vim-gitgutter'
-" Readline style key bindings
-Plug 'tpope/vim-rsi'
 " Sub-word movements
 Plug 'bkad/CamelCaseMotion'
 " Surround.vim is all about "surroundings": parentheses, brackets, quotes,
@@ -190,8 +188,6 @@ let g:coc_status_warning_sign = "W"
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let g:vim_jsx_pretty_highlight_close_tag = 1
-" Disable meta key binding of rsi
-let g:rsi_no_meta = 1
 " Prompt for doc generating
 let g:jsdoc_input_description = 1
 let g:jsdoc_allow_input_prompt = 1
@@ -320,6 +316,8 @@ nmap <silent> <C-A-d> :CocList diagnostics<CR>
 nmap <silent> <A-f> :CocFix<CR>
 " Map <A-a> to do coc-codeaction-cursor
 nmap <silent> <A-a> <Plug>(coc-codeaction-cursor)
+" Map <A-c> to do coc-codelens-action
+nmap <silent> <A-c> <Plug>(coc-codelens-action)
 " Map <A-]>(it's similar to <C-]>, which jump to a tag) to jump to definition
 nmap <silent> <A-]> <Plug>(coc-definition)
 " Map <A-r> to jump to (r)eferences
@@ -333,10 +331,19 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 vmap <silent> <A-s> :Align! 0p0P-ll: \s\S<CR>
 " auto align columns by word boundary
 vmap <silent> <A-S> :Align! 0p0P \s\S<CR>
+" map gl to echo syntax highlight group under cursor
+nmap <silent> gl :echo <SID>syntax_item()<CR>
+
+" mapping for hover scroll
+nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 
 "*******************************************************************************
 " USER COMMANDS                                                                *
 "*******************************************************************************
+:command! CR CocRestart
 
 "*******************************************************************************
 " FUNCTIONS                                                                    *
@@ -381,4 +388,8 @@ endfunction
 
 function! s:prev_char_is_pair()
   return s:is_empty_pair() && stridx("[{(", s:get_prev_char()) >= 0
+endfunction
+
+function! s:syntax_item()
+  return synIDattr(synID(line("."),col("."),1),"name")
 endfunction
