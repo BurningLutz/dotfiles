@@ -21,7 +21,6 @@
 
   "coc.preferences.useQuickfixForLocations": true,
   "codeLens.enable": true,
-  "codeLens.separator": "⮞",
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.floatConfig": {
