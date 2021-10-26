@@ -227,6 +227,25 @@ let g:sql_type_default = 'pgsql'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " editorconfig <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+" terminal mode colors >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let g:terminal_color_0  = '#282C34'
+let g:terminal_color_1  = '#E06C75'
+let g:terminal_color_2  = '#98C379'
+let g:terminal_color_3  = '#E5C07B'
+let g:terminal_color_4  = '#61AFEF'
+let g:terminal_color_5  = '#C678DD'
+let g:terminal_color_6  = '#56B6C2'
+let g:terminal_color_7  = '#DCDFE4'
+let g:terminal_color_8  = '#5A6374'
+let g:terminal_color_9  = '#E06C75'
+let g:terminal_color_10 = '#98C379'
+let g:terminal_color_11 = '#E5C07B'
+let g:terminal_color_12 = '#61AFEF'
+let g:terminal_color_13 = '#C678DD'
+let g:terminal_color_14 = '#56B6C2'
+let g:terminal_color_15 = '#DCDFE4'
+" terminal mode colors <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 "*******************************************************************************
 " OPTIONS                                                                      *
 "*******************************************************************************
@@ -339,6 +358,13 @@ nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(
 nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
 inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+
+" mapping for command line readline-style moves
+cnoremap        <C-A> <Home>
+cnoremap   <C-X><C-A> <C-A>
+cnoremap        <C-B> <Left>
+cnoremap <expr> <C-D> getcmdpos()>strlen(getcmdline())?"\<Lt>C-D>":"\<Lt>Del>"
+cnoremap <expr> <C-F> getcmdpos()>strlen(getcmdline())?&cedit:"\<Lt>Right>"
 
 "*******************************************************************************
 " USER COMMANDS                                                                *
