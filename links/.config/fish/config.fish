@@ -22,6 +22,8 @@ if status --is-interactive
   set -gx PYENV_ROOT $HOME/.pyenv
   set -gx PATH $PYENV_ROOT/bin $PATH
   pyenv init --path | source
+  # add pyenv completions
+  pyenv init - | source
 
   # haskell
   # ghcup-env
