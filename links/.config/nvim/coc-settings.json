@@ -6,10 +6,6 @@
       "filetypes": ["purescript"],
       "rootPatterns": ["bower.json", "psc-package.json", "spago.dhall"]
     },
-    "lua": {
-      "command": "lua-lsp",
-      "filetypes": ["lua"]
-    },
     "haskell": {
       "command": "haskell-language-server-wrapper",
       "args": ["--lsp"],
