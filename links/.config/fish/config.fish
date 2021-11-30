@@ -40,6 +40,9 @@ if status --is-interactive
   # golang
   set -gx PATH /usr/local/go/bin $PATH
 
+  # scala
+  set -gx PATH $HOME/Library/Application\ Support/Coursier/bin $PATH
+
   # llvm
   set -gx PATH /usr/local/opt/llvm/bin $PATH
 

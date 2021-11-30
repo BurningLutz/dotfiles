@@ -181,6 +181,7 @@ let g:coc_global_extensions =
 \ , 'coc-eslint'
 \ , 'coc-sql'
 \ , 'coc-go'
+\ , 'coc-metals'
 \ ]
 let g:coc_status_error_sign = "E"
 let g:coc_status_warning_sign = "W"
