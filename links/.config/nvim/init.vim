@@ -182,6 +182,7 @@ let g:coc_global_extensions =
 \ , 'coc-sql'
 \ , 'coc-go'
 \ , 'coc-metals'
+\ , 'coc-java'
 \ ]
 let g:coc_status_error_sign = "E"
 let g:coc_status_warning_sign = "W"
