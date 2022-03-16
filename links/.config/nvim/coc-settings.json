@@ -40,6 +40,7 @@
   "typescript.format.semicolons": "remove",
 
   "pyright.completion.snippetSupport": false,
+  "python.analysis.typeCheckingMode": "off",
   "python.linting.pylintEnabled": true,
   "python.linting.pylintArgs": ["--disable=all", "--enable=W0601,W0611,E0001,E0102,E0601,E0602,E0603"],
 
