@@ -348,9 +348,7 @@ nmap <silent> <A-)> <Plug>(coc-diagnostic-next)
 nmap <silent> <A-(> <Plug>(coc-diagnostic-prev)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 " auto align columns inside `create table`
-vmap <silent> <A-s> :Align! 0p0P-ll: \s\S<CR>
-" auto align columns by word boundary
-vmap <silent> <A-S> :Align! 0p0P \s\S<CR>
+vmap <silent> <A-s> :Align! 0p0P-l \s\S<CR>
 " map gl to echo syntax highlight group under cursor
 nmap <silent> gl :echo <SID>syntax_item()<CR>
 
