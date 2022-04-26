@@ -1,11 +1,5 @@
 {
   "languageserver": {
-    "purescript": {
-      "command": "purescript-language-server",
-      "args": ["--stdio"],
-      "filetypes": ["purescript"],
-      "rootPatterns": ["bower.json", "psc-package.json", "spago.dhall"]
-    },
     "haskell": {
       "command": "haskell-language-server-wrapper",
       "args": ["--lsp"],
@@ -43,11 +37,6 @@
   "python.analysis.typeCheckingMode": "off",
   "python.linting.pylintEnabled": true,
   "python.linting.pylintArgs": ["--disable=all", "--enable=W0601,W0611,E0001,E0102,E0601,E0602,E0603"],
-
-  "purescript.addSpagoSources": true,
-  "purescript.fastRebuild": true,
-  "purescript.autocompleteGrouped": true,
-  "purescript.importsPreferredModules": ["Prelude"],
 
   "sql.database": "postgresql"
 }
