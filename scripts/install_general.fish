@@ -1,12 +1,15 @@
 #!/usr/bin/env fish
 
-set -l bins git ripgrep tldr unzip
+set -l bins git ripgrep tldr unzip neovim nodejs npm
 
-for bin in $bins
-  switch (uname)
-    case Darwin
-      brew install $bin
-    case Linux
-      sudo apt install -y $bin
-  end
+switch (uname)
+  case Darwin
+    brew install $bins
+  case Linux
+    sudo apt install -y $bins
 end
+
+# add plug.vim to manage plugins
+curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+nvim -c PlugInstall -c qa

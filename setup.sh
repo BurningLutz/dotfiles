@@ -12,10 +12,5 @@ if [[ $(uname) == "Linux" ]]; then
   sudo apt install -y build-essential curl libffi-dev libffi7 libgmp-dev libgmp10 libncurses-dev libncurses5 libtinfo5
 fi
 
-# install fish if not exists, and eagerly use it
-if [[ ! -x $( command -v fish ) ]]; then
-  ./scripts/install_fish.sh
-fi
-
 ./scripts/link_files.fish
-./scripts/install_bins.fish
+./scripts/install_general.fish

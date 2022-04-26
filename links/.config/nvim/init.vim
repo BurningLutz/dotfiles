@@ -171,6 +171,11 @@ let g:startify_update_oldfiles = 1
 let g:startify_session_persistence = 1
 " Sort sessions by modification time
 let g:startify_session_sort = 1
+" Close all buffers not need to save
+let g:startify_session_before_save =
+\ [ 'silent! tabdo NERDTreeClose'
+\ , 'silent! bufdo if @% =~ "^term://" | bd! | endif'
+\ ]
 " startify <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " coc >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
