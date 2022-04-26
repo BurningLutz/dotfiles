@@ -15,15 +15,15 @@ if status --is-interactive
 
   alias vim=nvim
 
-  alias poe=poetry
-
   # python
   # pyenv and pyenv virtualenv
   set -gx PYENV_ROOT $HOME/.pyenv
   set -gx PATH $PYENV_ROOT/bin $PATH
-  pyenv init --path | source
-  # add pyenv completions
-  pyenv init - | source
+  if type -q pyenv
+    pyenv init --path | source
+    # add pyenv completions
+    pyenv init - | source
+  end
 
   # haskell
   # ghcup-env
