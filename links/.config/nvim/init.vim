@@ -93,6 +93,11 @@ Plug 'lifepillar/pgsql.vim'
 
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
+
+" db
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+
 call plug#end()
 
 "*******************************************************************************
@@ -183,6 +188,8 @@ let g:coc_global_extensions =
 \ , 'coc-go'
 \ , 'coc-metals'
 \ , 'coc-java'
+\ , 'coc-db'
+\ , 'coc-julia'
 \ ]
 let g:coc_status_error_sign = "E"
 let g:coc_status_warning_sign = "W"
