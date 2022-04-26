@@ -10,7 +10,7 @@ switch (uname)
 end
 
 set -l node_bins neovim js-beautify
-npm i -g $node_bins
+sudo npm i -g $node_bins
 
 # add plug.vim to manage plugins
 curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
