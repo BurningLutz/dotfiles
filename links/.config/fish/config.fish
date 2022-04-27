@@ -15,6 +15,12 @@ if status --is-interactive
 
   alias vim=nvim
 
+  # julia DaemonMode with Revise
+  function julias
+    julia --project -t auto --startup-file=no -e 'using Revise; using DaemonMode; serve()' &
+  end
+  alias juliac="julia --project -e 'using DaemonMode; runargs()'"
+
   # python
   # pyenv and pyenv virtualenv
   set -gx PYENV_ROOT $HOME/.pyenv
