@@ -33,6 +33,8 @@ if status --is-interactive
     # add pyenv completions
     pyenv init - | source
   end
+  # poetry
+  set -gx PATH $HOME/.poetry/bin $PATH
 
   # haskell
   # ghcup-env
