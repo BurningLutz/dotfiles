@@ -21,6 +21,9 @@ if status --is-interactive
   end
   alias juliac="julia --project -e 'using DaemonMode; runargs()'"
 
+  # .local/bin
+  set -gx PATH $HOME/.local/bin $PATH
+
   # python
   # pyenv and pyenv virtualenv
   set -gx PYENV_ROOT $HOME/.pyenv
