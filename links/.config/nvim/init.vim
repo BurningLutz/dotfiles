@@ -183,6 +183,7 @@ let g:startify_session_before_save =
 " install missing extensions
 let g:coc_global_extensions =
 \ [ 'coc-json'
+\ , 'coc-toml'
 \ , 'coc-html'
 \ , 'coc-tsserver'
 \ , 'coc-pyright'
