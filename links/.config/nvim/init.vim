@@ -151,12 +151,6 @@ let NERDTreeChDirMode  = 2
 let NERDTreeShowHidden = 1
 let NERDTreeIgnore =
 \ ['\~$'
-\ , '^node_modules$'
-\ , '^dist$'
-\ , '^dist-newstyle$'
-\ , '^bindist$'
-\ , '^.git$'
-\ , '^__pycache__$'
 \ ]
 " NERDTree <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
