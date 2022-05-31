@@ -175,6 +175,7 @@ let g:startify_session_sort = 1
 " Close all buffers not need to save
 let g:startify_session_before_save =
 \ [ 'silent! tabdo NERDTreeClose'
+\ , 'silent! call '.expand('<SID>').'close_terminal_buffers()'
 \ ]
 " startify <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -197,8 +198,8 @@ let g:coc_global_extensions =
 \ , 'coc-db'
 \ , 'coc-julia'
 \ ]
-let g:coc_status_error_sign = "E"
-let g:coc_status_warning_sign = "W"
+let g:coc_status_error_sign = 'E'
+let g:coc_status_warning_sign = 'W'
 " coc <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -396,32 +397,32 @@ function! s:show_documentation()
 endfunction
 
 function! s:get_char_ahead(len)
-    if col('$') == col('.')
-        return "\0"
-    endif
-    return strpart(getline('.'), col('.')-2 + a:len, 1)
+  if col('$') == col('.')
+    return "\0"
+  endif
+  return strpart(getline('.'), col('.')-2 + a:len, 1)
 endfunction
 
 function! s:get_char_behind(len)
-    if col('.') == 1
-        return "\0"
-    endif
-    return strpart(getline('.'), col('.') - (1 + a:len), 1)
+  if col('.') == 1
+    return "\0"
+  endif
+  return strpart(getline('.'), col('.') - (1 + a:len), 1)
 endfunction
 
 function! s:get_next_char()
-    return s:get_char_ahead(1)
+  return s:get_char_ahead(1)
 endfunction
 
 function! s:get_prev_char()
-    return s:get_char_behind(1)
+  return s:get_char_behind(1)
 endfunction
 
 function! s:is_empty_pair()
-    let l:prev = s:get_prev_char()
-    let l:next = s:get_next_char()
-    let l:auto_close_pairs = { "{": "}", "(": ")", "[": "]" }
-    return (l:next != "\0") && (get(l:auto_close_pairs, l:prev, "\0") == l:next)
+  let l:prev = s:get_prev_char()
+  let l:next = s:get_next_char()
+  let l:auto_close_pairs = { "{": "}", "(": ")", "[": "]" }
+  return (l:next != "\0") && (get(l:auto_close_pairs, l:prev, "\0") == l:next)
 endfunction
 
 function! s:prev_char_is_pair()
@@ -430,4 +431,16 @@ endfunction
 
 function! s:syntax_item()
   return synIDattr(synID(line("."),col("."),1),"name")
+endfunction
+
+function! s:close_terminal_buffers()
+  let l:termlist = split(execute([':buffers R', ':buffers F']), "\n")
+
+  for l:bufstr in l:termlist
+    if l:bufstr =~ 'term://'
+      let l:bufnum = matchstr(l:bufstr, '\d+')
+
+      execute(':bdelete! '.l:bufnum)
+    endif
+  endfor
 endfunction
