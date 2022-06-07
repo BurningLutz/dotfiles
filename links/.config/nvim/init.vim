@@ -58,6 +58,10 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'rhysd/vim-gfm-syntax'
 " markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
+" markdown generate toc
+Plug 'mzlogin/vim-markdown-toc'
+" table mode
+Plug 'dhruvasagar/vim-table-mode'
 " User defined textobj support and text object for xml/html attrs
 Plug 'kana/vim-textobj-user'
 Plug 'inside/vim-textobj-jsxattr'
