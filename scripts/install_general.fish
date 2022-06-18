@@ -8,6 +8,14 @@ nix-env -iA nixpkgs.git                      \
             nixpkgs.poetry                   \
             nixpkgs.nodePackages.js-beautify \
 
+# win32yank
+pushd /tmp
+curl -fLO https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
+unzip win32yank-x64.zip
+chmod +x win32yank.exe
+mv win32yank.exe $HOME/.local/bin
+popd
+
 # add plug.vim to manage plugins
 curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
           https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

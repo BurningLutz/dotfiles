@@ -1,4 +1,6 @@
-cd links
+mkdir -p $HOME/.local/bin
+
+pushd links
 
 set -l items (find . -type f | sed "s|^\./||")
 
@@ -8,3 +10,5 @@ for item in $items
   mkdir -p $basepath
   ln -sf $PWD/$item $basepath
 end
+
+popd
