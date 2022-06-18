@@ -1,5 +1,3 @@
-#!/usr/bin/env fish
-
 cd links
 
 set -l items (find . -type f | sed "s|^\./||")

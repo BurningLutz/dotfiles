@@ -57,7 +57,7 @@ Plug 'heavenshell/vim-jsdoc'
 " GFM syntax highlight
 Plug 'rhysd/vim-gfm-syntax'
 " markdown preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " markdown generate toc
 Plug 'mzlogin/vim-markdown-toc'
 " table mode
