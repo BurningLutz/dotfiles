@@ -108,8 +108,8 @@ call plug#end()
 " SETTINGS                                                                     *
 "*******************************************************************************
 " global stuffs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let g:python3_host_prog = '/usr/local/bin/python3'
 let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
 let g:pyindent_open_paren = 0
 let g:python_recommended_style = 0
 " global stuffs <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

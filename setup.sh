@@ -11,4 +11,4 @@ fi
 nix-env -iA nixpkgs.fish
 
 fish ./scripts/link_files.fish
-fish ./scripts/install_general.fish
+fish --login ./scripts/install_general.fish
