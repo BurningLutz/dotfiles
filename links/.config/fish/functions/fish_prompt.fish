@@ -14,4 +14,7 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     echo -n -s "$USER" @ (prompt_hostname) ' ' "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_vcs" (__fish_vcs_prompt) "$__fish_prompt_normal" '> '
+
+    # tell WSL the current CWD
+    printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
 end

@@ -13,3 +13,5 @@
 
 [core]
   quotepath = false
+[credential]
+	helper = store

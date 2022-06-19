@@ -11,7 +11,7 @@ nix-env -iA nixpkgs.git                      \
 # win32yank
 pushd /tmp
 curl -fLO https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
-unzip win32yank-x64.zip
+unzip -o win32yank-x64.zip win32yank.exe
 chmod +x win32yank.exe
 mv win32yank.exe $HOME/.local/bin
 popd
