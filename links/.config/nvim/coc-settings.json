@@ -10,7 +10,6 @@
   },
 
   "coc.preferences.useQuickfixForLocations": true,
-  "codeLens.enable": true,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.floatConfig": {
