@@ -345,11 +345,11 @@ nmap <silent> <S-A-p> :CocList grep<CR>
 " Map <C-A-d> to do :CocList diagnostics
 nmap <silent> <S-A-d> :CocList diagnostics<CR>
 " Map <A-f> to do :CocFix
-nmap <silent> <A-f> :CocFix<CR>
+nmap <silent> <A-f> <Plug>(coc-fix-current)
 " Map <A-a> to do coc-codeaction-cursor
 nmap <silent> <A-a> <Plug>(coc-codeaction-cursor)
 " Map <A-c> to do coc-codelens-action
-nmap <silent> <A-c> <Plug>(coc-codelens-action)
+" nmap <silent> <A-c> <Plug>(coc-codelens-action)
 " Map <A-]>(it's similar to <C-]>, which jump to a tag) to jump to definition
 nmap <silent> <A-]> <Plug>(coc-definition)
 " Map <A-r> to jump to (r)eferences
