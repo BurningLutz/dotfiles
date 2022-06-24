@@ -10,6 +10,8 @@ if status --is-login
   set -x LANG en_US.UTF-8
   # set true color
   set -x COLORTERM truecolor
+  # cabal config location
+  set -x CABAL_CONFIG $HOME/.config/cabal/config
 end
 
 if status --is-interactive
