@@ -22,4 +22,7 @@ if status --is-interactive
 
   # .local/bin
   fish_add_path --path $HOME/.local/bin
+
+  # pyenv
+  fish_add_path --path $HOME/.pyenv/bin
 end
