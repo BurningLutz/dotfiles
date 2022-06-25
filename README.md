@@ -14,3 +14,9 @@ Simply run `setup.sh`. Don't worry, it's idempotent. :tada::tada::tada:
 
 1. Download and install fonts inside the `windows/fonts` dir.
 2. Replace Windows Terminal config file with `windows/windows-terminal/config.json`.
+
+# Language Specific Scripts
+
+There are some installation scripts specific to different languages under the `scripts/lang` dir, they are not executed by default.
+
+Run them standalone as you need.

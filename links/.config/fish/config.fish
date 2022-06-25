@@ -12,6 +12,8 @@ if status --is-login
   set -x COLORTERM truecolor
   # cabal config location
   set -x CABAL_CONFIG $HOME/.config/cabal/config
+  # ghcup use XDG
+  set -x GHCUP_USE_XDG_DIRS 1
 end
 
 if status --is-interactive
