@@ -57,7 +57,7 @@ Plug 'heavenshell/vim-jsdoc'
 " GFM syntax highlight
 Plug 'rhysd/vim-gfm-syntax'
 " markdown preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " markdown generate toc
 Plug 'mzlogin/vim-markdown-toc'
 " table mode
@@ -108,8 +108,8 @@ call plug#end()
 " SETTINGS                                                                     *
 "*******************************************************************************
 " global stuffs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let g:python3_host_prog = '/usr/local/bin/python3'
 let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
 let g:pyindent_open_paren = 0
 let g:python_recommended_style = 0
 " global stuffs <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -195,10 +195,17 @@ let g:coc_global_extensions =
 \ , 'coc-java'
 \ , 'coc-db'
 \ , 'coc-julia'
+\ , 'coc-clangd'
 \ ]
 let g:coc_status_error_sign = 'E'
 let g:coc_status_warning_sign = 'W'
 " coc <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+" markdown >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let g:vmt_auto_update_on_save = 0
+let g:vmt_fence_text = 'TOC'
+let g:vmt_list_item_char = '-'
+" markdown <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let g:vim_jsx_pretty_highlight_close_tag = 1

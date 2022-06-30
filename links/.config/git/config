@@ -1,0 +1,17 @@
+[github]
+  user = BurningLutz
+
+[user]
+  name = Lutz
+  email = lutz.l.burning@gmail.com
+
+[alias]
+  st = status
+
+[pager]
+  status = true
+
+[core]
+  quotepath = false
+[credential]
+  helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager-core.exe

@@ -4,16 +4,19 @@ My dot files.
 
 # Prerequisites
 
-Install [fish shell](https://fishshell.com/).
+Install [Nix](https://nixos.org/download.html).
 
 # General Installation
 
 Simply run `setup.sh`. Don't worry, it's idempotent. :tada::tada::tada:
 
-# Language Specific Installation
+# Additional Steps For Windows
 
-There are many language specific install scripts under `scripts/langs` directory which are not install by default. You can install them yourself to get language specific support.
+1. Download and install fonts inside the `windows/fonts` dir.
+2. Replace Windows Terminal config file with `windows/windows-terminal/config.json`.
 
-## macOS
+# Language Specific Scripts
 
-When used on macOS, the user should first install homebrew.
+There are some installation scripts specific to different languages under the `scripts/lang` dir, they are not executed by default.
+
+Run them standalone as you need.

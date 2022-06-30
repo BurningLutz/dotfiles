@@ -1,6 +1,6 @@
-#!/usr/bin/env fish
+mkdir -p $HOME/.local/bin
 
-cd links
+pushd links
 
 set -l items (find . -type f | sed "s|^\./||")
 
@@ -10,3 +10,5 @@ for item in $items
   mkdir -p $basepath
   ln -sf $PWD/$item $basepath
 end
+
+popd
