@@ -201,6 +201,12 @@ let g:coc_status_error_sign = 'E'
 let g:coc_status_warning_sign = 'W'
 " coc <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+" markdown >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let g:vmt_auto_update_on_save = 0
+let g:vmt_fence_text = 'TOC'
+let g:vmt_list_item_char = '-'
+" markdown <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let g:vim_jsx_pretty_highlight_close_tag = 1
 " Prompt for doc generating
