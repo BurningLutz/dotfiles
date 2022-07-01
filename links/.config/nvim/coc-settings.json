@@ -39,5 +39,8 @@
 
   "sql.database": "postgresql",
 
-  "julia.lint.missingrefs": "all"
+  "julia.lint.missingrefs": "all",
+
+  "Lua.telemetry.enable": true,
+  "sumneko-lua.enableNvimLuaDev": true
 }

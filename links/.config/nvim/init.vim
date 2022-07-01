@@ -196,6 +196,7 @@ let g:coc_global_extensions =
 \ , 'coc-db'
 \ , 'coc-julia'
 \ , 'coc-clangd'
+\ , 'coc-sumneko-lua'
 \ ]
 let g:coc_status_error_sign = 'E'
 let g:coc_status_warning_sign = 'W'
