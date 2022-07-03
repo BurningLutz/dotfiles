@@ -35,6 +35,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 " auto close pairs
 Plug 'BurningLutz/vim-autoclose'
+" block-wise alignment
+Plug 'BurningLutz/blockalign.nvim'
 " Jenkinsfile syntax
 Plug 'martinda/Jenkinsfile-vim-syntax'
 " basis <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
