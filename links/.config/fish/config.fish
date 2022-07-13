@@ -22,10 +22,8 @@ if status --is-interactive
 
   alias vim=nvim
 
-  if type -q wslpath
-    function open
-      explorer.exe (wslpath -aw $argv)
-    end
+  if type -q wslview
+    alias open=wslview
   end
 
   # .local/bin
