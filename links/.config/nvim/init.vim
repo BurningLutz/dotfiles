@@ -28,7 +28,7 @@ Plug 'vim-scripts/Align'
 " Search and replace through the whole project
 Plug 'dyng/ctrlsf.vim'
 " auto-complete
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neoclide/coc.nvim', { 'branch': 'v0.0.81' }
 " repeat plugin map
 Plug 'tpope/vim-repeat'
 " comment stuffs easily
