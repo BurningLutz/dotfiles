@@ -299,8 +299,6 @@ set splitright
 " Don't use swap files. Cause more trouble than they're worth; saving often,
 " undofiles, and committing often are better ways to avoid losing things.
 set noswapfile
-" Set language to en
-language en_US.UTF-8
 " reduce updatetime
 set updatetime=100
 
