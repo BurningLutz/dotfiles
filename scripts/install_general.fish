@@ -1,6 +1,6 @@
 # install wslu from ppa
-sudo apt remove wslu
-sudo add-apt-repository ppa:wslutilities/wslu
+sudo apt remove wslu -y
+sudo add-apt-repository ppa:wslutilities/wslu -y
 sudo apt update
 sudo apt install -y wslu
 
@@ -11,20 +11,23 @@ nix-env -iA nixpkgs.git                      \
             nixpkgs.unzip                    \
             nixpkgs.neovim                   \
             nixpkgs.nodejs                   \
-            nixpkgs.yarn                     \
             nixpkgs.poetry                   \
             nixpkgs.nodePackages.js-beautify \
 
-# win32yank
-pushd /tmp
-curl -fLO https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
-unzip -o win32yank-x64.zip win32yank.exe
-chmod +x win32yank.exe
-mv win32yank.exe $HOME/.local/bin
-popd
+# only install win32yank when not available
+if not type -q win32yank.exe
+  set ZIPNAME (mktemp)
+  set EXENAME (mktemp)
 
-# add plug.vim to manage plugins
-curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  curl -fL -o $ZIPNAME https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
+  unzip -p $ZIPNAME win32yank.exe > $EXENAME
+  chmod +x $EXENAME
+  mv $EXENAME $HOME/.local/bin/win32yank.exe
+end
 
-nvim -c PlugInstall -c qa
+# only install packer.nvim to manage plugins when not available
+set PACKERPATH $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
+if not test -d $PACKERPATH
+  git clone --depth 1 https://github.com/wbthomason/packer.nvim $PACKERPATH
+  nvim --headless -c "autocmd User PackerComplete quitall" -c PackerSync
+end
