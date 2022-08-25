@@ -4,6 +4,32 @@
 " Plugins are declared within lua/plugins.lua
 lua require("plugins")
 
+lua << EOF
+require"nvim-treesitter.configs".setup
+{ auto_install = true
+, highlight    = { enable = true
+                 , additional_vim_regex_highlighting = false
+                 }
+, textobjects  = { select = { enable          = true
+                            , keymaps         = { ["af"] = "@function.outer"
+                                                , ["if"] = "@function.inner"
+                                                , ["ac"] = "@class.outer"
+                                                , ["ic"] = "@class.inner"
+                                                }
+                            , selection_modes = { ["@function.outer"] = "V"
+                                                , ["@class.outer"]    = "V"
+                                                }
+                            , include_surrounding_whitespace = true
+                            }
+                 , swap   = { enable        = true
+                            , swap_next     = { ["<leader>p"] = { "@parameter.inner" }
+                                              }
+                            , swap_previous = { ["<leader>P"] = { "@parameter.inner" }
+                                          }
+                            }
+                 }
+}
+EOF
 "*******************************************************************************
 " SETTINGS                                                                     *
 "*******************************************************************************
