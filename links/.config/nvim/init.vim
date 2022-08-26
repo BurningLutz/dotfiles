@@ -33,46 +33,31 @@ EOF
 "*******************************************************************************
 " SETTINGS                                                                     *
 "*******************************************************************************
-" global stuffs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" neovim builtins >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
 let g:pyindent_open_paren = 0
 let g:python_recommended_style = 0
-" global stuffs <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" vim-clojure-static >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" vim-autoclose >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let g:AutoClosePreserveDotReg = 0
 map <silent> ( [(
 map <silent> ) ])
-" vim-clojure-static <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" set color theme >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" vim-hybrid >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " set options for hybrid color scheme, the order here makes sense
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 " Try to set color scheme
 silent! colorscheme hybrid
 set background=dark
-" set color theme <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" emmet >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let g:user_emmet_leader_key = '<c-q>'
-" Let emmet expand abbr for react
-let g:user_emmet_settings = {
-\  'javascript.jsx' : {
-\      'extends' : 'jsx',
-\  },
-\}
-" emmet <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-" GitGutter >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" vim-gitgutter >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " realtime update
 let g:gitgutter_terminal_reports_focus = 0
-
-hi! link SignColumn LineNr
-hi link GitGutterAdd diffAdded
+hi! link SignColumn      LineNr
+hi link GitGutterAdd    diffAdded
 hi link GitGutterDelete diffRemoved
-" GitGutter <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " NERDTree >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Change CWD whenever the root of NERDTree is changed. This is used for
@@ -84,7 +69,7 @@ let NERDTreeIgnore =
 \ ]
 " NERDTree <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" startify >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" vim-startify >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Change session dir to nvim style
 let g:startify_session_dir = '~/.local/share/nvim/session'
 " Change startify's list order
@@ -101,9 +86,8 @@ let g:startify_session_before_save =
 \ [ 'silent! tabdo NERDTreeClose'
 \ , 'silent! call '.expand('<SID>').'close_terminal_buffers()'
 \ ]
-" startify <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" coc >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" coc.nvim >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " install missing extensions
 let g:coc_global_extensions =
 \ [ 'coc-json'
@@ -126,49 +110,15 @@ let g:coc_global_extensions =
 \ ]
 let g:coc_status_error_sign = 'E'
 let g:coc_status_warning_sign = 'W'
-" coc <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" markdown >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" vim-markdown-toc >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let g:vmt_auto_update_on_save = 0
 let g:vmt_fence_text = 'TOC'
 let g:vmt_list_item_char = '-'
-" markdown <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " web related >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let g:vim_jsx_pretty_highlight_close_tag = 1
-" Prompt for doc generating
-let g:jsdoc_input_description = 1
-let g:jsdoc_allow_input_prompt = 1
-let g:jsdoc_underscore_private = 1
-let g:jsdoc_enable_es6 = 1
-" Highlight jsdoc
-let g:javascript_plugin_jsdoc = 1
-" Highlight code block in markdown
-let g:markdown_fenced_languages = ['json', 'js=javascript', 'jsx=javascript',
-                                  \'html', 'css', 'scss']
-
 " Required for operations modifying multiple buffers like rename.
 set hidden
-
-" highlight jsObjectKey for vim-javascript
-hi link jsObjectKey Label
-" web related <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-" purescript >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let purescript_indent_if = 2
-let purescript_indent_case = 2
-let purescript_indent_let = 2
-let purescript_indent_where = 2
-let purescript_indent_do = 2
-" purescript <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-" haskell >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let g:haskell_enable_recursivedo = 1
-" haskell <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-" postgres >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-let g:sql_type_default = 'pgsql'
-" postgres <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " editorconfig >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
@@ -235,8 +185,6 @@ set cursorcolumn
 "*******************************************************************************
 " HOOKS                                                                        *
 "*******************************************************************************
-au BufRead *.purs set fo+=rol fo-=t
-au BufRead *.jsx set ft=javascript.jsx
 
 "*******************************************************************************
 " KEYMAPS                                                                      *
@@ -293,8 +241,6 @@ nmap <silent> <A-(> <Plug>(coc-diagnostic-prev)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 " auto align columns inside `create table`
 vmap <silent> <A-s> :Align! 0p0P-l \s\S<CR>
-" map gl to echo syntax highlight group under cursor
-nmap <silent> gl :echo <SID>syntax_item()<CR>
 
 " mapping for hover scroll
 nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1, 10) : "\<C-f>"
@@ -357,10 +303,6 @@ endfunction
 
 function! s:prev_char_is_pair()
   return s:is_empty_pair() && stridx("[{(", s:get_prev_char()) >= 0
-endfunction
-
-function! s:syntax_item()
-  return synIDattr(synID(line("."),col("."),1),"name")
 endfunction
 
 function! s:close_terminal_buffers()
