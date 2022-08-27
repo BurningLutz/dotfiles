@@ -1,5 +1,6 @@
 local opt = vim.opt
 local cmd = vim.cmd
+local map = vim.keymap
 local fn  = vim.fn
 local g   = vim.g
 
@@ -64,24 +65,24 @@ g.terminal_color_15        = "#DCDFE4"
 
 -- vim-autoclose
 g.AutoClosePreserveDotReg = false
-vim.keymap.set("", "(", "[(")
-vim.keymap.set("", ")", "])")
+map.set("", "(", "[(")
+map.set("", ")", "])")
 
 
 -- vim-hybrid
 -- set options for hybrid color scheme, the order here makes sense
 g.hybrid_custom_term_colors = true
 g.hybrid_reduced_contrast   = true
-cmd("silent! colorscheme hybrid")
+cmd "silent! colorscheme hybrid"
 opt.background = "dark"
 
 
 -- vim-gitgutter
 -- realtime update
 g.gitgutter_terminal_reports_focus = false
-cmd("hi! link SignColumn      LineNr")
-cmd("hi  link GitGutterAdd    diffAdded")
-cmd("hi  link GitGutterDelete diffRemoved")
+cmd "hi! link SignColumn      LineNr"
+cmd "hi  link GitGutterAdd    diffAdded"
+cmd "hi  link GitGutterDelete diffRemoved"
 
 
 -- NERDTree
@@ -111,7 +112,7 @@ g.startify_session_sort        = true
 -- Close all buffers not need to save
 g.startify_session_before_save = { "silent! tabdo NERDTreeClose"
                                  , "silent! call "
-                                     .. fn.expand("<SID>")
+                                     .. fn.expand "<SID>"
                                      .. "close_terminal_buffers()"
                                  }
 
@@ -145,3 +146,60 @@ g.vmt_list_item_char      = "-"
 
 -- editorconfig
 g.EditorConfig_exclude_patterns = { "fugitive://.*" }
+
+-- keymaps
+-- Map switch of NERDTree to A-n
+map.set("", "<A-n>", ":NERDTreeToggle<CR>", { silent = true })
+-- Map sub-word movement commands
+map.set("", "<A-w>", "<Plug>CamelCaseMotion_w", { silent = true })
+map.set("", "<A-b>", "<Plug>CamelCaseMotion_b", { silent = true })
+map.set("", "<A-e>", "<Plug>CamelCaseMotion_e", { silent = true })
+-- Map [[ and ]] to move in err list
+map.set("", "[[", ":lprevious<CR>", { silent = true })
+map.set("", "]]", ":lnext<CR>"    , { silent = true })
+-- Efficient tab management
+map.set("", "<S-A-h>", ":tabprevious<CR>", { silent = true })
+map.set("", "<S-A-l>", ":tabnext<CR>"    , { silent = true })
+map.set("", "<A-t>"  , ":tabnew<CR>"     , { silent = true })
+map.set("", "<S-A-w>", ":tabclose<CR>"   , { silent = true })
+-- Efficient buffer switching
+map.set("", "<A-h>", ":bprevious<CR>", { silent = true })
+map.set("", "<A-l>", ":bnext<CR>"    , { silent = true })
+-- Efficient pane switching
+map.set("", "<C-h>", "<C-w>h", { silent = true })
+map.set("", "<C-l>", "<C-w>l", { silent = true })
+map.set("i", "<Tab>", "pumvisible() ? '<Down>' : '<Tab>'", { expr = true })
+map.set("i", "<S-Tab>", "pumvisible() ? '<Up>' : '<S-Tab>'", { expr = true })
+map.set("i", "<C-x><C-o>", "coc#refresh()", { expr = true })
+
+map.set("i", "<CR>", [[
+  complete_info(['selected']).selected == -1
+  ? <SID>prev_char_is_pair()
+     ? '<C-R>="<C-V><CR><C-V><Esc>O"<CR>'
+     : '<CR>'
+  : '<C-y>'
+]], { expr = true })
+
+map.set("n", "<C-p>", ":CocList files<CR>", { silent = true })
+map.set("n", "<S-A-p>", ":CocList grep<CR>", { silent = true })
+map.set("n", "<S-A-d>", ":CocList diagnostics<CR>", { silent = true })
+map.set("n", "<A-f>", "<Plug>(coc-fix-current)", { silent = true })
+map.set("n", "<A-a>", "<Plug>(coc-codeaction-cursor)", { silent = true })
+map.set("n", "<A-c>", "<Plug>(coc-codelens-action)", { silent = true })
+map.set("n", "<A-]>", "<Plug>(coc-definition)", { silent = true })
+map.set("n", "<A-r>", "<Plug>(coc-references-used)", { silent = true })
+map.set("n", "<A-)>", "<Plug>(coc-diagnostic-next)", { silent = true })
+map.set("n", "<A-(>", "<Plug>(coc-diagnostic-prev)", { silent = true })
+map.set("n", "K", ":call <SID>show_documentation()<CR>", { silent = true })
+
+-- mapping for hover scroll
+map.set("n", "<C-f>", "coc#float#has_scroll() ? coc#float#scroll(1, 10) : <C-f>", { silent = true, expr = true })
+map.set("n", "<C-b>", "coc#float#has_scroll() ? coc#float#scroll(0, 10) : <C-b>", { silent = true, expr = true })
+map.set("i", "<C-f>", "coc#float#has_scroll() ? <C-r>=coc#float#scroll(1, 10)<CR> : <Right>", { silent = true, expr = true })
+map.set("i", "<C-b>", "coc#float#has_scroll() ? <C-r>=coc#float#scroll(0, 10)<CR> : <Left>", { silent = true, expr = true })
+
+-- mapping for command line readline-style moves
+map.set("c", "<C-a>", "<Home>")
+map.set("c", "<C-b>", "<Left>")
+map.set("c", "<C-d>", "<Del>")
+map.set("c", "<C-f>", "<Right>")

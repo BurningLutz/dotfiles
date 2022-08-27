@@ -218,29 +218,17 @@ imap <expr> <CR>
       \    ? '<C-R>="<C-V><CR><C-V><Esc>O"<CR>'
       \    : '<CR>'
       \ : '<C-y>'
-" Map <C-p> to do :CocList files
 nmap <silent> <C-p> :CocList files<CR>
-" Map <C-A-p> to do :CocList lines
 nmap <silent> <S-A-p> :CocList grep<CR>
-" Map <C-A-d> to do :CocList diagnostics
 nmap <silent> <S-A-d> :CocList diagnostics<CR>
-" Map <A-f> to do :CocFix
 nmap <silent> <A-f> <Plug>(coc-fix-current)
-" Map <A-a> to do coc-codeaction-cursor
 nmap <silent> <A-a> <Plug>(coc-codeaction-cursor)
-" Map <A-c> to do coc-codelens-action
 " nmap <silent> <A-c> <Plug>(coc-codelens-action)
-" Map <A-]>(it's similar to <C-]>, which jump to a tag) to jump to definition
 nmap <silent> <A-]> <Plug>(coc-definition)
-" Map <A-r> to jump to (r)eferences
 nmap <silent> <A-r> <Plug>(coc-references-used)
-" Map coc-diagnostic-next
 nmap <silent> <A-)> <Plug>(coc-diagnostic-next)
-" Map coc-diagnostic-prev
 nmap <silent> <A-(> <Plug>(coc-diagnostic-prev)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-" auto align columns inside `create table`
-vmap <silent> <A-s> :Align! 0p0P-l \s\S<CR>
 
 " mapping for hover scroll
 nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1, 10) : "\<C-f>"
