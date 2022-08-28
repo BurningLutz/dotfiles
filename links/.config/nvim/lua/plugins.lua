@@ -45,9 +45,13 @@ require "packer".startup(function (use)
                 end
       }
   -- markdown generate toc.
-  use "mzlogin/vim-markdown-toc"
+  use { "mzlogin/vim-markdown-toc"
+      , ft = { "markdown" }
+      }
   -- markdown table mode.
-  use "dhruvasagar/vim-table-mode"
+  use { "dhruvasagar/vim-table-mode"
+      , ft = { "markdown" }
+      }
   -- editorconfig.
   use "editorconfig/editorconfig-vim"
   -- db.
@@ -55,9 +59,36 @@ require "packer".startup(function (use)
   use "kristijanhusak/vim-dadbod-ui"
   -- treesitter, the syntax parser providing highlighting and textobjects.
   use { "nvim-treesitter/nvim-treesitter"
-      , run = function ()
-                require "nvim-treesitter.install".update { with_sync = true }
-              end
+      , run    = function ()
+                   require "nvim-treesitter.install".update { with_sync = true }
+                 end
+      , config = function ()
+                   require "nvim-treesitter.configs".setup
+                   { auto_install = true
+                   , highlight    = { enable = true
+                                    , additional_vim_regex_highlighting = false
+                                    }
+                   , textobjects  = { select = { enable          = true
+                                               , keymaps         = { ["af"] = "@function.outer"
+                                                                   , ["if"] = "@function.inner"
+                                                                   , ["ac"] = "@class.outer"
+                                                                   , ["ic"] = "@class.inner"
+                                                                   }
+                                               , selection_modes = { ["@function.outer"] = "V"
+                                                                   , ["@class.outer"]    = "V"
+                                                                   }
+                                               , include_surrounding_whitespace = true
+                                               }
+                                    , swap   = { enable        = true
+                                               , swap_next     = { ["<leader>p"] = { "@parameter.inner" }
+                                                                 }
+                                               , swap_previous = { ["<leader>P"] = { "@parameter.inner" }
+                                                             }
+                                               }
+                                    }
+                   , rainbow      = { enable = true }
+                   }
+                 end
       }
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "p00f/nvim-ts-rainbow"
