@@ -1,3 +1,4 @@
+-- # CONFIG PRIMITIVES ########################################################
 local opt = vim.opt
 local cmd = vim.cmd
 local fn  = vim.fn
@@ -12,15 +13,59 @@ local function map(args)
   vim.keymap.set(mode, lhs, rhs, args)
 end
 
+-- # FUNCTIONS #################################################################
+local function showdoc()
+  if fn.index({ "vim", "help" }, opt.filetype:get()) >= 0 then
+    cmd "execute 'h '.expand('<cword>')"
+  else
+    fn.CocAction("doHover")
+  end
+end
 
--- options
+-- # PLUGINS ###################################################################
+require "plugins"
+
+require "nvim-treesitter.configs".setup
+{ auto_install = true
+, highlight    = { enable = true
+                 , additional_vim_regex_highlighting = false
+                 }
+, textobjects  = { select = { enable          = true
+                            , keymaps         = { ["af"] = "@function.outer"
+                                                , ["if"] = "@function.inner"
+                                                , ["ac"] = "@class.outer"
+                                                , ["ic"] = "@class.inner"
+                                                }
+                            , selection_modes = { ["@function.outer"] = "V"
+                                                , ["@class.outer"]    = "V"
+                                                }
+                            , include_surrounding_whitespace = true
+                            }
+                 , swap   = { enable        = true
+                            , swap_next     = { ["<leader>p"] = { "@parameter.inner" }
+                                              }
+                            , swap_previous = { ["<leader>P"] = { "@parameter.inner" }
+                                          }
+                            }
+                 }
+}
+
+-- # EDITOR OPTIONS ############################################################
+-- I use dark color scheme.
+opt.background    = "dark"
+
+-- hide a buffer instead of unloading it.
 opt.hidden        = true
+
 -- treat ambiguous-width chars as single width.
 opt.ambiwidth     = "single"
+
 -- make completion for command line mode acts like readline.
 opt.wildmode      = { "longest", "full" }
+-- my favorite completion style.
 opt.completeopt   = { "menu", "longest", "noselect" }
 
+-- 24-bits true color.
 opt.termguicolors = true
 
 -- make tab to insert two spaces.
@@ -34,11 +79,14 @@ opt.listchars     = { tab = ">-", trail = "-", nbsp = "+" }
 
 -- show line number.
 opt.number        = true
+
 -- open new pane at right bottom.
 opt.splitbelow    = true
 opt.splitright    = true
 
+-- swap files cause more trouble.
 opt.swapfile      = false
+-- reduce updatetime to trigger CursorHold event more frequently.
 opt.updatetime    = 100
 
 -- always show sign columns.
@@ -48,7 +96,8 @@ opt.signcolumn    = "yes"
 opt.cursorline    = true
 opt.cursorcolumn  = true
 
--- neovim builtins
+-- # CONFIG VARIABLES ##########################################################
+-- # neovim builtins.
 g.loaded_ruby_provider     = false
 g.loaded_perl_provider     = false
 g.pyindent_open_paren      = false
@@ -70,57 +119,50 @@ g.terminal_color_13        = "#C678DD"
 g.terminal_color_14        = "#56B6C2"
 g.terminal_color_15        = "#DCDFE4"
 
-
--- vim-autoclose
+-- # vim-autoclose
 g.AutoClosePreserveDotReg = false
 
-
--- vim-hybrid
--- set options for hybrid color scheme, the order here makes sense
+-- # vim-hybrid
+-- the dimmer color scheme.
 g.hybrid_custom_term_colors = true
 g.hybrid_reduced_contrast   = true
 cmd "silent! colorscheme hybrid"
-opt.background = "dark"
 
-
--- vim-gitgutter
+-- # vim-gitgutter
 -- realtime update
 g.gitgutter_terminal_reports_focus = false
 cmd "hi! link SignColumn      LineNr"
 cmd "hi  link GitGutterAdd    diffAdded"
 cmd "hi  link GitGutterDelete diffRemoved"
 
-
--- NERDTree
--- Change CWD whenever the root of NERDTree is changed. This is used for
--- auto-ch againest bookmark
+-- # nerdtree
+-- change CWD whenever the root of NERDTree is changed.
+-- this is used for auto-ch againest bookmark.
 g.NERDTreeChDirMode  = 2
 g.NERDTreeShowHidden = true
-g.NERDTreeIgnore     = { "\\~$" }
 
-
--- vim-startify
--- Change session dir to nvim style
+-- # vim-startify
+-- change session dir to nvim style.
 g.startify_session_dir         = "~/.local/share/nvim/session"
--- Change startify's list order
+-- change startify's list order.
 g.startify_list_order          = { "sessions"
                                  , "bookmarks"
                                  , "dir"
                                  , "files"
                                  , "commands"
                                  }
--- Always update old files
+-- always update old files.
 g.startify_update_oldfiles     = true
--- Auto-save when opening a new session or leaving vim
+-- auto-save when opening a new session or leaving vim.
 g.startify_session_persistence = true
--- Sort sessions by modification time
+-- sort sessions by modification time.
 g.startify_session_sort        = true
--- Close all buffers not need to save
+-- close all buffers not need to save.
 g.startify_session_before_save = { "silent! tabdo NERDTreeClose"
                                  }
 
--- coc.nvim
--- install missing extensions
+-- # coc.nvim
+-- install missing extensions.
 g.coc_global_extensions   = { "coc-json"
                             , "coc-toml"
                             , "coc-html"
@@ -142,64 +184,62 @@ g.coc_global_extensions   = { "coc-json"
 g.coc_status_error_sign   = "E"
 g.coc_status_warning_sign = "W"
 
--- vim-markdown-toc
+-- # vim-markdown-toc
 g.vmt_auto_update_on_save = false
 g.vmt_fence_text          = "TOC"
 g.vmt_list_item_char      = "-"
 
--- editorconfig
+-- # editorconfig
 g.EditorConfig_exclude_patterns = { "fugitive://.*" }
 
--- keymaps
-
+-- # KEYMAPS ###################################################################
 map { "", "(", "[(" }
 map { "", ")", "])" }
--- Map switch of NERDTree to A-n
 map { "", "<A-n>", ":NERDTreeToggle<CR>" }
--- Map sub-word movement commands
+-- sub-word movements.
 map { "", "<A-w>", "<Plug>CamelCaseMotion_w" }
 map { "", "<A-b>", "<Plug>CamelCaseMotion_b" }
 map { "", "<A-e>", "<Plug>CamelCaseMotion_e" }
--- Map [[ and ]] to move in err list
+-- err list movements.
 map { "", "[[", ":lprevious<CR>" }
 map { "", "]]", ":lnext<CR>" }
--- Efficient tab management
+-- tab managements.
 map { "", "<S-A-h>", ":tabprevious<CR>" }
 map { "", "<S-A-l>", ":tabnext<CR>" }
 map { "", "<A-t>"  , ":tabnew<CR>" }
 map { "", "<S-A-w>", ":tabclose<CR>" }
--- Efficient buffer switching
+-- buffer switching.
 map { "", "<A-h>", ":bprevious<CR>" }
 map { "", "<A-l>", ":bnext<CR>" }
--- Efficient pane switching
+-- pane switching.
 map { "", "<C-h>", "<C-w>h" }
 map { "", "<C-l>", "<C-w>l" }
+-- coc.
 map { "i", "<Tab>"  , "pumvisible() ? '<Down>' : '<Tab>'", expr = true }
 map { "i", "<S-Tab>", "pumvisible() ? '<Up>' : '<S-Tab>'", expr = true }
 map { "i", "<C-x><C-o>", "coc#refresh()", expr = true }
-
 map { "i", "<CR>", "complete_info(['selected']).selected == -1 ? '<CR>' : '<C-y>'", expr = true }
-
 map { "n", "<C-p>"  , ":CocList files<CR>" }
 map { "n", "<S-A-p>", ":CocList grep<CR>" }
 map { "n", "<S-A-d>", ":CocList diagnostics<CR>" }
 map { "n", "<A-f>", "<Plug>(coc-fix-current)" }
 map { "n", "<A-a>", "<Plug>(coc-codeaction-cursor)" }
-map { "n", "<A-c>", "<Plug>(coc-codelens-action)" }
+-- map { "n", "<A-c>", "<Plug>(coc-codelens-action)" }
 map { "n", "<A-]>", "<Plug>(coc-definition)" }
 map { "n", "<A-r>", "<Plug>(coc-references-used)" }
 map { "n", "<A-)>", "<Plug>(coc-diagnostic-next)" }
 map { "n", "<A-(>", "<Plug>(coc-diagnostic-prev)" }
-map { "n", "K", ":call show_documentation()<CR>" }
-
--- mapping for hover scroll
-map { "n", "<C-f>", "coc#float#has_scroll() ? coc#float#scroll(1, 10) : '<C-f>'"            , expr = true }
-map { "n", "<C-b>", "coc#float#has_scroll() ? coc#float#scroll(0, 10) : '<C-b>'"            , expr = true }
-map { "i", "<C-f>", "coc#float#has_scroll() ? <C-r>=coc#float#scroll(1, 10)<CR> : '<Right>'", expr = true }
-map { "i", "<C-b>", "coc#float#has_scroll() ? <C-r>=coc#float#scroll(0, 10)<CR> : '<Left>'" , expr = true }
-
--- mapping for command line readline-style moves
+map { "n", "K", showdoc }
+-- hover scroll.
+map { "n", "<C-f>", "coc#float#has_scroll() ? coc#float#scroll(1, 10) : '<C-f>'", expr = true }
+map { "n", "<C-b>", "coc#float#has_scroll() ? coc#float#scroll(0, 10) : '<C-b>'", expr = true }
+map { "i", "<C-f>", "coc#float#has_scroll() ? '<C-r>=coc#float#scroll(1, 10)<CR>' : '<Right>'", expr = true }
+map { "i", "<C-b>", "coc#float#has_scroll() ? '<C-r>=coc#float#scroll(0, 10)<CR>' : '<Left>'" , expr = true }
+-- command-line mode readline-style movements.
 map { "c", "<C-a>", "<Home>" }
 map { "c", "<C-b>", "<Left>" }
 map { "c", "<C-d>", "<Del>" }
 map { "c", "<C-f>", "<Right>" }
+
+-- # COMMANDS ##################################################################
+cmd "com! CR CocRestart"
