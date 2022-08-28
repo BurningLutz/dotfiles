@@ -98,8 +98,6 @@ opt.cursorcolumn  = true
 
 -- # CONFIG VARIABLES ##########################################################
 -- # neovim builtins.
-g.loaded_ruby_provider     = false
-g.loaded_perl_provider     = false
 g.pyindent_open_paren      = false
 g.python_recommended_style = false
 g.terminal_color_0         = "#282C34"
