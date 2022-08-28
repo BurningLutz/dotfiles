@@ -1,8 +1,16 @@
 local opt = vim.opt
 local cmd = vim.cmd
-local map = vim.keymap
 local fn  = vim.fn
 local g   = vim.g
+
+local function map(args)
+  local mode, lhs, rhs = unpack(args)
+  args[1] = nil
+  args[2] = nil
+  args[3] = nil
+
+  vim.keymap.set(mode, lhs, rhs, args)
+end
 
 
 -- options
@@ -65,8 +73,6 @@ g.terminal_color_15        = "#DCDFE4"
 
 -- vim-autoclose
 g.AutoClosePreserveDotReg = false
-map.set("", "(", "[(")
-map.set("", ")", "])")
 
 
 -- vim-hybrid
@@ -111,9 +117,6 @@ g.startify_session_persistence = true
 g.startify_session_sort        = true
 -- Close all buffers not need to save
 g.startify_session_before_save = { "silent! tabdo NERDTreeClose"
-                                 , "silent! call "
-                                     .. fn.expand "<SID>"
-                                     .. "close_terminal_buffers()"
                                  }
 
 -- coc.nvim
@@ -148,58 +151,55 @@ g.vmt_list_item_char      = "-"
 g.EditorConfig_exclude_patterns = { "fugitive://.*" }
 
 -- keymaps
+
+map { "", "(", "[(" }
+map { "", ")", "])" }
 -- Map switch of NERDTree to A-n
-map.set("", "<A-n>", ":NERDTreeToggle<CR>", { silent = true })
+map { "", "<A-n>", ":NERDTreeToggle<CR>" }
 -- Map sub-word movement commands
-map.set("", "<A-w>", "<Plug>CamelCaseMotion_w", { silent = true })
-map.set("", "<A-b>", "<Plug>CamelCaseMotion_b", { silent = true })
-map.set("", "<A-e>", "<Plug>CamelCaseMotion_e", { silent = true })
+map { "", "<A-w>", "<Plug>CamelCaseMotion_w" }
+map { "", "<A-b>", "<Plug>CamelCaseMotion_b" }
+map { "", "<A-e>", "<Plug>CamelCaseMotion_e" }
 -- Map [[ and ]] to move in err list
-map.set("", "[[", ":lprevious<CR>", { silent = true })
-map.set("", "]]", ":lnext<CR>"    , { silent = true })
+map { "", "[[", ":lprevious<CR>" }
+map { "", "]]", ":lnext<CR>" }
 -- Efficient tab management
-map.set("", "<S-A-h>", ":tabprevious<CR>", { silent = true })
-map.set("", "<S-A-l>", ":tabnext<CR>"    , { silent = true })
-map.set("", "<A-t>"  , ":tabnew<CR>"     , { silent = true })
-map.set("", "<S-A-w>", ":tabclose<CR>"   , { silent = true })
+map { "", "<S-A-h>", ":tabprevious<CR>" }
+map { "", "<S-A-l>", ":tabnext<CR>" }
+map { "", "<A-t>"  , ":tabnew<CR>" }
+map { "", "<S-A-w>", ":tabclose<CR>" }
 -- Efficient buffer switching
-map.set("", "<A-h>", ":bprevious<CR>", { silent = true })
-map.set("", "<A-l>", ":bnext<CR>"    , { silent = true })
+map { "", "<A-h>", ":bprevious<CR>" }
+map { "", "<A-l>", ":bnext<CR>" }
 -- Efficient pane switching
-map.set("", "<C-h>", "<C-w>h", { silent = true })
-map.set("", "<C-l>", "<C-w>l", { silent = true })
-map.set("i", "<Tab>", "pumvisible() ? '<Down>' : '<Tab>'", { expr = true })
-map.set("i", "<S-Tab>", "pumvisible() ? '<Up>' : '<S-Tab>'", { expr = true })
-map.set("i", "<C-x><C-o>", "coc#refresh()", { expr = true })
+map { "", "<C-h>", "<C-w>h" }
+map { "", "<C-l>", "<C-w>l" }
+map { "i", "<Tab>"  , "pumvisible() ? '<Down>' : '<Tab>'", expr = true }
+map { "i", "<S-Tab>", "pumvisible() ? '<Up>' : '<S-Tab>'", expr = true }
+map { "i", "<C-x><C-o>", "coc#refresh()", expr = true }
 
-map.set("i", "<CR>", [[
-  complete_info(['selected']).selected == -1
-  ? <SID>prev_char_is_pair()
-     ? '<C-R>="<C-V><CR><C-V><Esc>O"<CR>'
-     : '<CR>'
-  : '<C-y>'
-]], { expr = true })
+map { "i", "<CR>", "complete_info(['selected']).selected == -1 ? '<CR>' : '<C-y>'", expr = true }
 
-map.set("n", "<C-p>", ":CocList files<CR>", { silent = true })
-map.set("n", "<S-A-p>", ":CocList grep<CR>", { silent = true })
-map.set("n", "<S-A-d>", ":CocList diagnostics<CR>", { silent = true })
-map.set("n", "<A-f>", "<Plug>(coc-fix-current)", { silent = true })
-map.set("n", "<A-a>", "<Plug>(coc-codeaction-cursor)", { silent = true })
-map.set("n", "<A-c>", "<Plug>(coc-codelens-action)", { silent = true })
-map.set("n", "<A-]>", "<Plug>(coc-definition)", { silent = true })
-map.set("n", "<A-r>", "<Plug>(coc-references-used)", { silent = true })
-map.set("n", "<A-)>", "<Plug>(coc-diagnostic-next)", { silent = true })
-map.set("n", "<A-(>", "<Plug>(coc-diagnostic-prev)", { silent = true })
-map.set("n", "K", ":call <SID>show_documentation()<CR>", { silent = true })
+map { "n", "<C-p>"  , ":CocList files<CR>" }
+map { "n", "<S-A-p>", ":CocList grep<CR>" }
+map { "n", "<S-A-d>", ":CocList diagnostics<CR>" }
+map { "n", "<A-f>", "<Plug>(coc-fix-current)" }
+map { "n", "<A-a>", "<Plug>(coc-codeaction-cursor)" }
+map { "n", "<A-c>", "<Plug>(coc-codelens-action)" }
+map { "n", "<A-]>", "<Plug>(coc-definition)" }
+map { "n", "<A-r>", "<Plug>(coc-references-used)" }
+map { "n", "<A-)>", "<Plug>(coc-diagnostic-next)" }
+map { "n", "<A-(>", "<Plug>(coc-diagnostic-prev)" }
+map { "n", "K", ":call show_documentation()<CR>" }
 
 -- mapping for hover scroll
-map.set("n", "<C-f>", "coc#float#has_scroll() ? coc#float#scroll(1, 10) : <C-f>", { silent = true, expr = true })
-map.set("n", "<C-b>", "coc#float#has_scroll() ? coc#float#scroll(0, 10) : <C-b>", { silent = true, expr = true })
-map.set("i", "<C-f>", "coc#float#has_scroll() ? <C-r>=coc#float#scroll(1, 10)<CR> : <Right>", { silent = true, expr = true })
-map.set("i", "<C-b>", "coc#float#has_scroll() ? <C-r>=coc#float#scroll(0, 10)<CR> : <Left>", { silent = true, expr = true })
+map { "n", "<C-f>", "coc#float#has_scroll() ? coc#float#scroll(1, 10) : '<C-f>'"            , expr = true }
+map { "n", "<C-b>", "coc#float#has_scroll() ? coc#float#scroll(0, 10) : '<C-b>'"            , expr = true }
+map { "i", "<C-f>", "coc#float#has_scroll() ? <C-r>=coc#float#scroll(1, 10)<CR> : '<Right>'", expr = true }
+map { "i", "<C-b>", "coc#float#has_scroll() ? <C-r>=coc#float#scroll(0, 10)<CR> : '<Left>'" , expr = true }
 
 -- mapping for command line readline-style moves
-map.set("c", "<C-a>", "<Home>")
-map.set("c", "<C-b>", "<Left>")
-map.set("c", "<C-d>", "<Del>")
-map.set("c", "<C-f>", "<Right>")
+map { "c", "<C-a>", "<Home>" }
+map { "c", "<C-b>", "<Left>" }
+map { "c", "<C-d>", "<Del>" }
+map { "c", "<C-f>", "<Right>" }
