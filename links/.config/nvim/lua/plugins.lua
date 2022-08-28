@@ -60,4 +60,5 @@ require "packer".startup(function (use)
               end
       }
   use "nvim-treesitter/nvim-treesitter-textobjects"
+  use "p00f/nvim-ts-rainbow"
 end)
