@@ -92,7 +92,7 @@ require "packer".startup(function (use)
                                                , swap_next     = { ["<leader>p"] = { "@parameter.inner" }
                                                                  }
                                                , swap_previous = { ["<leader>P"] = { "@parameter.inner" }
-                                                             }
+                                                                 }
                                                }
                                     }
                    , rainbow      = { enable = true }
@@ -105,6 +105,22 @@ require "packer".startup(function (use)
   use { "nvim-telescope/telescope.nvim"
       , tag    = "0.1.0"
       , config = function ()
+                   require "telescope".setup
+                   { defaults = { scroll_strategy = "limit"
+                                , borderchars     = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+                                , mappings        = { i = { ["<ESC>"] = "close"
+                                                          , ["<C-a>"] = { "<Home>"   , type = "command" }
+                                                          , ["<C-e>"] = { "<End>"    , type = "command" }
+                                                          , ["<C-d>"] = { "<Del>"    , type = "command" }
+                                                          , ["<C-b>"] = { "<Left>"   , type = "command" }
+                                                          , ["<C-f>"] = { "<Right>"  , type = "command" }
+                                                          , ["<C-u>"] = { "<C-u>"    , type = "command" }
+                                                          , ["<A-b>"] = { "<S-Left>" , type = "command" }
+                                                          , ["<A-f>"] = { "<S-Right>", type = "command" }
+                                                          }
+                                                    }
+                                }
+                   }
                    require "telescope".load_extension "fzf"
                  end
       , requires = "nvim-lua/plenary.nvim"

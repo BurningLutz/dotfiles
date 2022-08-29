@@ -166,6 +166,9 @@ g.vmt_list_item_char      = "-"
 -- # editorconfig
 g.EditorConfig_exclude_patterns = { "fugitive://.*" }
 
+-- # telescope
+cmd "hi link TelescopeMatching Search"
+
 -- # KEYMAPS ###################################################################
 map { "", "(", "[(" }
 map { "", ")", "])" }
@@ -193,12 +196,11 @@ map { "i", "<Tab>"  , "pumvisible() ? '<Down>' : '<Tab>'", expr = true }
 map { "i", "<S-Tab>", "pumvisible() ? '<Up>' : '<S-Tab>'", expr = true }
 map { "i", "<C-x><C-o>", "coc#refresh()", expr = true }
 map { "i", "<CR>", "complete_info(['selected']).selected == -1 ? '<CR>' : '<C-y>'", expr = true }
-map { "n", "<C-p>"  , ":CocList files<CR>" }
-map { "n", "<S-A-p>", ":CocList grep<CR>" }
+map { "n", "<C-p>"  , function () require "telescope.builtin".find_files { hidden = true } end }
+map { "n", "<S-A-p>", function () require "telescope.builtin".live_grep() end }
 map { "n", "<S-A-d>", ":CocList diagnostics<CR>" }
 map { "n", "<A-f>", "<Plug>(coc-fix-current)" }
 map { "n", "<A-a>", "<Plug>(coc-codeaction-cursor)" }
--- map { "n", "<A-c>", "<Plug>(coc-codelens-action)" }
 map { "n", "<A-]>", "<Plug>(coc-definition)" }
 map { "n", "<A-r>", "<Plug>(coc-references-used)" }
 map { "n", "<A-)>", "<Plug>(coc-diagnostic-next)" }
@@ -211,9 +213,12 @@ map { "i", "<C-f>", "coc#float#has_scroll() ? '<C-r>=coc#float#scroll(1, 10)<CR>
 map { "i", "<C-b>", "coc#float#has_scroll() ? '<C-r>=coc#float#scroll(0, 10)<CR>' : '<Left>'" , expr = true }
 -- command-line mode readline-style movements.
 map { "c", "<C-a>", "<Home>" }
-map { "c", "<C-b>", "<Left>" }
+map { "c", "<C-e>", "<End>" }
 map { "c", "<C-d>", "<Del>" }
+map { "c", "<C-b>", "<Left>" }
 map { "c", "<C-f>", "<Right>" }
+map { "c", "<A-b>", "<S-Left>" }
+map { "c", "<A-f>", "<S-Right>" }
 
 -- # COMMANDS ##################################################################
 cmd "com! CR CocRestart"

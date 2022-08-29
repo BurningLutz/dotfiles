@@ -6,6 +6,7 @@ sudo apt install -y wslu
 
 # common tools
 nix-env -iA nixpkgs.git                      \
+            nixpkgs.fd                       \
             nixpkgs.ripgrep                  \
             nixpkgs.tldr                     \
             nixpkgs.unzip                    \
