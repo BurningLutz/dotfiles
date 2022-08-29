@@ -101,4 +101,15 @@ require "packer".startup(function (use)
       }
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "p00f/nvim-ts-rainbow"
+  -- lists.
+  use { "nvim-telescope/telescope.nvim"
+      , tag    = "0.1.0"
+      , config = function ()
+                   require "telescope".load_extension "fzf"
+                 end
+      , requires = "nvim-lua/plenary.nvim"
+      }
+  use { "nvim-telescope/telescope-fzf-native.nvim"
+      , run = "make"
+      }
 end)
