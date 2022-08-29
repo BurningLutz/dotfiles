@@ -11,7 +11,8 @@ require "packer".startup(function (use)
       , tag    = "nightly"
       , config = function ()
                    require "nvim-tree".setup
-                   { system_open = { cmd = "wslview" }
+                   { system_open   = { cmd = "wslview" }
+                   , disable_netrw = true
                    }
                  end
       , requires = "kyazdani42/nvim-web-devicons"
