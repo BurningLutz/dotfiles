@@ -7,7 +7,15 @@ require "packer".startup(function (use)
   -- theme.
   use "w0ng/vim-hybrid"
   -- dir tree, bookmarks and more.
-  use "scrooloose/nerdtree"
+  use { "kyazdani42/nvim-tree.lua"
+      , tag    = "nightly"
+      , config = function ()
+                   require "nvim-tree".setup
+                   { system_open = { cmd = "wslview" }
+                   }
+                 end
+      , requires = "kyazdani42/nvim-web-devicons"
+      }
   -- show file change inline.
   use "airblade/vim-gitgutter"
   -- sub-word movements.

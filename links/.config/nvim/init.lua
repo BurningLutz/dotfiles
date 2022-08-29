@@ -115,12 +115,6 @@ cmd "hi! link SignColumn      LineNr"
 cmd "hi  link GitGutterAdd    diffAdded"
 cmd "hi  link GitGutterDelete diffRemoved"
 
--- # nerdtree
--- change CWD whenever the root of NERDTree is changed.
--- this is used for auto-ch againest bookmark.
-g.NERDTreeChDirMode  = 2
-g.NERDTreeShowHidden = true
-
 -- # vim-startify
 -- change session dir to nvim style.
 g.startify_session_dir         = "~/.local/share/nvim/session"
@@ -138,7 +132,7 @@ g.startify_session_persistence = true
 -- sort sessions by modification time.
 g.startify_session_sort        = true
 -- close all buffers not need to save.
-g.startify_session_before_save = { "silent! tabdo NERDTreeClose"
+g.startify_session_before_save = { "silent! tabdo NvimTreeClose"
                                  }
 
 -- # coc.nvim
@@ -175,7 +169,7 @@ g.EditorConfig_exclude_patterns = { "fugitive://.*" }
 -- # KEYMAPS ###################################################################
 map { "", "(", "[(" }
 map { "", ")", "])" }
-map { "", "<A-n>", ":NERDTreeToggle<CR>" }
+map { "", "<A-n>", ":NvimTreeToggle<CR>" }
 -- sub-word movements.
 map { "", "<A-w>", "<Plug>CamelCaseMotion_w" }
 map { "", "<A-b>", "<Plug>CamelCaseMotion_b" }
