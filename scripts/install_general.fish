@@ -8,6 +8,7 @@ sudo apt install -y wslu
 nix-env -iA nixpkgs.git                      \
             nixpkgs.fd                       \
             nixpkgs.ripgrep                  \
+            nixpkgs.htop                     \
             nixpkgs.tldr                     \
             nixpkgs.unzip                    \
             nixpkgs.neovim                   \
