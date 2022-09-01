@@ -169,9 +169,6 @@ map { "", "<A-l>", ":bnext<CR>" }
 map { "", "<C-h>", "<C-w>h" }
 map { "", "<C-l>", "<C-w>l" }
 
-map { "i", "<Tab>"  , "pumvisible() ? '<Down>' : '<Tab>'", expr = true }
-map { "i", "<S-Tab>", "pumvisible() ? '<Up>' : '<S-Tab>'", expr = true }
-map { "i", "<CR>", "complete_info(['selected']).selected == -1 ? '<CR>' : '<C-y>'", expr = true }
 map { "n", "<C-p>"  , function () require "telescope.builtin".find_files { hidden = true } end }
 map { "n", "<S-A-p>", function () require "telescope.builtin".live_grep() end }
 map { "n", "<A-a>", vim.lsp.buf.code_action }

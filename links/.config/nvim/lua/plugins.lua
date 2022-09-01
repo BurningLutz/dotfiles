@@ -36,12 +36,69 @@ require "packer".startup(function (use)
   -- search and replace through the whole project.
   use "dyng/ctrlsf.vim"
   -- auto completion.
+  use "L3MON4D3/LuaSnip"
+  use "saadparwaiz1/cmp_luasnip"
+  use "hrsh7th/cmp-path"
+  use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-nvim-lsp"
   use { "hrsh7th/nvim-cmp"
-      , after  = "cmp-nvim-lsp"
+      , after  = "LuaSnip"
       , config = function ()
-                   require "cmp".setup
-                   { sources = { { name = "nvim_lsp" } }
+                   local luasnip = require "luasnip"
+                   local cmp     = require "cmp"
+                   local map     = cmp.mapping
+
+                   cmp.setup
+                   { snippet = { expand = function (args)
+                                            luasnip.lsp_expand(args.body)
+                                          end
+                               }
+                   , mapping = map.preset.insert(
+                               { ["<C-b>"]      = map.scroll_docs(-4)
+                               , ["<C-f>"]      = map.scroll_docs(4)
+                               , ["<CR>"]       = map.confirm()
+                               , ["<Tab>"]      = map( function(fallback)
+                                                         if cmp.visible() then
+                                                           cmp.select_next_item({ behavior = cmp.SelectBehavior })
+                                                         else
+                                                           fallback()
+                                                         end
+                                                       end
+                                                     , { "i", "s" }
+                                                     )
+                               , ["<S-Tab>"]    = map( function(fallback)
+                                                         if cmp.visible() then
+                                                           cmp.select_prev_item({ behavior = cmp.SelectBehavior })
+                                                         else
+                                                           fallback()
+                                                         end
+                                                       end
+                                                     , { "i", "s" }
+                                                     )
+                               , ["<C-j>"]      = map ( function (fallback)
+                                                          if luasnip.expand_or_jumpable() then
+                                                            luasnip.expand_or_jump()
+                                                          else
+                                                            fallback()
+                                                          end
+                                                        end
+                                                      )
+                               , ["<C-k>"]      = map ( function (fallback)
+                                                          if luasnip.jumpable(-1) then
+                                                            luasnip.jump(-1)
+                                                          else
+                                                            fallback()
+                                                          end
+                                                        end
+                                                      )
+                               , ["<C-x><C-o>"] = map.complete()
+                               }
+                               )
+                   , sources = { { name = "nvim_lsp" }
+                               , { name = "luasnip" }
+                               , { name = "buffer" }
+                               , { name = "path" }
+                               }
                    }
                  end
       }
