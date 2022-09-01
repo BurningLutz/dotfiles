@@ -3,7 +3,9 @@ require "packer".startup(function (use)
   use "wbthomason/packer.nvim"
 
   -- toolbar.
-  use "liuchengxu/eleline.vim"
+  use { "liuchengxu/eleline.vim"
+      , requires = "nvim-lua/lsp-status.nvim"
+      }
   -- theme.
   use "w0ng/vim-hybrid"
   -- dir tree, bookmarks and more.
@@ -34,8 +36,13 @@ require "packer".startup(function (use)
   -- search and replace through the whole project.
   use "dyng/ctrlsf.vim"
   -- auto completion.
-  use { "neoclide/coc.nvim"
-      , tag = "v0.0.81"
+  -- use { "neoclide/coc.nvim"
+  --     , tag = "v0.0.81"
+  --     }
+  use { "neovim/nvim-lspconfig"
+      , config = function ()
+                   require "lspconfig".pyright.setup {}
+                 end
       }
   -- repeat plugin map.
   use "tpope/vim-repeat"

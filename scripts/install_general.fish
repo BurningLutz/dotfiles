@@ -15,6 +15,7 @@ nix-env -iA nixpkgs.git                      \
             nixpkgs.nodejs                   \
             nixpkgs.poetry                   \
             nixpkgs.nodePackages.js-beautify \
+            nixpkgs.pyright                  \
 
 # only install win32yank when not available
 if not type -q win32yank.exe

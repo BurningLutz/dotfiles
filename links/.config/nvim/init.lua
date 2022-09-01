@@ -135,29 +135,6 @@ g.startify_session_sort        = true
 g.startify_session_before_save = { "silent! tabdo NvimTreeClose"
                                  }
 
--- # coc.nvim
--- install missing extensions.
-g.coc_global_extensions   = { "coc-json"
-                            , "coc-toml"
-                            , "coc-html"
-                            , "coc-tsserver"
-                            , "coc-pyright"
-                            , "coc-lists"
-                            , "coc-css"
-                            , "coc-emmet"
-                            , "coc-eslint"
-                            , "coc-sql"
-                            , "coc-go"
-                            , "coc-metals"
-                            , "coc-java"
-                            , "coc-db"
-                            , "coc-julia"
-                            , "coc-clangd"
-                            , "coc-sumneko-lua"
-                            }
-g.coc_status_error_sign   = "E"
-g.coc_status_warning_sign = "W"
-
 -- # vim-markdown-toc
 g.vmt_auto_update_on_save = false
 g.vmt_fence_text          = "TOC"
@@ -194,23 +171,16 @@ map { "", "<C-l>", "<C-w>l" }
 -- coc.
 map { "i", "<Tab>"  , "pumvisible() ? '<Down>' : '<Tab>'", expr = true }
 map { "i", "<S-Tab>", "pumvisible() ? '<Up>' : '<S-Tab>'", expr = true }
-map { "i", "<C-x><C-o>", "coc#refresh()", expr = true }
 map { "i", "<CR>", "complete_info(['selected']).selected == -1 ? '<CR>' : '<C-y>'", expr = true }
 map { "n", "<C-p>"  , function () require "telescope.builtin".find_files { hidden = true } end }
 map { "n", "<S-A-p>", function () require "telescope.builtin".live_grep() end }
-map { "n", "<S-A-d>", ":CocList diagnostics<CR>" }
 map { "n", "<A-f>", "<Plug>(coc-fix-current)" }
 map { "n", "<A-a>", "<Plug>(coc-codeaction-cursor)" }
 map { "n", "<A-]>", "<Plug>(coc-definition)" }
 map { "n", "<A-r>", "<Plug>(coc-references-used)" }
-map { "n", "<A-)>", "<Plug>(coc-diagnostic-next)" }
-map { "n", "<A-(>", "<Plug>(coc-diagnostic-prev)" }
+map { "n", "<A-)>", ":lua vim.diagnostic.goto_next()<CR>" }
+map { "n", "<A-(>", ":lua vim.diagnostic.goto_prev()<CR>" }
 map { "n", "K", showdoc }
--- hover scroll.
-map { "n", "<C-f>", "coc#float#has_scroll() ? coc#float#scroll(1, 10) : '<C-f>'", expr = true }
-map { "n", "<C-b>", "coc#float#has_scroll() ? coc#float#scroll(0, 10) : '<C-b>'", expr = true }
-map { "i", "<C-f>", "coc#float#has_scroll() ? '<C-r>=coc#float#scroll(1, 10)<CR>' : '<Right>'", expr = true }
-map { "i", "<C-b>", "coc#float#has_scroll() ? '<C-r>=coc#float#scroll(0, 10)<CR>' : '<Left>'" , expr = true }
 -- command-line mode readline-style movements.
 map { "c", "<C-a>", "<Home>" }
 map { "c", "<C-e>", "<End>" }
