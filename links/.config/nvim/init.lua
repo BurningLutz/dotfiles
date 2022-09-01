@@ -180,6 +180,7 @@ map { "n", "<A-r>", vim.lsp.buf.references }
 map { "n", "<A-)>", vim.diagnostic.goto_next }
 map { "n", "<A-(>", vim.diagnostic.goto_prev }
 map { "n", "K", showdoc }
+map { "n", "<C-K>", vim.lsp.buf.signature_help }
 -- command-line mode readline-style movements.
 map { "c", "<C-a>", "<Home>" }
 map { "c", "<C-e>", "<End>" }

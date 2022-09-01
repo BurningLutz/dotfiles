@@ -36,13 +36,27 @@ require "packer".startup(function (use)
   -- search and replace through the whole project.
   use "dyng/ctrlsf.vim"
   -- auto completion.
-  -- use { "neoclide/coc.nvim"
-  --     , tag = "v0.0.81"
-  --     }
-  use { "neovim/nvim-lspconfig"
+  use "hrsh7th/cmp-nvim-lsp"
+  use { "hrsh7th/nvim-cmp"
+      , after  = "cmp-nvim-lsp"
       , config = function ()
-                   require "lspconfig".pyright.setup {}
-                   require "lspconfig".sumneko_lua.setup {}
+                   require "cmp".setup
+                   { sources = { { name = "nvim_lsp" } }
+                   }
+                 end
+      }
+  use { "neovim/nvim-lspconfig"
+      , after  = "cmp-nvim-lsp"
+      , config = function ()
+                   local caps = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+                   local servers = { "pyright"
+                                   , "sumneko_lua"
+                                   , "hls"
+                                   }
+                   for _, lsp in ipairs(servers) do
+                     require "lspconfig"[lsp].setup { capabilities = caps }
+                   end
                  end
       }
   -- repeat plugin map.
