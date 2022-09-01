@@ -42,6 +42,7 @@ require "packer".startup(function (use)
   use { "neovim/nvim-lspconfig"
       , config = function ()
                    require "lspconfig".pyright.setup {}
+                   require "lspconfig".sumneko_lua.setup {}
                  end
       }
   -- repeat plugin map.
@@ -84,16 +85,12 @@ require "packer".startup(function (use)
                    , highlight    = { enable = true
                                     , additional_vim_regex_highlighting = false
                                     }
-                   , textobjects  = { select = { enable          = true
-                                               , keymaps         = { ["af"] = "@function.outer"
-                                                                   , ["if"] = "@function.inner"
-                                                                   , ["ac"] = "@class.outer"
-                                                                   , ["ic"] = "@class.inner"
-                                                                   }
-                                               , selection_modes = { ["@function.outer"] = "V"
-                                                                   , ["@class.outer"]    = "V"
-                                                                   }
-                                               , include_surrounding_whitespace = true
+                   , textobjects  = { select = { enable  = true
+                                               , keymaps = { ["af"] = "@function.outer"
+                                                           , ["if"] = "@function.inner"
+                                                           , ["ac"] = "@class.outer"
+                                                           , ["ic"] = "@class.inner"
+                                                           }
                                                }
                                     , swap   = { enable        = true
                                                , swap_next     = { ["<leader>p"] = { "@parameter.inner" }

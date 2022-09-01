@@ -18,7 +18,7 @@ local function showdoc()
   if fn.index({ "vim", "help" }, opt.filetype:get()) >= 0 then
     cmd "execute 'h '.expand('<cword>')"
   else
-    fn.CocAction("doHover")
+    vim.lsp.buf.hover()
   end
 end
 
@@ -168,18 +168,17 @@ map { "", "<A-l>", ":bnext<CR>" }
 -- pane switching.
 map { "", "<C-h>", "<C-w>h" }
 map { "", "<C-l>", "<C-w>l" }
--- coc.
+
 map { "i", "<Tab>"  , "pumvisible() ? '<Down>' : '<Tab>'", expr = true }
 map { "i", "<S-Tab>", "pumvisible() ? '<Up>' : '<S-Tab>'", expr = true }
 map { "i", "<CR>", "complete_info(['selected']).selected == -1 ? '<CR>' : '<C-y>'", expr = true }
 map { "n", "<C-p>"  , function () require "telescope.builtin".find_files { hidden = true } end }
 map { "n", "<S-A-p>", function () require "telescope.builtin".live_grep() end }
-map { "n", "<A-f>", "<Plug>(coc-fix-current)" }
-map { "n", "<A-a>", "<Plug>(coc-codeaction-cursor)" }
-map { "n", "<A-]>", "<Plug>(coc-definition)" }
-map { "n", "<A-r>", "<Plug>(coc-references-used)" }
-map { "n", "<A-)>", ":lua vim.diagnostic.goto_next()<CR>" }
-map { "n", "<A-(>", ":lua vim.diagnostic.goto_prev()<CR>" }
+map { "n", "<A-a>", vim.lsp.buf.code_action }
+map { "n", "<A-]>", vim.lsp.buf.definition }
+map { "n", "<A-r>", vim.lsp.buf.references }
+map { "n", "<A-)>", vim.diagnostic.goto_next }
+map { "n", "<A-(>", vim.diagnostic.goto_prev }
 map { "n", "K", showdoc }
 -- command-line mode readline-style movements.
 map { "c", "<C-a>", "<Home>" }
