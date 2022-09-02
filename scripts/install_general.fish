@@ -5,18 +5,19 @@ sudo apt update
 sudo apt install -y wslu
 
 # common tools
-nix-env -iA nixpkgs.git                         \
-            nixpkgs.fd                          \
-            nixpkgs.ripgrep                     \
-            nixpkgs.htop                        \
-            nixpkgs.tldr                        \
-            nixpkgs.unzip                       \
-            nixpkgs.neovim                      \
-            nixpkgs.nodejs                      \
-            nixpkgs.poetry                      \
-            nixpkgs.nodePackages.js-beautify    \
-            nixpkgs.pyright                     \
-            nixpkgs.sumneko-lua-language-server \
+nix-env -iA nixpkgs.git                                     \
+            nixpkgs.fd                                      \
+            nixpkgs.ripgrep                                 \
+            nixpkgs.htop                                    \
+            nixpkgs.tldr                                    \
+            nixpkgs.unzip                                   \
+            nixpkgs.neovim                                  \
+            nixpkgs.nodejs                                  \
+            nixpkgs.poetry                                  \
+            nixpkgs.nodePackages.js-beautify                \
+            nixpkgs.pyright                                 \
+            nixpkgs.sumneko-lua-language-server             \
+            nixpkgs.nodePackages.typescript-language-server \
 
 # only install win32yank when not available
 if not type -q win32yank.exe

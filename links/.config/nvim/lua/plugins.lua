@@ -105,15 +105,31 @@ require "packer".startup(function (use)
   use { "neovim/nvim-lspconfig"
       , after  = "cmp-nvim-lsp"
       , config = function ()
-                   local caps = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities())
+                   local caps
+                   caps = vim.lsp.protocol.make_client_capabilities()
+                   caps = require "cmp_nvim_lsp".update_capabilities(caps)
 
-                   local servers = { "pyright"
-                                   , "sumneko_lua"
-                                   , "hls"
-                                   }
-                   for _, lsp in ipairs(servers) do
-                     require "lspconfig"[lsp].setup { capabilities = caps }
-                   end
+                   require "lspconfig".hls.setup
+                   { capabilities = caps }
+                   require "lspconfig".pyright.setup
+                   { capabilities = caps
+                   , settings     = { python = { pythonPath = ".venv/bin/python"
+                                               , analysis   = { typeCheckingMode = "off" }
+                                               }
+                                    }
+                   }
+                   require "lspconfig".sumneko_lua.setup
+                   { capabilities = caps
+                   , settings     = { Lua = { runtime     = { version = "LuaJIT" }
+                                            , diagnostics = { globals = { "vim" } }
+                                            , workspace   = { library = vim.api.nvim_get_runtime_file("", true) }
+                                            , telemetry   = { enable = false }
+                                            }
+                                    }
+                   }
+                   require "lspconfig".tsserver.setup
+                   { capabilities = caps
+                   }
                  end
       }
   -- repeat plugin map.
