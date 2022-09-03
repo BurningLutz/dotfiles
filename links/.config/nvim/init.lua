@@ -154,9 +154,6 @@ map { "", "<A-n>", ":NvimTreeToggle<CR>" }
 map { "", "<A-w>", "<Plug>CamelCaseMotion_w" }
 map { "", "<A-b>", "<Plug>CamelCaseMotion_b" }
 map { "", "<A-e>", "<Plug>CamelCaseMotion_e" }
--- err list movements.
-map { "", "[[", ":lprevious<CR>" }
-map { "", "]]", ":lnext<CR>" }
 -- tab managements.
 map { "", "<S-A-h>", ":tabprevious<CR>" }
 map { "", "<S-A-l>", ":tabnext<CR>" }
@@ -168,7 +165,7 @@ map { "", "<A-l>", ":bnext<CR>" }
 -- pane switching.
 map { "", "<C-h>", "<C-w>h" }
 map { "", "<C-l>", "<C-w>l" }
-
+-- lists and lsp.
 map { "n", "<C-p>"  , function () require "telescope.builtin".find_files { hidden = true } end }
 map { "n", "<S-A-p>", function () require "telescope.builtin".live_grep() end }
 map { "n", "<A-a>", vim.lsp.buf.code_action }
@@ -177,7 +174,7 @@ map { "n", "<A-r>", vim.lsp.buf.references }
 map { "n", "<A-)>", vim.diagnostic.goto_next }
 map { "n", "<A-(>", vim.diagnostic.goto_prev }
 map { "n", "K", showdoc }
-map { "n", "<C-K>", vim.lsp.buf.signature_help }
+map { { "n", "i" }, "<C-K>", vim.lsp.buf.signature_help }
 -- command-line mode readline-style movements.
 map { "c", "<C-a>", "<Home>" }
 map { "c", "<C-e>", "<End>" }
