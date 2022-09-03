@@ -1,3 +1,4 @@
+---@diagnostic disable: need-check-nil
 require "packer".startup(function (use)
   -- # packer.nvim itself.
   use "wbthomason/packer.nvim"
@@ -10,6 +11,7 @@ require "packer".startup(function (use)
   use "w0ng/vim-hybrid"
   -- dir tree, bookmarks and more.
   use { "kyazdani42/nvim-tree.lua"
+      , requires = "kyazdani42/nvim-web-devicons"
       , tag    = "nightly"
       , config = function ()
                    require "nvim-tree".setup
@@ -17,7 +19,6 @@ require "packer".startup(function (use)
                    , disable_netrw = true
                    }
                  end
-      , requires = "kyazdani42/nvim-web-devicons"
       }
   -- show file change inline.
   use "airblade/vim-gitgutter"
@@ -41,8 +42,8 @@ require "packer".startup(function (use)
   use "hrsh7th/cmp-path"
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-nvim-lsp-signature-help"
   use { "hrsh7th/nvim-cmp"
-      , after  = "LuaSnip"
       , config = function ()
                    local luasnip = require "luasnip"
                    local cmp     = require "cmp"
@@ -94,16 +95,16 @@ require "packer".startup(function (use)
                                , ["<C-x><C-o>"] = map.complete()
                                }
                                )
-                   , sources = { { name = "nvim_lsp" }
-                               , { name = "luasnip" }
+                   , sources = { { name = "path" }
                                , { name = "buffer" }
-                               , { name = "path" }
+                               , { name = "luasnip" }
+                               , { name = "nvim_lsp" }
+                               , { name = "nvim_lsp_signature_help" }
                                }
                    }
                  end
       }
   use { "neovim/nvim-lspconfig"
-      , after  = "cmp-nvim-lsp"
       , config = function ()
                    local caps
                    caps = vim.lsp.protocol.make_client_capabilities()
@@ -194,6 +195,7 @@ require "packer".startup(function (use)
   use "p00f/nvim-ts-rainbow"
   -- lists.
   use { "nvim-telescope/telescope.nvim"
+      , requires = "nvim-lua/plenary.nvim"
       , tag    = "0.1.0"
       , config = function ()
                    require "telescope".setup
@@ -214,7 +216,6 @@ require "packer".startup(function (use)
                    }
                    require "telescope".load_extension "fzf"
                  end
-      , requires = "nvim-lua/plenary.nvim"
       }
   use { "nvim-telescope/telescope-fzf-native.nvim"
       , run = "make"
