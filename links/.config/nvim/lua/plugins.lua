@@ -65,7 +65,7 @@ require "packer".startup(function (use)
                                                            fallback()
                                                          end
                                                        end
-                                                     , { "i", "s" }
+                                                     , { "i" }
                                                      )
                                , ["<S-Tab>"]    = map( function(fallback)
                                                          if cmp.visible() then
@@ -74,24 +74,26 @@ require "packer".startup(function (use)
                                                            fallback()
                                                          end
                                                        end
-                                                     , { "i", "s" }
+                                                     , { "i" }
                                                      )
-                               , ["<C-j>"]      = map ( function (fallback)
-                                                          if luasnip.expand_or_jumpable() then
-                                                            luasnip.expand_or_jump()
-                                                          else
-                                                            fallback()
-                                                          end
-                                                        end
-                                                      )
-                               , ["<C-k>"]      = map ( function (fallback)
-                                                          if luasnip.jumpable(-1) then
-                                                            luasnip.jump(-1)
-                                                          else
-                                                            fallback()
-                                                          end
-                                                        end
-                                                      )
+                               , ["<C-j>"]      = map( function (fallback)
+                                                         if luasnip.expand_or_jumpable() then
+                                                           luasnip.expand_or_jump()
+                                                         else
+                                                           fallback()
+                                                         end
+                                                       end
+                                                     , { "s" }
+                                                     )
+                               , ["<C-k>"]      = map( function (fallback)
+                                                         if luasnip.jumpable(-1) then
+                                                           luasnip.jump(-1)
+                                                         else
+                                                           fallback()
+                                                         end
+                                                       end
+                                                     , { "s" }
+                                                     )
                                , ["<C-x><C-o>"] = map.complete()
                                }
                                )
@@ -129,7 +131,13 @@ require "packer".startup(function (use)
                                     }
                    }
                    require "lspconfig".tsserver.setup
-                   { capabilities = caps
+                   { capabilities        = caps
+                   , cmd                 = { "typescript-language-server"
+                                           , "--stdio"
+                                           , "--tsserver-path"
+                                           , os.getenv("HOME").."/.nix-profile/lib/node_modules/typescript/lib"
+                                           }
+                   , single_file_support = true
                    }
                  end
       }

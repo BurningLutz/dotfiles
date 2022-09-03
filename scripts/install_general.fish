@@ -14,9 +14,10 @@ nix-env -iA nixpkgs.git                                     \
             nixpkgs.neovim                                  \
             nixpkgs.nodejs                                  \
             nixpkgs.poetry                                  \
-            nixpkgs.nodePackages.js-beautify                \
             nixpkgs.pyright                                 \
             nixpkgs.sumneko-lua-language-server             \
+            nixpkgs.nodePackages.js-beautify                \
+            nixpkgs.nodePackages.typescript                 \
             nixpkgs.nodePackages.typescript-language-server \
 
 # only install win32yank when not available
