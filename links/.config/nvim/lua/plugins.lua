@@ -176,6 +176,7 @@ require "packer".startup(function (use)
       , config = function ()
                    require "nvim-treesitter.configs".setup
                    { auto_install = true
+                   , playground   = { enable = true }
                    , highlight    = { enable = true
                                     , additional_vim_regex_highlighting = false
                                     }
@@ -197,6 +198,7 @@ require "packer".startup(function (use)
                    }
                  end
       }
+  use "nvim-treesitter/playground"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "p00f/nvim-ts-rainbow"
   -- lists.
