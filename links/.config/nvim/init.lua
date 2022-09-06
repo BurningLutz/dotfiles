@@ -183,6 +183,3 @@ map { "c", "<C-b>", "<Left>" }
 map { "c", "<C-f>", "<Right>" }
 map { "c", "<A-b>", "<S-Left>" }
 map { "c", "<A-f>", "<S-Right>" }
-
--- # COMMANDS ##################################################################
-cmd "com! CR CocRestart"
