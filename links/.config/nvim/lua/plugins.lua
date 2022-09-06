@@ -3,9 +3,13 @@ require "packer".startup(function (use)
   -- # packer.nvim itself.
   use "wbthomason/packer.nvim"
 
-  -- toolbar.
-  use { "liuchengxu/eleline.vim"
-      , requires = "nvim-lua/lsp-status.nvim"
+  -- statusline.
+  use { "nvim-lualine/lualine.nvim"
+      , config = function ()
+                   require "lualine".setup
+                   { options = { theme = "OceanicNext" }
+                   }
+                 end
       }
   -- theme.
   use "w0ng/vim-hybrid"
