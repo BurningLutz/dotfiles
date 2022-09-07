@@ -191,11 +191,7 @@ require "packer".startup(function (use)
                                                            , ["ic"] = "@class.inner"
                                                            }
                                                }
-                                    , swap   = { enable        = true
-                                               , swap_next     = { ["<leader>p"] = { "@parameter.inner" }
-                                                                 }
-                                               , swap_previous = { ["<leader>P"] = { "@parameter.inner" }
-                                                                 }
+                                    , swap   = { enable = true
                                                }
                                     }
                    , rainbow      = { enable = true }

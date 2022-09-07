@@ -175,6 +175,8 @@ map { "n", "<A-)>", vim.diagnostic.goto_next }
 map { "n", "<A-(>", vim.diagnostic.goto_prev }
 map { "n", "K", showdoc }
 map { { "n", "i" }, "<C-K>", vim.lsp.buf.signature_help }
+map { "n", "<leader>p", ":TSTextobjectSwapNext @parameter.inner<CR>" }
+map { "n", "<leader>P", ":TSTextobjectSwapPrevious @parameter.inner<CR>" }
 -- command-line mode readline-style movements.
 map { "c", "<C-a>", "<Home>" }
 map { "c", "<C-e>", "<End>" }
@@ -183,3 +185,6 @@ map { "c", "<C-b>", "<Left>" }
 map { "c", "<C-f>", "<Right>" }
 map { "c", "<A-b>", "<S-Left>" }
 map { "c", "<A-f>", "<S-Right>" }
+
+-- # COMMANDS ##################################################################
+cmd "com! PS PackerSync"
