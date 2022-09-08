@@ -198,4 +198,5 @@ map { "c", "<A-b>", "<S-Left>" }
 map { "c", "<A-f>", "<S-Right>" }
 
 -- # COMMANDS ##################################################################
-cmd "com! PS PackerSync"
+cmd "com! PS     PackerSync"
+cmd "com! Rename lua vim.lsp.buf.rename()"
