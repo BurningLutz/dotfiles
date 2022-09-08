@@ -228,4 +228,32 @@ require "packer".startup(function (use)
   use { "nvim-telescope/telescope-fzf-native.nvim"
       , run = "make"
       }
+  -- builtin ui replacement.
+  use { "stevearc/dressing.nvim"
+      , config = function ()
+                   require "dressing".setup
+                   { input  = { enabled        = true
+                              , default_prompt = "> "
+                              , prompt_align   = "center"
+                              , anchor         = "NW"
+                              , border         = "single"
+                              , winblend       = 0
+                              , winhighlight   = "Normal:TelescopePromptNormal"
+                              , override       = function (conf)
+                                                   conf.row = 1
+
+                                                   return conf
+                                                 end
+                              }
+                   , select = { enabled     = true
+                              , backend     = { "telescope" }
+                              , trim_prompt = false
+                              , telescope   = require "telescope.themes".get_cursor { borderchars = { prompt  = { "─", "│", " ", "│", "┌", "┐", " ", " " }
+                                                                                                    , results = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
+                                                                                                    }
+                                                                                    }
+                              }
+                   }
+                 end
+      }
 end)

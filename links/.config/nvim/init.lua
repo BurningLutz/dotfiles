@@ -114,6 +114,8 @@ g.gitgutter_terminal_reports_focus = false
 cmd "hi! link SignColumn      LineNr"
 cmd "hi  link GitGutterAdd    diffAdded"
 cmd "hi  link GitGutterDelete diffRemoved"
+cmd "hi  link FloatTitle      TelescopeTitle"
+cmd "hi  link FloatBorder     TelescopeBorder"
 
 -- # vim-startify
 -- change session dir to nvim style.
@@ -170,7 +172,16 @@ map { "n", "<C-p>"  , function () require "telescope.builtin".find_files { hidde
 map { "n", "<S-A-p>", function () require "telescope.builtin".live_grep() end }
 map { "n", "<A-a>", vim.lsp.buf.code_action }
 map { "n", "<A-]>", vim.lsp.buf.definition }
-map { "n", "<A-r>", vim.lsp.buf.references }
+map { "n", "<A-r>", function ()
+                      local opts = require "telescope.themes".get_cursor
+                                   { borderchars = { prompt  = { "─", "│", " ", "│", "┌", "┐", " ", " " }
+                                                   , results = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
+                                                   , preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+                                                   }
+                                   }
+                      require "telescope.builtin".lsp_references(opts)
+                    end
+    }
 map { "n", "<A-)>", vim.diagnostic.goto_next }
 map { "n", "<A-(>", vim.diagnostic.goto_prev }
 map { "n", "K", showdoc }
