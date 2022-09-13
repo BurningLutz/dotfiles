@@ -21,6 +21,7 @@ require "packer".startup(function (use)
                    require "nvim-tree".setup
                    { system_open   = { cmd = "wslview" }
                    , disable_netrw = true
+                   , renderer      = { icons = { git_placement = "after" } }
                    }
                  end
       }
