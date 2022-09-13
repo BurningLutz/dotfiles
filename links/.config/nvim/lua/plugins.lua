@@ -239,6 +239,15 @@ require "packer".startup(function (use)
                               , border         = "single"
                               , winblend       = 0
                               , winhighlight   = "Normal:TelescopePromptNormal"
+                              , mappings       = { i = { ["<C-a>"] = "<Home>"
+                                                       , ["<C-e>"] = "<End>"
+                                                       , ["<C-d>"] = "<Del>"
+                                                       , ["<C-b>"] = "<Left>"
+                                                       , ["<C-f>"] = "<Right>"
+                                                       , ["<A-b>"] = "<S-Left>"
+                                                       , ["<A-f>"] = "<S-Right>"
+                                                       }
+                                                 }
                               , override       = function (conf)
                                                    conf.row = 1
 
