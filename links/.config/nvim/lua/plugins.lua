@@ -51,12 +51,24 @@ require "packer".startup(function (use)
       , config = function ()
                    local luasnip = require "luasnip"
                    local cmp     = require "cmp"
+                   local compare = require "cmp.config.compare"
                    local map     = cmp.mapping
 
                    cmp.setup
                    { snippet = { expand = function (args)
                                             luasnip.lsp_expand(args.body)
                                           end
+                               }
+                   , sorting = { comparators = { compare.offset
+                                               , compare.exact
+                                               , compare.score
+                                               , compare.recently_used
+                                               , compare.locality
+                                               , compare.sort_text
+                                               , compare.length
+                                               , compare.kind
+                                               , compare.order
+                                               }
                                }
                    , mapping = map.preset.insert(
                                { ["<C-b>"]      = map.scroll_docs(-4)
