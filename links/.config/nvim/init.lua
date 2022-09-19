@@ -185,7 +185,7 @@ map { "n", "<A-r>", function ()
 map { "n", "<A-)>", vim.diagnostic.goto_next }
 map { "n", "<A-(>", vim.diagnostic.goto_prev }
 map { "n", "K", showdoc }
-map { { "n", "i" }, "<C-K>", vim.lsp.buf.signature_help }
+map { { "n", "i" }, "<C-k>", vim.lsp.buf.signature_help }
 map { "n", "<leader>p", ":TSTextobjectSwapNext @parameter.inner<CR>" }
 map { "n", "<leader>P", ":TSTextobjectSwapPrevious @parameter.inner<CR>" }
 -- command-line mode readline-style movements.

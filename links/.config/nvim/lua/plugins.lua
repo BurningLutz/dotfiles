@@ -92,23 +92,23 @@ require "packer".startup(function (use)
                                                        end
                                                      , { "i" }
                                                      )
-                               , ["<C-j>"]      = map( function (fallback)
+                               , ["<A-j>"]      = map( function (fallback)
                                                          if luasnip.expand_or_jumpable() then
                                                            luasnip.expand_or_jump()
                                                          else
                                                            fallback()
                                                          end
                                                        end
-                                                     , { "s" }
+                                                     , { "s", "i" }
                                                      )
-                               , ["<C-k>"]      = map( function (fallback)
+                               , ["<A-k>"]      = map( function (fallback)
                                                          if luasnip.jumpable(-1) then
                                                            luasnip.jump(-1)
                                                          else
                                                            fallback()
                                                          end
                                                        end
-                                                     , { "s" }
+                                                     , { "s", "i" }
                                                      )
                                , ["<C-x><C-o>"] = map.complete()
                                }
