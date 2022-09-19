@@ -161,7 +161,11 @@ require "packer".startup(function (use)
   -- comment stuffs easily.
   use "tpope/vim-commentary"
   -- auto close pairs.
-  use "BurningLutz/vim-autoclose"
+  use { "windwp/nvim-autopairs"
+      , config = function ()
+                   require "nvim-autopairs".setup {}
+                 end
+      }
   -- block-wise alignment.
   use "BurningLutz/blockalign.nvim"
   -- markdown preview.
