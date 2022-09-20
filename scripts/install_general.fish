@@ -13,7 +13,6 @@ nix-env -iA nixpkgs.git                                     \
             nixpkgs.unzip                                   \
             nixpkgs.neovim                                  \
             nixpkgs.nodejs                                  \
-            nixpkgs.poetry                                  \
             nixpkgs.pyright                                 \
             nixpkgs.sumneko-lua-language-server             \
             nixpkgs.nodePackages.js-beautify                \
