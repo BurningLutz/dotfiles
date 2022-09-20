@@ -15,12 +15,18 @@ sudo apt-get install -y build-essential        \
                         llvm                   \
                         pkg-config             \
                         python3-dev            \
+                        python3-venv           \
                         tk-dev                 \
                         wget                   \
                         xz-utils               \
-                        zlib1g-dev
+                        zlib1g-dev             \
 
-# only install pyenv when not available
+# only install when not available
 if not type -q pyenv
   curl https://pyenv.run | bash
+end
+
+# only install when not available
+if not type -q pdm
+  curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
 end
