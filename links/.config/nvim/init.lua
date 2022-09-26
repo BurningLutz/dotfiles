@@ -149,8 +149,8 @@ g.EditorConfig_exclude_patterns = { "fugitive://.*" }
 cmd "hi link TelescopeMatching Search"
 
 -- # KEYMAPS ###################################################################
-map { "n", "(", "[(" }
-map { "n", ")", "])" }
+map { { "n", "o" }, "(", "[(" }
+map { { "n", "o" }, ")", "])" }
 map { "", "<A-n>", ":NvimTreeToggle<CR>" }
 -- sub-word movements.
 map { "", "<A-w>", "<Plug>CamelCaseMotion_w" }
