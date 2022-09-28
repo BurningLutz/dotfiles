@@ -78,6 +78,9 @@ opt.signcolumn    = "yes"
 opt.cursorline    = true
 opt.cursorcolumn  = true
 
+-- better visual block editing.
+opt.virtualedit   = "block"
+
 -- # CONFIG VARIABLES ##########################################################
 -- # neovim builtins.
 g.pyindent_open_paren      = false
