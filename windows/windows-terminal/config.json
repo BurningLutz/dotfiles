@@ -605,5 +605,5 @@
             "yellow": "#808000"
         }
     ],
-    "windowingBehavior": "useAnyExisting"
+    "windowingBehavior": "useExisting"
 }
