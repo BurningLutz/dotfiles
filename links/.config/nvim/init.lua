@@ -79,6 +79,7 @@ opt.cursorline    = true
 opt.cursorcolumn  = true
 
 -- better visual block editing.
+opt.mouse         =  ""
 opt.virtualedit   = "block"
 
 -- # CONFIG VARIABLES ##########################################################
