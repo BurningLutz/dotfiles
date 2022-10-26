@@ -114,7 +114,7 @@ jobs: $ncpus
 -- package-env:
 -- overwrite-policy:
 -- install-method:
--- installdir: /Users/lutz/.cabal/bin
+installdir: /home/lutz/.local/bin
 -- username:
 -- password:
 -- password-command:
