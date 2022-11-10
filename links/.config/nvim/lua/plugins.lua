@@ -42,24 +42,17 @@ require "packer".startup(function (use)
   -- search and replace through the whole project.
   use "dyng/ctrlsf.vim"
   -- auto completion.
-  use "L3MON4D3/LuaSnip"
-  use "saadparwaiz1/cmp_luasnip"
   use "hrsh7th/cmp-path"
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-nvim-lsp"
   use { "hrsh7th/nvim-cmp"
       , config = function ()
-                   local luasnip = require "luasnip"
                    local cmp     = require "cmp"
                    local compare = require "cmp.config.compare"
                    local map     = cmp.mapping
 
                    cmp.setup
-                   { snippet = { expand = function (args)
-                                            luasnip.lsp_expand(args.body)
-                                          end
-                               }
-                   , sorting = { comparators = { compare.offset
+                   { sorting = { comparators = { compare.offset
                                                , compare.exact
                                                , compare.score
                                                , compare.recently_used
@@ -92,30 +85,11 @@ require "packer".startup(function (use)
                                                        end
                                                      , { "i" }
                                                      )
-                               , ["<A-j>"]      = map( function (fallback)
-                                                         if luasnip.expand_or_jumpable() then
-                                                           luasnip.expand_or_jump()
-                                                         else
-                                                           fallback()
-                                                         end
-                                                       end
-                                                     , { "s", "i" }
-                                                     )
-                               , ["<A-k>"]      = map( function (fallback)
-                                                         if luasnip.jumpable(-1) then
-                                                           luasnip.jump(-1)
-                                                         else
-                                                           fallback()
-                                                         end
-                                                       end
-                                                     , { "s", "i" }
-                                                     )
                                , ["<C-x><C-o>"] = map.complete()
                                }
                                )
                    , sources = { { name = "path" }
                                , { name = "buffer", group_index = 2 }
-                               , { name = "luasnip" }
                                , { name = "nvim_lsp" }
                                }
                    }
@@ -125,7 +99,7 @@ require "packer".startup(function (use)
       , config = function ()
                    local caps
                    caps = vim.lsp.protocol.make_client_capabilities()
-                   caps = require "cmp_nvim_lsp".update_capabilities(caps)
+                   caps = require "cmp_nvim_lsp".default_capabilities(caps)
 
                    require "lspconfig".hls.setup
                    { capabilities = caps }
