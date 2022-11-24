@@ -45,6 +45,8 @@ require "packer".startup(function (use)
   use "hrsh7th/cmp-path"
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-vsnip"
+  use "hrsh7th/vim-vsnip"
   use { "hrsh7th/nvim-cmp"
       , config = function ()
                    local cmp     = require "cmp"
@@ -52,7 +54,11 @@ require "packer".startup(function (use)
                    local map     = cmp.mapping
 
                    cmp.setup
-                   { sorting = { comparators = { compare.offset
+                   { snippet = { expand = function (args)
+                                            vim.fn["vsnip#anonymous"](args.body)
+                                          end
+                               }
+                   , sorting = { comparators = { compare.offset
                                                , compare.exact
                                                , compare.score
                                                , compare.recently_used
@@ -91,6 +97,7 @@ require "packer".startup(function (use)
                    , sources = { { name = "path" }
                                , { name = "buffer", group_index = 2 }
                                , { name = "nvim_lsp" }
+                               , { name = "vsnip" }
                                }
                    }
                  end
@@ -98,11 +105,17 @@ require "packer".startup(function (use)
   use { "neovim/nvim-lspconfig"
       , config = function ()
                    local caps
-                   caps = vim.lsp.protocol.make_client_capabilities()
-                   caps = require "cmp_nvim_lsp".default_capabilities(caps)
+                   caps = require "cmp_nvim_lsp".default_capabilities()
 
                    require "lspconfig".hls.setup
-                   { capabilities = caps }
+                   { capabilities = caps
+                   , settings     = { haskell = { plugin = { ["ghcide-completions"] = { config = { snippetsOn = false
+                                                                                                 }
+                                                                                      }
+                                                           }
+                                                }
+                                    }
+                   }
                    require "lspconfig".pyright.setup
                    { capabilities = caps
                    , settings     = { python = { pythonPath = ".venv/bin/python"
