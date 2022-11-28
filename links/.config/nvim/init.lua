@@ -84,6 +84,7 @@ opt.virtualedit   = "block"
 
 -- # CONFIG VARIABLES ##########################################################
 -- # neovim builtins.
+g.python_indent            = { disable_parentheses_indenting = true }
 g.pyindent_open_paren      = false
 g.python_recommended_style = false
 g.terminal_color_0         = "#282C34"
