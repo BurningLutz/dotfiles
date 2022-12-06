@@ -153,6 +153,10 @@ g.EditorConfig_exclude_patterns = { "fugitive://.*" }
 -- # telescope
 cmd "hi link TelescopeMatching Search"
 
+-- # tree-sitter highlights
+cmd "hi link @text.diff.delete diffRemoved"
+cmd "hi link @text.diff.add    diffAdded"
+
 -- # KEYMAPS ###################################################################
 map { { "n", "o" }, "(", "[(" }
 map { { "n", "o" }, ")", "])" }
