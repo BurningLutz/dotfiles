@@ -241,8 +241,9 @@ require "packer".startup(function (use)
                               , prompt_align   = "center"
                               , anchor         = "NW"
                               , border         = "single"
-                              , winblend       = 0
-                              , winhighlight   = "Normal:TelescopePromptNormal"
+                              , win_options    = { winblend     = 0
+                                                 , winhighlight = "Normal:TelescopePromptNormal"
+                                                 }
                               , mappings       = { i = { ["<C-a>"] = "<Home>"
                                                        , ["<C-e>"] = "<End>"
                                                        , ["<C-d>"] = "<Del>"
