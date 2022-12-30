@@ -1,8 +1,10 @@
-# install wslu from ppa
+# add wslu entry from ppa
 sudo apt remove wslu -y
 sudo add-apt-repository ppa:wslutilities/wslu -y
+
+# and install necessary packages
 sudo apt update
-sudo apt install -y wslu
+sudo apt install -y build-essential wslu
 
 # common tools
 nix-env -iA nixpkgs.git                                     \

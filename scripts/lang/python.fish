@@ -1,5 +1,4 @@
-sudo apt-get install -y build-essential        \
-                        curl                   \
+sudo apt-get install -y curl                   \
                         gir1.2-gtk-3.0         \
                         libbz2-dev             \
                         libcairo2-dev          \

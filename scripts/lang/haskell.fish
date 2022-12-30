@@ -1,5 +1,4 @@
-sudo apt install -y build-essential \
-                    curl            \
+sudo apt install -y curl            \
                     libffi-dev      \
                     libffi7         \
                     libgmp-dev      \
