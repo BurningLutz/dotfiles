@@ -154,7 +154,9 @@ require "packer".startup(function (use)
                  end
       }
   -- block-wise alignment.
-  use "BurningLutz/blockalign.nvim"
+  use { "BurningLutz/blockalign.nvim"
+      , after = "Align"
+      }
   -- markdown preview.
   use { "iamcco/markdown-preview.nvim"
       , run   = "cd app && npm install"
@@ -203,34 +205,41 @@ require "packer".startup(function (use)
                  end
       }
   use "nvim-treesitter/playground"
-  use "nvim-treesitter/nvim-treesitter-textobjects"
-  use "p00f/nvim-ts-rainbow"
+  use { "nvim-treesitter/nvim-treesitter-textobjects"
+      , after = "nvim-treesitter"
+      }
+  use { "p00f/nvim-ts-rainbow"
+      , after = "nvim-treesitter"
+      }
   -- lists.
   use { "nvim-telescope/telescope.nvim"
       , requires = "nvim-lua/plenary.nvim"
-      , tag    = "0.1.0"
-      , config = function ()
-                   require "telescope".setup
-                   { defaults = { scroll_strategy = "limit"
-                                , borderchars     = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
-                                , mappings        = { i = { ["<ESC>"] = "close"
-                                                          , ["<C-a>"] = { "<Home>"   , type = "command" }
-                                                          , ["<C-e>"] = { "<End>"    , type = "command" }
-                                                          , ["<C-d>"] = { "<Del>"    , type = "command" }
-                                                          , ["<C-b>"] = { "<Left>"   , type = "command" }
-                                                          , ["<C-f>"] = { "<Right>"  , type = "command" }
-                                                          , ["<C-u>"] = { "<C-u>"    , type = "command" }
-                                                          , ["<A-b>"] = { "<S-Left>" , type = "command" }
-                                                          , ["<A-f>"] = { "<S-Right>", type = "command" }
-                                                          }
-                                                    }
-                                }
-                   }
-                   require "telescope".load_extension "fzf"
-                 end
+      , tag      = "0.1.0"
+      , config   = function ()
+                     require "telescope".setup
+                     { defaults = { scroll_strategy = "limit"
+                                  , borderchars     = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+                                  , mappings        = { i = { ["<ESC>"] = "close"
+                                                            , ["<C-a>"] = { "<Home>"   , type = "command" }
+                                                            , ["<C-e>"] = { "<End>"    , type = "command" }
+                                                            , ["<C-d>"] = { "<Del>"    , type = "command" }
+                                                            , ["<C-b>"] = { "<Left>"   , type = "command" }
+                                                            , ["<C-f>"] = { "<Right>"  , type = "command" }
+                                                            , ["<C-u>"] = { "<C-u>"    , type = "command" }
+                                                            , ["<A-b>"] = { "<S-Left>" , type = "command" }
+                                                            , ["<A-f>"] = { "<S-Right>", type = "command" }
+                                                            }
+                                                      }
+                                  }
+                     }
+                   end
       }
   use { "nvim-telescope/telescope-fzf-native.nvim"
-      , run = "make"
+      , run    = "make"
+      , after  = "telescope.nvim"
+      , config = function ()
+                   require "telescope".load_extension "fzf"
+                 end
       }
   -- builtin ui replacement.
   use { "stevearc/dressing.nvim"
