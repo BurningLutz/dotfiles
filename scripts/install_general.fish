@@ -36,5 +36,6 @@ end
 set PACKERPATH $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
 if not test -d $PACKERPATH
   git clone --depth 1 https://github.com/wbthomason/packer.nvim $PACKERPATH
-  nvim --headless -c "autocmd User PackerComplete quitall" -c PackerSync
+  # compiling some treesitter plugins requires nix's gcc
+  nix-shell -p gcc --command 'nvim -c "autocmd User PackerComplete quitall" -c PackerSync'
 end
