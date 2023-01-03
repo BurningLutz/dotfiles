@@ -201,15 +201,11 @@ require "packer".startup(function (use)
                                         , swap   = { enable = true
                                                    }
                                         }
-                   , rainbow          = { enable = true }
                    }
                  end
       }
   use "nvim-treesitter/playground"
   use { "nvim-treesitter/nvim-treesitter-textobjects"
-      , after = "nvim-treesitter"
-      }
-  use { "p00f/nvim-ts-rainbow"
       , after = "nvim-treesitter"
       }
   -- lists.
