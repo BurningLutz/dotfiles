@@ -22,6 +22,7 @@ require "packer".startup(function (use)
                    { system_open   = { cmd = "wslview" }
                    , disable_netrw = true
                    , renderer      = { icons = { git_placement = "after" } }
+                   , actions       = { open_file = { quit_on_open = true } }
                    }
                  end
       }
