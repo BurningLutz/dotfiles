@@ -16,6 +16,14 @@
             "keys": "ctrl+alt+c"
         },
         {
+            "command": "duplicateTab",
+            "keys": "ctrl+t"
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+alt+f"
+        },
+        {
             "command": "closePane"
         },
         {
@@ -267,8 +275,11 @@
             "keys": "ctrl+3"
         },
         {
-            "command": "find",
-            "keys": "ctrl+alt+f"
+            "command": 
+            {
+                "action": "closeTab"
+            },
+            "keys": "ctrl+alt+w"
         },
         {
             "command": 
@@ -276,13 +287,6 @@
                 "action": "switchToTab",
                 "index": 4294967295
             }
-        },
-        {
-            "command": 
-            {
-                "action": "closeTab"
-            },
-            "keys": "ctrl+alt+w"
         },
         {
             "command": 
@@ -329,10 +333,6 @@
             {
                 "action": "newTab"
             }
-        },
-        {
-            "command": "duplicateTab",
-            "keys": "ctrl+t"
         }
     ],
     "copyFormatting": "none",
@@ -350,7 +350,7 @@
             "cursorShape": "filledBox",
             "font": 
             {
-                "face": "CodeNewRoman NF",
+                "face": "CodeNewRoman NFM",
                 "size": 15
             },
             "historySize": 32000,
