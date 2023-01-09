@@ -2,7 +2,7 @@ mkdir -p $HOME/.local/bin
 
 pushd links
 
-set -l items (find . -type f | sed "s|^\./||")
+set -l items (find . -type f,l | sed "s|^\./||")
 
 for item in $items
   set -l filepath ~/{$item}
