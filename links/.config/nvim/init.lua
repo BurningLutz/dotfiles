@@ -156,6 +156,8 @@ cmd "hi link TelescopeMatching Search"
 -- # tree-sitter highlights
 cmd "hi link @text.diff.delete diffRemoved"
 cmd "hi link @text.diff.add    diffAdded"
+cmd "hi @text.emphasis cterm=italic gui=italic"
+cmd "hi @text.strong   cterm=bold   gui=bold"
 
 -- # KEYMAPS ###################################################################
 map { { "n", "o" }, "(", "[(" }
