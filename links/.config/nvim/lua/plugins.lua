@@ -142,6 +142,7 @@ require "packer".startup(function (use)
                                            }
                    , single_file_support = true
                    }
+                   require "lspconfig".gopls.setup {}
                  end
       }
   -- repeat plugin map.
