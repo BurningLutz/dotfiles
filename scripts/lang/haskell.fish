@@ -1,6 +1,6 @@
 sudo apt install -y curl            \
                     libffi-dev      \
-                    libffi7         \
+                    libffi8ubuntu1  \
                     libgmp-dev      \
                     libgmp10        \
                     libncurses-dev  \
