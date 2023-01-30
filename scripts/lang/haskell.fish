@@ -5,7 +5,8 @@ sudo apt install -y curl            \
                     libgmp10        \
                     libncurses-dev  \
                     libncurses5     \
-                    libtinfo5
+                    libtinfo5       \
+                    libghc-gtk-dev
 
 # only install ghcup if not available
 if not type -q ghcup
