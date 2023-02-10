@@ -55,51 +55,52 @@ require "packer".startup(function (use)
                    local map     = cmp.mapping
 
                    cmp.setup
-                   { snippet = { expand = function (args)
-                                            vim.fn["vsnip#anonymous"](args.body)
-                                          end
-                               }
-                   , sorting = { comparators = { compare.offset
-                                               , compare.exact
-                                               , compare.score
-                                               , compare.recently_used
-                                               , compare.locality
-                                               , compare.sort_text
-                                               , compare.length
-                                               , compare.kind
-                                               , compare.order
-                                               }
-                               }
-                   , mapping = map.preset.insert(
-                               { ["<C-b>"]      = map.scroll_docs(-4)
-                               , ["<C-f>"]      = map.scroll_docs(4)
-                               , ["<CR>"]       = map.confirm()
-                               , ["<Tab>"]      = map( function(fallback)
-                                                         if cmp.visible() then
-                                                           cmp.select_next_item({ behavior = cmp.SelectBehavior })
-                                                         else
-                                                           fallback()
+                   { preselect = cmp.PreselectMode.None
+                   , snippet   = { expand = function (args)
+                                              vim.fn["vsnip#anonymous"](args.body)
+                                            end
+                                 }
+                   , sorting   = { comparators = { compare.offset
+                                                 , compare.exact
+                                                 , compare.score
+                                                 , compare.recently_used
+                                                 , compare.locality
+                                                 , compare.sort_text
+                                                 , compare.length
+                                                 , compare.kind
+                                                 , compare.order
+                                                 }
+                                 }
+                   , mapping   = map.preset.insert(
+                                 { ["<C-b>"]      = map.scroll_docs(-4)
+                                 , ["<C-f>"]      = map.scroll_docs(4)
+                                 , ["<CR>"]       = map.confirm()
+                                 , ["<Tab>"]      = map( function(fallback)
+                                                           if cmp.visible() then
+                                                             cmp.select_next_item({ behavior = cmp.SelectBehavior })
+                                                           else
+                                                             fallback()
+                                                           end
                                                          end
-                                                       end
-                                                     , { "i" }
-                                                     )
-                               , ["<S-Tab>"]    = map( function(fallback)
-                                                         if cmp.visible() then
-                                                           cmp.select_prev_item({ behavior = cmp.SelectBehavior })
-                                                         else
-                                                           fallback()
+                                                       , { "i" }
+                                                       )
+                                 , ["<S-Tab>"]    = map( function(fallback)
+                                                           if cmp.visible() then
+                                                             cmp.select_prev_item({ behavior = cmp.SelectBehavior })
+                                                           else
+                                                             fallback()
+                                                           end
                                                          end
-                                                       end
-                                                     , { "i" }
-                                                     )
-                               , ["<C-x><C-o>"] = map.complete()
-                               }
-                               )
-                   , sources = { { name = "path" }
-                               , { name = "buffer", group_index = 2 }
-                               , { name = "nvim_lsp" }
-                               , { name = "vsnip" }
-                               }
+                                                       , { "i" }
+                                                       )
+                                 , ["<C-x><C-o>"] = map.complete()
+                                 }
+                                 )
+                   , sources   = { { name = "path" }
+                                 , { name = "buffer", group_index = 2 }
+                                 , { name = "nvim_lsp" }
+                                 , { name = "vsnip" }
+                                 }
                    }
                  end
       }
@@ -134,15 +135,16 @@ require "packer".startup(function (use)
                                     }
                    }
                    require "lspconfig".tsserver.setup
-                   { capabilities        = caps
-                   , cmd                 = { "typescript-language-server"
-                                           , "--stdio"
-                                           , "--tsserver-path"
-                                           , os.getenv("HOME").."/.nix-profile/lib/node_modules/typescript/lib"
-                                           }
-                   , single_file_support = true
+                   { capabilities = caps
+                   , cmd          = { "typescript-language-server"
+                                    , "--stdio"
+                                    , "--tsserver-path"
+                                    , os.getenv("HOME").."/.nix-profile/lib/node_modules/typescript/lib"
+                                    }
                    }
-                   require "lspconfig".gopls.setup {}
+                   require "lspconfig".gopls.setup
+                   { capabilities = caps
+                   }
                  end
       }
   -- repeat plugin map.
