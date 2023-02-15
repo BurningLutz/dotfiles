@@ -28,11 +28,9 @@ if status --is-interactive
 
   # .local/bin
   fish_add_path --path $HOME/.local/bin
-
   # pyenv
   fish_add_path --path $HOME/.pyenv/bin
-
   # c lib & include
-  set -x C_INCLUDE_PATH $HOME/.nix-profile/include
-  set -x LIBRARY_PATH   $HOME/.nix-profile/lib
+  set -x LIBRARY_PATH   "$HOME/.nix-profile/lib:$LIBRARY_PATH"
+  set -x C_INCLUDE_PATH "$HOME/.nix-profile/include:$C_INCLUDE_PATH"
 end
