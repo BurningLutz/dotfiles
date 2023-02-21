@@ -125,7 +125,7 @@ require "packer".startup(function (use)
                                                }
                                     }
                    }
-                   require "lspconfig".sumneko_lua.setup
+                   require "lspconfig".lua_ls.setup
                    { capabilities = caps
                    , settings     = { Lua = { runtime     = { version = "LuaJIT" }
                                             , diagnostics = { globals = { "vim" } }
