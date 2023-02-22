@@ -180,7 +180,12 @@ map { "", "<C-h>", "<C-w>h" }
 map { "", "<C-l>", "<C-w>l" }
 -- lists and lsp.
 map { "n", "<C-p>"  , function () require "telescope.builtin".find_files { hidden = true } end }
-map { "n", "<S-A-p>", function () require "telescope.builtin".live_grep() end }
+map { "n", "<S-A-p>", function ()
+                        require "telescope.builtin".live_grep
+                        { additional_args = function () return { "--hidden" } end
+                        }
+                      end
+    }
 map { "n", "<A-a>", vim.lsp.buf.code_action }
 map { "n", "<A-]>", vim.lsp.buf.definition }
 map { "n", "<A-r>", function ()
