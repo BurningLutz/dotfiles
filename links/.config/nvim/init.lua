@@ -190,10 +190,15 @@ map { "n", "<A-a>", vim.lsp.buf.code_action }
 map { "n", "<A-]>", vim.lsp.buf.definition }
 map { "n", "<A-r>", function ()
                       local opts = require "telescope.themes".get_cursor
-                                   { borderchars = { prompt  = { "─", "│", " ", "│", "┌", "┐", " ", " " }
-                                                   , results = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
-                                                   , preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
-                                                   }
+                                   { borderchars         = { prompt  = { "─", "│", " ", "│", "┌", "┐", " ", " " }
+                                                           , results = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
+                                                           , preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+                                                           }
+                                   , layout_config       = { width   = 120
+                                                           , height  = 15
+                                                           }
+                                   , show_line           = false
+                                   , include_declaration = false
                                    }
                       require "telescope.builtin".lsp_references(opts)
                     end

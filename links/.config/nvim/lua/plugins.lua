@@ -221,6 +221,7 @@ require "packer".startup(function (use)
       , config   = function ()
                      require "telescope".setup
                      { defaults = { scroll_strategy = "limit"
+                                  , path_display    = { "shorten" }
                                   , borderchars     = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
                                   , mappings        = { i = { ["<ESC>"] = "close"
                                                             , ["<C-a>"] = { "<Home>"   , type = "command" }
