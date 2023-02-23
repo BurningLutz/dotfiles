@@ -18,7 +18,6 @@ nix-env -iA nixpkgs.git                                     \
             nixpkgs.pyright                                 \
             nixpkgs.lua-language-server                     \
             nixpkgs.nodePackages.js-beautify                \
-            nixpkgs.nodePackages.typescript                 \
             nixpkgs.nodePackages.typescript-language-server \
 
 # only install win32yank when not available
