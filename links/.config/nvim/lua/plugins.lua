@@ -7,7 +7,12 @@ require "packer".startup(function (use)
   use { "nvim-lualine/lualine.nvim"
       , config = function ()
                    require "lualine".setup
-                   { options  = { theme = "OceanicNext" }
+                   { options  = { theme   = "OceanicNext"
+                                , refresh = { statusline = 100
+                                            , tabline    = 100
+                                            , winbar     = 100
+                                            }
+                                }
                    , sections = { lualine_c = { "filename"
                                               , { "lsp_progress"
                                                 , display_components = { "spinner", { "title", "percentage", "message" } }
