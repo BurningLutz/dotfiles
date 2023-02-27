@@ -138,11 +138,6 @@ require "packer".startup(function (use)
                    }
                    require "lspconfig".tsserver.setup
                    { capabilities = caps
-                   , cmd          = { "typescript-language-server"
-                                    , "--stdio"
-                                    , "--tsserver-path"
-                                    , os.getenv("HOME").."/.nix-profile/lib/node_modules/typescript/lib"
-                                    }
                    }
                    require "lspconfig".gopls.setup
                    { capabilities = caps
