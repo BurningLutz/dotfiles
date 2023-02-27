@@ -13,7 +13,7 @@ require "packer".startup(function (use)
                                                 , display_components = { "spinner", { "title", "percentage", "message" } }
                                                 , spinner_symbols    = { "🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 " }
                                                 , timer = { progress_enddelay        = 500
-                                                          , spinner                  = 500
+                                                          , spinner                  = 100
                                                           , lsp_client_name_enddelay = 0
                                                           }
                                                 }
