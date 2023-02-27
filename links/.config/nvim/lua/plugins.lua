@@ -30,10 +30,15 @@ require "packer".startup(function (use)
   use "airblade/vim-gitgutter"
   -- sub-word movements.
   use "bkad/CamelCaseMotion"
-  -- Surround.vim is all about "surroundings": parentheses, brackets, quotes,
-  -- XML tags, and more. The plugin provides mappings to easily delete,
-  -- change and add such surroundings in pairs.
-  use "tpope/vim-surround"
+  -- Surround selections, stylishly 😎
+  use { "kylechui/nvim-surround"
+      , tag    = "*" -- Use for stability; omit to use `main` branch for the latest features
+      , config = function ()
+                   require "nvim-surround".setup
+                   { indent_lines = false
+                   }
+                 end
+      }
   -- git wrapper.
   use "tpope/vim-fugitive"
   -- 🔗 the fancy start screen for Vim.
