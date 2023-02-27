@@ -7,10 +7,22 @@ require "packer".startup(function (use)
   use { "nvim-lualine/lualine.nvim"
       , config = function ()
                    require "lualine".setup
-                   { options = { theme = "OceanicNext" }
+                   { options  = { theme = "OceanicNext" }
+                   , sections = { lualine_c = { "filename"
+                                              , { "lsp_progress"
+                                                , display_components = { "spinner", { "title", "percentage", "message" } }
+                                                , spinner_symbols    = { "🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 " }
+                                                , timer = { progress_enddelay        = 500
+                                                          , spinner                  = 500
+                                                          , lsp_client_name_enddelay = 0
+                                                          }
+                                                }
+                                              }
+                                }
                    }
                  end
       }
+  use "WhoIsSethDaniel/lualine-lsp-progress.nvim"
   -- theme.
   use "w0ng/vim-hybrid"
   -- dir tree, bookmarks and more.
@@ -112,7 +124,10 @@ require "packer".startup(function (use)
   use { "neovim/nvim-lspconfig"
       , config = function ()
                    local caps
-                   caps = require "cmp_nvim_lsp".default_capabilities()
+                   caps = vim.tbl_extend( "keep"
+                                        , require "cmp_nvim_lsp".default_capabilities()
+                                        , vim.lsp.protocol.make_client_capabilities()
+                                        )
 
                    require "lspconfig".hls.setup
                    { capabilities = caps
@@ -146,6 +161,10 @@ require "packer".startup(function (use)
                    }
                    require "lspconfig".gopls.setup
                    { capabilities = caps
+                   }
+                   require "lspconfig".jdtls.setup
+                   { capabilities = caps
+                   , cmd          = { "jdt-language-server", "-configuration", "/home/lutz/.cache/jdtls/config", "-data", "/home/lutz/.cache/jdtls/workspace" }
                    }
                  end
       }
