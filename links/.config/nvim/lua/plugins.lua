@@ -128,48 +128,40 @@ require "packer".startup(function (use)
       }
   use { "neovim/nvim-lspconfig"
       , config = function ()
-                   local caps
-                   caps = vim.tbl_extend( "keep"
-                                        , require "cmp_nvim_lsp".default_capabilities()
-                                        , vim.lsp.protocol.make_client_capabilities()
-                                        )
+                   local lspconfig = require "lspconfig"
+                   lspconfig.util.default_config = vim.tbl_extend( "force"
+                                                                 , lspconfig.util.default_config
+                                                                 , require "cmp_nvim_lsp".default_capabilities()
+                                                                 )
 
-                   require "lspconfig".hls.setup
-                   { capabilities = caps
-                   , settings     = { haskell = { plugin = { ["ghcide-completions"] = { config = { snippetsOn = false
-                                                                                                 }
-                                                                                      }
-                                                           }
-                                                }
-                                    }
-                   }
-                   require "lspconfig".pyright.setup
-                   { capabilities = caps
-                   , settings     = { python = { pythonPath = ".venv/bin/python"
-                                               , analysis   = { typeCheckingMode = "off" }
-                                               }
-                                    }
-                   }
-                   require "lspconfig".lua_ls.setup
-                   { capabilities = caps
-                   , settings     = { Lua = { runtime     = { version = "LuaJIT" }
-                                            , diagnostics = { globals = { "vim" } }
-                                            , workspace   = { library         = vim.api.nvim_get_runtime_file("", true)
-                                                            , checkThirdParty = false
-                                                            }
-                                            , telemetry   = { enable = false }
+                   lspconfig.hls.setup
+                   { settings = { haskell = { plugin = { ["ghcide-completions"] = { config = { snippetsOn = false
+                                                                                             }
+                                                                                  }
+                                                       }
                                             }
-                                    }
+                                }
                    }
-                   require "lspconfig".tsserver.setup
-                   { capabilities = caps
+                   lspconfig.pyright.setup
+                   { settings = { python = { pythonPath = ".venv/bin/python"
+                                           , analysis   = { typeCheckingMode = "off" }
+                                           }
+                                }
                    }
-                   require "lspconfig".gopls.setup
-                   { capabilities = caps
+                   lspconfig.lua_ls.setup
+                   { settings = { Lua = { runtime     = { version = "LuaJIT" }
+                                        , diagnostics = { globals = { "vim" } }
+                                        , workspace   = { library         = vim.api.nvim_get_runtime_file("", true)
+                                                        , checkThirdParty = false
+                                                        }
+                                        , telemetry   = { enable = false }
+                                        }
+                                }
                    }
-                   require "lspconfig".jdtls.setup
-                   { capabilities = caps
-                   , cmd          = { "jdt-language-server", "-configuration", "/home/lutz/.cache/jdtls/config", "-data", "/home/lutz/.cache/jdtls/workspace" }
+                   lspconfig.tsserver.setup {}
+                   lspconfig.gopls.setup {}
+                   lspconfig.jdtls.setup
+                   { cmd = { "jdt-language-server", "-configuration", "/home/lutz/.cache/jdtls/config", "-data", "/home/lutz/.cache/jdtls/workspace" }
                    }
                  end
       }

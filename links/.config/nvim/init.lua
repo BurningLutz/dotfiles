@@ -159,6 +159,9 @@ cmd "hi link @text.diff.add    diffAdded"
 cmd "hi @text.emphasis cterm=italic gui=italic"
 cmd "hi @text.strong   cterm=bold   gui=bold"
 
+-- # lsp highlights
+cmd "hi link LspSignatureActiveParameter PmenuSel"
+
 -- # KEYMAPS ###################################################################
 map { { "n", "o" }, "(", "[(" }
 map { { "n", "o" }, ")", "])" }
