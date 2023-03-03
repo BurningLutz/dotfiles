@@ -1,7 +1,6 @@
 -- # CONFIG PRIMITIVES ########################################################
 local opt = vim.opt
 local cmd = vim.cmd
-local fn  = vim.fn
 local g   = vim.g
 
 local function map(args)
@@ -11,15 +10,6 @@ local function map(args)
   args[3] = nil
 
   vim.keymap.set(mode, lhs, rhs, args)
-end
-
--- # FUNCTIONS #################################################################
-local function showdoc()
-  if fn.index({ "vim", "help" }, opt.filetype:get()) >= 0 then
-    cmd "execute 'h '.expand('<cword>')"
-  else
-    vim.lsp.buf.hover()
-  end
 end
 
 -- # PLUGINS ###################################################################
@@ -190,7 +180,6 @@ map { "n", "<S-A-p>", function ()
                       end
     }
 map { "n", "<A-a>", vim.lsp.buf.code_action }
-map { "n", "<A-]>", vim.lsp.buf.definition }
 map { "n", "<A-r>", function ()
                       local opts = require "telescope.themes".get_cursor
                                    { borderchars         = { prompt  = { "─", "│", " ", "│", "┌", "┐", " ", " " }
@@ -208,7 +197,7 @@ map { "n", "<A-r>", function ()
     }
 map { "n", "<A-)>", vim.diagnostic.goto_next }
 map { "n", "<A-(>", vim.diagnostic.goto_prev }
-map { "n", "K", showdoc }
+map { "n", "K", vim.lsp.buf.hover }
 map { { "n", "i" }, "<C-k>", vim.lsp.buf.signature_help }
 map { "n", "<leader>p", ":TSTextobjectSwapNext @parameter.inner<CR>" }
 map { "n", "<leader>P", ":TSTextobjectSwapPrevious @parameter.inner<CR>" }
