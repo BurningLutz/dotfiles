@@ -350,7 +350,6 @@
             "cursorShape": "filledBox",
             "font": 
             {
-                "face": "CodeNewRoman NFM",
                 "size": 15
             },
             "historySize": 32000,
