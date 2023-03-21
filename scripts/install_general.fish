@@ -9,6 +9,7 @@ sudo apt install -y build-essential wslu
 
 # common tools
 nix-env -iA nixpkgs.git                                     \
+            nixpkgs.git-lfs                                 \
             nixpkgs.fd                                      \
             nixpkgs.ripgrep                                 \
             nixpkgs.htop                                    \
@@ -20,6 +21,9 @@ nix-env -iA nixpkgs.git                                     \
             nixpkgs.lua-language-server                     \
             nixpkgs.nodePackages.js-beautify                \
             nixpkgs.nodePackages.typescript-language-server \
+
+# init git lfs
+git lfs install
 
 # only install win32yank when not available
 if not type -q win32yank.exe
