@@ -144,7 +144,9 @@ require "packer".startup(function (use)
                    }
                    lspconfig.pyright.setup
                    { settings = { python = { pythonPath = ".venv/bin/python"
-                                           , analysis   = { typeCheckingMode = "off" }
+                                           , analysis   = { typeCheckingMode      = "off"
+                                                          , autoImportCompletions = false
+                                                          }
                                            }
                                 }
                    }
