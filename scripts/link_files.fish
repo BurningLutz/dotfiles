@@ -1,5 +1,3 @@
-mkdir -p $HOME/.local/bin
-
 pushd links
 
 set -l items (find . -type f,l | sed "s|^\./||")
