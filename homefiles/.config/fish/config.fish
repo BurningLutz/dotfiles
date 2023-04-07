@@ -2,7 +2,6 @@ if status --is-login
   # integrate nix
   . ~/.nix-profile/etc/profile.d/nix.fish
   set -x fish_complete_path ~/.nix-profile/share/fish/vendor_completions.d $fish_complete_path
-  set -x fish_function_path ~/.nix-profile/share/fish/vendor_functions.d $fish_function_path
   # set lang
   set -x LANG en_US.UTF-8
   # my default editor is neovim
