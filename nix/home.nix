@@ -89,4 +89,6 @@ in rec
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  # Generate manpage caches for fish shell to complete manpages.
+  programs.man.generateCaches = true;
 }
