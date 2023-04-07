@@ -1,10 +1,22 @@
 { config, pkgs, ... }:
 
+with builtins;
+
+let
+  homefilesPath = getEnv "DOTFILES_PATH" + "/homefiles";
+  homefiles     = mapAttrs
+                    ( name: value: { source    = "${homefilesPath}/${name}";
+                                     recursive = value == "directory";
+                                   }
+                    )
+                    ( readDir homefilesPath );
+
+in rec
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = builtins.getEnv "USER";
-  home.homeDirectory = builtins.getEnv "HOME";
+  home.username      = getEnv "USER";
+  home.homeDirectory = getEnv "HOME";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -18,6 +30,19 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    pkgs.fd
+    pkgs.git
+    pkgs.git-lfs
+    pkgs.htop
+    pkgs.lua-language-server
+    pkgs.nodePackages.js-beautify
+    pkgs.nodePackages.typescript-language-server
+    pkgs.nodejs
+    pkgs.pyright
+    pkgs.ripgrep
+    pkgs.tldr
+    pkgs.unzip
+    (pkgs.neovim.override { extraMakeWrapperArgs = "--set LD_LIBRARY_PATH ${home.homeDirectory}/.local/lib" })
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -35,7 +60,7 @@
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  home.file = {
+  home.file = homefiles // {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.

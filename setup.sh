@@ -1,24 +1,22 @@
 #!/bin/bash
 
-SCRIPT_DIR=$( cd ${0%/*} && pwd -P )
+SCRIPT_DIR=$(cd ${0%/*} && pwd -P)
 
 if [[ $PWD != $SCRIPT_DIR ]]; then
   echo "Run setup.sh at its own directory." 1>&2
   exit 1
 fi
 
-# install fish first
-nix-env -iA nixpkgs.fish
+echo "Setuping..."
 
-# add fish support
-FISH=$(which fish)
-if ! grep -qwF $FISH /etc/shells; then
-  echo "Add fish as a valid login shell..."
-  echo $FISH | sudo tee -a /etc/shells
-fi
+pushd scripts
+sh setup_system_requirements.sh
+sh setup_nix.sh
+sh setup_general.sh
+popd
+
 # change login shell to fish
-echo "Change default login shell to fish..."
-chsh -s $FISH
+echo "Changing default login shell to fish..."
+chsh -s $(which fish)
 
-fish ./scripts/link_files.fish
-fish --login ./scripts/install_general.fish
+echo "All setups are done. Congrats!"

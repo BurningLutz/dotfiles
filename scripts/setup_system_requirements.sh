@@ -4,4 +4,4 @@ sudo add-apt-repository ppa:wslutilities/wslu -y
 sudo apt-add-repository ppa:fish-shell/release-3 -y
 
 sudo apt update
-sudo apt install wslu fish -y
+sudo apt install build-essential wslu fish -y

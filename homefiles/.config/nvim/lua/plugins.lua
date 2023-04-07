@@ -209,22 +209,20 @@ require "packer".startup(function (use)
                  end
       , config = function ()
                    require "nvim-treesitter.configs".setup
-                   { ensure_installed = "all"
-                   , sync_install     = true
-                   , playground       = { enable = true }
-                   , highlight        = { enable = true
-                                        , additional_vim_regex_highlighting = false
-                                        }
-                   , textobjects      = { select = { enable  = true
-                                                   , keymaps = { ["af"] = "@function.outer"
-                                                               , ["if"] = "@function.inner"
-                                                               , ["ac"] = "@class.outer"
-                                                               , ["ic"] = "@class.inner"
-                                                               }
-                                                   }
-                                        , swap   = { enable = true
-                                                   }
-                                        }
+                   { playground  = { enable = true }
+                   , highlight   = { enable = true
+                                   , additional_vim_regex_highlighting = false
+                                   }
+                   , textobjects = { select = { enable  = true
+                                              , keymaps = { ["af"] = "@function.outer"
+                                                          , ["if"] = "@function.inner"
+                                                          , ["ac"] = "@class.outer"
+                                                          , ["ic"] = "@class.inner"
+                                                          }
+                                              }
+                                   , swap   = { enable = true
+                                              }
+                                   }
                    }
                  end
       }
