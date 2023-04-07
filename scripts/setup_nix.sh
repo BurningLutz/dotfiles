@@ -4,12 +4,12 @@ sudo rm -rf /nix
 # copy configs
 mkdir -p ~/.config/nix
 mkdir -p ~/.config/home-manager
-sh setup_nix_config.sh
+bash setup_nix_config.sh
 
 # install nix and load it
 export NIX_INSTALLER_NO_MODIFY_PROFILE=1
 
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
+bash <(curl -L https://nixos.org/nix/install) --no-daemon
 
 . /home/lutz/.nix-profile/etc/profile.d/nix.sh
 
