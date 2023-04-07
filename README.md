@@ -2,11 +2,7 @@
 
 My dot files.
 
-# Prerequisites
-
-Install [Nix](https://nixos.org/download.html).
-
-# General Installation
+# Installation
 
 Simply run `setup.sh`. Don't worry, it's idempotent. :tada::tada::tada:
 
@@ -17,8 +13,12 @@ Simply run `setup.sh`. Don't worry, it's idempotent. :tada::tada::tada:
 - Move `windows/.wslconfig` into %UserProfile%.
 - Move `windows/wsl.conf` into /etc inside WSL.
 
-# Language Specific Scripts
+# Switch Snapshot
 
-There are some installation scripts specific to different languages under the `scripts/lang` dir, they are not executed by default.
+Simply run `switch.sh`.
+
+# Language Specific Installation
+
+There are some installation scripts specific to different languages under the `lang` dir, they are not executed by default.
 
 Run them standalone as you need.
