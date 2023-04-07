@@ -29,20 +29,22 @@ in rec
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.fd
-    pkgs.git
-    pkgs.git-lfs
-    pkgs.htop
-    pkgs.lua-language-server
-    pkgs.nodePackages.js-beautify
-    pkgs.nodePackages.typescript-language-server
-    pkgs.nodejs
-    pkgs.pyright
-    pkgs.ripgrep
-    pkgs.tldr
-    pkgs.unzip
-    (pkgs.neovim.override { extraMakeWrapperArgs = "--set LD_LIBRARY_PATH ${home.homeDirectory}/.local/lib"; })
+  home.packages = with pkgs; [
+    fd
+    git
+    git-lfs
+    htop
+    lua-language-server
+    nodePackages.js-beautify
+    nodePackages.typescript-language-server
+    nodejs
+    pyright
+    ripgrep
+    tldr
+    unzip
+    ( neovim.override { extraMakeWrapperArgs = "--set LD_LIBRARY_PATH ${home.homeDirectory}/.local/lib";
+                      }
+    )
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

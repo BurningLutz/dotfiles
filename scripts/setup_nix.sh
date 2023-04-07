@@ -14,6 +14,11 @@ bash <(curl -L https://nixos.org/nix/install) --no-daemon
 
 . /home/lutz/.nix-profile/etc/profile.d/nix.sh
 
+# mitigate home file conflicts
+for fp in $(find ../homefiles -type f,l | sed "s|^../homefiles/||"); do
+  rm -f ~/$fp
+done
+
 # install home-manager
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update

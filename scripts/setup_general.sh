@@ -1,8 +1,6 @@
-# neovim with packer.nvim
-export PACKER_PATH=~/.local/share/nvim/site/pack/packer
+# neovim files and packer.nvim
+rm -rf ~/.local/share/nvim
+rm ~/.config/nvim/plugin/packer_compiled.lua
 
-# reinstall packer.nvim and all plugins
-rm -rf $PACKER_PATH
-
-git clone --depth 1 https://github.com/wbthomason/packer.nvim $PACKER_PATH/start/packer.nvim
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 nvim -c "autocmd User PackerComplete quitall" -c PackerSync
