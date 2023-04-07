@@ -42,7 +42,7 @@ in rec
     pkgs.ripgrep
     pkgs.tldr
     pkgs.unzip
-    (pkgs.neovim.override { extraMakeWrapperArgs = "--set LD_LIBRARY_PATH ${home.homeDirectory}/.local/lib" })
+    (pkgs.neovim.override { extraMakeWrapperArgs = "--set LD_LIBRARY_PATH ${home.homeDirectory}/.local/lib"; })
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

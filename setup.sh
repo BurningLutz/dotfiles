@@ -10,9 +10,9 @@ fi
 echo "Setuping..."
 
 pushd scripts
-bash setup_system_requirements.sh
-bash setup_nix.sh
-bash setup_general.sh
+. setup_system_requirements.sh
+. setup_nix.sh
+. setup_general.sh
 popd
 
 # change login shell to fish

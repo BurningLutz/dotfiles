@@ -1,10 +1,11 @@
 # reinstalling nix means delete and then install :D
 sudo rm -rf /nix
+rm -rf ~/.nix-channels ~/.nix-profile ~/.nix-defexpr
 
 # copy configs
 mkdir -p ~/.config/nix
 mkdir -p ~/.config/home-manager
-bash setup_nix_config.sh
+. setup_nix_config.sh
 
 # install nix and load it
 export NIX_INSTALLER_NO_MODIFY_PROFILE=1
