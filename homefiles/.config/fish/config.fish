@@ -3,10 +3,6 @@ if status --is-login
   . ~/.nix-profile/etc/profile.d/nix.fish
   set -x fish_complete_path ~/.nix-profile/share/fish/vendor_completions.d $fish_complete_path
   set -x fish_function_path ~/.nix-profile/share/fish/vendor_functions.d $fish_function_path
-  # .local/bin
-  fish_add_path --path ~/.local/bin
-  # pyenv
-  fish_add_path --path ~/.pyenv/bin
   # set lang
   set -x LANG en_US.UTF-8
   # my default editor is neovim
@@ -27,4 +23,11 @@ if status --is-interactive
   alias ll="ls -lhAF"
   alias vim=nvim
   alias open=wslview
+
+  # PATH is reset inside terminal of nix's neovim, and neovim start shell
+  # in interactive mode, not login mode, so I need to modify PATH here.
+  # .local/bin
+  fish_add_path --path ~/.local/bin
+  # pyenv
+  fish_add_path --path ~/.pyenv/bin
 end

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo apt install -y curl           \
                     libffi-dev     \
                     libffi8ubuntu1 \
@@ -9,6 +11,6 @@ sudo apt install -y curl           \
                     libghc-gtk-dev \
 
 # only install ghcup if not available
-if not type -q ghcup
+if ! type ghcup >/dev/null 2>&1; then
   curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-end
+fi

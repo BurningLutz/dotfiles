@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo apt install -y curl                   \
                     gir1.2-gtk-3.0         \
                     libbz2-dev             \
@@ -21,11 +23,11 @@ sudo apt install -y curl                   \
                     zlib1g-dev             \
 
 # only install when not available
-if not type -q pyenv
+if ! type pyenv >/dev/null 2>&1; then
   curl https://pyenv.run | bash
-end
+fi
 
 # only install when not available
-if not type -q pdm
+if ! type pdm >/dev/null 2>&1; then
   curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
-end
+fi
