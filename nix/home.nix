@@ -91,6 +91,12 @@ in rec
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  # Generate manpage caches for fish shell to complete manpages.
-  programs.man.generateCaches = true;
+  # fish shell needs mandb cache to do man completion.
+  # the original cache format is not compatible with many systems, it should
+  # be changed to gdbm.
+  programs.man = with pkgs; {
+    package        = man.override { db = gdbm;
+                                  };
+    generateCaches = true;
+  };
 }
