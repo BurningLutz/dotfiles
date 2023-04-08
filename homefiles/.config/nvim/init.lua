@@ -1,6 +1,7 @@
 -- # CONFIG PRIMITIVES ########################################################
 local opt = vim.opt
 local cmd = vim.cmd
+local api = vim.api
 local g   = vim.g
 
 local function map(args)
@@ -10,6 +11,20 @@ local function map(args)
   args[3] = nil
 
   vim.keymap.set(mode, lhs, rhs, args)
+end
+
+-- # modified from https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup
+local function open_nvim_tree(data)
+  local directory = vim.fn.isdirectory(data.file) == 1
+
+  if not directory then
+    return
+  end
+
+  cmd.cd(data.file)
+
+  -- open the tree
+  require("nvim-tree.api").tree.open()
 end
 
 -- # PLUGINS ###################################################################
@@ -73,6 +88,10 @@ opt.mouse         =  ""
 opt.virtualedit   = "block"
 
 -- # CONFIG VARIABLES ##########################################################
+-- # disable netrw
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+
 -- # neovim builtins.
 g.python_indent            = { disable_parentheses_indenting = true }
 g.pyindent_open_paren      = false
@@ -151,6 +170,9 @@ cmd "hi @text.strong   cterm=bold   gui=bold"
 
 -- # lsp highlights
 cmd "hi link LspSignatureActiveParameter PmenuSel"
+
+-- # nvim-tree
+api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
 -- # KEYMAPS ###################################################################
 map { { "n", "o" }, "(", "[(" }

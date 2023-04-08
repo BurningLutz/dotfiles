@@ -31,9 +31,8 @@ require "packer".startup(function (use)
   -- theme.
   use "w0ng/vim-hybrid"
   -- dir tree, bookmarks and more.
-  use { "kyazdani42/nvim-tree.lua"
-      , requires = "kyazdani42/nvim-web-devicons"
-      , tag    = "nightly"
+  use { "nvim-tree/nvim-tree.lua"
+      , requires = "nvim-tree/nvim-web-devicons"
       , config = function ()
                    require "nvim-tree".setup
                    { system_open   = { cmd = "wslview" }
@@ -209,8 +208,9 @@ require "packer".startup(function (use)
                  end
       , config = function ()
                    require "nvim-treesitter.configs".setup
-                   { ensure_installed = "all"
+                   { ensure_installed = { "diff", "markdown", "markdown_inline" }
                    , sync_install     = true
+                   , auto_install     = true
                    , playground       = { enable = true }
                    , highlight        = { enable = true
                                         , additional_vim_regex_highlighting = false
