@@ -42,7 +42,7 @@ in rec
     ripgrep
     tldr
     unzip
-    ( neovim.override { extraMakeWrapperArgs = "--set LD_LIBRARY_PATH ${home.homeDirectory}/.local/lib";
+    ( neovim.override { extraMakeWrapperArgs = "--set LD_LIBRARY_PATH ${stdenv.cc.cc.lib}/lib";
                       }
     )
 
