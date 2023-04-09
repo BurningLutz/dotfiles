@@ -42,7 +42,9 @@ in rec
     ripgrep
     tldr
     unzip
-    ( neovim.override { extraMakeWrapperArgs = "--set LD_LIBRARY_PATH ${stdenv.cc.cc.lib}/lib";
+    ( neovim.override { extraMakeWrapperArgs = toString [ "--set LD_LIBRARY_PATH ${stdenv.cc.cc.lib}/lib"
+                                                          "--set NVIM_TREESITTER_COMPILER_PATH ${stdenv.cc}/bin/gcc"
+                                                        ];
                       }
     )
 
