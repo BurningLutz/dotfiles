@@ -34,6 +34,7 @@ in rec
     fd
     git
     git-lfs
+    go
     gopls
     htop
     lua-language-server
