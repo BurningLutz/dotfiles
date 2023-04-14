@@ -161,6 +161,14 @@ require "packer".startup(function (use)
                    }
                    lspconfig.tsserver.setup {}
                    lspconfig.gopls.setup {}
+                   lspconfig.jdtls.setup
+                   { cmd = { "jdt-language-server"
+                           , "-configuration"
+                           , os.getenv("HOME").."/.cache/jdtls/config"
+                           , "-data"
+                           , os.getenv("HOME").."/.cache/jdtls/workspace"
+                           }
+                   }
                  end
       }
   -- repeat plugin map.

@@ -36,11 +36,15 @@ in rec
     git-lfs
     go
     gopls
+    gradle
     htop
+    jdt-language-server
+    llvm_12
     lua-language-server
     nodePackages.js-beautify
     nodePackages.typescript-language-server
     nodejs
+    openjdk17
     pyright
     ripgrep
     tldr
