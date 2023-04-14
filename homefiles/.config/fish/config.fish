@@ -1,7 +1,6 @@
 if status --is-login
   # integrate nix
   . ~/.nix-profile/etc/profile.d/nix.fish
-  set -x fish_complete_path ~/.nix-profile/share/fish/vendor_completions.d $fish_complete_path
   # set lang
   set -x LANG en_US.UTF-8
   # my default editor is neovim
@@ -22,6 +21,14 @@ if status --is-interactive
   alias ll="ls -lhAF"
   alias vim=nvim
   alias open=wslview
+
+  # erase LD_LIBRARY_PATH anyway to let the shell not be affected by
+  # my own nvim wrapper.
+  set -e LD_LIBRARY_PATH
+
+  # It seems that export fish_complete_path when login is not enough,
+  # I have to set it every time.
+  set fish_complete_path ~/.nix-profile/share/fish/vendor_completions.d $fish_complete_path
 
   # PATH is reset inside terminal of nix's neovim, and neovim start shell
   # in interactive mode, not login mode, so I need to modify PATH here.
