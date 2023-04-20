@@ -240,7 +240,7 @@ require "packer".startup(function (use)
   -- lists.
   use { "nvim-telescope/telescope.nvim"
       , requires = "nvim-lua/plenary.nvim"
-      , tag      = "0.1.0"
+      , tag      = "0.1.1"
       , config   = function ()
                      require "telescope".setup
                      { defaults = { scroll_strategy = "limit"
