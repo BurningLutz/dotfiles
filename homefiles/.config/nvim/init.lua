@@ -5,7 +5,7 @@ local api = vim.api
 local g   = vim.g
 
 -- # ESSENTIAL VARIABLES ######################################################
-g.treesitter_compiler = os.getenv("NVIM_TREESITTER_COMPILER_PATH")
+g.treesitter_compiler = os.getenv "NVIM_TREESITTER_COMPILER_PATH"
 
 cmd "unlet $LD_LIBRARY_PATH"
 cmd "unlet $NVIM_TREESITTER_COMPILER_PATH"
@@ -31,18 +31,17 @@ local function open_nvim_tree(data)
   cmd.cd(data.file)
 
   -- open the tree
-  require("nvim-tree.api").tree.open()
+  require "nvim-tree.api".tree.open()
 end
 
 -- # PLUGINS ###################################################################
-require "plugins"
+vim.opt.rtp:prepend "~/.local/share/nvim/lazy/lazy.nvim"
 
-cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]]
+require "lazy".setup( "plugins"
+                    , { defaults = { lazy = true
+                                   }
+                      }
+                    )
 
 -- # EDITOR OPTIONS ############################################################
 -- I use dark color scheme.
@@ -240,5 +239,4 @@ map { "c", "<A-b>", "<S-Left>" }
 map { "c", "<A-f>", "<S-Right>" }
 
 -- # COMMANDS ##################################################################
-cmd "com! PS     PackerSync"
 cmd "com! Rename lua vim.lsp.buf.rename()"
