@@ -22,10 +22,6 @@ if status --is-interactive
   alias vim=nvim
   alias open=wslview
 
-  # erase LD_LIBRARY_PATH anyway to let the shell not be affected by
-  # my own nvim wrapper.
-  # set -e LD_LIBRARY_PATH
-
   # It seems that export fish_complete_path when login is not enough,
   # I have to set it every time.
   set fish_complete_path ~/.nix-profile/share/fish/vendor_completions.d $fish_complete_path

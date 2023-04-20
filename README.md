@@ -2,6 +2,10 @@
 
 My dot files.
 
+# Prerequisite
+
+- Ubuntu >= 22.04
+
 # Installation
 
 Simply run `setup.sh`. Don't worry, it's idempotent. :tada::tada::tada:
