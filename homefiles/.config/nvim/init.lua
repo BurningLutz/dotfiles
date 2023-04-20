@@ -4,6 +4,13 @@ local cmd = vim.cmd
 local api = vim.api
 local g   = vim.g
 
+-- # ESSENTIAL VARIABLES ######################################################
+g.treesitter_compiler = os.getenv("NVIM_TREESITTER_COMPILER_PATH")
+
+cmd "unlet $LD_LIBRARY_PATH"
+cmd "unlet $NVIM_TREESITTER_COMPILER_PATH"
+
+-- # UTILS ####################################################################
 local function map(args)
   local mode, lhs, rhs = unpack(args)
   args[1] = nil

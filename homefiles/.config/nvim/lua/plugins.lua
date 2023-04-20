@@ -1,4 +1,3 @@
----@diagnostic disable: need-check-nil
 require "packer".startup(function (use)
   -- # packer.nvim itself.
   use "wbthomason/packer.nvim"
@@ -212,7 +211,7 @@ require "packer".startup(function (use)
                    require "nvim-treesitter.install".update { with_sync = true }
                  end
       , config = function ()
-                   require "nvim-treesitter.install".compilers = { os.getenv("NVIM_TREESITTER_COMPILER_PATH") }
+                   require "nvim-treesitter.install".compilers = { vim.g.treesitter_compiler }
                    require "nvim-treesitter.configs".setup
                    { ensure_installed = { "diff", "markdown", "markdown_inline" }
                    , sync_install     = true

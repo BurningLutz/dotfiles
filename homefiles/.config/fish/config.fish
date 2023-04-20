@@ -24,7 +24,7 @@ if status --is-interactive
 
   # erase LD_LIBRARY_PATH anyway to let the shell not be affected by
   # my own nvim wrapper.
-  set -e LD_LIBRARY_PATH
+  # set -e LD_LIBRARY_PATH
 
   # It seems that export fish_complete_path when login is not enough,
   # I have to set it every time.
