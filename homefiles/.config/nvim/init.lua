@@ -4,11 +4,10 @@ local cmd = vim.cmd
 local api = vim.api
 local g   = vim.g
 
--- # ESSENTIAL VARIABLES ######################################################
-g.treesitter_compiler = os.getenv "NVIM_TREESITTER_COMPILER_PATH"
-
+-- # ESSENTIAL INITS ##########################################################
+-- erase LD_LIBRARY_PATH ASAP to ensure shell commands and terminal is not
+-- affected
 cmd "unlet $LD_LIBRARY_PATH"
-cmd "unlet $NVIM_TREESITTER_COMPILER_PATH"
 
 -- # UTILS ####################################################################
 local function map(args)

@@ -1,27 +1,24 @@
 return
 { -- statusline.
   { "nvim-lualine/lualine.nvim"
-  , config = function ()
-               require "lualine".setup
-               { options  = { theme   = "OceanicNext"
-                            , refresh = { statusline = 100
-                                        , tabline    = 100
-                                        , winbar     = 100
+  , opts = { options  = { theme   = "OceanicNext"
+                        , refresh = { statusline = 100
+                                    , tabline    = 100
+                                    , winbar     = 100
+                                    }
+                        }
+           , sections = { lualine_c = { "filename"
+                                      , { "lsp_progress"
+                                        , display_components = { "spinner", { "title", "percentage", "message" } }
+                                        , spinner_symbols    = { "🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 " }
+                                        , timer = { progress_enddelay        = 500
+                                                  , spinner                  = 100
+                                                  , lsp_client_name_enddelay = 0
+                                                  }
                                         }
-                            }
-               , sections = { lualine_c = { "filename"
-                                          , { "lsp_progress"
-                                            , display_components = { "spinner", { "title", "percentage", "message" } }
-                                            , spinner_symbols    = { "🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 " }
-                                            , timer = { progress_enddelay        = 500
-                                                      , spinner                  = 100
-                                                      , lsp_client_name_enddelay = 0
-                                                      }
-                                            }
-                                          }
-                            }
-               }
-             end
+                                      }
+                        }
+           }
   }
 , "WhoIsSethDaniel/lualine-lsp-progress.nvim"
   -- theme.
@@ -29,14 +26,11 @@ return
   -- dir tree, bookmarks and more.
 , { "nvim-tree/nvim-tree.lua"
   , dependencies = { "nvim-tree/nvim-web-devicons" }
-  , config       = function ()
-                     require "nvim-tree".setup
-                     { system_open   = { cmd = "wslview" }
-                     , disable_netrw = true
-                     , renderer      = { icons = { git_placement = "after" } }
-                     , actions       = { open_file = { quit_on_open = true } }
-                     }
-                   end
+  , opts = { system_open   = { cmd = "wslview" }
+           , disable_netrw = true
+           , renderer      = { icons = { git_placement = "after" } }
+           , actions       = { open_file = { quit_on_open = true } }
+           }
   }
   -- show file change inline.
 , "airblade/vim-gitgutter"
@@ -45,11 +39,8 @@ return
   -- Surround selections, stylishly 😎
 , { "kylechui/nvim-surround"
   , version = "*" -- Use for stability; omit to use `main` branch for the latest features
-  , config  = function ()
-                require "nvim-surround".setup
-                { indent_lines = false
-                }
-              end
+  , opts = { indent_lines = false
+           }
   }
   -- git wrapper.
 , "tpope/vim-fugitive"
@@ -172,11 +163,7 @@ return
   -- comment stuffs easily.
 , "tpope/vim-commentary"
   -- auto close pairs.
-, { "windwp/nvim-autopairs"
-  , config = function ()
-               require "nvim-autopairs".setup {}
-             end
-  }
+, "windwp/nvim-autopairs"
   -- block-wise alignment.
 , { "BurningLutz/blockalign.nvim"
   , dependencies = { "Align" }
@@ -208,7 +195,7 @@ return
                require "nvim-treesitter.install".update { with_sync = true }
              end
   , config = function ()
-               require "nvim-treesitter.install".compilers = { vim.g.treesitter_compiler }
+               require "nvim-treesitter.install".compilers = { os.getenv "NVIM_TREESITTER_COMPILER_PATH" }
                require "nvim-treesitter.configs".setup
                { ensure_installed = { "diff", "markdown", "markdown_inline" }
                , sync_install     = true
