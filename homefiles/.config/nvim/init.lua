@@ -37,11 +37,7 @@ end
 -- # PLUGINS ###################################################################
 vim.opt.rtp:prepend "~/.local/share/nvim/lazy/lazy.nvim"
 
-require "lazy".setup( "plugins"
-                    , { defaults = { lazy = true
-                                   }
-                      }
-                    )
+require "lazy".setup "plugins"
 
 -- # EDITOR OPTIONS ############################################################
 -- I use dark color scheme.
