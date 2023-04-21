@@ -89,6 +89,15 @@ opt.mouse         =  ""
 opt.virtualedit   = "block"
 
 -- # CONFIG VARIABLES ##########################################################
+-- # clipboard
+g.clipboard = { name  = "WSL Clipboard"
+              , copy  = { ["+"] = "win32yank.exe -i --crlf"
+                        }
+              , paste = { ["+"] = "win32yank.exe -o --lf"
+                        }
+              , cache_enabled = 0
+              }
+
 -- # disable netrw
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
