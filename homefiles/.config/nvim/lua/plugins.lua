@@ -198,7 +198,6 @@ return
                { ensure_installed = { "diff", "markdown", "markdown_inline" }
                , sync_install     = true
                , auto_install     = true
-               , playground       = { enable = true }
                , highlight        = { enable = true
                                     , additional_vim_regex_highlighting = false
                                     }
@@ -215,7 +214,6 @@ return
                }
              end
   }
-, "nvim-treesitter/playground"
 , { "nvim-treesitter/nvim-treesitter-textobjects"
   , dependencies = { "nvim-treesitter" }
   }
