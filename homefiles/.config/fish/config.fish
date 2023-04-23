@@ -5,6 +5,8 @@ if status --is-login
   set -x LANG en_US.UTF-8
   # my default editor is neovim
   set -x EDITOR nvim
+  # neovim as manpager
+  set -x MANPAGER "nvim +Man!"
   # set true color
   set -x COLORTERM truecolor
   # set fish_ambiguous_width to 1
