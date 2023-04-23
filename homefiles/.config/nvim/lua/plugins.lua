@@ -163,7 +163,9 @@ return
   -- comment stuffs easily.
 , "tpope/vim-commentary"
   -- auto close pairs.
-, "windwp/nvim-autopairs"
+, { "windwp/nvim-autopairs"
+  , opts = {}
+  }
   -- block-wise alignment.
 , { "BurningLutz/blockalign.nvim"
   , dependencies = { "Align" }
