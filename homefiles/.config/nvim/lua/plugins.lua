@@ -184,8 +184,6 @@ return
 , { "dhruvasagar/vim-table-mode"
   , ft = { "markdown" }
   }
-  -- editorconfig.
-, "editorconfig/editorconfig-vim"
   -- db.
 , "tpope/vim-dadbod"
 , "kristijanhusak/vim-dadbod-ui"
