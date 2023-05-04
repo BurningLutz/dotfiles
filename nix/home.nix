@@ -41,6 +41,7 @@ in rec
     jdt-language-server
     llvm_12
     lua-language-server
+    mongodb-tools
     nodePackages.js-beautify
     nodePackages.typescript-language-server
     nodejs
