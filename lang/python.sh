@@ -17,6 +17,8 @@ sudo apt install -y curl                   \
                     tk-dev                 \
                     xz-utils               \
                     zlib1g-dev             \
+# dependencies required by matplotlib's qt backend.
+sudo apt install -y qt6-base-dev           \
 
 # only install when not available
 if ! type pyenv >/dev/null 2>&1; then
