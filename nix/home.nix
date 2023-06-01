@@ -38,7 +38,7 @@ in rec
     gopls
     gradle
     htop
-    jdt-language-server
+    ( jdt-language-server.override { jdk = openjdk17; } )
     llvm_12
     lua-language-server
     mongodb-tools
