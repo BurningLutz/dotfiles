@@ -136,8 +136,9 @@ cmd "silent! colorscheme hybrid"
 -- realtime update
 g.gitgutter_terminal_reports_focus = false
 cmd "hi! link SignColumn      LineNr"
-cmd "hi  link GitGutterAdd    diffAdded"
-cmd "hi  link GitGutterDelete diffRemoved"
+cmd "hi! link GitGutterAdd    DiagnosticOk"
+cmd "hi! link GitGutterChange DiagnosticWarn"
+cmd "hi! link GitGutterDelete DiagnosticError"
 cmd "hi  link FloatTitle      TelescopeTitle"
 cmd "hi  link FloatBorder     TelescopeBorder"
 
