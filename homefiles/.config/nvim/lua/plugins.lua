@@ -156,6 +156,7 @@ return
                        , os.getenv("HOME").."/.cache/jdtls/workspace"
                        }
                }
+               lspconfig.clangd.setup {}
              end
   }
   -- repeat plugin map.
