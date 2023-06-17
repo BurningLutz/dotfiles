@@ -30,7 +30,7 @@ in rec
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    clang_12
+    clang-tools_12
     clickhouse
     fd
     git
