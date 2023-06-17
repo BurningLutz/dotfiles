@@ -30,6 +30,7 @@ in rec
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    clang_12
     clickhouse
     fd
     git
@@ -38,7 +39,6 @@ in rec
     gopls
     gradle
     htop
-    ( jdt-language-server.override { jdk = openjdk17; } )
     llvm_12
     lua-language-server
     mongodb-tools
@@ -50,6 +50,7 @@ in rec
     ripgrep
     tldr
     unzip
+    ( jdt-language-server.override { jdk = openjdk17; } )
     ( neovim.override { extraMakeWrapperArgs = toString [ "--set LD_LIBRARY_PATH ${stdenv.cc.cc.lib}/lib"
                                                           "--set NVIM_TREESITTER_COMPILER_PATH ${stdenv.cc}/bin/gcc"
                                                         ];
