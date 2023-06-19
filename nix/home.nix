@@ -31,6 +31,7 @@ in rec
   # environment.
   home.packages = with pkgs; [
     clang-tools_12
+    clang_12
     clickhouse
     fd
     git
@@ -39,10 +40,10 @@ in rec
     gopls
     gradle
     htop
+    jsbeautifier
     llvm_12
     lua-language-server
     mongodb-tools
-    nodePackages.js-beautify
     nodePackages.typescript-language-server
     nodejs
     openjdk17
