@@ -256,7 +256,6 @@ return
                { input  = { enabled        = true
                           , default_prompt = "> "
                           , prompt_align   = "center"
-                          , anchor         = "NW"
                           , border         = "single"
                           , win_options    = { winblend     = 0
                                              , winhighlight = "Normal:TelescopePromptNormal"
