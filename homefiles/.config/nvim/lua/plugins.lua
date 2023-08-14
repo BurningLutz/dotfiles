@@ -121,12 +121,13 @@ return
                                                              )
 
                lspconfig.hls.setup
-               { settings = { haskell = { plugin = { ["ghcide-completions"] = { config = { snippetsOn = false
-                                                                                         }
-                                                                              }
-                                                   }
-                                        }
-                            }
+               { filetypes = { "haskell", "lhaskell", "cabal" }
+               , settings  = { haskell = { plugin = { ["ghcide-completions"] = { config = { snippetsOn = false
+                                                                                          }
+                                                                               }
+                                                    }
+                                         }
+                             }
                }
                lspconfig.pyright.setup
                { settings = { python = { pythonPath = ".venv/bin/python"
