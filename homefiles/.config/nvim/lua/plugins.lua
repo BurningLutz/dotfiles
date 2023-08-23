@@ -52,11 +52,13 @@ return
                local fortune = require "alpha.fortune"
                local dashboard = require "alpha.themes.dashboard"
 
-               dashboard.section.buttons.val = { dashboard.button("e", "  New file", ":ene<CR>")
-                                               , dashboard.button("p", "  Open session", ":Telescope session-lens<CR>")
-                                               , dashboard.button("q", "  Quit", ":qa!<CR>")
+               dashboard.section.buttons.val = { dashboard.button("e", "  New file", ":ene<CR>")
+                                               , dashboard.button("p", "  Open session", ":Telescope session-lens<CR>")
+                                               , dashboard.button("q", "󰿅  Quit", ":qa!<CR>")
                                                }
-               dashboard.section.footer.val  = fortune()
+
+               dashboard.section.footer.val     = fortune()
+               dashboard.section.footer.opts.hl = "String"
 
                require "alpha".setup(dashboard.config)
              end
