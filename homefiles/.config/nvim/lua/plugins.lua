@@ -49,13 +49,45 @@ return
 , { "goolord/alpha-nvim"
   , dependencies = { "nvim-tree/nvim-web-devicons" }
   , config = function ()
-               local fortune = require "alpha.fortune"
+               local sessutil  = require "auto-session"
+               local fortune   = require "alpha.fortune"
                local dashboard = require "alpha.themes.dashboard"
 
-               dashboard.section.buttons.val = { dashboard.button("e", "  New file", ":ene<CR>")
-                                               , dashboard.button("p", "  Open session", ":Telescope session-lens<CR>")
-                                               , dashboard.button("q", "󰿅  Quit", ":qa!<CR>")
-                                               }
+               local buttsonvals = {}
+
+               table.insert( buttsonvals
+                           , { type = "text"
+                             , val  = "Projects"
+                             , opts = { hl       = "Title"
+                                      , position = "center"
+                                      }
+                             }
+                           )
+               for n, sess in ipairs({ unpack(sessutil.get_session_files(), 1, 3) }) do
+                 local name = string.match(sess.display_name, ".*/(.*)$")
+                 local cmd  = ":lua require 'auto-session'.RestoreSession('"..sess.display_name.."')<CR>"
+                 local btn  = dashboard.button(tostring(n), "  "..name, cmd)
+
+                 table.insert(buttsonvals, btn)
+               end
+               table.insert( buttsonvals
+                           , { type = "padding"
+                             , val  = 1
+                             }
+                           )
+               table.insert( buttsonvals
+                           , { type = "text"
+                             , val  = "Action"
+                             , opts = { hl       = "Title"
+                                      , position = "center"
+                                      }
+                             }
+                           )
+               table.insert(buttsonvals, dashboard.button("e", "  New file", ":ene<CR>"))
+               table.insert(buttsonvals, dashboard.button("p", "  Open session", ":Telescope session-lens<CR>"))
+               table.insert(buttsonvals, dashboard.button("q", "󰿅  Quit", ":qa!<CR>"))
+
+               dashboard.section.buttons.val = buttsonvals
 
                dashboard.section.footer.val     = fortune()
                dashboard.section.footer.opts.hl = "String"
