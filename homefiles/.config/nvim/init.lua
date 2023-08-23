@@ -142,26 +142,6 @@ cmd "hi! link GitGutterDelete DiagnosticError"
 cmd "hi  link FloatTitle      TelescopeTitle"
 cmd "hi  link FloatBorder     TelescopeBorder"
 
--- # vim-startify
--- change session dir to nvim style.
-g.startify_session_dir         = "~/.local/share/nvim/session"
--- change startify's list order.
-g.startify_list_order          = { "sessions"
-                                 , "bookmarks"
-                                 , "dir"
-                                 , "files"
-                                 , "commands"
-                                 }
--- always update old files.
-g.startify_update_oldfiles     = true
--- auto-save when opening a new session or leaving vim.
-g.startify_session_persistence = true
--- sort sessions by modification time.
-g.startify_session_sort        = true
--- close all buffers not need to save.
-g.startify_session_before_save = { "silent! tabdo NvimTreeClose"
-                                 }
-
 -- # vim-markdown-toc
 g.vmt_auto_update_on_save = false
 g.vmt_fence_text          = "TOC"
@@ -205,6 +185,7 @@ map { "", "<A-l>", ":bnext<CR>" }
 map { "", "<C-h>", "<C-w>h" }
 map { "", "<C-l>", "<C-w>l" }
 -- lists and lsp.
+map { "n", "<C-A-p>", ":Telescope session-lens<CR>" }
 map { "n", "<C-p>"  , function () require "telescope.builtin".find_files { hidden = true } end }
 map { "n", "<S-A-p>", function ()
                         require "telescope.builtin".live_grep

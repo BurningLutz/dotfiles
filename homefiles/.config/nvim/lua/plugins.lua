@@ -6,6 +6,7 @@ return
                                     , tabline    = 100
                                     , winbar     = 100
                                     }
+                        , disabled_filetypes = { "alpha" }
                         }
            , sections = { lualine_c = { "filename"
                                       , { "lsp_progress"
@@ -44,8 +45,55 @@ return
   }
   -- git wrapper.
 , "tpope/vim-fugitive"
-  -- 🔗 the fancy start screen for Vim.
-, "mhinz/vim-startify"
+  -- highly customizable start screen.
+, { "goolord/alpha-nvim"
+  , dependencies = { "nvim-tree/nvim-web-devicons" }
+  , config = function ()
+               local fortune = require "alpha.fortune"
+               local dashboard = require "alpha.themes.dashboard"
+
+               dashboard.section.buttons.val = { dashboard.button("e", "  New file", ":ene<CR>")
+                                               , dashboard.button("p", "  Open session", ":Telescope session-lens<CR>")
+                                               , dashboard.button("q", "  Quit", ":qa!<CR>")
+                                               }
+               dashboard.section.footer.val  = fortune()
+
+               require "alpha".setup(dashboard.config)
+             end
+  }
+  -- session management.
+, { "rmagatti/auto-session"
+  , config = function ()
+               local ignored_filetypes = { "gitcommit", "gitrebase", "fugitive", "NvimTree" }
+
+               require "auto-session".setup
+               { auto_session_create_enabled = false
+               , auto_restore_enabled        = false
+               , auto_session_use_git_branch = false
+               -- it's critical to set `cwd_change_handling` to nil to work-around a
+               -- "session cleared unexpectedly" issue.
+               -- see https://github.com/rmagatti/auto-session/issues/205
+               , cwd_change_handling         = nil
+               , session_lens                = { theme_conf  = { winblend = 0 }
+                                               , borderchars = { prompt  = { "─", "│", " ", "│", "┌", "┐", "┘", "└" }
+                                                               , results = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
+                                                               }
+                                               }
+               -- hooks
+               , pre_save_cmds               = { function ()
+                                                   -- delete buffers that should not be saved into a session.
+                                                   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                                                     local buf_ft = vim.api.nvim_buf_get_option(buf, "filetype")
+
+                                                     if vim.api.nvim_buf_is_valid(buf) and vim.tbl_contains(ignored_filetypes, buf_ft) then
+                                                       vim.api.nvim_buf_delete(buf, { force = true })
+                                                     end
+                                                   end
+                                                 end
+                                               }
+               }
+             end
+  }
   -- align something.
 , "vim-scripts/Align"
   -- search and replace through the whole project.
@@ -223,12 +271,12 @@ return
   }
   -- lists.
 , { "nvim-telescope/telescope.nvim"
-  , dependencies = { "nvim-lua/plenary.nvim", "telescope-fzf-native.nvim" }
+  , dependencies = { "nvim-lua/plenary.nvim", "telescope-fzf-native.nvim", "rmagatti/auto-session" }
   , version      = "0.1.1"
   , config       = function ()
                      require "telescope".setup
                      { defaults = { scroll_strategy = "limit"
-                                  , path_display    = { "shorten" }
+                                  , path_display    = { "smart" }
                                   , borderchars     = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
                                   , mappings        = { i = { ["<ESC>"] = "close"
                                                             , ["<C-a>"] = { "<Home>"   , type = "command" }
@@ -245,6 +293,7 @@ return
                      }
 
                      require "telescope".load_extension "fzf"
+                     require "telescope".load_extension "session-lens"
                    end
   }
 , { "nvim-telescope/telescope-fzf-native.nvim"
