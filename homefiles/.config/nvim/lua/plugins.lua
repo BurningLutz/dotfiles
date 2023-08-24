@@ -57,7 +57,7 @@ return
 
                table.insert( buttsonvals
                            , { type = "text"
-                             , val  = "Projects"
+                             , val  = "Sessions"
                              , opts = { hl       = "Title"
                                       , position = "center"
                                       }
@@ -84,7 +84,7 @@ return
                              }
                            )
                table.insert(buttsonvals, dashboard.button("e", "  New file", ":ene<CR>"))
-               table.insert(buttsonvals, dashboard.button("p", "  Open session", ":Telescope session-lens<CR>"))
+               table.insert(buttsonvals, dashboard.button("p", "  Open session", ":Telescope session-lens<CR>"))
                table.insert(buttsonvals, dashboard.button("q", "󰿅  Quit", ":qa!<CR>"))
 
                dashboard.section.buttons.val = buttsonvals
