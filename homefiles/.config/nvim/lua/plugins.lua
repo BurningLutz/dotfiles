@@ -306,7 +306,7 @@ return
   -- lists.
 , { "nvim-telescope/telescope.nvim"
   , dependencies = { "nvim-lua/plenary.nvim", "telescope-fzf-native.nvim", "rmagatti/auto-session" }
-  , version      = "0.1.1"
+  , version      = "*"
   , config       = function ()
                      require "telescope".setup
                      { defaults = { scroll_strategy = "limit"
