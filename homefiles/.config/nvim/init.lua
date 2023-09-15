@@ -152,6 +152,12 @@ g.EditorConfig_exclude_patterns = { "fugitive://.*" }
 
 -- # telescope
 cmd "hi link TelescopeMatching Search"
+vim.api.nvim_create_autocmd({ "User" }, {
+  pattern  = "TelescopePreviewerLoaded"
+, callback = function ()
+               vim.wo.wrap = true
+             end
+})
 
 -- # tree-sitter highlights
 cmd "hi link @text.diff.delete diffRemoved"

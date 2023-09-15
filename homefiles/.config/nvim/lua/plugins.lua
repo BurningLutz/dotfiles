@@ -310,6 +310,7 @@ return
   , config       = function ()
                      require "telescope".setup
                      { defaults = { scroll_strategy = "limit"
+                                  , wrap_results    = true
                                   , path_display    = { "smart" }
                                   , borderchars     = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
                                   , mappings        = { i = { ["<ESC>"] = "close"
