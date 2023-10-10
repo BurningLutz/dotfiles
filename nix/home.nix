@@ -30,8 +30,8 @@ in rec
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    clang-tools_12
-    clang_12
+    clang-tools_15
+    clang_15
     clickhouse
     fd
     git
@@ -41,7 +41,7 @@ in rec
     gradle
     htop
     jsbeautifier
-    llvm_12
+    llvm_15
     lua-language-server
     mongodb-tools
     nodePackages.typescript-language-server
