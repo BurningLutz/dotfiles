@@ -101,6 +101,7 @@ return
                local ignored_filetypes = { "gitcommit", "gitrebase", "fugitive", "NvimTree" }
 
                require "auto-session".setup
+               ---@diagnostic disable-next-line: missing-fields
                { auto_session_create_enabled = false
                , auto_restore_enabled        = false
                , auto_session_use_git_branch = false
@@ -204,10 +205,12 @@ return
 
                lspconfig.hls.setup
                { filetypes = { "haskell", "lhaskell", "cabal" }
-               , settings  = { haskell = { plugin = { ["ghcide-completions"] = { config = { snippetsOn = false
+               , settings  = { haskell = { plugin = { ["ghcide-completions"] = { config = { snippetsOn   = false
+                                                                                          , autoExtendOn = false
                                                                                           }
                                                                                }
                                                     }
+                                         , formattingProvider = "fourmolu"
                                          }
                              }
                }
