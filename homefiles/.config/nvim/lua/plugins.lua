@@ -210,7 +210,7 @@ return
                                                                                           }
                                                                                }
                                                     }
-                                         , formattingProvider = "fourmolu"
+                                         , formattingProvider = "stylish-haskell"
                                          }
                              }
                }
@@ -284,6 +284,7 @@ return
   , config = function ()
                require "nvim-treesitter.install".compilers = { os.getenv "NVIM_TREESITTER_COMPILER_PATH" }
                require "nvim-treesitter.configs".setup
+               ---@diagnostic disable-next-line: missing-fields
                { ensure_installed = { "diff", "markdown", "markdown_inline" }
                , sync_install     = true
                , auto_install     = true

@@ -218,6 +218,7 @@ map { "n", "<A-r>", function ()
 map { "n", "<A-)>", vim.diagnostic.goto_next }
 map { "n", "<A-(>", vim.diagnostic.goto_prev }
 map { "n", "K", vim.lsp.buf.hover }
+map { "n", "gQ", vim.lsp.buf.format }
 map { { "n", "i" }, "<C-k>", vim.lsp.buf.signature_help }
 map { "n", "<leader>p", ":TSTextobjectSwapNext @parameter.inner<CR>" }
 map { "n", "<leader>P", ":TSTextobjectSwapPrevious @parameter.inner<CR>" }
