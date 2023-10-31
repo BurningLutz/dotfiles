@@ -171,6 +171,10 @@ cmd "hi link LspSignatureActiveParameter PmenuSel"
 -- # nvim-tree
 api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
+-- # haskell dump file highlights
+cmd "au BufRead *.dump-simpl     set ft=haskell"
+cmd "au BufRead *.dump-stg-final set ft=haskell"
+
 -- # KEYMAPS ###################################################################
 map { { "n", "o" }, "(", "[(" }
 map { { "n", "o" }, ")", "])" }
