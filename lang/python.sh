@@ -8,7 +8,7 @@ sudo apt install -y curl                   \
                     libbz2-dev             \
                     libffi-dev             \
                     liblzma-dev            \
-                    libncursesw5-dev       \
+                    libncurses-dev         \
                     libreadline-dev        \
                     libsqlite3-dev         \
                     libssl-dev             \

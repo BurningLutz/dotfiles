@@ -2,13 +2,14 @@
 
 sudo apt install -y curl           \
                     libffi-dev     \
-                    libffi8ubuntu1 \
+                    libffi8        \
                     libgmp-dev     \
                     libgmp10       \
                     libncurses-dev \
-                    libncurses5    \
-                    libtinfo5      \
+                    libncurses6    \
+                    libtinfo6      \
                     libghc-gtk-dev \
+                    llvm-15        \
 
 # only install ghcup if not available
 if ! type ghcup >/dev/null 2>&1; then
