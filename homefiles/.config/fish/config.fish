@@ -17,6 +17,12 @@ if status --is-login
   set -x CABAL_CONFIG ~/.config/cabal/config
   # ghcup use XDG
   set -x GHCUP_USE_XDG_DIRS 1
+  # make go store its workspace files into ~/.local/state
+  set -x GOPATH ~/.local/state/go
+  # micromamba managed manually
+  set -x MAMBA_EXE ~/.local/bin/micromamba
+  set -x MAMBA_ROOT_PREFIX ~/.local/state/micromamba
+  $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
 end
 
 if status --is-interactive

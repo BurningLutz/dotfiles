@@ -29,3 +29,18 @@ fi
 if ! type pdm >/dev/null 2>&1; then
   curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
 fi
+
+# only install when not available
+if ! type micromamba >/dev/null 2>&1; then
+  export PREFIX_LOCATION=~/.local/state/micromamba
+  export BIN_FOLDER=~/.local/bin
+  export INIT_YES=yes
+  export CONDA_FORGE_YES=no
+
+  curl -L micro.mamba.pm/install.sh | bash
+
+  unset PREFIX_LOCATION
+  unset BIN_FOLDER
+  unset INIT_YES
+  unset CONDA_FORGE_YES
+fi
