@@ -25,7 +25,7 @@ Run them standalone as you need.
 
 # Build Distribution
 
-Simply run `switch.sh`.
+Simply run `build.sh`.
 
 # Switch Snapshot
 
