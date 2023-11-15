@@ -23,6 +23,10 @@ There are some installation scripts specific to different languages under the `l
 
 Run them standalone as you need.
 
-# Switch Snapshot
+# Build Distribution
 
 Simply run `switch.sh`.
+
+# Switch Snapshot
+
+Simply run `home-manager switch`.
