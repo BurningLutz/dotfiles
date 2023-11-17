@@ -22,7 +22,9 @@ if status --is-login
   # micromamba managed manually
   set -x MAMBA_EXE ~/.local/bin/micromamba
   set -x MAMBA_ROOT_PREFIX ~/.local/state/micromamba
-  $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
+  if type -q $MAMBA_EXE
+    $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
+  end
 end
 
 if status --is-interactive
