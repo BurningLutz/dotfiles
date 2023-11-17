@@ -210,6 +210,7 @@ return
                                                                                           }
                                                                                }
                                                     }
+                                         , maxCompletions     = 100
                                          , formattingProvider = "stylish-haskell"
                                          }
                              }
