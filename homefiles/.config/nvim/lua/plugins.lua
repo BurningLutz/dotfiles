@@ -375,4 +375,18 @@ return
                }
              end
   }
+, { "GCBallesteros/NotebookNavigator.nvim"
+  , event = "VeryLazy"
+  , opts  = { syntax_highlight = true
+            }
+  }
+, { "hkupty/iron.nvim"
+  , event  = "VeryLazy"
+  , config = function ()
+               require "iron.core".setup
+               { config = { repl_open_cmd = "leftabove vsplit"
+                          }
+               }
+             end
+  }
 }

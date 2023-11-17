@@ -234,6 +234,26 @@ map { "c", "<C-b>", "<Left>" }
 map { "c", "<C-f>", "<Right>" }
 map { "c", "<A-b>", "<S-Left>" }
 map { "c", "<A-f>", "<S-Right>" }
+-- python cell execution & ipynb conversion.
+map { "n", "<leader>x", function ()
+                          require "notebook-navigator".run_and_move()
+                        end
+    }
+map { "n", "<leader>np", function ()
+                           if vim.fn.executable("jupytext") == 1 then
+                             local name = vim.fn.expand("%:t:r")
+                             local ext  = vim.fn.expand("%:e")
+
+                             if ext == "py" then
+                               cmd(string.format("!jupytext --from=py:percent --to=ipynb --update --output=%s.ipynb %s.py", name, name))
+                             elseif ext == "ipynb" then
+                               cmd(string.format("!jupytext --from=ipynb --to=py:percent --output=%s.py %s.ipynb", name, name))
+                             end
+                           else
+                             vim.print("No jupytext found, ignore.")
+                           end
+                         end
+    }
 
 -- # COMMANDS ##################################################################
 cmd "com! Rename lua vim.lsp.buf.rename()"
