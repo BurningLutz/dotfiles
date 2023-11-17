@@ -384,7 +384,8 @@ return
   , event  = "VeryLazy"
   , config = function ()
                require "iron.core".setup
-               { config = { repl_open_cmd = "leftabove vsplit"
+               { config = { repl_open_cmd  = "leftabove vsplit"
+                          , highlight_last = false
                           }
                }
              end
