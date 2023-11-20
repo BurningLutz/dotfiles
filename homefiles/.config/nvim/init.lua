@@ -241,7 +241,7 @@ map { "n", "<leader>x", function ()
     }
 map { "n", "<leader>np", function ()
                            if vim.fn.executable("jupytext") == 1 then
-                             local name = vim.fn.expand("%:t:r")
+                             local name = vim.fn.expand("%:r")
                              local ext  = vim.fn.expand("%:e")
 
                              if ext == "py" then
