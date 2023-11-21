@@ -39,7 +39,6 @@ in rec
     openjdk17
     pyright
     ripgrep
-    sshfs
     tldr
     unzip
     ( jdt-language-server.override { jdk = openjdk17; } )
