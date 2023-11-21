@@ -14,6 +14,10 @@ bash <(curl -L https://nixos.org/nix/install) --no-daemon
 
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 
+# copy variables
+export DOTFILES_PATH=$(realpath $PWD/..)
+nix eval -f ../nix/vars.nix > ~/.config/home-manager/vars.nix
+
 # mitigate home file conflicts
 for fp in $(find ../homefiles -type f,l | sed "s|^../homefiles/||"); do
   rm -f ~/$fp
