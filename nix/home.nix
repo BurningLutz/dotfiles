@@ -41,11 +41,16 @@ in rec
     ripgrep
     tldr
     unzip
-    ( jdt-language-server.override { jdk = openjdk17; } )
-    ( neovim.override { extraMakeWrapperArgs = toString [ "--set LD_LIBRARY_PATH ${stdenv.cc.cc.lib}/lib"
-                                                          "--set NVIM_TREESITTER_COMPILER_PATH ${stdenv.cc}/bin/gcc"
-                                                        ];
-                      }
+    ( jdt-language-server.override
+        { jdk = openjdk17;
+        }
+    )
+    ( neovim.override
+        { extraMakeWrapperArgs = toString
+                                   [ "--set LD_LIBRARY_PATH ${stdenv.cc.cc.lib}/lib"
+                                     "--set NVIM_TREESITTER_COMPILER_PATH ${stdenv.cc}/bin/gcc"
+                                   ];
+        }
     )
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -97,8 +102,9 @@ in rec
   # the original cache format is not compatible with many systems, it should
   # be changed to gdbm.
   programs.man = with pkgs; {
-    package        = man.override { db = gdbm;
-                                  };
+    package        = man.override
+                       { db = gdbm;
+                       };
     generateCaches = true;
   };
 }
