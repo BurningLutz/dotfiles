@@ -30,6 +30,8 @@ in rec
     go
     gopls
     gradle
+    haskellPackages.eventlog2html
+    haskellPackages.threadscope
     htop
     jsbeautifier
     lua-language-server
