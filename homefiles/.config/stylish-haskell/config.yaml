@@ -68,7 +68,7 @@ steps:
       # Possible values:
       # - "same_line" -- "{" and first field goes on the same line as the data constructor.
       # - "indent N" -- insert a new line and N spaces from the beginning of the data constructor
-      first_field: "indent 4"
+      first_field: "indent 0"
 
       # How many spaces to insert between the column with "," and the beginning of the comment in the next line.
       field_comment: 0
@@ -93,7 +93,7 @@ steps:
       # Whether or not to break single constructor data types before `=` sign
       #
       # Default: true
-      break_single_constructors: false
+      break_single_constructors: true
 
       # Whether or not to curry constraints on function.
       #
