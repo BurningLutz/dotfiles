@@ -39,6 +39,7 @@ in rec
     nodePackages.typescript-language-server
     nodejs
     openjdk17
+    pandoc
     pyright
     ripgrep
     tldr
