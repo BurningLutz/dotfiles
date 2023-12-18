@@ -44,6 +44,7 @@ in rec
     ripgrep
     tldr
     unzip
+    yarn
     ( jdt-language-server.override
         { jdk = openjdk17;
         }
