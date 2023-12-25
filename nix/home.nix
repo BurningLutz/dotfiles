@@ -29,7 +29,6 @@ in rec
     git-lfs
     go
     gopls
-    gradle
     haskellPackages.eventlog2html
     haskellPackages.threadscope
     htop
@@ -38,15 +37,19 @@ in rec
     mongodb-tools
     nodePackages.typescript-language-server
     nodejs
-    openjdk17
+    openjdk21
     pandoc
     pyright
     ripgrep
     tldr
     unzip
     yarn
+    ( gradle.override
+        { java = openjdk21;
+        }
+    )
     ( jdt-language-server.override
-        { jdk = openjdk17;
+        { jdk = openjdk21;
         }
     )
     ( neovim.override
