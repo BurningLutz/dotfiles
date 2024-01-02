@@ -23,35 +23,16 @@ in rec
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    clickhouse
     fd
     git
     git-lfs
-    go
-    gopls
-    haskellPackages.eventlog2html
-    haskellPackages.threadscope
     htop
-    jsbeautifier
-    lua-language-server
-    mongodb-tools
-    nodePackages.typescript-language-server
     nodejs
-    openjdk21
     pandoc
-    pyright
     ripgrep
     tldr
     unzip
     yarn
-    ( gradle.override
-        { java = openjdk21;
-        }
-    )
-    ( jdt-language-server.override
-        { jdk = openjdk21;
-        }
-    )
     ( neovim.override
         { extraMakeWrapperArgs = toString
                                    [ "--set LD_LIBRARY_PATH ${stdenv.cc.cc.lib}/lib"

@@ -4,7 +4,7 @@ My dot files.
 
 # Prerequisite
 
-- Ubuntu >= 22.04
+- Ubuntu >= 23.10
 
 # Installation
 
@@ -17,16 +17,16 @@ Simply run `setup.sh`. Don't worry, it's idempotent. :tada::tada::tada:
 - Move `windows/.wslconfig` into %UserProfile%.
 - Move `windows/wsl.conf` into /etc inside WSL.
 
-## Language Specific Installation
+## Other Scripts
 
-There are some installation scripts specific to different languages under the `lang` dir, they are not executed by default.
+There are some custom scripts specific to different situation(mostly install dependencies or softwares) under the `others` dir, they are not executed by default.
 
 Run them standalone as you need.
 
 # Build Distribution
 
-Simply run `build.sh`.
+When you changed homefiles or nix configs, you need to run `build.sh` to take effect.
 
 # Switch Snapshot
 
-Simply run `home-manager switch`.
+When you want to upgrade softwares via nix, simply run `home-manager switch`.
