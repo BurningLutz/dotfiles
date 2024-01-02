@@ -1,6 +1,4 @@
-{ pkgs }:
-
-with pkgs; [
+pkgs: with pkgs; [
   lua
   lua-language-server
-];
+]

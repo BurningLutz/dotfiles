@@ -1,8 +1,6 @@
-{ pkgs }:
-
-with pkgs; [
+pkgs: with pkgs; [
   pyenv
   pdm
   micromamba
   pyright
-];
+]

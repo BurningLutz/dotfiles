@@ -4,6 +4,14 @@ with builtins;
 
 let
   vars = import ./vars.nix;
+
+  pkgPath  = ./pkgsets;
+  loadPkg  = path: import path pkgs;
+  setPaths = map (name: pkgPath + "/${name}") (attrNames (readDir pkgPath));
+  pkgSets  = if pathExists pkgPath then
+               concatMap loadPkg setPaths
+             else
+               [];
 in rec
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -22,7 +30,7 @@ in rec
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
+  home.packages = with pkgs; pkgSets ++ [
     fd
     git
     git-lfs

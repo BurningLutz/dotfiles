@@ -1,6 +1,4 @@
-{ pkgs }:
-
-with pkgs; [
+pkgs: with pkgs; [
   haskellPackages.eventlog2html
   haskellPackages.threadscope
-];
+]

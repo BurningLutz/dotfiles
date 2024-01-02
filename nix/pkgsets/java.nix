@@ -1,6 +1,4 @@
-{ pkgs }:
-
-with pkgs; [
+pkgs: with pkgs; [
   openjdk21
   ( gradle.override
       { java = openjdk21;
@@ -10,4 +8,4 @@ with pkgs; [
       { jdk = openjdk21;
       }
   )
-];
+]
