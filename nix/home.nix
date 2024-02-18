@@ -40,6 +40,7 @@ in rec
     ripgrep
     tldr
     unzip
+    wslu
     yarn
     ( neovim.override
         { extraMakeWrapperArgs = toString
