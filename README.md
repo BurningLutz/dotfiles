@@ -8,7 +8,10 @@ My dot files.
 
 # Installation
 
-Simply run `setup.sh`. Don't worry, it's idempotent. :tada::tada::tada:
+Simply run `setup`. Don't worry, it's idempotent. :tada::tada::tada:
+
+The `setup` inherently invokes `build` & `home-manager switch` to make your dotfiles ready.
+For regular maintenance steps, see [Maintenance](#Maintenance).
 
 ## Optional Steps For Windows
 
@@ -23,10 +26,15 @@ There are some custom scripts specific to different situation(mostly install dep
 
 Run them standalone as you need.
 
-# Build Distribution
+# Maintenance
 
-When you changed homefiles or nix configs, you need to run `build.sh` to take effect.
+The maintenance is basically made up of two steps: `build` & `home-manager switch`.
 
-# Switch Snapshot
+## Build Distribution
 
-When you want to upgrade softwares via nix, simply run `home-manager switch`.
+When you change your dotfiles(homefiles, package sets enabled etc.), you need to run `build` to prepare files for home-manager.
+
+## Switch Snapshot
+
+And then you run `home-manager switch` to take effect.
+Running `home-manager switch` will also upgrade softwares via nix, do it as you need.
