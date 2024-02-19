@@ -18,6 +18,7 @@ bash setup_general.sh
 popd 1>/dev/null
 
 # change login shell to fish
+echo ""
 echo "Changing default login shell to fish..."
 chsh -s $(which fish)
 

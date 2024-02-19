@@ -27,10 +27,7 @@ done
 # build files for further `home-manager switch`.
 fish build.fish
 
-# and then install.
+# and then install. no need to run `home-manager switch`, the installation will run it once.
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
 nix-shell "<home-manager>" -A install
-
-# and then install homefiles & softwares.
-home-manager switch
