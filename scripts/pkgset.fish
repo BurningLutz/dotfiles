@@ -88,6 +88,8 @@ end
 
 
 function copy_pkgsets -S
+  mkdir -p $PKGSETS_BUILT_PATH
+
   read_pkgsets pkgsets
 
   for pkgset in $pkgsets
