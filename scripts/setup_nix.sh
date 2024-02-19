@@ -3,6 +3,10 @@
 # reinstalling nix means delete and then install. :D
 sudo rm -rf /nix
 rm -rf ~/.nix-channels ~/.nix-profile ~/.nix-defexpr
+rm -rf ~/.local/share/nix
+rm -rf ~/.local/state/nix
+rm -rf ~/.local/share/home-manager
+rm -rf ~/.local/state/home-manager
 
 # install nix and load it.
 #
@@ -20,13 +24,13 @@ for fp in $(find ../homefiles -type f,l | sed "s|^../homefiles/||"); do
   rm -f ~/$fp
 done
 
+# build files for further `home-manager switch`.
+fish build.fish
+
 # and then install.
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
 nix-shell "<home-manager>" -A install
-
-# build files for further `home-manager switch`.
-fish build.fish
 
 # and then install homefiles & softwares.
 home-manager switch
