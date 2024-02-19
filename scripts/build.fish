@@ -9,4 +9,4 @@ cp ../nix/home.nix ~/.config/home-manager/
 set -x DOTFILES_PATH (realpath ..)
 nix eval -f ../nix/vars.nix > ~/.config/home-manager/vars.nix
 
-copy_pkgsets
+sync_pkgsets

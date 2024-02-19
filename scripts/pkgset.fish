@@ -87,7 +87,8 @@ function write_pkgsets -S -a var
 end
 
 
-function copy_pkgsets -S
+function sync_pkgsets -S
+  rm -rf $PKGSETS_BUILT_PATH
   mkdir -p $PKGSETS_BUILT_PATH
 
   read_pkgsets pkgsets
@@ -106,7 +107,7 @@ function list
   if test -e $PKGSETS_STATE_PATH; and test -s $PKGSETS_STATE_PATH
     read_pkgsets pkgsets
 
-    echo Included package sets are:
+    echo -e "\e[0;32mIncluded package sets are:\e[0m"
     for pkgset in $pkgsets
       if test -e $PKGSETS_PATH/$pkgset
         echo $pkgset
@@ -115,18 +116,24 @@ function list
       end
     end
   else
-    echo No package set included.
+    echo -e "\e[0;31mNo package set included.\e[0m"
   end
 
-  # test if file exists and is not empty.
-  if test -e $PKGSETS_BUILT_PATH; and test -s $PKGSETS_BUILT_PATH
+  # test if dir exists and is not empty.
+  if test -e $PKGSETS_BUILT_PATH; and test -n "$(ls $PKGSETS_BUILT_PATH)"
     set pkgsets (ls $PKGSETS_BUILT_PATH)
 
-    echo Built package sets are:
+    echo -e "\e[0;32mBuilt package sets are:\e[0m"
     for pkgset in $pkgsets
       echo $pkgset
     end
   else
-    echo No package set built.
+    echo -e "\e[0;31mNo package set built.\e[0m"
+  end
+
+  # list available package sets.
+  echo -e "\e[0;32mAvailable package sets are:\e[0m"
+  for pkgset in (ls $PKGSETS_PATH)
+    echo $pkgset
   end
 end
