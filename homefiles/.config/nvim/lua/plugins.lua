@@ -286,7 +286,15 @@ return
                require "nvim-treesitter.install".compilers = { os.getenv "NVIM_TREESITTER_COMPILER_PATH" }
                require "nvim-treesitter.configs".setup
                ---@diagnostic disable-next-line: missing-fields
-               { ensure_installed = { "diff", "markdown", "markdown_inline" }
+               { ensure_installed = { "diff"
+                                    , "markdown"
+                                    , "markdown_inline"
+                                    , "c"
+                                    , "lua"
+                                    , "query"
+                                    , "vim"
+                                    , "vimdoc"
+                                    }
                , sync_install     = true
                , auto_install     = true
                , highlight        = { enable = true

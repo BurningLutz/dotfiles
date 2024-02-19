@@ -4,6 +4,14 @@ with builtins;
 
 let
   vars = import ./vars.nix;
+
+  pkgPath  = ./pkgsets;
+  loadPkg  = path: import path pkgs;
+  setPaths = map (name: pkgPath + "/${name}") (attrNames (readDir pkgPath));
+  pkgSets  = if pathExists pkgPath then
+               concatMap loadPkg setPaths
+             else
+               [];
 in rec
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -22,36 +30,18 @@ in rec
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    clickhouse
+  home.packages = with pkgs; pkgSets ++ [
     fd
     git
     git-lfs
-    go
-    gopls
-    haskellPackages.eventlog2html
-    haskellPackages.threadscope
     htop
-    jsbeautifier
-    lua-language-server
-    mongodb-tools
-    nodePackages.typescript-language-server
     nodejs
-    openjdk21
     pandoc
-    pyright
     ripgrep
     tldr
     unzip
+    wslu
     yarn
-    ( gradle.override
-        { java = openjdk21;
-        }
-    )
-    ( jdt-language-server.override
-        { jdk = openjdk21;
-        }
-    )
     ( neovim.override
         { extraMakeWrapperArgs = toString
                                    [ "--set LD_LIBRARY_PATH ${stdenv.cc.cc.lib}/lib"

@@ -1,0 +1,5 @@
+#!/bin/env fish
+
+pushd scripts 1>/dev/null
+fish build.fish
+popd 1>/dev/null

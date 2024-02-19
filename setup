@@ -9,11 +9,13 @@ fi
 
 echo "Setuping..."
 
-pushd scripts
-. setup_system_requirements.sh
-. setup_nix.sh
-. setup_general.sh
-popd
+pushd scripts 1>/dev/null
+bash setup_system_requirements.sh
+bash setup_nix.sh
+# load nix for further neovim initialization.
+source ~/.nix-profile/etc/profile.d/nix.sh
+bash setup_general.sh
+popd 1>/dev/null
 
 # change login shell to fish
 echo "Changing default login shell to fish..."

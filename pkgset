@@ -1,0 +1,18 @@
+#!/bin/env fish
+
+source scripts/pkgset.fish
+
+set subcmd $argv[1]
+
+# dispatch subcommand
+switch $subcmd
+  case include
+    include $argv[2]
+  case exclude
+    exclude $argv[2]
+  case list
+    list
+  case '*'
+    echo No such command: $subcmd
+    exit 1
+end
