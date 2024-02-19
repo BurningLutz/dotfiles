@@ -11,7 +11,7 @@ export NIX_INSTALLER_NO_MODIFY_PROFILE=1
 bash <(curl -L https://nixos.org/nix/install) --no-daemon
 
 # load nix for further home-manager installation.
-. $HOME/.nix-profile/etc/profile.d/nix.sh
+source ~/.nix-profile/etc/profile.d/nix.sh
 
 # install home-manager.
 #
