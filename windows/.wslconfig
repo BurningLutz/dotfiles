@@ -1,10 +1,12 @@
 [wsl2]
-memory=32G
-autoProxy=true
-dnsTunneling=true
-hostAddressLoopback=true
+memory=64G
 kernelCommandLine=transparent_hugepage=never
+
 networkingMode=mirrored
+dnsTunneling=true
+autoProxy=true
+
 [experimental]
 autoMemoryReclaim=gradual
 sparseVhd=true
+hostAddressLoopback=true
