@@ -244,6 +244,14 @@ return
                        }
                }
                lspconfig.clangd.setup {}
+               lspconfig.rust_analyzer.setup
+               { settings = { ['rust-analyzer'] = { diagnostics = { enable = true; }
+                                                  , cargo = { allFeatures = true }
+                                                  }
+                            }
+               , root_dir = lspconfig.util.root_pattern("Cargo.toml")
+               , filetypes = { "rust" }
+               }
              end
   }
   -- repeat plugin map.
