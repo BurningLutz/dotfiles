@@ -245,7 +245,7 @@ return
                }
                lspconfig.clangd.setup {}
                lspconfig.rust_analyzer.setup
-               { settings = { ['rust-analyzer'] = { diagnostics = { enable = true; }
+               { settings = { ['rust-analyzer'] = { diagnostics = { enable = true }
                                                   , cargo = { allFeatures = true }
                                                   }
                             }
