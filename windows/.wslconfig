@@ -1,9 +1,10 @@
 [wsl2]
-memory=64G
+memory=32G
 kernelCommandLine=transparent_hugepage=never
 
 networkingMode=mirrored
-dnsTunneling=true
+# dnsTunneling=true seems break local domain query.
+dnsTunneling=false
 autoProxy=true
 
 [experimental]
