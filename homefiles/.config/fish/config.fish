@@ -19,6 +19,8 @@ if status --is-login
   set -x GHCUP_USE_XDG_DIRS 1
   # make go store its workspace files into ~/.local/state
   set -x GOPATH ~/.local/state/go
+  # pyenv store bins under ~/.local/share
+  set -x PYENV_ROOT ~/.local/share/pyenv
   # micromamba managed
   set -x MAMBA_ROOT_PREFIX ~/.local/state/micromamba
   if type -q (which micromamba)
