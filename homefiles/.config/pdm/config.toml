@@ -1,4 +1,7 @@
 check_update = false
 
+[python]
+providers = ["venv", "pyenv", "path"]
+
 [venv]
 backend = "venv"

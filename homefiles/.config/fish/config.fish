@@ -19,11 +19,10 @@ if status --is-login
   set -x GHCUP_USE_XDG_DIRS 1
   # make go store its workspace files into ~/.local/state
   set -x GOPATH ~/.local/state/go
-  # micromamba managed manually
-  set -x MAMBA_EXE ~/.local/bin/micromamba
+  # micromamba managed
   set -x MAMBA_ROOT_PREFIX ~/.local/state/micromamba
-  if type -q $MAMBA_EXE
-    $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
+  if type -q (which micromamba)
+    micromamba shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
   end
 end
 
@@ -40,6 +39,4 @@ if status --is-interactive
   # in interactive mode, not login mode, so I need to modify PATH here.
   # .local/bin
   fish_add_path --path ~/.local/bin
-  # pyenv
-  fish_add_path --path ~/.pyenv/bin
 end
