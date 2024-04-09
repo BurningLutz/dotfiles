@@ -89,6 +89,9 @@ opt.mouse         =  ""
 opt.virtualedit   = "block"
 
 -- # CONFIG VARIABLES ##########################################################
+-- # better terminal mode.
+cmd "au TermOpen * set nocursorline nocursorcolumn"
+
 -- # clipboard
 g.clipboard = { name  = "WSL Clipboard"
               , copy  = { ["+"] = "clip.exe"
