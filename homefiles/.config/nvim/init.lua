@@ -91,9 +91,11 @@ opt.virtualedit   = "block"
 -- # CONFIG VARIABLES ##########################################################
 -- # clipboard
 g.clipboard = { name  = "WSL Clipboard"
-              , copy  = { ["+"] = "win32yank.exe -i --crlf"
+              , copy  = { ["+"] = "clip.exe"
+                        , ["*"] = "clip.exe"
                         }
-              , paste = { ["+"] = "win32yank.exe -o --lf"
+              , paste = { ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))'
+                        , ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))'
                         }
               , cache_enabled = 0
               }
