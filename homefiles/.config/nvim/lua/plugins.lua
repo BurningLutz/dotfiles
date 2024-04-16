@@ -31,6 +31,7 @@ return
            , disable_netrw = true
            , renderer      = { icons = { git_placement = "after" } }
            , actions       = { open_file = { quit_on_open = true } }
+           , filters       = { custom = { "^\\.git$" } }
            }
   }
   -- show file change inline.
