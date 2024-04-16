@@ -135,12 +135,13 @@ return
   -- search and replace through the whole project.
 , "dyng/ctrlsf.vim"
   -- auto completion.
-, "hrsh7th/cmp-path"
-, "hrsh7th/cmp-buffer"
-, "hrsh7th/cmp-nvim-lsp"
-, "hrsh7th/cmp-vsnip"
-, "hrsh7th/vim-vsnip"
 , { "hrsh7th/nvim-cmp"
+  , dependencies  = { "hrsh7th/cmp-path"
+                    , "hrsh7th/cmp-buffer"
+                    , "hrsh7th/cmp-nvim-lsp"
+                    , "hrsh7th/cmp-vsnip"
+                    , "hrsh7th/vim-vsnip"
+                    }
   , config = function ()
                local cmp     = require "cmp"
                local compare = require "cmp.config.compare"
