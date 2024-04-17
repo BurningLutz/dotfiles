@@ -19,6 +19,7 @@ Simply run `setup`. Don't worry, it's idempotent. :tada::tada::tada:
 - Download and use [Nerd Fonts](https://www.nerdfonts.com/font-downloads).
 - Move `windows/.wslconfig` into %UserProfile%.
 - Move `windows/wsl.conf` into /etc inside WSL.
+- Change the Windows Setting `Language for non-Unicode programs -> Change system locale...` to use Unicode UTF-8 support, or you may meet encoding issue.
 
 ## Other Scripts
 

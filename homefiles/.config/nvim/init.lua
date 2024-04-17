@@ -94,11 +94,11 @@ cmd "au TermOpen * set nocursorline nocursorcolumn"
 
 -- # clipboard
 g.clipboard = { name  = "WSL Clipboard"
-              , copy  = { ["+"] = 'xargs -0 -I _ powershell.exe -c Set-Clipboard -Value "_"'
-                        , ["*"] = 'xargs -0 -I _ powershell.exe -c Set-Clipboard -Value "_"'
+              , copy  = { ["+"] = "powershell.exe -c $input | set-clipboard"
+                        , ["*"] = "powershell.exe -c $input | set-clipboard"
                         }
-              , paste = { ["+"] = 'powershell.exe -c [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; [Console]::Out.Write($(Get-Clipboard -Raw).replace("`r", ""))'
-                        , ["*"] = 'powershell.exe -c [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; [Console]::Out.Write($(Get-Clipboard -Raw).replace("`r", ""))'
+              , paste = { ["+"] = 'powershell.exe -c [Console]::Out.Write($(get-clipboard -raw).replace("`r", ""))'
+                        , ["*"] = 'powershell.exe -c [Console]::Out.Write($(get-clipboard -raw).replace("`r", ""))'
                         }
               , cache_enabled = 0
               }
