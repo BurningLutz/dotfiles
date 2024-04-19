@@ -21,11 +21,8 @@ if status --is-login
   set -x GOPATH ~/.local/state/go
   # pyenv store bins under ~/.local/share
   set -x PYENV_ROOT ~/.local/share/pyenv
-  # micromamba managed
+  # micromamba root.
   set -x MAMBA_ROOT_PREFIX ~/.local/state/micromamba
-  if type -q (which micromamba)
-    micromamba shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
-  end
 end
 
 if status --is-interactive
@@ -41,4 +38,9 @@ if status --is-interactive
   # in interactive mode, not login mode, so I need to modify PATH here.
   # .local/bin
   fish_add_path --path ~/.local/bin
+
+  # micromamba managed
+  if type -q micromamba
+    micromamba shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
+  end
 end
