@@ -1,6 +1,5 @@
 pkgs: with pkgs; [
-  pyenv
-  pdm
   micromamba
+  pyenv
   pyright
 ]
