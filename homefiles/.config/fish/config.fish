@@ -38,6 +38,8 @@ if status --is-interactive
   # in interactive mode, not login mode, so I need to modify PATH here.
   # .local/bin
   fish_add_path --path ~/.local/bin
+  # support inplace auto venv mount via PATH.
+  fish_add_path --path ./.venv/bin
 
   # micromamba managed
   if type -q micromamba
