@@ -21,6 +21,9 @@ if status --is-login
   set -x GOPATH ~/.local/state/go
   # pyenv store bins under ~/.local/share
   set -x PYENV_ROOT ~/.local/share/pyenv
+  # pdm env
+  # don't use editable installation as it will make pip spits about under src.
+  set -x PDM_NO_EDITABLE PDM_NO_EDITABLE
   # micromamba root.
   set -x MAMBA_ROOT_PREFIX ~/.local/state/micromamba
 end
