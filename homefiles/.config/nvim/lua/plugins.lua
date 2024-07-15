@@ -9,19 +9,19 @@ return
                         , disabled_filetypes = { "alpha" }
                         }
            , sections = { lualine_c = { "filename"
-                                      , { "lsp_progress"
-                                        , display_components = { "spinner", { "title", "percentage", "message" } }
-                                        , spinner_symbols    = { "🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 " }
-                                        , timer = { progress_enddelay        = 500
-                                                  , spinner                  = 100
-                                                  , lsp_client_name_enddelay = 0
-                                                  }
-                                        }
+                                      , function ()
+                                          return require "lsp-progress".progress()
+                                        end
                                       }
                         }
            }
   }
-, "WhoIsSethDaniel/lualine-lsp-progress.nvim"
+, { "linrongbin16/lsp-progress.nvim"
+  , version = "*"
+  , config = function ()
+               require "lsp-progress".setup {}
+             end
+  }
   -- theme.
 , "w0ng/vim-hybrid"
   -- dir tree, bookmarks and more.

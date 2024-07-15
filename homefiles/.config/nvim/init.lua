@@ -157,14 +157,14 @@ g.EditorConfig_exclude_patterns = { "fugitive://.*" }
 
 -- # telescope
 cmd "hi link TelescopeMatching Search"
-vim.api.nvim_create_autocmd({ "User" }, {
+api.nvim_create_autocmd({ "User" }, {
   pattern  = "TelescopePreviewerLoaded"
 , callback = function ()
                vim.wo.wrap = true
              end
 })
 
--- # tree-sitter highlights
+-- # nvim-treesitter
 cmd "hi link @text.diff.delete diffRemoved"
 cmd "hi link @text.diff.add    diffAdded"
 cmd "hi @text.emphasis cterm=italic gui=italic"
@@ -179,6 +179,15 @@ api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 -- # haskell dump file highlights
 cmd "au BufRead *.dump-simpl     set ft=haskell"
 cmd "au BufRead *.dump-stg-final set ft=haskell"
+
+-- # lualine
+-- lsp progress notification.
+api.nvim_create_augroup("lualine_augroup", { clear = true })
+api.nvim_create_autocmd("User", {
+  group    = "lualine_augroup"
+, pattern  = "LspProgressStatusUpdated"
+, callback = require "lualine".refresh
+})
 
 -- # KEYMAPS ###################################################################
 map { { "n", "o" }, "(", "[(" }
