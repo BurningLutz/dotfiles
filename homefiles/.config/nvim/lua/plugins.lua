@@ -1,29 +1,58 @@
 return
 { -- statusline.
   { "nvim-lualine/lualine.nvim"
-  , opts = { options  = { theme   = "OceanicNext"
-                        , refresh = { statusline = 100
-                                    , tabline    = 100
-                                    , winbar     = 100
-                                    }
-                        , disabled_filetypes = { "alpha" }
-                        }
-           , sections = { lualine_c = { "filename"
-                                      , function ()
-                                          return require "lsp-progress".progress()
-                                        end
-                                      }
-                        }
-           }
+  , opts = {
+      options = {
+        theme = "auto"
+      , refresh = {
+          statusline = 100
+        , tabline    = 100
+        , winbar     = 100
+        }
+        -- alpha is the filetype of start screen.
+      , disabled_filetypes = { "alpha" }
+      }
+    , sections = {
+        lualine_c = {
+          "filename"
+        , function ()
+            return require "lsp-progress".progress()
+          end
+        }
+      }
+    }
   }
 , { "linrongbin16/lsp-progress.nvim"
   , version = "*"
   , config = function ()
-               require "lsp-progress".setup {}
-             end
+      require "lsp-progress".setup {}
+    end
   }
   -- theme.
-, "w0ng/vim-hybrid"
+, { "HoNamDuong/hybrid.nvim"
+  , priority = 1000
+  , lazy = false
+  , config = function ()
+      -- first we customize default palette to reduced contrast version.
+      local p = require "hybrid.colors".palette
+      p.bright_black = "#47555e"
+      p.black        = "#283136"
+      p.dull_black   = "#1b2429"
+      p.dull_white   = "#6c7a80"
+
+      -- and then setup.
+      require "hybrid".setup {
+        overrides = function (hl, c)
+          hl.GitGutterAdd    = { link = "diffAdded" }
+          hl.GitGutterChange = { link = "diffChanged" }
+          hl.GitGutterDelete = { link = "diffRemoved" }
+          -- the original colors are hard to see, so I revert them.
+          hl.TabLine         = { fg = c.bg, bg = c.fg }
+          hl.TabLineFill     = { fg = c.bg, bg = c.fg }
+        end
+      }
+    end
+  }
   -- dir tree, bookmarks and more.
 , { "nvim-tree/nvim-tree.lua"
   , dependencies = { "nvim-tree/nvim-web-devicons" }

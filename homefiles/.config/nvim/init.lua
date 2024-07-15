@@ -111,41 +111,16 @@ g.loaded_netrwPlugin = 1
 g.python_indent            = { disable_parentheses_indenting = true }
 g.pyindent_open_paren      = false
 g.python_recommended_style = false
-g.terminal_color_0         = "#282C34"
-g.terminal_color_1         = "#E06C75"
-g.terminal_color_2         = "#98C379"
-g.terminal_color_3         = "#E5C07B"
-g.terminal_color_4         = "#61AFEF"
-g.terminal_color_5         = "#C678DD"
-g.terminal_color_6         = "#56B6C2"
-g.terminal_color_7         = "#DCDFE4"
-g.terminal_color_8         = "#5A6374"
-g.terminal_color_9         = "#E06C75"
-g.terminal_color_10        = "#98C379"
-g.terminal_color_11        = "#E5C07B"
-g.terminal_color_12        = "#61AFEF"
-g.terminal_color_13        = "#C678DD"
-g.terminal_color_14        = "#56B6C2"
-g.terminal_color_15        = "#DCDFE4"
 
 -- # vim-autoclose
 g.AutoClosePreserveDotReg = false
 
--- # vim-hybrid
--- the dimmer color scheme.
-g.hybrid_custom_term_colors = true
-g.hybrid_reduced_contrast   = true
+-- # hybrid.nvim
 cmd "silent! colorscheme hybrid"
 
 -- # vim-gitgutter
 -- realtime update
 g.gitgutter_terminal_reports_focus = false
-cmd "hi! link SignColumn      LineNr"
-cmd "hi! link GitGutterAdd    DiagnosticOk"
-cmd "hi! link GitGutterChange DiagnosticWarn"
-cmd "hi! link GitGutterDelete DiagnosticError"
-cmd "hi  link FloatTitle      TelescopeTitle"
-cmd "hi  link FloatBorder     TelescopeBorder"
 
 -- # vim-markdown-toc
 g.vmt_auto_update_on_save = false
@@ -156,22 +131,12 @@ g.vmt_list_item_char      = "-"
 g.EditorConfig_exclude_patterns = { "fugitive://.*" }
 
 -- # telescope
-cmd "hi link TelescopeMatching Search"
 api.nvim_create_autocmd({ "User" }, {
   pattern  = "TelescopePreviewerLoaded"
 , callback = function ()
                vim.wo.wrap = true
              end
 })
-
--- # nvim-treesitter
-cmd "hi link @text.diff.delete diffRemoved"
-cmd "hi link @text.diff.add    diffAdded"
-cmd "hi @text.emphasis cterm=italic gui=italic"
-cmd "hi @text.strong   cterm=bold   gui=bold"
-
--- # lsp highlights
-cmd "hi link LspSignatureActiveParameter PmenuSel"
 
 -- # nvim-tree
 api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
