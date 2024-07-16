@@ -35,9 +35,8 @@ return
   , config = function ()
       -- first we customize default palette to reduced contrast version.
       local p = require "hybrid.colors".palette
-      p.bright_black = "#47555e"
-      p.black        = "#283136"
-      p.dull_black   = "#1b2429"
+      p.bright_black = "#425059"
+      p.black        = "#232c31"
       p.dull_white   = "#6c7a80"
 
       -- and then setup.
