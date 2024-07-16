@@ -95,8 +95,8 @@ return
 
       local buttsonvals = {}
 
-      table.insert
-      ( buttsonvals
+      table.insert(
+        buttsonvals
       , { type = "text"
         , val  = "Sessions"
         , opts =
@@ -395,44 +395,54 @@ return
   -- builtin ui replacement.
 , { "stevearc/dressing.nvim"
   , config = function ()
-               require "dressing".setup
-               { input  = { enabled        = true
-                          , default_prompt = "> "
-                          , prompt_align   = "center"
-                          , border         = "single"
-                          , win_options    = { winblend     = 0
-                                             , winhighlight = "Normal:TelescopePromptNormal"
-                                             }
-                          , mappings       = { i = { ["<C-a>"] = "<Home>"
-                                                   , ["<C-e>"] = "<End>"
-                                                   , ["<C-d>"] = "<Del>"
-                                                   , ["<C-b>"] = "<Left>"
-                                                   , ["<C-f>"] = "<Right>"
-                                                   , ["<A-b>"] = "<S-Left>"
-                                                   , ["<A-f>"] = "<S-Right>"
-                                                   }
-                                             }
-                          , override       = function (conf)
-                                               conf.row = 1
+      local cursor_theme = require "telescope.themes".get_cursor
+      { borderchars =
+        { prompt  = { "─", "│", " ", "│", "┌", "┐", " ", " " }
+        , results = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
+        }
+      }
 
-                                               return conf
-                                             end
-                          }
-               , select = { enabled     = true
-                          , backend     = { "telescope" }
-                          , trim_prompt = false
-                          , telescope   = require "telescope.themes".get_cursor { borderchars = { prompt  = { "─", "│", " ", "│", "┌", "┐", " ", " " }
-                                                                                                , results = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
-                                                                                                }
-                                                                                }
-                          }
-               }
-             end
+      require "dressing".setup
+      { input =
+        { enabled = true
+        , default_prompt = "> "
+        , prompt_align = "center"
+        , border = "single"
+        , win_options =
+          { winblend = 0
+          , winhighlight = table.concat(
+              { "Normal:TelescopePromptNormal"
+              , "FloatBorder:TelescopeBorder"
+              , "FloatTitle:TelescopeTitle"
+              }
+            , ","
+            )
+          }
+        , mappings =
+          { i =
+            { ["<C-a>"] = "<Home>"
+            , ["<C-e>"] = "<End>"
+            , ["<C-d>"] = "<Del>"
+            , ["<C-b>"] = "<Left>"
+            , ["<C-f>"] = "<Right>"
+            , ["<A-b>"] = "<S-Left>"
+            , ["<A-f>"] = "<S-Right>"
+            }
+          }
+        , override = function (conf) conf.row = 1 return conf end
+        }
+      , select =
+        { enabled = true
+        , backend = { "telescope" }
+        , trim_prompt = false
+        , telescope = cursor_theme
+        }
+      }
+    end
   }
 , { "GCBallesteros/NotebookNavigator.nvim"
   , event = "VeryLazy"
-  , opts  = { syntax_highlight = true
-            }
+  , opts = { syntax_highlight = true }
   }
 , { "hkupty/iron.nvim"
   , event  = "VeryLazy"
