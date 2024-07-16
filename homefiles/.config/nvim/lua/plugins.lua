@@ -1,20 +1,20 @@
 return
 { -- statusline.
   { "nvim-lualine/lualine.nvim"
-  , opts = {
-      options = {
-        theme = "OceanicNext"
-      , refresh = {
-          statusline = 100
+  , opts =
+    { options =
+      { theme = "OceanicNext"
+      , refresh =
+        { statusline = 100
         , tabline    = 100
         , winbar     = 100
         }
         -- alpha is the filetype of start screen.
       , disabled_filetypes = { "alpha" }
       }
-    , sections = {
-        lualine_c = {
-          "filename"
+    , sections =
+      { lualine_c =
+        { "filename"
         , function ()
             return require "lsp-progress".progress()
           end
@@ -40,8 +40,8 @@ return
       p.dull_white   = "#6c7a80"
 
       -- and then setup.
-      require "hybrid".setup {
-        overrides = function (hl, c)
+      require "hybrid".setup
+      { overrides = function (hl, c)
           hl.GitGutterAdd    = { link = "diffAdded" }
           hl.GitGutterChange = { link = "diffChanged" }
           hl.GitGutterDelete = { link = "diffRemoved" }
@@ -66,12 +66,13 @@ return
   -- dir tree, bookmarks and more.
 , { "nvim-tree/nvim-tree.lua"
   , dependencies = { "nvim-tree/nvim-web-devicons" }
-  , opts = { system_open   = { cmd = "wslview" }
-           , disable_netrw = true
-           , renderer      = { icons = { git_placement = "after" } }
-           , actions       = { open_file = { quit_on_open = true } }
-           , filters       = { custom = { "^\\.git$" } }
-           }
+  , opts =
+    { system_open = { cmd = "wslview" }
+    , disable_netrw = true
+    , renderer = { icons = { git_placement = "after" } }
+    , actions = { open_file = { quit_on_open = true } }
+    , filters = { custom = { "^\\.git$" } }
+    }
   }
   -- show file change inline.
 , "airblade/vim-gitgutter"
@@ -80,8 +81,7 @@ return
   -- Surround selections, stylishly 😎
 , { "kylechui/nvim-surround"
   , version = "*" -- Use for stability; omit to use `main` branch for the latest features
-  , opts = { indent_lines = false
-           }
+  , opts = { indent_lines = false }
   }
   -- git wrapper.
 , "tpope/vim-fugitive"
@@ -89,51 +89,49 @@ return
 , { "goolord/alpha-nvim"
   , dependencies = { "nvim-tree/nvim-web-devicons" }
   , config = function ()
-               local sessutil  = require "auto-session"
-               local fortune   = require "alpha.fortune"
-               local dashboard = require "alpha.themes.dashboard"
+      local sessutil  = require "auto-session"
+      local fortune   = require "alpha.fortune"
+      local dashboard = require "alpha.themes.dashboard"
 
-               local buttsonvals = {}
+      local buttsonvals = {}
 
-               table.insert( buttsonvals
-                           , { type = "text"
-                             , val  = "Sessions"
-                             , opts = { hl       = "Title"
-                                      , position = "center"
-                                      }
+      table.insert
+      ( buttsonvals
+      , { type = "text"
+        , val  = "Sessions"
+        , opts =
+          { hl = "Title"
+          , position = "center"
+          }
+        }
+      )
+      for n, sess in ipairs({ unpack(sessutil.get_session_files(), 1, 3) }) do
+        local name = string.match(sess.display_name, ".*/(.*)$")
+        local cmd  = ":lua require 'auto-session'.RestoreSession('"..sess.display_name.."')<CR>"
+        local btn  = dashboard.button(tostring(n), "  "..name, cmd)
+
+        table.insert(buttsonvals, btn)
+      end
+      table.insert( buttsonvals, { type = "padding", val = 1 })
+      table.insert( buttsonvals
+                  , { type = "text"
+                    , val  = "Action"
+                    , opts = { hl       = "Title"
+                             , position = "center"
                              }
-                           )
-               for n, sess in ipairs({ unpack(sessutil.get_session_files(), 1, 3) }) do
-                 local name = string.match(sess.display_name, ".*/(.*)$")
-                 local cmd  = ":lua require 'auto-session'.RestoreSession('"..sess.display_name.."')<CR>"
-                 local btn  = dashboard.button(tostring(n), "  "..name, cmd)
+                    }
+                  )
+      table.insert(buttsonvals, dashboard.button("e", "  New file", ":ene<CR>"))
+      table.insert(buttsonvals, dashboard.button("p", "  Open session", ":Telescope session-lens<CR>"))
+      table.insert(buttsonvals, dashboard.button("q", "󰿅  Quit", ":qa!<CR>"))
 
-                 table.insert(buttsonvals, btn)
-               end
-               table.insert( buttsonvals
-                           , { type = "padding"
-                             , val  = 1
-                             }
-                           )
-               table.insert( buttsonvals
-                           , { type = "text"
-                             , val  = "Action"
-                             , opts = { hl       = "Title"
-                                      , position = "center"
-                                      }
-                             }
-                           )
-               table.insert(buttsonvals, dashboard.button("e", "  New file", ":ene<CR>"))
-               table.insert(buttsonvals, dashboard.button("p", "  Open session", ":Telescope session-lens<CR>"))
-               table.insert(buttsonvals, dashboard.button("q", "󰿅  Quit", ":qa!<CR>"))
+      dashboard.section.buttons.val = buttsonvals
 
-               dashboard.section.buttons.val = buttsonvals
+      dashboard.section.footer.val     = fortune()
+      dashboard.section.footer.opts.hl = "String"
 
-               dashboard.section.footer.val     = fortune()
-               dashboard.section.footer.opts.hl = "String"
-
-               require "alpha".setup(dashboard.config)
-             end
+      require "alpha".setup(dashboard.config)
+    end
   }
   -- session management.
 , { "rmagatti/auto-session"
