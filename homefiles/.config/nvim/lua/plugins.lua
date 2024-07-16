@@ -52,6 +52,9 @@ return
       -- and then setup.
       require "hybrid".setup
       { overrides = function (hl, c)
+          -- I like classic Type highlight.
+          hl.Type            = { fg = c.yellow }
+          -- proper gitgutter highlights.
           hl.GitGutterAdd    = { link = "diffAdded" }
           hl.GitGutterChange = { link = "diffChanged" }
           hl.GitGutterDelete = { link = "diffRemoved" }
