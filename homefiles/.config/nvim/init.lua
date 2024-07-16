@@ -93,23 +93,26 @@ opt.virtualedit   = "block"
 cmd "au TermOpen * set nocursorline nocursorcolumn"
 
 -- # clipboard
-g.clipboard = { name  = "WSL Clipboard"
-              , copy  = { ["+"] = "powershell.exe -c $input | set-clipboard"
-                        , ["*"] = "powershell.exe -c $input | set-clipboard"
-                        }
-              , paste = { ["+"] = 'powershell.exe -c [Console]::Out.Write($(get-clipboard -raw).replace("`r", ""))'
-                        , ["*"] = 'powershell.exe -c [Console]::Out.Write($(get-clipboard -raw).replace("`r", ""))'
-                        }
-              , cache_enabled = 0
-              }
+g.clipboard =
+{ name = "WSL Clipboard"
+, copy =
+  { ["+"] = "powershell.exe -c $input | set-clipboard"
+  , ["*"] = "powershell.exe -c $input | set-clipboard"
+  }
+, paste =
+  { ["+"] = 'powershell.exe -c [Console]::Out.Write($(get-clipboard -raw).replace("`r", ""))'
+  , ["*"] = 'powershell.exe -c [Console]::Out.Write($(get-clipboard -raw).replace("`r", ""))'
+  }
+, cache_enabled = 0
+}
 
 -- # disable netrw
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
 -- # neovim builtins.
-g.python_indent            = { disable_parentheses_indenting = true }
-g.pyindent_open_paren      = false
+g.python_indent = { disable_parentheses_indenting = true }
+g.pyindent_open_paren = false
 g.python_recommended_style = false
 
 -- # vim-autoclose
@@ -124,19 +127,19 @@ g.gitgutter_terminal_reports_focus = false
 
 -- # vim-markdown-toc
 g.vmt_auto_update_on_save = false
-g.vmt_fence_text          = "TOC"
-g.vmt_list_item_char      = "-"
+g.vmt_fence_text = "TOC"
+g.vmt_list_item_char = "-"
 
 -- # editorconfig
 g.EditorConfig_exclude_patterns = { "fugitive://.*" }
 
 -- # telescope
-api.nvim_create_autocmd({ "User" }, {
-  pattern  = "TelescopePreviewerLoaded"
-, callback = function ()
-               vim.wo.wrap = true
-             end
-})
+api.nvim_create_autocmd(
+  { "User" }
+, { pattern  = "TelescopePreviewerLoaded"
+  , callback = function () vim.wo.wrap = true end
+  }
+)
 
 -- # nvim-tree
 api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
@@ -148,11 +151,13 @@ cmd "au BufRead *.dump-stg-final set ft=haskell"
 -- # lualine
 -- lsp progress notification.
 api.nvim_create_augroup("lualine_augroup", { clear = true })
-api.nvim_create_autocmd("User", {
-  group    = "lualine_augroup"
-, pattern  = "LspProgressStatusUpdated"
-, callback = require "lualine".refresh
-})
+api.nvim_create_autocmd(
+  "User"
+, { group = "lualine_augroup"
+  , pattern = "LspProgressStatusUpdated"
+  , callback = require "lualine".refresh
+  }
+)
 
 -- # KEYMAPS ###################################################################
 map { { "n", "o" }, "(", "[(" }
@@ -175,32 +180,39 @@ map { "", "<C-h>", "<C-w>h" }
 map { "", "<C-l>", "<C-w>l" }
 -- lists and lsp.
 map { "n", "<C-A-p>", ":Telescope session-lens<CR>" }
-map { "n", "<C-p>"  , function () require "telescope.builtin".find_files { hidden = true } end }
+map { "n", "<C-p>"  , function ()
+        require "telescope.builtin".find_files { hidden = true }
+      end
+    }
 map { "n", "<S-A-p>", function ()
-                        require "telescope.builtin".live_grep
-                        { additional_args = function () return { "--hidden" } end
-                        }
-                      end
+        require "telescope.builtin".live_grep
+        { additional_args = function ()
+            return { "--hidden" }
+          end
+        }
+      end
     }
 map { "n", "<A-a>", vim.lsp.buf.code_action }
 map { "n", "<A-r>", function ()
-                      local opts = require "telescope.themes".get_cursor
-                                   { borderchars         = { prompt  = { "─", "│", " ", "│", "┌", "┐", " ", " " }
-                                                           , results = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
-                                                           , preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
-                                                           }
-                                   , layout_config       = { width   = 120
-                                                           , height  = 15
-                                                           }
-                                   , show_line           = false
-                                   , include_declaration = false
-                                   }
-                      require "telescope.builtin".lsp_references(opts)
-                    end
+        local opts = require "telescope.themes".get_cursor
+        { borderchars =
+          { prompt  = { "─", "│", " ", "│", "┌", "┐", " ", " " }
+          , results = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
+          , preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+          }
+        , layout_config =
+          { width  = 120
+          , height = 15
+          }
+        , show_line = false
+        , include_declaration = false
+        }
+        require "telescope.builtin".lsp_references(opts)
+      end
     }
 map { "n", "<A-)>", vim.diagnostic.goto_next }
 map { "n", "<A-(>", vim.diagnostic.goto_prev }
-map { "n", "K", vim.lsp.buf.hover }
+map { "n", "K" , vim.lsp.buf.hover }
 map { "n", "gQ", vim.lsp.buf.format }
 map { { "n", "i" }, "<C-k>", vim.lsp.buf.signature_help }
 map { "n", "<leader>p", ":TSTextobjectSwapNext @parameter.inner<CR>" }
@@ -215,23 +227,23 @@ map { "c", "<A-b>", "<S-Left>" }
 map { "c", "<A-f>", "<S-Right>" }
 -- python cell execution & ipynb conversion.
 map { "n", "<leader>x", function ()
-                          require "notebook-navigator".run_and_move()
-                        end
+        require "notebook-navigator".run_and_move()
+      end
     }
 map { "n", "<leader>np", function ()
-                           if vim.fn.executable("jupytext") == 1 then
-                             local name = vim.fn.expand("%:r")
-                             local ext  = vim.fn.expand("%:e")
+        if vim.fn.executable("jupytext") == 1 then
+          local name = vim.fn.expand("%:r")
+          local ext  = vim.fn.expand("%:e")
 
-                             if ext == "py" then
-                               cmd(string.format("!jupytext --from=py:percent --to=ipynb --update --output=%s.ipynb %s.py", name, name))
-                             elseif ext == "ipynb" then
-                               cmd(string.format("!jupytext --from=ipynb --to=py:percent --output=%s.py %s.ipynb", name, name))
-                             end
-                           else
-                             vim.print("No jupytext found, ignore.")
-                           end
-                         end
+          if ext == "py" then
+            cmd(string.format("!jupytext --from=py:percent --to=ipynb --update --output=%s.ipynb %s.py", name, name))
+          elseif ext == "ipynb" then
+            cmd(string.format("!jupytext --from=ipynb --to=py:percent --output=%s.py %s.ipynb", name, name))
+          end
+        else
+          vim.print("No jupytext found, ignore.")
+        end
+      end
     }
 
 -- # COMMANDS ##################################################################
