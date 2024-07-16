@@ -48,6 +48,17 @@ return
           -- the original colors are hard to see, so I revert them.
           hl.TabLine         = { fg = c.bg, bg = c.fg }
           hl.TabLineFill     = { fg = c.bg, bg = c.fg }
+          -- lighter popups.
+          hl.Pmenu           = { fg = c.fg, bg = c.bg_soft }
+          hl.PmenuSel        = { fg = c.bg_soft, bg = c.fg }
+          hl.PmenuSbar       = { bg = c.fg_soft }
+          hl.PmenuThumb      = { bg = c.fg_hard }
+          hl.NormalFloat     = { link = "Pmenu" }
+          hl.FloatBorder     = { fg = c.float.border, bg = c.bg_soft }
+          hl.FloatTitle      = { fg = c.float.title , bg = c.bg_soft }
+          hl.TelescopeNormal = { link = "Normal" }
+          hl.TelescopeBorder = { link = "TelescopeNormal" }
+          hl.TelescopeTitle  = { link = "TelescopeNormal" }
         end
       }
     end
