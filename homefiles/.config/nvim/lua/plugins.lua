@@ -278,8 +278,10 @@ return
                 , autoExtendOn = false
                 }
               }
+            , semanticTokens = { globalOn = true }
             }
           , maxCompletions = 100
+          , sessionLoading = "multipleComponents"
           , formattingProvider = "stylish-haskell"
           }
         }
