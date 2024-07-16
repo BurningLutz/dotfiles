@@ -3,7 +3,7 @@ return
   { "nvim-lualine/lualine.nvim"
   , opts = {
       options = {
-        theme = "auto"
+        theme = "OceanicNext"
       , refresh = {
           statusline = 100
         , tabline    = 100
