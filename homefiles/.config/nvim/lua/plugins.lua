@@ -1,26 +1,38 @@
 return
 { -- statusline.
   { "nvim-lualine/lualine.nvim"
-  , opts =
-    { options =
-      { theme = "OceanicNext"
-      , refresh =
-        { statusline = 100
-        , tabline    = 100
-        , winbar     = 100
-        }
-        -- alpha is the filetype of start screen.
-      , disabled_filetypes = { "alpha" }
+  , dependencies = { "HoNamDuong/hybrid.nvim" }
+  , config = function ()
+      -- make hybrid inactive lualine visible.
+      local c = require "hybrid.colors".setup()
+      local theme = require "lualine.themes.hybrid"
+      theme.inactive =
+      { a = { fg = c.fg, bg = c.line }
+      , b = { fg = c.fg, bg = c.line }
+      , c = { fg = c.fg, bg = c.line }
       }
-    , sections =
-      { lualine_c =
-        { "filename"
-        , function ()
-            return require "lsp-progress".progress()
-          end
+
+      require "lualine".setup
+      { options =
+        { theme = theme
+        , refresh =
+          { statusline = 100
+          , tabline    = 100
+          , winbar     = 100
+          }
+          -- alpha is the filetype of start screen.
+        , disabled_filetypes = { "alpha" }
+        }
+      , sections =
+        { lualine_c =
+          { "filename"
+          , function ()
+              return require "lsp-progress".progress()
+            end
+          }
         }
       }
-    }
+    end
   }
 , { "linrongbin16/lsp-progress.nvim"
   , version = "*"
@@ -30,8 +42,6 @@ return
   }
   -- theme.
 , { "HoNamDuong/hybrid.nvim"
-  , priority = 1000
-  , lazy = false
   , config = function ()
       -- first we customize default palette to reduced contrast version.
       local p = require "hybrid.colors".palette
