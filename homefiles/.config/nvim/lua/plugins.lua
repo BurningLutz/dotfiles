@@ -80,11 +80,16 @@ return
 , { "nvim-tree/nvim-tree.lua"
   , dependencies = { "nvim-tree/nvim-web-devicons" }
   , opts =
-    { system_open = { cmd = "wslview" }
-    , disable_netrw = true
-    , renderer = { icons = { git_placement = "after" } }
-    , actions = { open_file = { quit_on_open = true } }
+    { disable_netrw = true
+    , system_open = { cmd = "wslview" }
+    , renderer =
+      { icons = { git_placement = "after" }
+      }
+    , actions =
+      { open_file = { quit_on_open = true }
+      }
     , filters = { custom = { "^\\.git$" } }
+    , sync_root_with_cwd = true
     }
   }
   -- show file change inline.
