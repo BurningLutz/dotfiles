@@ -160,9 +160,9 @@ return
       local ignored_filetypes = { "gitcommit", "gitrebase", "fugitive", "NvimTree" }
 
       require "auto-session".setup
-      { auto_restore_enabled = false
-      , auto_session_create_enabled = false
-      , auto_session_use_git_branch = false
+      { auto_restore = false
+      , auto_create  = false
+      , use_git_branch = false
       -- it's critical to set `cwd_change_handling` to nil to work-around a
       -- "session cleared unexpectedly" issue.
       -- see https://github.com/rmagatti/auto-session/issues/205
