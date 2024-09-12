@@ -112,7 +112,7 @@ return
       local fortune   = require "alpha.fortune"
       local dashboard = require "alpha.themes.dashboard"
 
-      local session_files = sessutil.get_session_files()
+      local session_files = vim.fn.readdir(sessutil.get_root_dir())
       local btns = {}
 
       table.insert(
@@ -125,8 +125,8 @@ return
         }
       )
       for n, sess in ipairs({ unpack(session_files, 1, 3) }) do
-        local name = string.match(sess.display_name, ".*/(.*)$")
-        local cmd = ":lua require 'auto-session'.RestoreSession('"..sess.display_name.."')<CR>"
+        local name = string.match(sess, "(.*)%.vim$")
+        local cmd = ":lua require 'auto-session'.RestoreSession('"..name.."')<CR>"
         local btn = dashboard.button(tostring(n), "  "..name, cmd)
 
         table.insert(btns, btn)
@@ -316,7 +316,7 @@ return
           }
         }
       }
-      cfg.tsserver.setup {}
+      cfg.ts_ls.setup {}
       cfg.gopls.setup {}
       cfg.jdtls.setup
       { cmd =

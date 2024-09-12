@@ -40,53 +40,56 @@ require "lazy".setup "plugins"
 
 -- # EDITOR OPTIONS ############################################################
 -- I use dark color scheme.
-opt.background    = "dark"
+opt.background     = "dark"
 
 -- hide a buffer instead of unloading it.
-opt.hidden        = true
+opt.hidden         = true
 
 -- treat ambiguous-width chars as single width.
-opt.ambiwidth     = "single"
+opt.ambiwidth      = "single"
 
 -- make completion for command line mode acts like readline.
-opt.wildmode      = { "longest", "full" }
+opt.wildmode       = { "longest", "full" }
 -- my favorite completion style.
-opt.completeopt   = { "menu", "longest", "noselect" }
+opt.completeopt    = { "menu", "longest", "noselect" }
 
 -- 24-bits true color.
-opt.termguicolors = true
+opt.termguicolors  = true
 
 -- make tab to insert two spaces.
-opt.tabstop       = 2
-opt.shiftwidth    = 2
-opt.expandtab     = true
+opt.tabstop        = 2
+opt.shiftwidth     = 2
+opt.expandtab      = true
 
 -- show tab as >-, trailing space as -.
-opt.list          = true
-opt.listchars     = { tab = ">-", trail = "-", nbsp = "+" }
+opt.list           = true
+opt.listchars      = { tab = ">-", trail = "-", nbsp = "+" }
 
 -- show line number.
-opt.number        = true
+opt.number         = true
 
 -- open new pane at right bottom.
-opt.splitbelow    = true
-opt.splitright    = true
+opt.splitbelow     = true
+opt.splitright     = true
 
 -- swap files cause more trouble.
-opt.swapfile      = false
+opt.swapfile       = false
 -- reduce updatetime to trigger CursorHold event more frequently.
-opt.updatetime    = 100
+opt.updatetime     = 100
 
 -- always show sign columns.
-opt.signcolumn    = "yes"
+opt.signcolumn     = "yes"
 
 -- highlight cursor.
-opt.cursorline    = true
-opt.cursorcolumn  = true
+opt.cursorline     = true
+opt.cursorcolumn   = true
 
 -- better visual block editing.
-opt.mouse         =  ""
-opt.virtualedit   = "block"
+opt.mouse          = ""
+opt.virtualedit    = "block"
+
+-- session options for auto session.
+opt.sessionoptions = { "blank", "buffers", "curdir", "folds", "help", "tabpages", "winsize", "terminal", "localoptions" }
 
 -- # CONFIG VARIABLES ##########################################################
 -- # better terminal mode.
