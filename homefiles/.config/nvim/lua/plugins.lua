@@ -109,6 +109,7 @@ return
   , dependencies = { "nvim-tree/nvim-web-devicons" }
   , config = function ()
       local sessutil  = require "auto-session"
+      local sesslib   = require "auto-session.lib"
       local fortune   = require "alpha.fortune"
       local dashboard = require "alpha.themes.dashboard"
 
@@ -125,7 +126,7 @@ return
         }
       )
       for n, sess in ipairs({ unpack(session_files, 1, 3) }) do
-        local name = string.match(sess, "(.*)%.vim$")
+        local name = string.match(sesslib.unescape_session_name(sess), "(.*)%.vim$")
         local cmd = ":lua require 'auto-session'.RestoreSession('"..name.."')<CR>"
         local btn = dashboard.button(tostring(n), "  "..name, cmd)
 
