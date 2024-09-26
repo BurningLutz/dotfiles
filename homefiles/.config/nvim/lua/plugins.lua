@@ -319,15 +319,6 @@ return
       }
       cfg.ts_ls.setup {}
       cfg.gopls.setup {}
-      cfg.jdtls.setup
-      { cmd =
-        { "jdt-language-server"
-        , "-configuration"
-        , os.getenv("HOME").."/.cache/jdtls/config"
-        , "-data"
-        , os.getenv("HOME").."/.cache/jdtls/workspace"
-        }
-      }
       cfg.clangd.setup {}
       cfg.rust_analyzer.setup
       { filetypes = { "rust" }
