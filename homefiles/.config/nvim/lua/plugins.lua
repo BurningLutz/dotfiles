@@ -331,6 +331,10 @@ return
       }
     end
   }
+  -- java language support.
+  -- currently the support is very very basic, it uses java toolchain from PATH
+  -- and not yet fine tuned for UX.
+, "mfussenegger/nvim-jdtls"
   -- repeat plugin map.
 , "tpope/vim-repeat"
   -- comment stuffs easily.
