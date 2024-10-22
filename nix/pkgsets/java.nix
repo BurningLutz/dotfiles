@@ -1,5 +1,4 @@
 pkgs: with pkgs; [
-  openjdk21
   ( gradle.override
       { java = openjdk21;
       }
