@@ -268,9 +268,9 @@ return
   , config = function ()
       local cfg = require "lspconfig"
 
-      cfg.util.default_config = vim.tbl_extend(
+      cfg.util.default_config.capabilities = vim.tbl_deep_extend(
         "force"
-      , cfg.util.default_config
+      , cfg.util.default_config.capabilities
       , require "cmp_nvim_lsp".default_capabilities()
       )
 
