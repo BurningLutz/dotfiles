@@ -31,7 +31,8 @@ end
 if status --is-interactive
   alias ll="ls -lhAF"
   alias vim=nvim
-  alias open=wslview
+  # skip the url validation check to make wslview faster.
+  alias open="wslview --skip-validation-check"
 
   # It seems that export fish_complete_path when login is not enough,
   # I have to set it every time.
