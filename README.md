@@ -10,6 +10,10 @@ My dot files.
 
 Simply run `setup`. Don't worry, it's idempotent. :tada::tada::tada:
 
+> [!IMPORTANT]
+> Be sure to change personal infos(username etc.) across many config files before you run `setup`.
+
+> [!NOTE]
 > The `setup` inherently invokes `build` & `home-manager switch` to make your dotfiles ready.
 > For regular maintenance steps, see [Maintenance](#Maintenance).
 
