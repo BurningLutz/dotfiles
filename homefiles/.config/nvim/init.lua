@@ -182,12 +182,11 @@ map { "", "<A-l>", ":bnext<CR>" }
 map { "", "<C-h>", "<C-w>h" }
 map { "", "<C-l>", "<C-w>l" }
 -- lists and lsp.
-map { "n", "<C-P>", ":Telescope session-lens<CR>" }
 map { "n", "<C-p>"  , function ()
         require "telescope.builtin".find_files { hidden = true }
       end
     }
-map { "n", "<A-P>", function ()
+map { "n", "<A-p>", function ()
         require "telescope.builtin".live_grep
         { additional_args = function ()
             return { "--hidden" }
@@ -195,6 +194,7 @@ map { "n", "<A-P>", function ()
         }
       end
     }
+map { "n", "<A-P>", ":Telescope session-lens<CR>" }
 map { "n", "<A-a>", vim.lsp.buf.code_action }
 map { "n", "<A-r>", function ()
         local opts = require "telescope.themes".get_cursor
