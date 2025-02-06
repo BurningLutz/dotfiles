@@ -171,10 +171,10 @@ map { "", "<A-w>", "<Plug>CamelCaseMotion_w" }
 map { "", "<A-b>", "<Plug>CamelCaseMotion_b" }
 map { "", "<A-e>", "<Plug>CamelCaseMotion_e" }
 -- tab managements.
-map { "", "<S-A-h>", ":tabprevious<CR>" }
-map { "", "<S-A-l>", ":tabnext<CR>" }
+map { "", "<A-H>", ":tabprevious<CR>" }
+map { "", "<A-L>", ":tabnext<CR>" }
 map { "", "<A-t>"  , ":tabnew<CR>" }
-map { "", "<S-A-w>", ":tabclose<CR>" }
+map { "", "<A-W>", ":tabclose<CR>" }
 -- buffer switching.
 map { "", "<A-h>", ":bprevious<CR>" }
 map { "", "<A-l>", ":bnext<CR>" }
@@ -182,12 +182,12 @@ map { "", "<A-l>", ":bnext<CR>" }
 map { "", "<C-h>", "<C-w>h" }
 map { "", "<C-l>", "<C-w>l" }
 -- lists and lsp.
-map { "n", "<C-A-p>", ":Telescope session-lens<CR>" }
+map { "n", "<C-P>", ":Telescope session-lens<CR>" }
 map { "n", "<C-p>"  , function ()
         require "telescope.builtin".find_files { hidden = true }
       end
     }
-map { "n", "<S-A-p>", function ()
+map { "n", "<A-P>", function ()
         require "telescope.builtin".live_grep
         { additional_args = function ()
             return { "--hidden" }
