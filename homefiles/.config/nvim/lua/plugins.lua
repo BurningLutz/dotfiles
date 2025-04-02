@@ -195,14 +195,11 @@ return
 , "vim-scripts/Align"
   -- search and replace through the whole project.
 , "dyng/ctrlsf.vim"
+, "nvimdev/phoenix.nvim"
   -- auto completion.
 , { "hrsh7th/nvim-cmp"
   , dependencies =
-    { "hrsh7th/cmp-path"
-    , "hrsh7th/cmp-buffer"
-    , "hrsh7th/cmp-nvim-lsp"
-    , "hrsh7th/cmp-vsnip"
-    , "hrsh7th/vim-vsnip"
+    { "hrsh7th/cmp-nvim-lsp"
     }
   , config = function ()
       local compare = require "cmp.config.compare"
@@ -213,20 +210,16 @@ return
       { preselect = cmp.PreselectMode.None
       , snippet =
         { expand = function (args)
-            vim.fn["vsnip#anonymous"](args.body)
+            vim.snippet.expand(args.body)
           end
         }
       , sorting =
         { comparators =
-          { compare.offset
+          { compare.kind
           , compare.exact
           , compare.score
-          , compare.recently_used
-          , compare.locality
+          , compare.offset
           , compare.sort_text
-          , compare.length
-          , compare.kind
-          , compare.order
           }
         }
       , mapping = map.preset.insert
@@ -256,10 +249,7 @@ return
         , ["<C-x><C-o>"] = map.complete()
         }
       , sources =
-        { { name = "path" }
-        , { name = "buffer", group_index = 2 }
-        , { name = "nvim_lsp" }
-        , { name = "vsnip" }
+        { { name = "nvim_lsp" }
         }
       }
     end

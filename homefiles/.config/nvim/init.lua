@@ -182,21 +182,10 @@ map { "", "<A-l>", ":bnext<CR>" }
 map { "", "<C-h>", "<C-w>h" }
 map { "", "<C-l>", "<C-w>l" }
 -- lists and lsp.
-map { "n", "<C-p>"  , function ()
-        require "telescope.builtin".find_files { hidden = true }
-      end
-    }
-map { "n", "<A-p>", function ()
-        require "telescope.builtin".live_grep
-        { additional_args = function ()
-            return { "--hidden" }
-          end
-        }
-      end
-    }
-map { "n", "<A-P>", ":Telescope session-lens<CR>" }
-map { "n", "<A-a>", vim.lsp.buf.code_action }
-map { "n", "<A-r>", function ()
+map { "n", "grf", function () require "telescope.builtin".find_files { hidden = true } end }
+map { "n", "grg", function () require "telescope.builtin".live_grep  { additional_args = { "--hidden" } } end }
+map { "n", "grs", ":Telescope session-lens<CR>" }
+map { "n", "grr", function ()
         local opts = require "telescope.themes".get_cursor
         { borderchars =
           { prompt  = { "─", "│", " ", "│", "┌", "┐", " ", " " }
@@ -213,11 +202,8 @@ map { "n", "<A-r>", function ()
         require "telescope.builtin".lsp_references(opts)
       end
     }
-map { "n", "<A-)>", vim.diagnostic.goto_next }
-map { "n", "<A-(>", vim.diagnostic.goto_prev }
-map { "n", "K" , vim.lsp.buf.hover }
+map { "n", "gO", ":Telescope lsp_document_symbols<CR>" }
 map { "n", "gQ", vim.lsp.buf.format }
-map { { "n", "i" }, "<C-k>", vim.lsp.buf.signature_help }
 map { "n", "<leader>p", ":TSTextobjectSwapNext @parameter.inner<CR>" }
 map { "n", "<leader>P", ":TSTextobjectSwapPrevious @parameter.inner<CR>" }
 -- command-line mode readline-style movements.
@@ -250,4 +236,3 @@ map { "n", "<leader>np", function ()
     }
 
 -- # COMMANDS ##################################################################
-cmd "com! Rename lua vim.lsp.buf.rename()"
