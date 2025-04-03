@@ -58,6 +58,7 @@ require "lazy".setup "plugins"
 -- diagnostics
 vim.diagnostic.config
 { virtual_text = true
+, jump = { float = true }
 }
 
 -- common lsp config
