@@ -54,6 +54,32 @@ vim.opt.rtp:prepend "~/.local/share/nvim/lazy/lazy.nvim"
 
 require "lazy".setup "plugins"
 
+-- # LUA API EDITOR CONFIG #####################################################
+-- diagnostics
+vim.diagnostic.config
+{ virtual_text = true
+}
+
+-- common lsp config
+vim.lsp.config("*", {
+  capabilities = vim.tbl_deep_extend(
+    "force"
+  , vim.lsp.protocol.make_client_capabilities()
+  , require "cmp_nvim_lsp".default_capabilities()
+  )
+})
+
+-- auto enabled lsp servers.
+vim.lsp.enable
+{ "clangd"
+, "gopls"
+, "hls"
+, "lua_ls"
+, "pyright"
+, "rust_analyzer"
+, "ts_ls"
+}
+
 -- # EDITOR OPTIONS ############################################################
 -- I use dark color scheme.
 opt.background     = "dark"
@@ -107,10 +133,6 @@ opt.virtualedit    = "block"
 -- session options for auto session.
 opt.sessionoptions = { "blank", "buffers", "curdir", "folds", "help", "tabpages", "winsize", "terminal", "localoptions" }
 
--- diagnostic config
-vim.diagnostic.config
-{ virtual_lines = true
-}
 -- # CONFIG VARIABLES ##########################################################
 -- # clipboard
 g.clipboard =

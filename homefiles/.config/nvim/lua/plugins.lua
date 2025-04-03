@@ -215,10 +215,9 @@ return
         }
       , sorting =
         { comparators =
-          { compare.kind
-          , compare.exact
+          { compare.exact
           , compare.score
-          , compare.offset
+          , compare.kind
           , compare.sort_text
           }
         }
@@ -258,58 +257,6 @@ return
   , config = function ()
       local cfg = require "lspconfig"
 
-      cfg.util.default_config.capabilities = vim.tbl_deep_extend(
-        "force"
-      , cfg.util.default_config.capabilities
-      , require "cmp_nvim_lsp".default_capabilities()
-      )
-
-      cfg.hls.setup
-      { filetypes = { "haskell", "lhaskell", "cabal" }
-      , settings =
-        { haskell =
-          { plugin =
-            { ["ghcide-completions"] =
-              { config =
-                { snippetsOn = false
-                , autoExtendOn = false
-                }
-              }
-            , semanticTokens = { globalOn = true }
-            }
-          , maxCompletions = 100
-          , sessionLoading = "multipleComponents"
-          , formattingProvider = "stylish-haskell"
-          }
-        }
-      }
-      cfg.pyright.setup
-      { settings =
-        { python =
-          { pythonPath = ".venv/bin/python"
-          , analysis =
-            { typeCheckingMode = "off"
-            , autoImportCompletions = false
-            }
-          }
-        }
-      }
-      cfg.lua_ls.setup
-      { settings =
-        { Lua =
-          { runtime = { version = "LuaJIT" }
-          , diagnostics = { globals = { "vim" } }
-          , workspace =
-            { library = vim.api.nvim_get_runtime_file("", true)
-            , checkThirdParty = false
-            }
-          , telemetry = { enable = false }
-          }
-        }
-      }
-      cfg.ts_ls.setup {}
-      cfg.gopls.setup {}
-      cfg.clangd.setup {}
       cfg.rust_analyzer.setup
       { filetypes = { "rust" }
       , settings =
