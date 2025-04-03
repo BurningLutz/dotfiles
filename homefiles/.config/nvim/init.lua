@@ -19,6 +19,22 @@ local function map(args)
   vim.keymap.set(mode, lhs, rhs, args)
 end
 
+local function tmcursor(w, h)
+  return require "telescope.themes".get_cursor
+  { borderchars =
+    { prompt  = { "─", "│", " ", "│", "┌", "┐", " ", " " }
+    , results = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
+    , preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+    }
+  , layout_config =
+    { width  = w or 120
+    , height = h or 20
+    }
+  , show_line = false
+  , include_declaration = false
+  }
+end
+
 -- # modified from https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup
 local function open_nvim_tree(data)
   local directory = vim.fn.isdirectory(data.file) == 1
@@ -91,10 +107,11 @@ opt.virtualedit    = "block"
 -- session options for auto session.
 opt.sessionoptions = { "blank", "buffers", "curdir", "folds", "help", "tabpages", "winsize", "terminal", "localoptions" }
 
+-- diagnostic config
+vim.diagnostic.config
+{ virtual_lines = true
+}
 -- # CONFIG VARIABLES ##########################################################
--- # better terminal mode.
-cmd "au TermOpen * set nocursorline nocursorcolumn"
-
 -- # clipboard
 g.clipboard =
 { name = "WSL Clipboard"
@@ -156,9 +173,9 @@ cmd "au BufRead *.dump-stg-final set ft=haskell"
 api.nvim_create_augroup("lualine_augroup", { clear = true })
 api.nvim_create_autocmd(
   "User"
-, { group = "lualine_augroup"
-  , pattern = "LspProgressStatusUpdated"
-  , callback = require "lualine".refresh
+, { group    = "lualine_augroup"
+  , pattern  = "LspProgressStatusUpdated"
+  , callback = function () require "lualine".refresh() end
   }
 )
 
@@ -184,24 +201,10 @@ map { "", "<C-l>", "<C-w>l" }
 -- lists and lsp.
 map { "n", "grf", function () require "telescope.builtin".find_files { hidden = true } end }
 map { "n", "grg", function () require "telescope.builtin".live_grep  { additional_args = { "--hidden" } } end }
+map { "n", "grr", function () require "telescope.builtin".lsp_references(tmcursor()) end }
+map { "n", "gri", function () require "telescope.builtin".lsp_implementations(tmcursor()) end }
+map { "n", "grd", ":Telescope diagnostics<CR>" }
 map { "n", "grs", ":Telescope session-lens<CR>" }
-map { "n", "grr", function ()
-        local opts = require "telescope.themes".get_cursor
-        { borderchars =
-          { prompt  = { "─", "│", " ", "│", "┌", "┐", " ", " " }
-          , results = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
-          , preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
-          }
-        , layout_config =
-          { width  = 120
-          , height = 15
-          }
-        , show_line = false
-        , include_declaration = false
-        }
-        require "telescope.builtin".lsp_references(opts)
-      end
-    }
 map { "n", "gO", ":Telescope lsp_document_symbols<CR>" }
 map { "n", "gQ", vim.lsp.buf.format }
 map { "n", "<leader>p", ":TSTextobjectSwapNext @parameter.inner<CR>" }
