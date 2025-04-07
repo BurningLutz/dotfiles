@@ -195,11 +195,12 @@ return
 , "vim-scripts/Align"
   -- search and replace through the whole project.
 , "dyng/ctrlsf.vim"
-, "nvimdev/phoenix.nvim"
   -- auto completion.
 , { "hrsh7th/nvim-cmp"
   , dependencies =
     { "hrsh7th/cmp-nvim-lsp"
+    , "hrsh7th/cmp-path"
+    , "hrsh7th/cmp-buffer"
     }
   , config = function ()
       local compare = require "cmp.config.compare"
@@ -249,6 +250,8 @@ return
         }
       , sources =
         { { name = "nvim_lsp" }
+        , { name = "buffer" }
+        , { name = "path" }
         }
       }
     end
