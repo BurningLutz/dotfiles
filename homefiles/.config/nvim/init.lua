@@ -222,6 +222,10 @@ map { "", "<A-l>", ":bnext<CR>" }
 map { "", "<C-h>", "<C-w>h" }
 map { "", "<C-l>", "<C-w>l" }
 -- lists and lsp.
+map { "n", "<A-)>", function () vim.diagnostic.jump({ count =  1 }) end }
+map { "n", "<A-(>", function () vim.diagnostic.jump({ count = -1 }) end }
+map { { "n", "v" }, "<A-a>", vim.lsp.buf.code_action }
+
 map { "n", "grf", function () require "telescope.builtin".find_files { hidden = true } end }
 map { "n", "grg", function () require "telescope.builtin".live_grep  { additional_args = { "--hidden" } } end }
 map { "n", "grr", function () require "telescope.builtin".lsp_references(tmcursor()) end }
