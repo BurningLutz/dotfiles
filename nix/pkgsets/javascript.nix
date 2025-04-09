@@ -1,4 +1,5 @@
 pkgs: with pkgs; [
   jsbeautifier
-  nodePackages.typescript-language-server
+  typescript
+  typescript-language-server
 ]
