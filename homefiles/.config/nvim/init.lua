@@ -71,14 +71,16 @@ vim.lsp.config("*", {
 })
 
 -- auto enabled lsp servers.
-vim.lsp.enable
-{ "clangd"
-, "gopls"
-, "hls"
-, "lua_ls"
-, "pyright"
-, "rust_analyzer"
-, "ts_ls"
+-- use trailing commas for better commenting.
+vim.lsp.enable {
+  -- "clangd",
+  "gopls",
+  "hls",
+  "jsonls",
+  "lua_ls",
+  "pyright",
+  -- "rust_analyzer",
+  "ts_ls",
 }
 
 -- # EDITOR OPTIONS ############################################################
