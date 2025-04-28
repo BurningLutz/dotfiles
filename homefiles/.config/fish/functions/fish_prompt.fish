@@ -18,4 +18,9 @@ function fish_prompt --description 'Write out the prompt'
   end
 
   echo -n -s $__fish_prompt_date(date +%T)\ $__fish_prompt_normal$USER@(prompt_hostname)\ $__fish_prompt_cwd(prompt_pwd) $__fish_prompt_vcs(__fish_vcs_prompt) $__fish_prompt_normal "> "
+
+  # Windows Terminal doesn't support OSC 7 yet, should tell WSL the current CWD
+  if type -q wslpath
+    printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
+  end
 end
