@@ -269,6 +269,7 @@ return
           }
         }
       }
+      cfg.eslint.setup {}
     end
   }
   -- java language support.

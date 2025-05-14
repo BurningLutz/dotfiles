@@ -4,10 +4,11 @@ kernelCommandLine=transparent_hugepage=never
 
 networkingMode=mirrored
 # dnsTunneling=true seems break local domain query.
-dnsTunneling=false
+# but for DNS working under wireguard, we shall enable it.
+dnsTunneling=true
 autoProxy=true
 
 [experimental]
-autoMemoryReclaim=gradual
+autoMemoryReclaim=dropCache
 sparseVhd=true
 hostAddressLoopback=true
