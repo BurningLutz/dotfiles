@@ -98,10 +98,5 @@ in rec
   # fish shell needs mandb cache to do man completion.
   # the original cache format is not compatible with many systems, it should
   # be changed to gdbm.
-  programs.man = with pkgs; {
-    package        = man.override
-                       { db = gdbm;
-                       };
-    generateCaches = true;
-  };
+  programs.man.enable = true;
 }
