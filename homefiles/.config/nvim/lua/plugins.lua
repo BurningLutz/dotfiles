@@ -256,22 +256,7 @@ return
       }
     end
   }
-, { "neovim/nvim-lspconfig"
-  , config = function ()
-      local cfg = require "lspconfig"
-
-      cfg.rust_analyzer.setup
-      { filetypes = { "rust" }
-      , settings =
-        { ["rust-analyzer"] =
-          { cargo = { allFeatures = true }
-          , diagnostics = { enable = true }
-          }
-        }
-      }
-      cfg.eslint.setup {}
-    end
-  }
+, "neovim/nvim-lspconfig"
   -- java language support.
   -- currently the support is very very basic, it uses java toolchain from PATH
   -- and not yet fine tuned for UX.

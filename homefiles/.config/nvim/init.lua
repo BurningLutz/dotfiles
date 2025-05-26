@@ -73,13 +73,14 @@ vim.lsp.config("*", {
 -- auto enabled lsp servers.
 -- use trailing commas for better commenting.
 vim.lsp.enable {
-  -- "clangd",
+  "clangd",
+  "eslint",
   "gopls",
   "hls",
   "jsonls",
   "lua_ls",
   "pyright",
-  -- "rust_analyzer",
+  "rust_analyzer",
   "ts_ls",
 }
 
