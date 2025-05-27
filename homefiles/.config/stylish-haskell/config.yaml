@@ -292,7 +292,7 @@ steps:
       #   > import qualified Data.Foo as F
       #
       # Default: false
-      post_qualify: false
+      post_qualify: true
 
       # Automatically group imports based on their module names, with
       # a blank line separating each group. Groups are ordered in
