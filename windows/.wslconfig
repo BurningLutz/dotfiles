@@ -1,5 +1,5 @@
 [wsl2]
-memory=32G
+memory=64G
 kernelCommandLine=transparent_hugepage=never
 
 networkingMode=mirrored
