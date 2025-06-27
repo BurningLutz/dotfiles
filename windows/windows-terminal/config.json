@@ -14,6 +14,29 @@
         {
             "command": 
             {
+                "action": "selectOutput",
+                "direction": "prev"
+            },
+            "id": "User.selectOutput.D3F0B923"
+        },
+        {
+            "command": 
+            {
+                "action": "selectCommand"
+            },
+            "id": "User.selectCommand.D3F0B923"
+        },
+        {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "id": "User.copy.644BA8F2"
+        },
+        {
+            "command": 
+            {
                 "action": "scrollToMark",
                 "direction": "next"
             },
@@ -37,6 +60,7 @@
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
+    "defaultInputScope": "alphanumericHalfWidth",
     "defaultProfile": "{c8956113-7179-4df9-9667-70b5e69bdabb}",
     "keybindings": 
     [
@@ -121,7 +145,7 @@
             "keys": "ctrl+alt+5"
         },
         {
-            "id": null,
+            "id": "User.copy.644BA8F2",
             "keys": "ctrl+shift+c"
         },
         {
@@ -353,7 +377,7 @@
             "keys": "ctrl+alt+w"
         },
         {
-            "id": "User.selectOutput.Prev",
+            "id": "User.selectOutput.D3F0B923",
             "keys": "ctrl+alt+s"
         }
     ],
@@ -375,16 +399,20 @@
             "closeOnExit": "always",
             "colorScheme": "One Half Dark",
             "cursorShape": "filledBox",
+            "experimental.retroTerminalEffect": false,
             "experimental.rightClickContextMenu": true,
             "font": 
             {
+                "builtinGlyphs": true,
                 "cellHeight": "1.2",
+                "colorGlyphs": false,
                 "face": "CodeNewRoman Nerd Font Mono",
                 "size": 15
             },
             "historySize": 65536,
             "intenseTextStyle": "all",
             "padding": "0",
+            "pathTranslationStyle": "none",
             "scrollbarState": "hidden"
         },
         "list": 
