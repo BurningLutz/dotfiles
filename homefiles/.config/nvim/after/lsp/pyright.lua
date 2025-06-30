@@ -4,7 +4,7 @@ return
     { pythonPath = ".venv/bin/python"
     , disableOrganizeImports = false
     , analysis =
-      { autoImportCompletions = true
+      { autoImportCompletions = false
       , autoSearchPaths = true
       , diagnosticMode = "openFilesOnly"
       , typeCheckingMode = "off"
