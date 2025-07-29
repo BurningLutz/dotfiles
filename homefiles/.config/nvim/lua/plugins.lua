@@ -79,6 +79,7 @@ return
   -- dir tree, bookmarks and more.
 , { "nvim-tree/nvim-tree.lua"
   , dependencies = { "nvim-tree/nvim-web-devicons" }
+  , version = "*"
   , opts =
     { disable_netrw = true
     , system_open = { cmd = "wslview" }
