@@ -137,6 +137,8 @@ opt.virtualedit    = "block"
 -- session options for auto session.
 opt.sessionoptions = { "blank", "buffers", "curdir", "folds", "help", "tabpages", "winsize", "terminal", "localoptions" }
 
+-- let jumplist behaves like a stack.
+opt.jumpoptions    = { "stack", "clean" }
 -- # CONFIG VARIABLES ##########################################################
 -- # clipboard
 g.clipboard =
