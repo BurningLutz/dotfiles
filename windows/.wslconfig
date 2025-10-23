@@ -1,5 +1,6 @@
 [wsl2]
 memory=64G
+swap=0
 kernelCommandLine=transparent_hugepage=never
 
 networkingMode=mirrored
@@ -10,5 +11,5 @@ autoProxy=true
 
 [experimental]
 autoMemoryReclaim=dropCache
-sparseVhd=true
+sparseVhd=false
 hostAddressLoopback=true
