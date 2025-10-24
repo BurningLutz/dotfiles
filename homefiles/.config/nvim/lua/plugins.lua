@@ -82,14 +82,19 @@ return
   , version = "*"
   , opts =
     { disable_netrw = true
+    , hijack_cursor = true
+    , view = { centralize_selection = true }
     , system_open = { cmd = "wslview" }
     , renderer =
-      { icons = { git_placement = "after" }
+      { group_empty = true
+      , icons = { git_placement = "after" }
+      , indent_width = 1
       }
     , actions =
       { open_file = { quit_on_open = true }
       }
     , filters = { custom = { "^\\.git$" } }
+    , live_filter = { always_show_folders = false }
     , sync_root_with_cwd = true
     , update_focused_file = { enable = true }
     }
