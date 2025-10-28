@@ -3,4 +3,5 @@ pkgs: with pkgs; [
   pdm
   pyenv
   pyright
+  python313Packages.debugpy
 ]

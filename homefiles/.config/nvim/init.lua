@@ -218,7 +218,7 @@ map { "", "<A-e>", "<Plug>CamelCaseMotion_e" }
 -- tab managements.
 map { "", "<A-H>", ":tabprevious<CR>" }
 map { "", "<A-L>", ":tabnext<CR>" }
-map { "", "<A-t>"  , ":tabnew<CR>" }
+map { "", "<A-t>", ":tabnew<CR>" }
 map { "", "<A-W>", ":tabclose<CR>" }
 -- buffer switching.
 map { "", "<A-h>", ":bprevious<CR>" }
@@ -267,6 +267,37 @@ map { "n", "<leader>np", function ()
         else
           vim.print("No jupytext found, ignore.")
         end
+      end
+    }
+-- debugger actions.
+-- normal actions
+map { "n", "<F5>", function () require "dap".continue() end }
+map { "n", "<F10>", function () require "dap".step_over() end }
+map { "n", "<F11>", function () require "dap".step_into() end }
+map { "n", "<F12>", function () require "dap".step_out() end }
+map { "n", "<F17>", function () require "dap".terminate() end } -- F17 is shift-F5
+-- inspections.
+map { "n", "<leader>b", function () require "dap".toggle_breakpoint() end }
+map { "n", "<leader>df", function ()
+        local wids = require "dap.ui.widgets"
+        wids.sidebar(wids.frames, nil, "topleft split").open()
+        -- force move code buffer to the far right to create a layout like:
+        -- frames | code
+        -- or
+        -- frames | code
+        -- scopes |
+        cmd "wincmd L"
+      end
+    }
+map { "n", "<leader>ds", function ()
+        local wids = require "dap.ui.widgets"
+        wids.sidebar(wids.scopes, nil, "botright split").open()
+        -- force move code buffer to the far right to create a layout like:
+        -- scopes | code
+        -- or
+        -- frames | code
+        -- scopes |
+        cmd "wincmd L"
       end
     }
 

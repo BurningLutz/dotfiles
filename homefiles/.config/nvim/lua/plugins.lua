@@ -431,4 +431,8 @@ return
       }
     end
   }
+  -- debug adapter.
+, { "mfussenegger/nvim-dap"
+  , version = "*"
+  }
 }
