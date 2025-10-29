@@ -1,4 +1,4 @@
-local dap = require("dap")
+local dap = require "dap"
 
 dap.adapters.python = function (cb, config)
   if config.request == "attach" then

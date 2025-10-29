@@ -278,27 +278,5 @@ map { "n", "<F12>", function () require "dap".step_out() end }
 map { "n", "<F17>", function () require "dap".terminate() end } -- F17 is shift-F5
 -- inspections.
 map { "n", "<leader>b", function () require "dap".toggle_breakpoint() end }
-map { "n", "<leader>df", function ()
-        local wids = require "dap.ui.widgets"
-        wids.sidebar(wids.frames, nil, "topleft split").open()
-        -- force move code buffer to the far right to create a layout like:
-        -- frames | code
-        -- or
-        -- frames | code
-        -- scopes |
-        cmd "wincmd L"
-      end
-    }
-map { "n", "<leader>ds", function ()
-        local wids = require "dap.ui.widgets"
-        wids.sidebar(wids.scopes, nil, "botright split").open()
-        -- force move code buffer to the far right to create a layout like:
-        -- scopes | code
-        -- or
-        -- frames | code
-        -- scopes |
-        cmd "wincmd L"
-      end
-    }
 
 -- # COMMANDS ##################################################################
