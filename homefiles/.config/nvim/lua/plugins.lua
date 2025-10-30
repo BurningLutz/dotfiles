@@ -442,21 +442,27 @@ return
     , "nvim-neotest/nvim-nio"
     }
   , config = function ()
-      local dap   = require "dap"
-      local dapui = require "dapui"
+      local dap    = require "dap"
+      local dapui  = require "dapui"
+      local dapmap = require "dapmap"
 
       dapui.setup()
+      local dapmap_close = function () end
 
       dap.listeners.before.attach.dapui_config = function ()
+        dapmap_close = dapmap.setup()
         dapui.open()
       end
       dap.listeners.before.launch.dapui_config = function ()
+        dapmap_close = dapmap.setup()
         dapui.open()
       end
       dap.listeners.before.event_terminated.dapui_config = function ()
+        dapmap_close()
         dapui.close()
       end
       dap.listeners.before.event_exited.dapui_config = function ()
+        dapmap_close()
         dapui.close()
       end
     end
