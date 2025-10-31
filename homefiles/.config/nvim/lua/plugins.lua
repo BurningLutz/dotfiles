@@ -457,22 +457,20 @@ return
       , terminate         = "x"
       }
 
+      local dapmapclose
       dapui.setup()
 
       dap.listeners.before.attach.dapui_config = function ()
-        dapmap.setup(keymap)
+        dapmapclose = dapmap.setup(keymap)
         dapui.open()
       end
       dap.listeners.before.launch.dapui_config = function ()
-        dapmap.setup(keymap)
+        dapmapclose = dapmap.setup(keymap)
         dapui.open()
       end
-      dap.listeners.before.event_terminated.dapui_config = function ()
-        dapmap.close()
-        dapui.close()
-      end
       dap.listeners.before.event_exited.dapui_config = function ()
-        dapmap.close()
+        ---@diagnostic disable-next-line: need-check-nil
+        dapmapclose()
         dapui.close()
       end
     end

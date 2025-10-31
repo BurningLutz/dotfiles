@@ -1,12 +1,6 @@
 local M = {}
 
-local winid = nil
-local original_nmaps = {}
-local function nmap(lhs, rhs, desc)
-  original_nmaps[lhs] = vim.fn.maparg(lhs, "n", false, true)
-  vim.keymap.set("n", lhs, rhs, { desc = desc })
-end
-local function resetnmap()
+local function resetnmap(original_nmaps)
   for key, value in pairs(original_nmaps) do
     if value and not vim.tbl_isempty(value) then
       vim.keymap.set("n", key, value.rhs, value.opt)
@@ -14,37 +8,36 @@ local function resetnmap()
       vim.keymap.del("n", key)
     end
   end
-  original_nmaps = {}
 end
 
-local function enable()
+local function enable(keymap)
   vim.bo.modifiable = false
   local dap = require "dap"
-  for name, maps in pairs(M.keymap) do
+  local original_nmaps = {}
+  for name, maps in pairs(keymap) do
     for _, lhs in ipairs( type(maps) == "table" and maps or { maps } ) do
-      nmap(lhs, function () dap[name]() end, name)
+      original_nmaps[lhs] = vim.fn.maparg(lhs, "n", false, true)
+      vim.keymap.set("n", lhs, function () dap[name]() end, { desc = name })
     end
   end
+
+  return original_nmaps
 end
 
-local function disable()
+local function disable(original_nmaps)
   vim.bo.modifiable = true
-  resetnmap()
+  resetnmap(original_nmaps)
 end
 
 function M.setup(keymap)
-  if winid then
-    return
-  end
-
-  M.keymap = keymap
-  winid = vim.api.nvim_get_current_win()
-  M.autocmds =
+  local winid          = vim.api.nvim_get_current_win()
+  local original_nmaps = enable(keymap)
+  local autocmds       =
   { vim.api.nvim_create_autocmd(
       "WinEnter"
       , { callback = function ()
-            if winid and winid == vim.api.nvim_get_current_win() then
-              enable()
+            if winid == vim.api.nvim_get_current_win() then
+              original_nmaps = enable(keymap)
             end
           end
         }
@@ -52,27 +45,20 @@ function M.setup(keymap)
   , vim.api.nvim_create_autocmd(
       "WinLeave"
       , { callback = function ()
-            if winid and winid == vim.api.nvim_get_current_win() then
-              disable()
+            if winid == vim.api.nvim_get_current_win() then
+              disable(original_nmaps)
             end
           end
         }
     )
   }
-  enable()
-end
 
-function M.close()
-  if winid == nil then
-    return
+  return function ()
+    for _, id in ipairs(autocmds) do
+      vim.api.nvim_del_autocmd(id)
+    end
+    disable(original_nmaps)
   end
-
-  winid = nil
-  for _, id in ipairs(M.autocmds) do
-    vim.api.nvim_del_autocmd(id)
-  end
-  M.autocmds = nil
-  disable()
 end
 
 return M
