@@ -271,12 +271,13 @@ map { "n", "<leader>np", function ()
     }
 -- debugger actions.
 -- normal actions
-map { "n", "<F5>", function () require "dap".continue() end }
-map { "n", "<F10>", function () require "dap".step_over() end }
-map { "n", "<F11>", function () require "dap".step_into() end }
-map { "n", "<F12>", function () require "dap".step_out() end }
-map { "n", "<F17>", function () require "dap".terminate() end } -- F17 is shift-F5
+map { "n", "<leader>dd", function ()
+        local dap = require "dap"
+        dap.set_breakpoint()
+        dap.continue()
+      end
+    }
 -- inspections.
-map { "n", "<leader>b", function () require "dap".toggle_breakpoint() end }
+map { "n", "<leader>db", function () require "dap".toggle_breakpoint() end }
 
 -- # COMMANDS ##################################################################
