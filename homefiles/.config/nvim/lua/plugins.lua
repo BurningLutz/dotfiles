@@ -445,24 +445,34 @@ return
       local dap    = require "dap"
       local dapui  = require "dapui"
       local dapmap = require "dapmap"
+      local keymap =
+      { continue          = { "dd", "c" }
+      , pause             = "p"
+      , toggle_breakpoint = { "db", "a" }
+      , clear_breakpoints = "cb"
+      , step_back         = "u"
+      , step_into         = "i"
+      , step_out          = "o"
+      , step_over         = "s"
+      , terminate         = "x"
+      }
 
       dapui.setup()
-      local dapmap_close = function () end
 
       dap.listeners.before.attach.dapui_config = function ()
-        dapmap_close = dapmap.setup()
+        dapmap.setup(keymap)
         dapui.open()
       end
       dap.listeners.before.launch.dapui_config = function ()
-        dapmap_close = dapmap.setup()
+        dapmap.setup(keymap)
         dapui.open()
       end
       dap.listeners.before.event_terminated.dapui_config = function ()
-        dapmap_close()
+        dapmap.close()
         dapui.close()
       end
       dap.listeners.before.event_exited.dapui_config = function ()
-        dapmap_close()
+        dapmap.close()
         dapui.close()
       end
     end
