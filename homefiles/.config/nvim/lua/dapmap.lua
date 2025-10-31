@@ -1,15 +1,5 @@
 local M = {}
 
-local function resetnmap(original_nmaps)
-  for key, value in pairs(original_nmaps) do
-    if value and not vim.tbl_isempty(value) then
-      vim.keymap.set("n", key, value.rhs, value.opt)
-    else
-      vim.keymap.del("n", key)
-    end
-  end
-end
-
 local function enable(keymap)
   vim.bo.modifiable = false
   local dap = require "dap"
@@ -26,7 +16,13 @@ end
 
 local function disable(original_nmaps)
   vim.bo.modifiable = true
-  resetnmap(original_nmaps)
+  for key, value in pairs(original_nmaps) do
+    if value and not vim.tbl_isempty(value) then
+      vim.keymap.set("n", key, value.rhs, value.opt)
+    else
+      vim.keymap.del("n", key)
+    end
+  end
 end
 
 function M.setup(keymap)
