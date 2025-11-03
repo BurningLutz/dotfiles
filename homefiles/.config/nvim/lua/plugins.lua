@@ -442,21 +442,35 @@ return
     , "nvim-neotest/nvim-nio"
     }
   , config = function ()
-      local dap   = require "dap"
-      local dapui = require "dapui"
+      local dap    = require "dap"
+      local dapui  = require "dapui"
+      local dapmap = require "dapmap"
+      local keymap =
+      { continue          = { "dd", "c" }
+      , pause             = "p"
+      , toggle_breakpoint = { "db", "a" }
+      , clear_breakpoints = "cb"
+      , step_back         = "u"
+      , step_into         = "i"
+      , step_out          = "o"
+      , step_over         = "s"
+      , terminate         = "x"
+      }
 
+      local dapmapclose
       dapui.setup()
 
       dap.listeners.before.attach.dapui_config = function ()
+        dapmapclose = dapmap.setup(keymap)
         dapui.open()
       end
       dap.listeners.before.launch.dapui_config = function ()
+        dapmapclose = dapmap.setup(keymap)
         dapui.open()
       end
-      dap.listeners.before.event_terminated.dapui_config = function ()
-        dapui.close()
-      end
       dap.listeners.before.event_exited.dapui_config = function ()
+        ---@diagnostic disable-next-line: need-check-nil
+        dapmapclose()
         dapui.close()
       end
     end
