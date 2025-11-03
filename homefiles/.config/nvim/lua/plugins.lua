@@ -457,22 +457,20 @@ return
       , terminate         = "x"
       }
 
-      local dapmapclose
+      local function setupdap()
+        dapui.open()
+        local cleanup = dapmap.setup(keymap)
+
+        dap.listeners.before.event_exited.dapui_config = function ()
+          dapui.close()
+          cleanup()
+        end
+      end
+
       dapui.setup()
 
-      dap.listeners.before.attach.dapui_config = function ()
-        dapmapclose = dapmap.setup(keymap)
-        dapui.open()
-      end
-      dap.listeners.before.launch.dapui_config = function ()
-        dapmapclose = dapmap.setup(keymap)
-        dapui.open()
-      end
-      dap.listeners.before.event_exited.dapui_config = function ()
-        ---@diagnostic disable-next-line: need-check-nil
-        dapmapclose()
-        dapui.close()
-      end
+      dap.listeners.before.attach.dapui_config = setupdap
+      dap.listeners.before.launch.dapui_config = setupdap
     end
   }
 }
