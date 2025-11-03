@@ -226,6 +226,8 @@ map { "", "<A-l>", ":bnext<CR>" }
 -- pane switching.
 map { "", "<C-h>", "<C-w>h" }
 map { "", "<C-l>", "<C-w>l" }
+map { "", "<C-j>", "<C-w>j" }
+map { "", "<C-k>", "<C-w>k" }
 -- most frequently used and lsp.
 map { "n", "<A-)>", function () vim.diagnostic.jump({ count =  1 }) end }
 map { "n", "<A-(>", function () vim.diagnostic.jump({ count = -1 }) end }

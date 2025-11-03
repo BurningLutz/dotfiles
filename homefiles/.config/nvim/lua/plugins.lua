@@ -440,11 +440,13 @@ return
   , dependencies =
     { "mfussenegger/nvim-dap"
     , "nvim-neotest/nvim-nio"
+    , "nvim-tree/nvim-tree.lua"
     }
   , config = function ()
       local dap    = require "dap"
       local dapui  = require "dapui"
       local dapmap = require "dapmap"
+      local nvtapi = require "nvim-tree.api"
       local keymap =
       { continue          = { "dd", "c" }
       , pause             = "p"
@@ -457,6 +459,19 @@ return
       , terminate         = "x"
       }
 
+      -- a trick to resize dapui.
+      -- needs to subscribe here, not inside `setupdap` cuz there is no cleanup
+      -- mechanism in NvimTree events api.
+      nvtapi.events.subscribe(nvtapi.events.Event.TreeClose, function ()
+        if dap.session() then
+          -- the deferring here is crucial, TreeClose is triggered before the
+          -- window actually gets closed.
+          vim.defer_fn(function ()
+            dapui.open({ reset = true })
+          end, 0)
+        end
+      end)
+
       local function setupdap()
         dapui.open()
         local cleanup = dapmap.setup(keymap)
@@ -467,7 +482,11 @@ return
         end
       end
 
-      dapui.setup()
+      dapui.setup
+      ---@diagnostic disable-next-line: missing-fields
+      { controls = { enabled = false }
+      , expand_lines = false
+      }
 
       dap.listeners.before.attach.dapui_config = setupdap
       dap.listeners.before.launch.dapui_config = setupdap

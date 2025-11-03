@@ -26,6 +26,7 @@ dap.configurations.python =
   , name = "Launch file"
   , request = "launch"
 
+  , console = "integratedTerminal"
   , program = "${file}"
   , pythonPath = function ()
       local cwd = vim.fn.getcwd()
