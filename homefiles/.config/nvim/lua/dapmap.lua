@@ -60,6 +60,8 @@ function M.setup(keymap, filetype)
       end
     end
     disable(original_nmaps)
+    original_nmaps = {}
+    tracked_bufs   = {}
   end
 end
 
