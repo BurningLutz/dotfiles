@@ -449,8 +449,8 @@ return
       , terminate         = "x"
       }
 
-      local function uiconfig()
-        local cleanup = dapmap.setup(keymap)
+      local function uiconfig(session)
+        local cleanup = dapmap.setup(keymap, session.filetype)
 
         dap.listeners.before.event_exited.uiconfig = function ()
           cleanup()
