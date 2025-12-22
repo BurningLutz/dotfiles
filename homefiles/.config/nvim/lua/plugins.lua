@@ -433,20 +433,9 @@ return
   }
   -- debug adapter.
 , { "mfussenegger/nvim-dap"
-  , version = "*"
-  }
-, { "rcarriga/nvim-dap-ui"
-  , version = "*"
-  , dependencies =
-    { "mfussenegger/nvim-dap"
-    , "nvim-neotest/nvim-nio"
-    , "nvim-tree/nvim-tree.lua"
-    }
   , config = function ()
       local dap    = require "dap"
-      local dapui  = require "dapui"
       local dapmap = require "dapmap"
-      local nvtapi = require "nvim-tree.api"
       local keymap =
       { continue          = { "dd", "c" }
       , pause             = "p"
@@ -459,37 +448,32 @@ return
       , terminate         = "x"
       }
 
-      -- a trick to resize dapui.
-      -- needs to subscribe here, not inside `setupdap` cuz there is no cleanup
-      -- mechanism in NvimTree events api.
-      nvtapi.events.subscribe(nvtapi.events.Event.TreeClose, function ()
-        if dap.session() then
-          -- the deferring here is crucial, TreeClose is triggered before the
-          -- window actually gets closed.
-          vim.defer_fn(function ()
-            dapui.open({ reset = true })
-          end, 0)
-        end
-      end)
-
-      local function setupdap()
-        dapui.open()
+      local function uiconfig()
         local cleanup = dapmap.setup(keymap)
 
-        dap.listeners.before.event_exited.dapui_config = function ()
-          dapui.close()
+        dap.listeners.before.event_exited.uiconfig = function ()
           cleanup()
         end
       end
 
-      dapui.setup
-      ---@diagnostic disable-next-line: missing-fields
-      { controls = { enabled = false }
-      , expand_lines = false
-      }
-
-      dap.listeners.before.attach.dapui_config = setupdap
-      dap.listeners.before.launch.dapui_config = setupdap
+      dap.listeners.before.attach.uiconfig = uiconfig
+      dap.listeners.before.launch.uiconfig = uiconfig
     end
+  }
+, { "igorlfs/nvim-dap-view"
+  , dependencies = { "mfussenegger/nvim-dap" }
+  , opts = {
+      auto_toggle = true
+    }
+  }
+, { "theHamsta/nvim-dap-virtual-text"
+  , dependencies = { "mfussenegger/nvim-dap" }
+  , opts =
+    { virt_text_pos = "eol"
+      ---@diagnostic disable-next-line: unused-local
+    , display_callback = function (variable, buf, stackframe, node, options)
+        return variable.value:gsub("%s+", " ")
+      end
+    }
   }
 }
