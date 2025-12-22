@@ -133,7 +133,7 @@ return
       )
       for n, sess in ipairs({ unpack(session_files, 1, 3) }) do
         local name = string.match(sesslib.unescape_session_name(sess), "(.*)%.vim$")
-        local cmd = ":lua require 'auto-session'.RestoreSession('"..name.."')<CR>"
+        local cmd = ":lua require 'auto-session'.restore_session('"..name.."')<CR>"
         local btn = dashboard.button(tostring(n), "  "..name, cmd)
 
         table.insert(btns, btn)
