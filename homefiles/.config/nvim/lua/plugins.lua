@@ -439,7 +439,8 @@ return
       local keymap =
       { continue          = { "dd", "c" }
       , pause             = "p"
-      , toggle_breakpoint = { "db", "a" }
+      , set_breakpoint    = "a"
+      , toggle_breakpoint = "db"
       , clear_breakpoints = "cb"
       , step_back         = "u"
       , step_into         = "i"
