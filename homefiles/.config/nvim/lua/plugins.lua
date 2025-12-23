@@ -435,7 +435,7 @@ return
 , { "mfussenegger/nvim-dap"
   , config = function ()
       local dap    = require "dap"
-      local dapmap = require "dapmap"
+      local mode   = require "dap-mode"
       local keymap =
       { continue          = { "dd", "c" }
       , pause             = "p"
@@ -450,10 +450,12 @@ return
       }
 
       local function uiconfig(session)
-        local cleanup = dapmap.setup(keymap, session.filetype)
+        local cleanup = mode.setup(keymap, session.filetype)
 
         dap.listeners.before.event_exited.uiconfig = function ()
           cleanup()
+          -- return true to remove this listener, so it is one-shot.
+          return true
         end
       end
 
