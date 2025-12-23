@@ -7,7 +7,7 @@ local function set_keymaps(keymaps, bufnr)
   for name, maps in pairs(keymaps) do
     maps = type(maps) == "table" and maps or { maps }
 
-    for _, lhs in ipairs(maps) do
+    for _, lhs in pairs(maps) do
       orig_nmaps[lhs] = vim.fn.maparg(lhs, "n", false, true)
       vim.keymap.set("n", lhs, dap[name], { desc = name, buffer = bufnr })
     end
