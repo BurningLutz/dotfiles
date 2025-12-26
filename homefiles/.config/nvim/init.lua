@@ -234,6 +234,7 @@ map { "n", "<A-(>", function () vim.diagnostic.jump({ count = -1 }) end }
 map { "n", "<A-f>", function () require "telescope.builtin".find_files { hidden = true } end }
 map { "n", "<A-g>", function () require "telescope.builtin".live_grep  { additional_args = { "--hidden" } } end }
 map { { "n", "v" }, "<A-a>", vim.lsp.buf.code_action }
+map { "n", "<C-s>", vim.lsp.buf.signature_help }
 
 map { "n", "grr", function () require "telescope.builtin".lsp_references(tmcursor()) end }
 map { "n", "gri", function () require "telescope.builtin".lsp_implementations(tmcursor()) end }
