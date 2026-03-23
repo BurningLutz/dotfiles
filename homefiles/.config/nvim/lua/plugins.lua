@@ -54,10 +54,6 @@ return
       { overrides = function (hl, c)
           -- I like classic Type highlight.
           hl.Type            = { fg = c.yellow }
-          -- proper gitgutter highlights.
-          hl.GitGutterAdd    = { link = "diffAdded" }
-          hl.GitGutterChange = { link = "diffChanged" }
-          hl.GitGutterDelete = { link = "diffRemoved" }
           -- the original colors are hard to see, so I revert them.
           hl.TabLine         = { fg = c.bg, bg = c.fg }
           hl.TabLineFill     = { fg = c.bg, bg = c.fg }
@@ -100,7 +96,14 @@ return
     }
   }
   -- show file change inline.
-, "airblade/vim-gitgutter"
+, { "lewis6991/gitsigns.nvim"
+  , config = function ()
+      require "gitsigns".setup
+      { signs_staged_enable = false
+      , word_diff = true
+      }
+    end
+  }
   -- sub-word movements.
 , "bkad/CamelCaseMotion"
   -- Surround selections, stylishly 😎
