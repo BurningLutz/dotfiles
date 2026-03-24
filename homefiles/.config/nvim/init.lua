@@ -282,5 +282,7 @@ map { "n", "<leader>dd", function ()
     }
 -- inspections.
 map { "n", "<leader>db", function () require "dap".toggle_breakpoint() end }
+map { "v", "<leader>ghs", function () require "gitsigns".stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end }
+map { "v", "<leader>ghr", function () require "gitsigns".reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end }
 
 -- # COMMANDS ##################################################################

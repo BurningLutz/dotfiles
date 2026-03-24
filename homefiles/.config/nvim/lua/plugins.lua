@@ -53,10 +53,10 @@ return
       require "hybrid".setup
       { overrides = function (hl, c)
           -- I like classic Type highlight.
-          hl.Type            = { fg = c.yellow }
+          hl.Type = { fg = c.yellow }
           -- the original colors are hard to see, so I revert them.
-          hl.TabLine         = { fg = c.bg, bg = c.fg }
-          hl.TabLineFill     = { fg = c.bg, bg = c.fg }
+          hl.TabLine     = { fg = c.bg, bg = c.fg }
+          hl.TabLineFill = { fg = c.bg, bg = c.fg }
           -- classic popups.
           hl.Pmenu           = { fg = c.fg, bg = c.bg_soft }
           hl.PmenuSel        = { fg = c.bg_soft, bg = c.fg }
@@ -68,6 +68,10 @@ return
           hl.TelescopeNormal = { link = "Normal" }
           hl.TelescopeBorder = { link = "TelescopeNormal" }
           hl.TelescopeTitle  = { link = "TelescopeNormal" }
+          -- gitsigns inline word diff highlights.
+          hl.GitSignsAddInline    = { fg = c.bg, bg = c.green }
+          hl.GitSignsChangeInline = { fg = c.bg, bg = c.blue  }
+          hl.GitSignsDeleteInline = { fg = c.bg, bg = c.red   }
         end
       }
     end
