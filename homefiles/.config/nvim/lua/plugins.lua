@@ -307,6 +307,7 @@ return
 , "kristijanhusak/vim-dadbod-ui"
   -- treesitter, the syntax parser providing highlighting and textobjects.
 , { "nvim-treesitter/nvim-treesitter"
+  , branch = "master"
   , build  = ":TSUpdate"
   , config = function ()
       require "nvim-treesitter.install".compilers = { os.getenv "NVIM_TREESITTER_COMPILER_PATH" }
@@ -336,6 +337,7 @@ return
   }
 , { "nvim-treesitter/nvim-treesitter-textobjects"
   , dependencies = { "nvim-treesitter" }
+  , branch = "master"
   }
   -- lists.
 , { "nvim-telescope/telescope.nvim"
