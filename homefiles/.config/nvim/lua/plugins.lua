@@ -120,32 +120,10 @@ return
 , { "goolord/alpha-nvim"
   , dependencies = { "nvim-tree/nvim-web-devicons" }
   , config = function ()
-      local sessutil  = require "auto-session"
-      local sesslib   = require "auto-session.lib"
       local fortune   = require "alpha.fortune"
       local dashboard = require "alpha.themes.dashboard"
 
-      local session_files = vim.fn.readdir(sessutil.get_root_dir())
       local btns = {}
-
-      table.insert(
-        btns
-      , { type = "text", val = "Sessions"
-        , opts =
-          { hl = "Constant"
-          , position = "center"
-          }
-        }
-      )
-      for n, sess in ipairs({ unpack(session_files, 1, 3) }) do
-        local name = string.match(sesslib.unescape_session_name(sess), "(.*)%.vim$")
-        local cmd = ":lua require 'auto-session'.restore_session('"..name.."')<CR>"
-        local btn = dashboard.button(tostring(n), "  "..name, cmd)
-
-        table.insert(btns, btn)
-      end
-
-      table.insert(btns, { type = "padding", val = 1 })
       table.insert(
         btns
       , { type = "text", val = "Action"
@@ -156,7 +134,7 @@ return
         }
       )
       table.insert(btns, dashboard.button("e", "  New file", ":ene<CR>"))
-      table.insert(btns, dashboard.button("p", "  Open session", ":Telescope session-lens<CR>"))
+      table.insert(btns, dashboard.button("s", "  Open session", ":Telescope session-lens<CR>"))
       table.insert(btns, dashboard.button("q", "󰿅  Quit", ":qa!<CR>"))
 
       dashboard.section.buttons.val = btns
