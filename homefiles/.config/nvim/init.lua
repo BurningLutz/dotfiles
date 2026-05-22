@@ -71,7 +71,15 @@ require "lazy".setup "plugins"
 -- diagnostics
 vim.diagnostic.config
 { virtual_text = true
-, jump = { float = true }
+, jump =
+  { on_jump = function (_, bufnr)
+      vim.diagnostic.open_float
+      { bufnr = bufnr
+      , scope = "cursor"
+      , focus = false
+      }
+    end
+  }
 }
 
 -- common lsp config
