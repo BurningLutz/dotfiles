@@ -4,11 +4,6 @@ local cmd = vim.cmd
 local api = vim.api
 local g   = vim.g
 
--- # ESSENTIAL INITS ##########################################################
--- erase LD_LIBRARY_PATH ASAP to ensure shell commands and terminal is not
--- affected
-cmd "unlet $LD_LIBRARY_PATH"
-
 -- # UTILS ####################################################################
 local function map(args)
   local mode, lhs, rhs = unpack(args)
@@ -47,6 +42,24 @@ local function open_nvim_tree(data)
 
   -- open the tree
   require "nvim-tree.api".tree.open()
+end
+
+local function mk_select(query, group)
+  return function ()
+    require "nvim-treesitter-textobjects.select".select_textobject(query, group)
+  end
+end
+
+local function mk_swap_next(query, group)
+  return function ()
+    require "nvim-treesitter-textobjects.swap".swap_next(query, group)
+  end
+end
+
+local function mk_swap_previous(query, group)
+  return function ()
+    require "nvim-treesitter-textobjects.swap".swap_previous(query, group)
+  end
 end
 
 -- # PLUGINS ###################################################################
@@ -181,6 +194,9 @@ g.vmt_list_item_char = "-"
 -- # editorconfig
 g.EditorConfig_exclude_patterns = { "fugitive://.*" }
 
+-- avoid conflicts with textobjects
+g.no_plugin_maps = true
+
 -- # telescope
 api.nvim_create_autocmd(
   { "User" }
@@ -242,8 +258,6 @@ map { "n", "grd", ":Telescope diagnostics<CR>" }
 map { "n", "grs", ":Telescope session-lens<CR>" }
 map { "n", "gO", ":Telescope lsp_document_symbols<CR>" }
 map { "n", "gQ", vim.lsp.buf.format }
-map { "n", "<leader>p", ":TSTextobjectSwapNext @parameter.inner<CR>" }
-map { "n", "<leader>P", ":TSTextobjectSwapPrevious @parameter.inner<CR>" }
 -- command-line mode readline-style movements.
 map { "c", "<C-a>", "<Home>" }
 map { "c", "<C-e>", "<End>" }
@@ -264,5 +278,13 @@ map { "n", "<leader>dd", function ()
 map { "n", "<leader>db", function () require "dap".toggle_breakpoint() end }
 map { "v", "<leader>ghs", function () require "gitsigns".stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end }
 map { "v", "<leader>ghr", function () require "gitsigns".reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end }
+
+-- textobjects selections.
+map { { "x", "o" }, "af", mk_select "@function.outer" }
+map { { "x", "o" }, "if", mk_select "@function.inner" }
+map { { "x", "o" }, "ac", mk_select "@class.outer" }
+map { { "x", "o" }, "ic", mk_select "@class.inner" }
+map { "n", "<leader>p", mk_swap_next     "@parameter.inner" }
+map { "n", "<leader>P", mk_swap_previous "@parameter.inner" }
 
 -- # COMMANDS ##################################################################

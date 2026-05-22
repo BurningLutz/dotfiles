@@ -305,38 +305,15 @@ return
 , "tpope/vim-dadbod"
 , "kristijanhusak/vim-dadbod-ui"
   -- treesitter, the syntax parser providing highlighting and textobjects.
-, { "nvim-treesitter/nvim-treesitter"
-  , branch = "master"
-  , build  = ":TSUpdate"
-  , config = function ()
-      require "nvim-treesitter.install".compilers = { os.getenv "NVIM_TREESITTER_COMPILER_PATH" }
-      require "nvim-treesitter.configs".setup
-      ---@diagnostic disable-next-line: missing-fields
-      { ensure_installed = { "diff" }
-      , sync_install = true
-      , auto_install = true
-      , highlight =
-        { enable = true
-        , additional_vim_regex_highlighting = false
-        }
-      , textobjects =
-        { select =
-          { enable = true
-          , keymaps =
-            { ["af"] = "@function.outer"
-            , ["if"] = "@function.inner"
-            , ["ac"] = "@class.outer"
-            , ["ic"] = "@class.inner"
-            }
-          }
-        , swap = { enable = true }
-        }
-      }
-    end
+, { "romus204/tree-sitter-manager.nvim"
+  , opts =
+    { ensure_installed = { "diff" }
+    , auto_install = true
+    , highlight = true
+    }
   }
 , { "nvim-treesitter/nvim-treesitter-textobjects"
-  , dependencies = { "nvim-treesitter" }
-  , branch = "master"
+  , branch = "main"
   }
   -- lists.
 , { "nvim-telescope/telescope.nvim"

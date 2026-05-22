@@ -39,15 +39,10 @@ in rec
     pandoc
     ripgrep
     tldr
+    tree-sitter
     unzip
     yarn
-    ( neovim.override
-        { extraMakeWrapperArgs = toString
-                                   [ "--set LD_LIBRARY_PATH ${stdenv.cc.cc.lib}/lib"
-                                     "--set NVIM_TREESITTER_COMPILER_PATH ${stdenv.cc}/bin/gcc"
-                                   ];
-        }
-    )
+    neovim
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
