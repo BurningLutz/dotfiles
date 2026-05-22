@@ -40,7 +40,6 @@ in rec
     ripgrep
     tldr
     unzip
-    wslu
     yarn
     ( neovim.override
         { extraMakeWrapperArgs = toString
@@ -96,7 +95,6 @@ in rec
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   # fish shell needs mandb cache to do man completion.
-  # the original cache format is not compatible with many systems, it should
-  # be changed to gdbm.
+  programs.man.generateCaches = true;
   programs.man.enable = true;
 }

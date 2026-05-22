@@ -84,7 +84,6 @@ return
     { disable_netrw = true
     , hijack_cursor = true
     , view = { centralize_selection = true }
-    , system_open = { cmd = "wslview" }
     , renderer =
       { group_empty = true
       , icons = { git_placement = "after" }
