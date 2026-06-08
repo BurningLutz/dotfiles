@@ -156,7 +156,7 @@ opt.mouse          = ""
 opt.virtualedit    = "block"
 
 -- session options for auto session.
-opt.sessionoptions = { "blank", "buffers", "curdir", "folds", "help", "tabpages", "winsize", "terminal", "localoptions" }
+opt.sessionoptions = { "blank", "buffers", "curdir", "folds", "globals", "help", "tabpages", "winsize", "terminal", "localoptions", "options" }
 
 -- let jumplist behaves like a stack and keep viewport.
 opt.jumpoptions    = { "stack", "view", "clean" }
