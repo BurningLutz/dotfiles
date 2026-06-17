@@ -1,9 +1,9 @@
 [github]
-  user = BurningLutz
+  user = {{git.user}}
 
 [user]
-  name = Lutz
-  email = lutz.l.burning@gmail.com
+  name = {{git.name}}
+  email = {{git.email}}
 
 [alias]
   st = status
