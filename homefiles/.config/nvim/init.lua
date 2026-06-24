@@ -1,3 +1,7 @@
+-- # INITS ####################################################################
+-- neovim now defaults to the same random seed, we change it everytime.
+math.randomseed(os.time())
+
 -- # CONFIG PRIMITIVES ########################################################
 local opt = vim.opt
 local cmd = vim.cmd
