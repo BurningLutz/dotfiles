@@ -13,7 +13,7 @@ return
     { plugin =
       { ["ghcide-completions"] =
         { config =
-          { snippetsOn = false
+          { snippetsOn = true
           , autoExtendOn = false
           }
         }
