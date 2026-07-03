@@ -104,6 +104,7 @@ return
       require "gitsigns".setup
       { signs_staged_enable = false
       , word_diff = true
+      , update_debounce = 500
       }
     end
   }
