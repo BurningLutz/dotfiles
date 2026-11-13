@@ -221,6 +221,8 @@ return
       , ["<C-b>"] = { "scroll_documentation_up", "fallback" }
       , ["<C-f>"] = { "scroll_documentation_down", "fallback" }
       , ["<C-x><C-o>"] =
+        -- we cannot directly use "show" here because of a bug in blink with
+        -- multi-sequence keymap.
         { function (cmp)
             cmp.show()
             return vim.keycode "<Ignore>"
