@@ -72,6 +72,33 @@ return
           hl.GitSignsAddInline    = { fg = c.bg, bg = c.green }
           hl.GitSignsChangeInline = { fg = c.bg, bg = c.blue  }
           hl.GitSignsDeleteInline = { fg = c.bg, bg = c.red   }
+          -- blink highlights
+          hl.BlinkCmpLabelMatch        = { fg = c.yellow }
+          hl.BlinkCmpKindClass         = { link = "Type" }
+          hl.BlinkCmpKindColor         = { link = "Special" }
+          hl.BlinkCmpKindConstant      = { link = "Constant" }
+          hl.BlinkCmpKindConstructor   = { link = "Function" }
+          hl.BlinkCmpKindEnum          = { link = "Type" }
+          hl.BlinkCmpKindEnumMember    = { link = "Constant" }
+          hl.BlinkCmpKindEvent         = { link = "Special" }
+          hl.BlinkCmpKindField         = { link = "Identifier" }
+          hl.BlinkCmpKindFile          = { link = "Directory" }
+          hl.BlinkCmpKindFolder        = { link = "Directory" }
+          hl.BlinkCmpKindFunction      = { link = "Function" }
+          hl.BlinkCmpKindInterface     = { link = "Type" }
+          hl.BlinkCmpKindKeyword       = { link = "Keyword" }
+          hl.BlinkCmpKindMethod        = { link = "Function" }
+          hl.BlinkCmpKindModule        = { link = "Include" }
+          hl.BlinkCmpKindOperator      = { link = "Operator" }
+          hl.BlinkCmpKindProperty      = { link = "Identifier" }
+          hl.BlinkCmpKindReference     = { link = "Underlined" }
+          hl.BlinkCmpKindSnippet       = { link = "Special" }
+          hl.BlinkCmpKindStruct        = { link = "Type" }
+          hl.BlinkCmpKindText          = { link = "Normal" }
+          hl.BlinkCmpKindTypeParameter = { link = "Type" }
+          hl.BlinkCmpKindUnit          = { link = "Number" }
+          hl.BlinkCmpKindValue         = { link = "Constant" }
+          hl.BlinkCmpKindVariable      = { link = "Identifier" }
         end
       }
     end
@@ -183,65 +210,54 @@ return
   -- search and replace through the whole project.
 , "dyng/ctrlsf.vim"
   -- auto completion.
-, { "hrsh7th/nvim-cmp"
-  , dependencies =
-    { "hrsh7th/cmp-nvim-lsp"
-    , "hrsh7th/cmp-path"
-    , "hrsh7th/cmp-buffer"
-    }
-  , config = function ()
-      local compare = require "cmp.config.compare"
-      local cmp = require "cmp"
-      local map = cmp.mapping
-
-      cmp.setup
-      { preselect = cmp.PreselectMode.None
-      , snippet =
-        { expand = function (args)
-            vim.snippet.expand(args.body)
+, { "saghen/blink.cmp"
+  , version = "1.*"
+  , opts =
+    { keymap =
+      { preset = "none"
+      , ["<CR>"]  = { "accept", "fallback" }
+      , ["<C-p>"] = { "select_prev", "fallback_to_mappings" }
+      , ["<C-n>"] = { "select_next", "fallback_to_mappings" }
+      , ["<C-b>"] = { "scroll_documentation_up", "fallback" }
+      , ["<C-f>"] = { "scroll_documentation_down", "fallback" }
+      , ["<C-x><C-o>"] =
+        { function (cmp)
+            cmp.show()
+            return vim.keycode "<Ignore>"
           end
-        }
-      , sorting =
-        { comparators =
-          { compare.exact
-          , compare.score
-          , compare.kind
-          , compare.sort_text
-          }
-        }
-      , mapping = map.preset.insert
-        { ["<CR>"]  = map.confirm()
-        , ["<C-f>"] = map.scroll_docs(4)
-        , ["<C-b>"] = map.scroll_docs(-4)
-        , ["<Tab>"] = map(
-            function (fallback)
-              if cmp.visible() then
-                cmp.select_next_item { behavior = cmp.SelectBehavior }
-              else
-                fallback()
-              end
-            end
-          , { "i" }
-          )
-        , ["<S-Tab>"] = map(
-            function (fallback)
-              if cmp.visible() then
-                cmp.select_prev_item { behavior = cmp.SelectBehavior }
-              else
-                fallback()
-              end
-            end
-          , { "i" }
-          )
-        , ["<C-x><C-o>"] = map.complete()
-        }
-      , sources =
-        { { name = "nvim_lsp" }
-        , { name = "buffer" }
-        , { name = "path" }
+        , "fallback"
         }
       }
-    end
+
+    , appearance = { nerd_font_variant = "mono" }
+
+    , cmdline = { enabled = false }
+
+    , completion =
+      { documentation =
+        { auto_show = true
+        , auto_show_delay_ms = 300
+        }
+      , list =
+        { selection =
+          { preselect = false
+          , auto_insert = false
+          }
+        }
+      , menu =
+        { max_height = 20
+        }
+      }
+
+    , signature = { enabled = false }
+
+    , sources =
+      { default = { "lsp", "path", "snippets", "buffer" }
+      }
+
+    , fuzzy = { implementation = "prefer_rust_with_warning" }
+    }
+  , opts_extend = { "sources.default" }
   }
 , "neovim/nvim-lspconfig"
   -- java language support.
