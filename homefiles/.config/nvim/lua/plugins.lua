@@ -246,6 +246,9 @@ return
           , auto_insert = false
           }
         }
+      , accept =
+        { auto_brackets = { enabled = false }
+        }
       , menu =
         { max_height = 20
         }
