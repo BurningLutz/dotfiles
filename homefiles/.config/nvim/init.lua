@@ -17,6 +17,13 @@ local function map(args)
 
   vim.keymap.set(mode, lhs, rhs, args)
 end
+local function unmap(args)
+  local mode, lhs = unpack(args)
+  args[1] = nil
+  args[2] = nil
+
+  vim.keymap.del(mode, lhs, args)
+end
 
 local function tmcursor(w, h)
   return require "telescope.themes".get_cursor
@@ -230,6 +237,11 @@ api.nvim_create_autocmd(
 )
 
 -- # KEYMAPS ###################################################################
+-- completions.
+unmap { { "i", "s" }, "<Tab>" }
+unmap { { "i", "s" }, "<S-Tab>" }
+map { { "i", "s" }, "<A-j>", "<Cmd>lua vim.snippet.jump(1)<CR>" }
+map { { "i", "s" }, "<A-k>", "<Cmd>lua vim.snippet.jump(-1)<CR>" }
 map { { "n", "o" }, "(", "[(" }
 map { { "n", "o" }, ")", "])" }
 map { "", "<A-n>", ":NvimTreeToggle<CR>" }
