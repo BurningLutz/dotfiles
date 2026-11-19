@@ -238,13 +238,10 @@ map { "", "<A-w>", "<Plug>CamelCaseMotion_w" }
 map { "", "<A-b>", "<Plug>CamelCaseMotion_b" }
 map { "", "<A-e>", "<Plug>CamelCaseMotion_e" }
 -- tab managements.
-map { "", "<A-H>", ":tabprevious<CR>" }
-map { "", "<A-L>", ":tabnext<CR>" }
+map { "", "<A-h>", ":tabprevious<CR>" }
+map { "", "<A-l>", ":tabnext<CR>" }
 map { "", "<A-t>", ":tabnew<CR>" }
 map { "", "<A-W>", ":tabclose<CR>" }
--- buffer switching.
-map { "", "<A-h>", ":bprevious<CR>" }
-map { "", "<A-l>", ":bnext<CR>" }
 -- pane switching.
 map { "", "<C-h>", "<C-w>h" }
 map { "", "<C-l>", "<C-w>l" }
